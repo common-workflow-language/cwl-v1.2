@@ -116,16 +116,4 @@ fi
 
 echo
 
-if [[ $failures != 0 ]]; then
-    echo "$failures tool tests failed"
-else
-    if [[ $runs == 0 ]]; then
-        echo >&2 "$helpmessage"
-        echo >&2
-        exit 1
-    else
-        echo "All tool tests succeeded"
-    fi
-fi
-
 exit $failures

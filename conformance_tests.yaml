@@ -1430,7 +1430,7 @@
   doc: Test empty writable dir with InitialWorkDirRequirement inside Docker
   tags: [ inline_javascript, initial_work_dir ]
 
-- job: tests/dynresreq-job.json
+- job: tests/dynresreq-job.yaml
   tool: tests/dynresreq.cwl
   doc: Test dynamic resource reqs referencing inputs
   output:
@@ -1523,7 +1523,7 @@
   output: {}
   tags: [ required ]
 
-- job: tests/dynresreq-job.json
+- job: tests/dynresreq-job.yaml
   doc: Test simple workflow with a dynamic resource requirement
   tool: tests/dynresreq-workflow.cwl
   output:
