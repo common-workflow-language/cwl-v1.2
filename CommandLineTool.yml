@@ -261,8 +261,8 @@ $graph:
         directory.  However, in that case the glob pattern itself
         resolves to a path in the output directory.  It is an error if
         a symlink from the output directory refers to a file or
-        directory outside the output directory which is not part of
-        the set of files initially staged for input.
+        directory outside the output directory, except for those files
+        initially staged by InitialWorkDirRequirement.
 
         A glob which refers to a symlink which is relative within the
         output directory should produce a File object which has the
