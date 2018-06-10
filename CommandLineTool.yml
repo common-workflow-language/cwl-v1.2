@@ -71,6 +71,7 @@ $graph:
           [InitialWorkDirRequirement.listing](#InitialWorkDirRequirement).
         * [Addition](#Requirements_and_hints) of `cwl:requirements` field to
           input object documents
+        * Clarify behavior of `glob` for absolute paths and symlinks.
 
       See also the [CWL Workflow Description, v1.1.0-dev1 changelog](Workflow.html#Changelog).
 
@@ -245,6 +246,32 @@ $graph:
         return a string or an array of strings, which will then be evaluated as
         one or more glob patterns.  Must only match and return files which
         actually exist.
+
+        If the value of glob is a relative path pattern (does not
+        begin with a slash '/') then it is resolved relative to the
+        output directory.  If the value of the glob is an absolute
+        path pattern (it does begin with a slash '/') then it must
+        refer to a path within the output directory.  It is an error
+        if any glob, either relative path containing '..' or an
+        absolute path, resolves to a path outside the output
+        directory.
+
+        As a special case, a glob may refer to a symlink which points
+        to an input file which is located outside the output
+        directory.  However, in that case the glob pattern itself
+        resolves to a path in the output directory.  It is an error if
+        a symlink from the output directory refers to a file or
+        directory outside the output directory which is not part of
+        the set of files initially staged for input.
+
+        A glob which refers to a symlink which is relative within the
+        output directory should produce a File object which has the
+        `location` of the glob path (the symlink is not dereferenced).
+
+        A glob which refers to a symlink to an input file should
+        produce a File object which has the `location` of the original
+        input file (the symlink is dereferenced).
+
     - name: outputEval
       type:
         - "null"
