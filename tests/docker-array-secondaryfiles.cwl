@@ -16,7 +16,11 @@ inputs:
       type: array
       items: File
     secondaryFiles:
-      - .fai
+      - pattern: .fai
+        required: true
+      - pattern: .blablai
+        required: false
+      - pattern: .blablai2
 
 outputs:
   bai_list:
