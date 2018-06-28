@@ -20,7 +20,6 @@ inputs:
         required: true
       - pattern: .blablai
         required: false
-      - pattern: .blablai2
 
 outputs:
   bai_list:
