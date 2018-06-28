@@ -460,9 +460,9 @@ $graph:
         - "null"
         - string
         - Expression
-        - SecodaryFileSchema
+        - SecondaryFileSchema
         - type: array
-          items: [string, Expression, SecodaryFileSchema]
+          items: [string, Expression, SecondaryFileSchema]
       jsonldPredicate: "cwl:secondaryFiles"
       doc: |
         Only valid when `type: File` or is an array of `items: File`.
