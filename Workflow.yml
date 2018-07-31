@@ -252,7 +252,7 @@ $graph:
 
 - type: record
   name: WorkflowStepInput
-  extends: [Identified, Sink, LoadContents]
+  extends: [Identified, Sink, LoadContents, Labeled]
   docParent: "#WorkflowStep"
   doc: |
     The input of a workflow step connects an upstream parameter (from the
