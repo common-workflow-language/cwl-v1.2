@@ -159,8 +159,14 @@ $graph:
 
   fields:
     - name: position
-      type: int?
-      doc: "The sorting key.  Default position is 0."
+      type: [ int, Expression, string, "null" ]
+      doc: |
+        The sorting key.  Default position is 0. If the inputBinding is
+        associated with an input parameter, then the value of `self` in the
+        expression will be the value of the input parameter.  Input parameter
+        defaults (as specified by the `InputParameter.default` field) must be
+        applied before evaluating the expression. Expressions must return a
+        single value of type int or a null.
     - name: prefix
       type: string?
       doc: "Command line prefix to add before the value."
