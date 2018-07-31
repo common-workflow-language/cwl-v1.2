@@ -65,7 +65,7 @@ $graph:
           `WorkflowInputParameter.loadContents` instead.
         * The presence of `OutputRecordField.outputBinding` in v1.0 was due to
           a technical error and as it makes no semantic sense it was removed.
-
+        * `WorkflowStepInput` now has a `label` field
 
       See also the [CWL Command Line Tool Description, v1.1.0-dev1 changelog](CommandLineTool.html#Changelog).
 
@@ -252,7 +252,7 @@ $graph:
 
 - type: record
   name: WorkflowStepInput
-  extends: [Identified, Sink, LoadContents]
+  extends: [Identified, Sink, LoadContents, Labeled]
   docParent: "#WorkflowStep"
   doc: |
     The input of a workflow step connects an upstream parameter (from the
