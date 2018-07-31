@@ -17,3 +17,5 @@ The
 [Semantic Annotations for Linked Avro Data (SALAD) Specification](SchemaSalad.html)
 specifies the preprocessing steps that must be applied when loading CWL
 documents and the schema language used to write the above specifications.
+
+Inheritance graphs (as SVG images) for the [Schema Salad object model](salad.svg) and the [CWL object model](cwl.svg).
