@@ -256,13 +256,12 @@ $graph:
         absolute path, resolves to a path outside the output
         directory.
 
-        As a special case, a glob may refer to a symlink which points
-        to an input file which is located outside the output
-        directory.  However, in that case the glob pattern itself
-        resolves to a path in the output directory.  It is an error if
-        a symlink from the output directory refers to a file or
-        directory outside the output directory, except for those files
-        initially staged by InitialWorkDirRequirement.
+        A glob may match a file within the output directory which is
+        actually a symlink to another file.  It is an error if a
+        symlink in the output directory refers to any file or
+        directory outside the output directory, except for the case of
+        files staged by InitialWorkDirRequirement and only if staging
+        was implementated using symlinks to the original input files.
 
         A glob which refers to a symlink which is relative within the
         output directory should produce a File object which has the
