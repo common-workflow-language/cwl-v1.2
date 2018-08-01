@@ -18,14 +18,20 @@ inputs:
     secondaryFiles:
       - pattern: .fai
         required: true
-      - pattern: .blablai
+      - pattern: .crai
         required: false
+      - .bai?
+      - pattern: "${ return null }"
+
 
 outputs:
   bai_list:
     type: File
     outputBinding:
       glob: "fai.list"
+    secondaryFiles:
+      - .bai?
+      - pattern: "${ return null }"
 
 arguments:
   - valueFrom: ${
