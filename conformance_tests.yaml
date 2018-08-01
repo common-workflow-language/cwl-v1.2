@@ -1159,7 +1159,7 @@
     }
   }
   tool: tests/docker-array-secondaryfiles.cwl
-  doc: Test secondaryFiles on array of files.
+  doc: Test required, optional and null secondaryFiles on array of files.
   tags: [ docker, inline_javascript, shell_command ]
 
 - job: tests/dir7.yml
