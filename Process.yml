@@ -469,6 +469,8 @@ $graph:
 
         Provides a pattern or expression specifying files or directories that
         should be included alongside the primary file.
+        Secondary file is required for inputs and not required for outputs
+        unless specified otherwise.
 
         If the value is an expression, the value of `self` in the expression
         must be the primary input or output File object to which this binding
@@ -898,3 +900,6 @@ $graph:
       doc: |
         An implementation must not fail workflow execution if `required` is 
         set to `false` and the expected secondary file does not exist.
+        Default value for `required` field is `true` for secondary files on
+        input and `false` for secondary files on output.
+
