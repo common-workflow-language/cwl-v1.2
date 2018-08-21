@@ -8,6 +8,8 @@ baseCommand:
 inputs:
   - id: input_file
     type: File
+  #- id: optional_file
+  #  type: File?
   - id: input_list
     type: 'File[]'
     inputBinding:
@@ -28,7 +30,8 @@ requirements:
   - class: InitialWorkDirRequirement
     listing:
       - $(inputs.input_file)
-      - $(inputs.input_list)
+      - ${ if (inputs.optional_file) return inputs.optional_file; else return null}
+      - entry: $(inputs.input_list)
       - entryname: a
         entry: b
   - class: InlineJavascriptRequirement

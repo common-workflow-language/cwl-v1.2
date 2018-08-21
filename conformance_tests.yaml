@@ -1773,7 +1773,7 @@
 - job: tests/stage-array-job.json
   tool: tests/stage-array.cwl
   doc: |
-    Test if array input is staged when set in InitialWorkDirRequirement.
+    Test null and array input in InitialWorkDirRequirement
   output:
     output: {
         "checksum": "sha1$bf757d2cf23320f3321761286c0d0deea446acf2", 
