@@ -194,6 +194,9 @@ $graph:
         `InputParameter.default` field) must be applied before evaluating the
         expression.
 
+        If the value of the associated input parameter is `null`, `valueFrom` is 
+        not evaluated and nothing is added to the command line.
+
         When a binding is part of the `CommandLineTool.arguments` field,
         the `valueFrom` field is required.
 
