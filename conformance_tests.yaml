@@ -1769,7 +1769,6 @@
   doc: Test networkaccess is disabled by default
   tags: [ networkaccess ]
 
-
 - job: tests/stage-array-job.json
   tool: tests/stage-array.cwl
   doc: |
@@ -1780,5 +1779,27 @@
         "location": "out.tar", 
         "class": "File", 
         "size": 10240
+    }
+  tags: [ resource, command_line_tool ]
+
+- job: tests/stage-array-dirs-job.yml
+  tool: tests/stage-array-dirs.cwl
+  doc: |
+    Test array of directories InitialWorkDirRequirement
+  output: {
+    "output": [
+            {
+                "checksum": "sha1$da39a3ee5e6b4b0d3255bfef95601890afd80709",
+                "class": "File",
+                "location": "a",
+                "size": 0
+            },
+            {
+                "checksum": "sha1$da39a3ee5e6b4b0d3255bfef95601890afd80709",
+                "class": "File",
+                "location": "A",
+                "size": 0
+            }
+        ]
     }
   tags: [ resource, command_line_tool ]

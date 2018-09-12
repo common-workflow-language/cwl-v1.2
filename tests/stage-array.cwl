@@ -8,8 +8,8 @@ baseCommand:
 inputs:
   - id: input_file
     type: File
-  #- id: optional_file
-  #  type: File?
+  - id: optional_file
+    type: File?
   - id: input_list
     type: 'File[]'
     inputBinding:
