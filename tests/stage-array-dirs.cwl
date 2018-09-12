@@ -18,8 +18,6 @@ outputs:
       - rec/A
 label: stage-array.cwl
 requirements:
-  - class: DockerRequirement
-    dockerPull: 'ubuntu:16.04'
   - class: InitialWorkDirRequirement
     listing:
       - $(inputs.input_list)
