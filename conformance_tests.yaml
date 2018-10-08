@@ -1570,9 +1570,9 @@
   output:
     output:
       class: File
-      checksum: sha1$631bfbac524e2d04cdcc5ec33ade827fc10b06ae
+      checksum: sha1$2936abd60952276ffbf91d709b19c6c48c263947
       location: output
-      size: 15
+      size: 24
   tool: tests/wc-tool-shortcut.cwl
   doc: Test command execution in with stdin and stdout redirection using stdin shortcut
   tags: [ required ]
