@@ -18,30 +18,51 @@ The
 specifies the preprocessing steps that must be applied when loading CWL
 documents and the schema language used to write the above specifications.
 
-Inheritance graphs (as SVG images) for the [Schema Salad object model](salad.svg) and the [CWL object model](cwl.svg).
+Also available are inheritance graphs (as SVG images) for the [Schema Salad object model](salad.svg) and the [CWL object model](cwl.svg).
 
-# Running the conformance tests
+# Running the CWL conformance tests
 
-Install a CWL runner of your choice. The reference runner can be installed as
+1. Install a CWL runner of your choice. The reference runner can be installed as
 the default runner by doing:
 ```
 pip install cwlref-runner
 ```
 
-Install the test runner:
+2. Install the CWL test parser:
 
 ```
 pip install cwltest
 ```
+You may need to activate a virtualenv first, or do a local install by adding `--user` after `install` above.
 
-From within the repository (e.g. cwl-v1.1) execute the main test script
+3. From within a copy of [this repository](https://github.com/common-workflow-language/cwl-v1.1) (e.g. cwl-v1.1) execute the main test script
 ```
 ./run_test.sh
 ```
+
+If the CWL runner isn't installed as `cwl-runner` then you can specify the name:
+
+```
+./run_test.sh RUNNER=cwltool
+```
+
+You can also specify additional options that are specific for the particular CWL runner you are using.
+For example, with CWL reference runner you can turn on parallel execution mode:
+
+```
+./run_test.sh RUNNER=cwltool EXTRA=--parallel
+```
+
+This can be combined with launching more than one CWL conformance test at once with `-j`:
+
+```
+./run_test.sh -j4 RUNNER=cwltool EXTRA=--parallel
+```
+
 
 For details of options you can pass to the test script, do:
 ```
 ./run_test.sh --help
 ```
 
-The full test suite takes about 10 min to run
+The full test suite takes about 10 minutes to run
