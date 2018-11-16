@@ -36,7 +36,7 @@ $graph:
     - {$include: intro.md}
 
     - |
-      ## Introduction to CWL Command Line Tool standard v1.1.0-dev1
+      ## Introduction to the CWL Command Line Tool standard v1.1.0-dev1
 
       This specification represents the latest development release from the
       CWL group.  Since the v1.0 release, v1.1 introduces the
@@ -61,13 +61,16 @@ $graph:
           disappeared in `v1.0`)
         * Any `doc` field may be an array of strings in addition to the
           previously allowed single string.
-        * Addition of `stdin` type shortcut for `CommandInputParameter`.
+        * Addition of `stdin` type shortcut for
+          [`CommandInputParameter`](#CommandInputParameter).
         * Clarify that the designated output directory should be empty
           except for files or directories specified using
           [InitialWorkDirRequirement](#InitialWorkDirRequirement).
         * Clarify semantics of `shellQuote`
         * Expressions are now allowed to evaluate to `null` or `Dirent` in
           [InitialWorkDirRequirement.listing](#InitialWorkDirRequirement).
+        * [Addition](#Requirements_and_hints) of `cwl:requirements` field to
+          input object documents
 
       See also the [CWL Workflow Description, v1.1.0-dev1 changelog](Workflow.html#Changelog).
 

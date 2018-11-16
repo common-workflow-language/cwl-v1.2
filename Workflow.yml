@@ -66,6 +66,8 @@ $graph:
         * The presence of `OutputRecordField.outputBinding` in v1.0 was due to
           a technical error and as it makes no semantic sense it was removed.
         * `WorkflowStepInput` now has a `label` field
+        * [Addition](#Requirements_and_hints) of `cwl:requirments` field to
+          input object documents
 
       See also the [CWL Command Line Tool Description, v1.1.0-dev1 changelog](CommandLineTool.html#Changelog).
 
