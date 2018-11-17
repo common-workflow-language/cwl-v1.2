@@ -2335,20 +2335,23 @@
       location: output
       size: 24
   tool: tests/wc-tool-shortcut.cwl
+  label: stdin_shorcut
   doc: Test command execution in with stdin and stdout redirection using stdin shortcut
-  tags: [ required ]
+  tags: [ command_line_tool, docker ]
 
 - job: tests/record-secondaryFiles-job.yml
   output: {}
   tool: tests/record-in-secondaryFiles.cwl
+  label: secondary_files_in_unnamed_records
   doc: Test secondaryFiles on anonymous record fields
-  tags: [ required ]
+  tags: [ command_line_tool, required ]
 
 - job: tests/record-secondaryFiles-job.yml
   output: {}
   tool: tests/record-sd-secondaryFiles.cwl
+  label: secondary_files_in_named_records
   doc: Test secondaryFiles on SchemaDefRequirement record fields
-  tags: [ required ]
+  tags: [ command_line_tool, schema_def ]
 
 - job: tests/empty.json
   output: {
@@ -2400,44 +2403,51 @@
     }
   }
   tool: tests/record-out-secondaryFiles.cwl
+  label: secondary_files_in_output_records
   doc: Test secondaryFiles on output record fields
-  tags: [ required ]
+  tags: [ command_line_tool, required ]
 
 - job: tests/record-secondaryFiles-job.yml
   output: {}
   tool: tests/record-in-secondaryFiles-wf.cwl
+  label: secondary_files_workflow_propagation
   doc: Test secondaryFiles propagation through workflow
-  tags: [ required ]
+  tags: [ workflow, required ]
 
 - job: tests/record-secondaryFiles-job.yml
   should_fail: true
   tool: tests/record-in-secondaryFiles-missing-wf.cwl
+  label: secondary_files_missing
   doc: Test checking when secondaryFiles are missing
-  tags: [ required ]
+  tags: [ workflow, required ]
 
 - job: tests/record-format-job.yml
   output: {}
   tool: tests/record-in-format.cwl
+  label: input_records_file_entry_with_format
   doc: Test format on anonymous record fields
-  tags: [ required ]
+  tags: [ command_line_tool, required ]
 
 - job: tests/record-format-job2.yml
   should_fail: true
   tool: tests/record-in-format.cwl
+  label: input_records_file_entry_with_format_and_bad_regular_input_file_format
   doc: Test file format checking on parameter
-  tags: [ format_checking ]
+  tags: [ command_line_tool, format_checking ]
 
 - job: tests/record-format-job3.yml
   should_fail: true
   tool: tests/record-in-format.cwl
   doc: Test file format checking on record field
-  tags: [ format_checking ]
+  label: input_records_file_entry_with_format_and_bad_entry_file_format
+  tags: [ command_line_tool, format_checking ]
 
 - job: tests/record-format-job4.yml
   should_fail: true
   tool: tests/record-in-format.cwl
   doc: Test file format checking on array item
-  tags: [ format_checking ]
+  label: input_records_file_entry_with_format_and_bad_entry_array_file_format
+  tags: [ command_line_tool, format_checking ]
 
 - job: tests/record-secondaryFiles-job.yml
   output: {
@@ -2459,16 +2469,18 @@
     }
   }
   tool: tests/record-out-format.cwl
+  label: record_output_file_entry_format
   doc: Test format on output record fields
-  tags: [ required ]
+  tags: [ command_line_tool, format_checking ]
 
 - job: tests/wf-loadContents-job.yml
   output: {
     "my_int": 42
   }
   tool: tests/wf-loadContents.cwl
+  label: workflow_input_inputBinding_loadContents
   doc: Test WorkflowInputParameter.inputBinding.loadContents
-  tags: [ required ]
+  tags: [ workflow, step_input, inline_javascript, expression_tool ]
 
 - job: tests/wf-loadContents-job.yml
   output: {
@@ -2476,56 +2488,65 @@
   }
   tool: tests/wf-loadContents2.cwl
   doc: Test WorkflowInputParameter.loadContents
-  tags: [ required ]
+  label: workflow_input_loadContents_without_inputBinding
+  tags: [ workflow, step_input, inline_javascript, expression_tool ]
 
 - job: tests/wf-loadContents-job.yml
   output: {
     "my_int": 42
   }
   tool: tests/wf-loadContents3.cwl
+  label: expression_tool_input_loadContents
   doc: Test loadContents on InputParameter.loadContents (expression)
-  tags: [ required ]
+  tags: [ workflow, step_input, inline_javascript, expression_tool ]
 
 - job: tests/wf-loadContents-job.yml
   output: {
     "my_int": 42
   }
   tool: tests/wf-loadContents4.cwl
+  label: workflow_step_in_loadContents
   doc: Test WorkflowStepInput.loadContents
-  tags: [ required ]
+  tags: [ workflow, step_input, inline_javascript, expression_tool ]
 
 - job: tests/empty.json
   should_fail: true
   tool: tests/timelimit.cwl
+  label: timelimit_basic
   doc: Test that job fails when exceeding time limit
-  tags: [ timelimit ]
+  tags: [ command_line_tool, timelimit ]
 
 - job: tests/empty.json
   should_fail: true
   tool: tests/timelimit2.cwl
+  label: timelimit_invalid
   doc: Test invalid time limit value
-  tags: [ timelimit ]
+  tags: [ command_line_tool, timelimit ]
 
 - job: tests/empty.json
   output: {}
   tool: tests/timelimit3.cwl
+  label: timelimit_zero_unlimited
   doc: Test zero timelimit means no limit
-  tags: [ timelimit ]
+  tags: [ command_line_tool, timelimit ]
 
 - job: tests/empty.json
   should_fail: true
   tool: tests/timelimit4.cwl
+  label: timelimit_from_expression
   doc: Test expression in time limit
-  tags: [ timelimit ]
+  tags: [ command_line_tool, timelimit, inline_javascript ]
 
 - job: tests/empty.json
   output: {}
   tool: tests/networkaccess.cwl
   doc: Test networkaccess enabled
-  tags: [ networkaccess ]
+  label: networkaccess
+  tags: [ command_line_tool, networkaccess ]
 
 - job: tests/empty.json
   should_fail: true
   tool: tests/networkaccess2.cwl
+  label: networkaccess_disabled
   doc: Test networkaccess is disabled by default
-  tags: [ networkaccess ]
+  tags: [ command_line_tool, networkaccess ]
