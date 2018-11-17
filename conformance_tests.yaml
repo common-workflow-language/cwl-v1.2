@@ -2550,3 +2550,37 @@
   label: networkaccess_disabled
   doc: Test networkaccess is disabled by default
   tags: [ command_line_tool, networkaccess ]
+
+- job: tests/env-job3.yaml
+  output:
+    out:
+      class: File
+      checksum: sha1$b3ec4ed1749c207e52b3a6d08c59f31d83bff519
+      location: out
+      size: 15
+  tool: tests/env-tool3.cwl
+  label: cwl_requirements_addition
+  doc: Test requirements in input document via EnvVarRequirement
+  tags: [ command_line_tool, input_object_requirements ]
+- job: tests/env-job3.yaml
+  output:
+    out:
+      class: File
+      checksum: sha1$b3ec4ed1749c207e52b3a6d08c59f31d83bff519
+      location: out
+      size: 15
+  tool: tests/env-tool4.cwl
+  label: cwl_requirements_override_expression
+  doc: Test conflicting requirements in input document via EnvVarRequirement and expression
+  tags: [ command_line_tool, input_object_requirements ]
+- job: tests/env-job4.yaml
+  output:
+    out:
+      class: File
+      checksum: sha1$715e62184492851512a020c36ab7118eca114a59
+      location: out
+      size: 23
+  label: cwl_requirements_override_static
+  tool: tests/env-tool3.cwl
+  doc: Test conflicting requirements in input document via EnvVarRequirement
+  tags: [ command_line_tool, input_object_requirements ]
