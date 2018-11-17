@@ -11,7 +11,7 @@ outputs:
 requirements:
   EnvVarRequirement:
     envDef:
-      TEST_ENV: conflict
+      TEST_ENV: conflict_original
 
 baseCommand: ["/bin/bash", "-c", "echo $TEST_ENV"]
 
