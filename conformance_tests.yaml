@@ -1702,9 +1702,10 @@
   tags: [ required, command_line_tool ]
 
 - doc: Test that OutputBinding.glob is sorted as specified by POSIX
+  id: 121
   job: tests/empty.json
-  tool: tests/glob_test.cwl
   label: outputbinding_glob_sorted
+  tool: tests/glob_test.cwl
   output:
     letters:
       - checksum: sha1$da39a3ee5e6b4b0d3255bfef95601890afd80709
@@ -1828,7 +1829,7 @@
   doc: Test valueFrom with constant value overriding provided array inputs
   tags: [ required, command_line_tool ]
 
-- job: test/dynresreq-dir-job.yaml
+- job: tests/dynresreq-dir-job.yaml
   tool: tests/dynresreq-dir.cwl
   label: dynamic_resreq_filesizes
   id: 130
@@ -1841,7 +1842,6 @@
         "checksum": "sha1$7448d8798a4380162d4b56f9b452e2f6f9e24e7a"
      }
   tags: [ resource, command_line_tool ]
-
 
 - job: tests/empty.json
   tool: tests/pass-unconnected.cwl
@@ -1932,7 +1932,7 @@
 - job: tests/count-lines3-job.json
   output:
     count_output: [16, 1]
-  tool: tests/count-lines13-wf.cwl
+  tool: tests/count-lines18-wf.cwl
   id: 138
   label: scatter_embedded_subworkflow
   doc: Test simple scatter over an embedded subworkflow
