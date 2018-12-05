@@ -1,5 +1,8 @@
 # Common Workflow Language Specifications, v1.1.0-dev1
 
+<!-- remove this before v1.1 is final! -->
+WARNING, this is a draft and in progress! Development of CWL v1.1 is coordinated at https://github.com/common-workflow-language/common-workflow-language/milestone/6
+
 The CWL specifications are divided up into several documents.
 
 The [User Guide](http://www.commonwl.org/user_guide/) provides a gentle
