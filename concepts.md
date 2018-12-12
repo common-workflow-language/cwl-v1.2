@@ -215,7 +215,10 @@ object document as an array of requirements under the field name
 should be combined with any requirements present in the corresponding Process
 as if they were specified there.
 
-Requirements are inherited.  A requirement specified in a Workflow applies
+The following requirements are inherited: `InlineJavascriptRequirement`,
+`SchemaDefRequirement`, `DockerRequirement`, `SoftwareRequirement`,
+`InitialWorkDirRequirement`, `EnvVarRequirement`, `ShellCommandRequirement`,
+and `ResourceRequirement`.  These requirements specified in a Workflow apply
 to all workflow steps; a requirement specified on a workflow step will
 apply to the process implementation of that step and any of its substeps.
 
