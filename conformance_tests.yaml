@@ -1774,12 +1774,13 @@
   doc: |
     Test null and array input in InitialWorkDirRequirement
   output:
-    output: {
-        "checksum": "sha1$bf757d2cf23320f3321761286c0d0deea446acf2", 
-        "location": "out.tar", 
-        "class": "File", 
-        "size": 10240
-    }
+      "output": {
+        "basename": "lsout",
+        "checksum": "sha1$e453d26efd859a9abc80ae1a1d9d63db72376053",
+        "class": "File",
+        "location": "lsout",
+        "size": 32
+      }
   tags: [ resource, command_line_tool ]
 
 - job: tests/stage-array-dirs-job.yml
@@ -1797,7 +1798,7 @@
             {
                 "checksum": "sha1$da39a3ee5e6b4b0d3255bfef95601890afd80709",
                 "class": "File",
-                "location": "A",
+                "location": "B",
                 "size": 0
             }
         ]
