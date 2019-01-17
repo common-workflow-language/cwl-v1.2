@@ -3,6 +3,10 @@
 class: CommandLineTool
 cwlVersion: v1.1.0-dev1
 
+requirements:
+  - class: DockerRequirement
+    dockerPull: debian:stretch-slim
+
 inputs:
   file1: stdin
 
