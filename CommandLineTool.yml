@@ -252,24 +252,30 @@ $graph:
         output directory.  If the value of the glob is an absolute
         path pattern (it does begin with a slash '/') then it must
         refer to a path within the output directory.  It is an error
-        if any glob, either relative path containing '..' or an
-        absolute path, resolves to a path outside the output
-        directory.
+        if any glob resolves to a path outside the output directory.
+        Specifically this means globs with relative paths containing
+        '..' or absolute paths that refer outside the output directory
+        are illegal.
 
-        A glob may match a file within the output directory which is
-        actually a symlink to another file.  It is an error if a
-        symlink in the output directory refers to any file or
-        directory outside the output directory, except for the case of
-        files staged by InitialWorkDirRequirement and only if staging
-        was implementated using symlinks to the original input files.
+        A glob may match a path within the output directory which is
+        actually a symlink to another file.  In this case, the
+        expected behavior is for the resulting File object to take the
+        `basename` (and corresponding `nameroot` and `nameext`) of the
+        symlink.  The `location` of the File is implementation
+        dependent, but logically the File should have the same content
+        as the symlink target.  Platforms may stage output files to
+        cloud storage where that lack the concept of a symlink.  In
+        this case file content may be duplicated, or (to avoid
+        duplication) the File `location` may refer to the symlink
+        target.
 
-        A glob which refers to a symlink which is relative within the
-        output directory should produce a File object which has the
-        `location` of the glob path (the symlink is not dereferenced).
+        It is an error if a symlink in the output directory (or any
+        symlink in a chain of links) refers to any file or directory
+        that is not under an input or output directory.
 
-        A glob which refers to a symlink to an input file should
-        produce a File object which has the `location` of the original
-        input file (the symlink is dereferenced).
+        Implementations may shut down a container before globbing
+        output, so globs and expressions must not assume access to the
+        container filesystem except for declared input and output.
 
     - name: outputEval
       type:
