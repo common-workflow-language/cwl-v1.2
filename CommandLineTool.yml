@@ -264,7 +264,7 @@ $graph:
         symlink.  The `location` of the File is implementation
         dependent, but logically the File should have the same content
         as the symlink target.  Platforms may stage output files to
-        cloud storage where that lack the concept of a symlink.  In
+        cloud storage that lack the concept of a symlink.  In
         this case file content may be duplicated, or (to avoid
         duplication) the File `location` may refer to the symlink
         target.
