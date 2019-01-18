@@ -2549,6 +2549,44 @@
   tool: tests/networkaccess2.cwl
   label: networkaccess_disabled
   doc: Test networkaccess is disabled by default
+  tags: [ networkaccess ]
+
+- job: tests/stage-array-job.json
+  tool: tests/stage-array.cwl
+  doc: |
+    Test null and array input in InitialWorkDirRequirement
+  output:
+      "output": {
+        "basename": "lsout",
+        "checksum": "sha1$e453d26efd859a9abc80ae1a1d9d63db72376053",
+        "class": "File",
+        "location": "lsout",
+        "size": 32
+      }
+  tags: [ resource, command_line_tool ]
+
+- job: tests/stage-array-dirs-job.yml
+  tool: tests/stage-array-dirs.cwl
+  doc: |
+    Test array of directories InitialWorkDirRequirement
+  output: {
+    "output": [
+            {
+                "checksum": "sha1$da39a3ee5e6b4b0d3255bfef95601890afd80709",
+                "class": "File",
+                "location": "a",
+                "size": 0
+            },
+            {
+                "checksum": "sha1$da39a3ee5e6b4b0d3255bfef95601890afd80709",
+                "class": "File",
+                "location": "B",
+                "size": 0
+            }
+        ]
+    }
+  tags: [ resource, command_line_tool ]
+=======
   tags: [ command_line_tool, networkaccess ]
 
 - job: tests/env-job3.yaml
