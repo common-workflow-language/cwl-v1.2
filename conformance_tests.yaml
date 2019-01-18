@@ -2685,3 +2685,31 @@
       "size": 27
       "basename": "symlink.txt"
       "checksum": "sha1$cd28ec34f3f9425aca544b6332453708e8aaa82a"
+
+- job: tests/empty.json
+  tool: tests/inp_update_wf.cwl
+  doc: inplace update has side effect on file content
+  output:
+    a: 4
+    b: 4
+
+
+- job: tests/empty.json
+  tool: tests/inpdir_update_wf.cwl
+  doc: inplace update has side effect on directory content
+  output: {
+    a: [
+            {
+                "basename": "blurb",
+                "class": "File",
+                "location": "blurb"
+            }
+        ],
+    b: [
+            {
+                "basename": "blurb",
+                "class": "File",
+                "location": "blurb"
+            }
+        ]
+}
