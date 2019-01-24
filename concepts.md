@@ -218,15 +218,14 @@ as if they were specified there.
 Requirements can be inherited. A requirement specified in a parent Workflow
 may apply to the process implementation of that step and any of its substeps
 if the requirements are valid for that process. If the substep is a Workflow
-all requirements are applied. If the substep is an ExpressionTool only the
-`InlineJavascriptRequirement` is applicable. If the substep is a CommandLineTool
+all requirements are applied. If the substep is an ExpressionTool all
+requirements are applicable. If the substep is a CommandLineTool
 the `InlineJavascriptRequirement`, `SchemaDefRequirement`, `DockerRequirement`,
 `SoftwareRequirement`, `InitialWorkDirRequirement`, `EnvVarRequirement`, 
 `ShellCommandRequirement`, `ResourceRequirement` are applicable.
 
-(This inheritance behavior will likely be relaxed in future versions of the
-specification: it is more reasonable to expect processes to be self-contained
-in their requirements.)
+*As good practice, it is best to have process requirements be self-contained,
+such that each process can run successfully by itself.*
 
 If the same process requirement appears at different levels of the
 workflow, the most specific instance of the requirement is used, that is,
