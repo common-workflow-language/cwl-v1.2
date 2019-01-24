@@ -1369,6 +1369,14 @@
   doc: Test required, optional and null secondaryFiles on array of files.
   tags: [ docker, inline_javascript, shell_command, command_line_tool ]
 
+- job: tests/docker-array-secondaryfiles-job2.json
+  should_fail: true
+  tool: tests/docker-array-secondaryfiles.cwl
+  label: filesarray_secondaryfiles2
+  id: 100
+  doc: Test required, optional and null secondaryFiles on array of files.
+  tags: [ docker, inline_javascript, shell_command, command_line_tool ]
+
 - job: tests/dir7.yml
   output: {
     "dir": {

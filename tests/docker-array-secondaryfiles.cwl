@@ -21,8 +21,11 @@ inputs:
       - pattern: .crai
         required: false
       - .bai?
-      - pattern: "${ return null }"
-
+      - "${ if (inputs.require_dat) {return '.dat'} else {return null} }"
+      - "${ return null; }"
+      - pattern: .dat2
+        required: $(inputs.require_dat)
+  require_dat: boolean?
 
 outputs:
   bai_list:

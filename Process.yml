@@ -237,7 +237,9 @@ $graph:
         - "null"
         - type: array
           items: [File, Directory]
-      jsonldPredicate: "cwl:secondaryFiles"
+      jsonldPredicate:
+        _id: "cwl:secondaryFiles"
+        secondaryFilesDSL: true
       doc: |
         A list of additional files or directories that are associated with the
         primary file and must be transferred alongside the primary file.
@@ -458,12 +460,12 @@ $graph:
     secondaryFiles:
       type:
         - "null"
-        - string
-        - Expression
         - SecondaryFileSchema
         - type: array
-          items: [string, Expression, SecondaryFileSchema, "null"]
-      jsonldPredicate: "cwl:secondaryFiles"
+          items: SecondaryFileSchema
+      jsonldPredicate:
+        _id: "cwl:secondaryFiles"
+        secondaryFilesDSL: true
       doc: |
         Only valid when `type: File` or is an array of `items: File`.
 
@@ -902,7 +904,7 @@ $graph:
             the resulting secondary file as optional.
           3. Append the remainder of the string to the end of the file path.
     - name: required
-      type: boolean?
+      type: ["null", boolean, string, Expression]
       doc: |
         An implementation must not fail workflow execution if `required` is
         set to `false` and the expected secondary file does not exist.
