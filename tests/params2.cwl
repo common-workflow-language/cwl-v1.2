@@ -1,7 +1,7 @@
 class: CommandLineTool
 cwlVersion: v1.1.0-dev1
 requirements:
-  - class: InlineJavascriptRequirement
+  - class: InlineJavascriptRequirement  # needed by params_inc.yml
 
 inputs:
   bar:

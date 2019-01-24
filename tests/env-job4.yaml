@@ -3,4 +3,4 @@ cwl:requirements:
  - class: EnvVarRequirement
    envDef:
      - envName: TEST_ENV
-       envValue: conflict
+       envValue: conflict_user_override
