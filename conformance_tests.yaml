@@ -2711,3 +2711,20 @@
             }
         ]
 }
+
+- doc: Test that OutputBinding.glob accepts Directories
+  job: tests/empty.json
+  label: outputbinding_glob_directory
+  tool: tests/glob_directory.cwl
+  output:
+    directories:
+        - basename: "a_dir"
+          class: "Directory"
+          listing: []
+        - basename: "b_dir"
+          class: "Directory"
+          listing: []
+        - basename: "c_dir"
+          class: "Directory"
+          listing: []
+  tags: [ required, command_line_tool ]
