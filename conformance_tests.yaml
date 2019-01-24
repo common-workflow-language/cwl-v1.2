@@ -2549,7 +2549,43 @@
   tool: tests/networkaccess2.cwl
   label: networkaccess_disabled
   doc: Test networkaccess is disabled by default
-  tags: [ command_line_tool, networkaccess ]
+  tags: [ networkaccess ]
+
+- job: tests/stage-array-job.json
+  tool: tests/stage-array.cwl
+  doc: |
+    Test null and array input in InitialWorkDirRequirement
+  output:
+      "output": {
+        "basename": "lsout",
+        "checksum": "sha1$e453d26efd859a9abc80ae1a1d9d63db72376053",
+        "class": "File",
+        "location": "lsout",
+        "size": 32
+      }
+  tags: [ resource, command_line_tool ]
+
+- job: tests/stage-array-dirs-job.yml
+  tool: tests/stage-array-dirs.cwl
+  doc: |
+    Test array of directories InitialWorkDirRequirement
+  output: {
+    "output": [
+            {
+                "checksum": "sha1$da39a3ee5e6b4b0d3255bfef95601890afd80709",
+                "class": "File",
+                "location": "a",
+                "size": 0
+            },
+            {
+                "checksum": "sha1$da39a3ee5e6b4b0d3255bfef95601890afd80709",
+                "class": "File",
+                "location": "B",
+                "size": 0
+            }
+        ]
+    }
+  tags: [ resource, command_line_tool ]
 
 - job: tests/env-job3.yaml
   output:
@@ -2562,6 +2598,7 @@
   label: cwl_requirements_addition
   doc: Test requirements in input document via EnvVarRequirement
   tags: [ command_line_tool, input_object_requirements ]
+
 - job: tests/env-job3.yaml
   output:
     out:
@@ -2573,6 +2610,7 @@
   label: cwl_requirements_override_expression
   doc: Test conflicting requirements in input document via EnvVarRequirement and expression
   tags: [ command_line_tool, input_object_requirements ]
+
 - job: tests/env-job4.yaml
   output:
     out:
@@ -2584,3 +2622,92 @@
   tool: tests/env-tool3.cwl
   doc: Test conflicting requirements in input document via EnvVarRequirement
   tags: [ command_line_tool, input_object_requirements ]
+
+- job: tests/initialworkdirrequirement-docker-out-job.json
+  output:
+    OUTPUT:
+      "checksum": "sha1$aeb3d11bdf536511649129f4077d5cda6a324118"
+      "location": "ref.fasta"
+      "secondaryFiles": [{
+        "checksum": "sha1$da39a3ee5e6b4b0d3255bfef95601890afd80709",
+        "location": "ref.fasta.fai",
+          "class": "File",
+          "size": 0
+      }]
+      "class": "File"
+      "size": 12010
+  tool: tests/initialworkdir-glob-fullpath.cwl
+  doc: Test output of InitialWorkDir
+  tags: [ initial_work_dir ]
+
+- job: tests/initialworkdirrequirement-docker-out-job.json
+  output:
+    OUTPUT:
+      "checksum": "sha1$aeb3d11bdf536511649129f4077d5cda6a324118"
+      "location": "ref.fasta"
+      "secondaryFiles": [{
+        "checksum": "sha1$da39a3ee5e6b4b0d3255bfef95601890afd80709",
+        "location": "ref.fasta.fai",
+          "class": "File",
+          "size": 0
+      }]
+      "class": "File"
+      "size": 12010
+  tool: tests/initialworkdir-glob-fullpath.cwl
+  doc: Test if full paths are allowed in glob
+  tags: [ initial_work_dir ]
+
+- job: tests/empty.json
+  should_fail: true
+  tool: tests/glob-path-error.cwl
+  doc: Test fail trying to glob outside output directory
+  tags: [ required ]
+
+- job: tests/empty.json
+  tool: tests/symlink-illegal.cwl
+  doc: symlink to file outside of working directory should NOT be retrieved
+  output:
+    output_file:
+      "class": "File"
+      "size": 27
+      "baesname": "symlink.txt"
+      "checksum": "sha1$cd28ec34f3f9425aca544b6332453708e8aaa82a"
+  should_fail: true
+
+- job: tests/empty.json
+  tool: tests/symlink-legal.cwl
+  doc: symlink to file inside of working directory should be retrieved
+  output:
+    output_file:
+      "class": "File"
+      "size": 27
+      "basename": "symlink.txt"
+      "checksum": "sha1$cd28ec34f3f9425aca544b6332453708e8aaa82a"
+
+- job: tests/empty.json
+  tool: tests/inp_update_wf.cwl
+  doc: inplace update has side effect on file content
+  output:
+    a: 4
+    b: 4
+
+
+- job: tests/empty.json
+  tool: tests/inpdir_update_wf.cwl
+  doc: inplace update has side effect on directory content
+  output: {
+    a: [
+            {
+                "basename": "blurb",
+                "class": "File",
+                "location": "blurb"
+            }
+        ],
+    b: [
+            {
+                "basename": "blurb",
+                "class": "File",
+                "location": "blurb"
+            }
+        ]
+}

@@ -6,7 +6,8 @@ inputs:
     type: string
     inputBinding:
       position: 1
+  name: string?
+stdout: out.txt
 outputs:
   out:
     type: stdout
-
