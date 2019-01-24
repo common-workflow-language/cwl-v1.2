@@ -70,8 +70,9 @@ $graph:
         * Clarify semantics of `shellQuote`
         * Expressions are now allowed to evaluate to `null` or `Dirent` in
           [InitialWorkDirRequirement.listing](#InitialWorkDirRequirement).
+        * Clarify behavior of secondaryFiles on output.
         * [Addition](#Requirements_and_hints) of `cwl:requirements` field to
-          input object documents
+          input object documents.
         * Clarify behavior of `glob` for absolute paths and symlinks.
         * Clarify behavior of `glob` to include directories.
 

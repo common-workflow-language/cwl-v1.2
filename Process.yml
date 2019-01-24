@@ -467,9 +467,11 @@ $graph:
         Only valid when `type: File` or is an array of `items: File`.
 
         Provides a pattern or expression specifying files or directories that
-        must be included alongside the primary file.  All listed secondary
-        files must be present.  An implementation may fail workflow execution
-        if an expected secondary file does not exist.
+        must be included alongside the primary file. An implementation must append 
+        these files/directories to the `secondaryFiles` property of the primary file.
+        These files/directories must be transferred alongside the primary file.
+        An implementation may fail workflow execution if an expected secondary file
+        does not exist.
 
         If the value is an expression, the value of `self` in the expression
         must be the primary input or output File object to which this binding
