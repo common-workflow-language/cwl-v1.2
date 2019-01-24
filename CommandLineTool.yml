@@ -73,6 +73,7 @@ $graph:
         * [Addition](#Requirements_and_hints) of `cwl:requirements` field to
           input object documents
         * Clarify behavior of `glob` for absolute paths and symlinks.
+        * Clarify behavior of `glob` to include directories.
 
       See also the [CWL Workflow Description, v1.1.0-dev1 changelog](Workflow.html#Changelog).
 
@@ -263,14 +264,14 @@ $graph:
 
         A glob may match a path within the output directory which is
         actually a symlink to another file.  In this case, the
-        expected behavior is for the resulting File object to take the
+        expected behavior is for the resulting File/Directory object to take the
         `basename` (and corresponding `nameroot` and `nameext`) of the
-        symlink.  The `location` of the File is implementation
-        dependent, but logically the File should have the same content
-        as the symlink target.  Platforms may stage output files to
+        symlink.  The `location` of the File/Directory is implementation
+        dependent, but logically the File/Directory should have the same content
+        as the symlink target.  Platforms may stage output files/directories to
         cloud storage that lack the concept of a symlink.  In
-        this case file content may be duplicated, or (to avoid
-        duplication) the File `location` may refer to the symlink
+        this case file content and directories may be duplicated, or (to avoid
+        duplication) the File/Directory `location` may refer to the symlink
         target.
 
         It is an error if a symlink in the output directory (or any
