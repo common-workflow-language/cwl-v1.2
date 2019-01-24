@@ -49,6 +49,7 @@ $graph:
       ## Changelog
 
         * Clarify how Requirements are inherited by step processes
+        * Document explicitly that CWL allows pass-through of workflow inputs to outputs
         * Default values for some fields are now expressed in the schema
         * When defining record types, fields of type `File` may now include
           `format`, `secondaryFiles`, and `streamable`.
@@ -184,8 +185,9 @@ $graph:
   docParent: "#Workflow"
   doc: |
     Describe an output parameter of a workflow.  The parameter must be
-    connected to one or more parameters defined in the workflow that will
-    provide the value of the output parameter.
+    connected to one or more parameters defined in the workflow that 
+    will provide the value of the output parameter. It is legal to
+    connect a WorkflowInputParameter to a WorkflowOutputParameter.
   fields:
     - name: outputSource
       doc: |
