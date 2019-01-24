@@ -240,12 +240,12 @@ $graph:
         - type: array
           items: string
       doc: |
-        Find files relative to the output directory, using POSIX glob(3)
-        pathname matching.  If an array is provided, find files that match any
-        pattern in the array.  If an expression is provided, the expression must
-        return a string or an array of strings, which will then be evaluated as
-        one or more glob patterns.  Must only match and return files which
-        actually exist.
+        Find files or directories relative to the output directory, using POSIX
+        glob(3) pathname matching.  If an array is provided, find files or 
+        directories that match any pattern in the array.  If an expression is
+        provided, the expression must return a string or an array of strings,
+        which will then be evaluated as one or more glob patterns.  Must only
+        match and return files/directories which actually exist.
 
         If the value of glob is a relative path pattern (does not
         begin with a slash '/') then it is resolved relative to the
