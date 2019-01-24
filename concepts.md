@@ -215,11 +215,10 @@ object document as an array of requirements under the field name
 should be combined with any requirements present in the corresponding Process
 as if they were specified there.
 
-Requirements can be inherited. A requirement specified in a parent Workflow
-may apply to the process implementation of that step and any of its substeps
-if the requirements are valid for that process. If the substep is a Workflow
+Requirements specified in a parent Workflow are inherited by step processes
+if they are valid for that step. If the substep is a Workflow
 all requirements are applied. If the substep is an ExpressionTool all
-requirements are applicable. If the substep is a CommandLineTool
+requirements are applied. If the substep is a CommandLineTool
 the `InlineJavascriptRequirement`, `SchemaDefRequirement`, `DockerRequirement`,
 `SoftwareRequirement`, `InitialWorkDirRequirement`, `EnvVarRequirement`, 
 `ShellCommandRequirement`, `ResourceRequirement` are applicable.
