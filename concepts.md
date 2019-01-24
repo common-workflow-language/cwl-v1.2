@@ -225,7 +225,7 @@ the `InlineJavascriptRequirement`, `SchemaDefRequirement`, `DockerRequirement`,
 `ShellCommandRequirement`, `ResourceRequirement` are applicable.
 
 (This inheritance behavior will likely be relaxed in future versions of the
-specififcation: it is more reasonable to expect processes to be self-contained
+specification: it is more reasonable to expect processes to be self-contained
 in their requirements.)
 
 If the same process requirement appears at different levels of the
