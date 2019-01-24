@@ -279,7 +279,7 @@
   tool: tests/count-lines4-wf.cwl
   label: wf_wc_scatter_multiple_merge
   id: 27
-  doc: |
+  doc: >-
     Test single step workflow with Scatter step and two data links connected to
     same input, default merge behavior
   tags: [ scatter, multiple_input, inline_javascript, workflow ]
@@ -290,7 +290,7 @@
   tool: tests/count-lines6-wf.cwl
   label: wf_wc_scatter_multiple_nested
   id: 28
-  doc: |
+  doc: >-
     Test single step workflow with Scatter step and two data links connected to
     same input, nested merge behavior
   tags: [ scatter, multiple_input, inline_javascript, workflow ]
@@ -301,7 +301,7 @@
   tool: tests/count-lines7-wf.cwl
   label: wf_wc_scatter_multiple_flattened
   id: 29
-  doc: |
+  doc: >-
     Test single step workflow with Scatter step and two data links connected to
     same input, flattened merge behavior
   tags: [ multiple_input, inline_javascript, workflow ]
@@ -312,7 +312,7 @@
   tool: tests/count-lines13-wf.cwl
   label: wf_wc_nomultiple
   id: 30
-  doc: |
+  doc: >-
     Test that no MultipleInputFeatureRequirement is necessary when
     workflow step source is a single-item list
   tags: [ inline_javascript, workflow ]
@@ -450,7 +450,7 @@
   label: nested_workflow
   id: 45
   doc: Test nested workflow
-  tags: [ subworkflow, workflow ]
+  tags: [ subworkflow, workflow, inline_javascript ]
 
 - job: tests/env-job.json
   output:
@@ -626,7 +626,7 @@
   tool: "tests/search.cwl#main"
   label: initial_workdir_secondary_files_expr
   id: 55
-  doc: |
+  doc: >-
     Test InitialWorkDirRequirement linking input files and capturing secondaryFiles
     on input and output. Also tests the use of a variety of parameter references
     and expressions in the secondaryFiles field.
@@ -642,7 +642,7 @@
   tool: tests/rename.cwl
   label: rename
   id: 56
-  doc: |
+  doc: >-
     Test InitialWorkDirRequirement with expression in filename.
   tags: [ initial_work_dir, command_line_tool ]
 
@@ -653,7 +653,6 @@
         checksum: sha1$6a47aa22b2a9d13a66a24b3ee5eaed95ce4753cf
         location: example.conf
         size: 16
-
   tool: tests/iwdr-entry.cwl
   label: initial_workdir_trailingnl
   id: 57
@@ -666,7 +665,7 @@
   tool: tests/wc4-tool.cwl
   label: inline_expressions
   id: 58
-  doc: |
+  doc: >-
     Test inline expressions
   tags: [ inline_javascript, command_line_tool ]
 
@@ -680,7 +679,7 @@
   tool: tests/schemadef-tool.cwl
   label: schemadef_req_tool_param
   id: 59
-  doc: |
+  doc: >-
     Test SchemaDefRequirement definition used in tool parameter
   tags: [ schema_def, command_line_tool ]
 
@@ -694,7 +693,7 @@
   tool: tests/schemadef-wf.cwl
   label: schemadef_req_wf_param
   id: 60
-  doc: |
+  doc: >-
     Test SchemaDefRequirement definition used in workflow parameter
   tags: [ schema_def, workflow ]
 
@@ -854,7 +853,7 @@
   tool: tests/params2.cwl
   label: param_evaluation_expr
   id: 62
-  doc: |
+  doc: >-
     Test parameter evaluation, with support for JS expressions
   tags: [ inline_javascript, command_line_tool ]
 
@@ -877,7 +876,7 @@
   tool: tests/formattest.cwl
   label: format_checking
   id: 64
-  doc: |
+  doc: >-
     Test simple format checking.
   tags: [ required, command_line_tool ]
 
@@ -892,7 +891,7 @@
   tool: tests/formattest2.cwl
   label: format_checking_subclass
   id: 65
-  doc: |
+  doc: >-
     Test format checking against ontology using subclassOf.
   tags: [ required, command_line_tool ]
 
@@ -907,7 +906,7 @@
   tool: tests/formattest3.cwl
   label: format_checking_equivalentclass
   id: 66
-  doc: |
+  doc: >-
     Test format checking against ontology using equivalentClass.
   tags: [ required, command_line_tool ]
 
@@ -922,7 +921,7 @@
         checksum: "sha1$47a013e660d408619d894b20806b1d5086aab03b"
   label: output_secondaryfile_optional
   id: 67
-  doc: |
+  doc: >-
     Test optional output file and optional secondaryFile on output.
   tags: [ docker, command_line_tool ]
 
@@ -1003,7 +1002,7 @@
   tool: tests/test-cwl-out.cwl
   label: docker_json_output_path
   id: 74
-  doc: |
+  doc: >-
     Test support for reading cwl.output.json when running in a Docker container
     and just 'path' is provided.
   tags: [ shell_command, command_line_tool ]
@@ -1020,7 +1019,7 @@
   tool: tests/test-cwl-out2.cwl
   label: docker_json_output_location
   id: 75
-  doc: |
+  doc: >-
     Test support for reading cwl.output.json when running in a Docker container
     and just 'location' is provided.
   tags: [ shell_command, command_line_tool ]
@@ -1159,7 +1158,7 @@
   label: directory_input_docker
   id: 85
   doc: Test directory input in Docker
-  tags: [ required, command_line_tool ]
+  tags: [ required, command_line_tool, shell_command ]
 
 - job: tests/dir3-job.yml
   output:
@@ -1582,7 +1581,7 @@
   tool: tests/count-lines12-wf.cwl
   label: wf_scatter_twopar_oneinput_flattenedmerge
   id: 113
-  doc: |
+  doc: >-
     Test single step workflow with Scatter step and two data links connected to
     same input, flattened merge behavior. Workflow inputs are set as list
   tags: [ multiple_input, inline_javascript, workflow ]
@@ -1855,7 +1854,7 @@
   tool: tests/pass-unconnected.cwl
   label: wf_step_connect_undeclared_param
   id: 131
-  doc: |
+  doc: >-
     Test that it is not an error to connect a parameter to a workflow
     step, even if the parameter doesn't appear in the `run` process
     inputs.
@@ -1866,7 +1865,7 @@
   tool: tests/fail-unconnected.cwl
   label: wf_step_access_undeclared_param
   id: 132
-  doc: |
+  doc: >-
     Test that parameters that don't appear in the `run` process
     inputs are not present in the input object used to run the tool.
   should_fail: true
@@ -1904,7 +1903,7 @@
   tool: tests/import_schema-def_packed.cwl
   label: packed_import_schema
   id: 135
-  docs: SchemaDefRequirement with $import, and packed
+  doc: SchemaDefRequirement with $import, and packed
   tags: [ schema_def, workflow ]
 
 - job: tests/dir4-subdir-1-job.yml
@@ -2332,6 +2331,272 @@
   label: clt_file_size_property_with_multi_file
   doc: Test use of size in expressions for a few files
   tags: [ command_line_tool, inline_javascript ]
+
+- job: tests/null-expression-echo-job.json
+  tool: tests/echo-tool.cwl
+  should_fail: true
+  id: 176
+  label: any_without_defaults_unspecified_fails
+  doc: Test Any without defaults, unspecified, should fail.
+  tags: [ command_line_tool, required ]
+
+- job: tests/null-expression1-job.json
+  tool: tests/echo-tool.cwl
+  should_fail: true
+  id: 177
+  label: any_without_defaults_specified_fails
+  doc: Test Any without defaults, specified, should fail.
+  tags: [ command_line_tool, required ]
+
+- job: tests/empty.json
+  output: 
+    wc_output: 
+        class: File
+        checksum: sha1$3596ea087bfdaf52380eae441077572ed289d657
+        size: 3
+  tool: tests/count-lines9-wf-noET.cwl
+  id: 178
+  label: step_input_default_value_noexp
+  doc: Test default value on step input parameter, no ExpressionTool
+  tags: [ workflow, required ]
+
+- job: tests/cat-job.json
+  output:
+    wc_output: 
+        class: File
+        checksum: sha1$e5fa44f2b31c1fb553b6021e7360d07d5d91ff5e
+        size: 2
+  tool: tests/count-lines11-wf-noET.cwl
+  id: 179
+  label: step_input_default_value_overriden_noexp
+  doc: Test default value on step input parameter overridden by provided source, no ExpressionTool
+  tags: [ workflow, required ]
+
+- job: tests/wc-job.json
+  output: 
+    wc_output: 
+        class: File
+        checksum: sha1$3596ea087bfdaf52380eae441077572ed289d657
+        size: 3
+  id: 180
+  label: nested_workflow_noexp
+  tool: tests/count-lines8-wf-noET.cwl
+  doc: Test nested workflow, without ExpressionTool
+  tags: [ workflow, subworkflow ]
+
+- job: tests/sum-job.json
+  output: 
+    result: 
+        class: File
+        checksum: sha1$ad552e6dc057d1d825bf49df79d6b98eba846ebe
+        size: 3
+  id: 181
+  label: wf_multiplesources_multipletypes_noexp
+  tool: tests/sum-wf-noET.cwl
+  doc: Test step input with multiple sources with multiple types, without ExpressionTool
+  tags: [ workflow, step_input, inline_javascript, multiple_input ]
+
+- tool: tests/dynresreq-workflow-tooldefault.cwl
+  job: tests/empty.json
+  output:
+    cores:
+        location: output
+        size: 2
+        class: File
+        checksum: sha1$7448d8798a4380162d4b56f9b452e2f6f9e24e7a
+  id: 182
+  label: dynamic_resreq_wf_optional_file_default
+  doc: >-
+    Within a workflow, test accessing the size attribute of an optional input
+    File as part of a CommandLineTool's ResourceRequirement calculation. The
+    CommandLineTool input has a default value (a local file) and the workflow
+    nor the workflow step does not provide any value for this input.
+  tags: [ workflow, resource ]
+
+- tool: tests/dynresreq-workflow-stepdefault.cwl
+  job: tests/empty.json
+  output:
+    cores:
+        location: output
+        size: 2
+        class: File
+        checksum: sha1$7448d8798a4380162d4b56f9b452e2f6f9e24e7a
+  id: 183
+  label: dynamic_resreq_wf_optional_file_step_default
+  doc: >-
+    Within a workflow, test accessing the size attribute of an optional input
+    File as part of a CommandLineTool's ResourceRequirement calculation. The
+    workflow step provides a default value (a local file) for this input and
+    the workflow itself does not provide any value for this input.
+  tags: [ workflow, resource ]
+
+- tool: tests/dynresreq-workflow-inputdefault.cwl
+  job: tests/empty.json
+  id: 184
+  label: dynamic_resreq_wf_optional_file_wf_default
+  output:
+    cores:
+        location: output
+        size: 2
+        class: File
+        checksum: sha1$7448d8798a4380162d4b56f9b452e2f6f9e24e7a
+  doc: >-
+    Within a workflow, test accessing the size attribute of an optional input
+    File as part of a CommandLineTool's ResourceRequirement calculation. The
+    workflow itelf provides a default value (a local file) for this input.
+  tags: [ workflow, resource ]
+
+- job: tests/cat-job.json
+  output: {count_output: 1}
+  id: 185
+  label: step_input_default_value_overriden_2nd_step
+  tool: tests/count-lines11-extra-step-wf.cwl
+  doc: >-
+    Test default value on step input parameter overridden by provided source.
+    With passthrough first step
+  tags: [ workflow, inline_javascript ]
+
+- job: tests/cat-job.json
+  output:
+    wc_output:
+        class: File
+        checksum: sha1$e5fa44f2b31c1fb553b6021e7360d07d5d91ff5e
+        size: 2
+  id: 186
+  label: step_input_default_value_overriden_2nd_step_noexp
+  tool: tests/count-lines11-extra-step-wf-noET.cwl
+  doc: >-
+    Test default value on step input parameter overridden by provided source.
+    With passthrough first step and no ExpressionTool
+  tags: [ workflow, required ]
+
+- job: tests/empty.json
+  output: {count_output: 16}
+  id: 187
+  label: step_input_default_value_overriden_2nd_step_null
+  tool: tests/count-lines11-null-step-wf.cwl
+  doc: >-
+    Test default value on step input parameter overridden by provided source.
+    With null producing first step
+  tags: [ workflow, inline_javascript ]
+
+- job: tests/empty.json
+  output:
+    wc_output:
+        class: File
+        checksum: sha1$3596ea087bfdaf52380eae441077572ed289d657
+        size: 3
+  id: 188
+  label: step_input_default_value_overriden_2nd_step_null_noexp
+  tool: tests/count-lines11-null-step-wf-noET.cwl
+  doc: >-
+    Test default value on step input parameter overridden by provided source.
+    With null producing first step and no ExpressionTool
+  tags: [ workflow, required ]
+
+- tool: tests/cat-from-dir.cwl
+  job: tests/cat-from-dir-job.yaml
+  output:
+    output:
+      checksum: sha1$47a013e660d408619d894b20806b1d5086aab03b
+      class: File
+      size: 13
+  id: 189
+  label: stdin_from_directory_literal_with_local_file
+  doc: Pipe to stdin from user provided local File via a Directory literal
+  tags: [ command_line_tool, required ]
+
+- tool: tests/cat-from-dir.cwl
+  job: tests/cat-from-dir-with-literal-file.yaml
+  output:
+    output:
+      checksum: sha1$ef88e689559565999700d6fea7cf7ba306d04360
+      class: File
+      size: 26
+  id: 190
+  label: stdin_from_directory_literal_with_literal_file
+  doc: Pipe to stdin from literal File via a Directory literal
+  tags: [ command_line_tool, required ]
+
+- tool: tests/cat3-from-dir.cwl
+  job: tests/cat-from-dir-with-literal-file.yaml
+  output:
+    output_file:
+      checksum: sha1$ef88e689559565999700d6fea7cf7ba306d04360
+      class: File
+      size: 26
+  id: 191
+  label: directory_literal_with_literal_file_nostdin
+  doc: Test non-stdin reference to literal File via a Directory literal
+  tags: [ command_line_tool, required ]
+
+
+- tool: tests/no-inputs-tool.cwl
+  output:
+    output:
+      checksum: sha1$1334e67fe9eb70db8ae14ccfa6cfb59e2cc24eae
+      location: output
+      class: File
+      size: 4
+  id: 192
+  label: no_inputs_commandlinetool
+  doc: Test CommandLineTool without inputs
+  tags: [ command_line_tool, required ]
+
+
+- tool: tests/no-outputs-tool.cwl
+  job: tests/cat-job.json
+  output: {}
+  id: 193
+  label: no_outputs_commandlinetool
+  doc: Test CommandLineTool without outputs
+  tags: [ command_line_tool, required ]
+
+
+- tool: tests/no-inputs-wf.cwl
+  output:
+    output:
+      checksum: sha1$1334e67fe9eb70db8ae14ccfa6cfb59e2cc24eae
+      location: output
+      class: File
+      size: 4
+  id: 194
+  label: no_inputs_workflow
+  doc: Test Workflow without inputs
+  tags: [ workflow, required ]
+
+
+- tool: tests/no-outputs-wf.cwl
+  job: tests/cat-job.json
+  output: {}
+  id: 195
+  label: no_outputs_workflow
+  doc: Test Workflow without outputs
+  tags: [ workflow, required ]
+
+- tool: tests/anon_enum_inside_array.cwl
+  job: tests/anon_enum_inside_array.yml
+  output:
+    result:
+      class: File
+      checksum: "sha1$2132943d72c39423e0b9425cbc40dfd5bf3e9cb2"
+      size: 39
+  id: 196
+  label: anonymous_enum_in_array
+  doc: Test an anonymous enum inside an array inside a record
+  tags: [command_line_tool, required]
+
+- tool: tests/anon_enum_inside_array_inside_schemadef.cwl
+  job: tests/anon_enum_inside_array_inside_schemadef.yml
+  output:
+    result:
+      class: File
+      checksum: "sha1$f17c7d81f66e1520fca25b96b90eeeae5bbf08b0"
+      size: 39
+  id: 197
+  label: schema-def_anonymous_enum_in_array
+  doc: Test an anonymous enum inside an array inside a record, SchemaDefRequirement
+  tags: [command_line_tool, schema_def]
 
 # New tests for v1.1.0-dev1
 
