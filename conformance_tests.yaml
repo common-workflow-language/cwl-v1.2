@@ -2586,8 +2586,6 @@
         ]
     }
   tags: [ resource, command_line_tool ]
-=======
-  tags: [ command_line_tool, networkaccess ]
 
 - job: tests/env-job3.yaml
   output:
