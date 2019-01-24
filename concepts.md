@@ -216,12 +216,10 @@ should be combined with any requirements present in the corresponding Process
 as if they were specified there.
 
 Requirements specified in a parent Workflow are inherited by step processes
-if they are valid for that step. If the substep is a Workflow
-all requirements are applied. If the substep is an ExpressionTool all
-requirements are applied. If the substep is a CommandLineTool
-the `InlineJavascriptRequirement`, `SchemaDefRequirement`, `DockerRequirement`,
+if they are valid for that step. If the substep is a CommandLineTool
+only the `InlineJavascriptRequirement`, `SchemaDefRequirement`, `DockerRequirement`,
 `SoftwareRequirement`, `InitialWorkDirRequirement`, `EnvVarRequirement`, 
-`ShellCommandRequirement`, `ResourceRequirement` are applicable.
+`ShellCommandRequirement`, `ResourceRequirement` are valid.
 
 *As good practice, it is best to have process requirements be self-contained,
 such that each process can run successfully by itself.*
