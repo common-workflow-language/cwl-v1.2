@@ -50,6 +50,7 @@ $graph:
 
       ## Changelog
 
+        * Clarify behavior around `ENTRYPOINT` and `CMD` in containers
         * Clarify documentation around `valueFrom` and `null` inputs.
         * Default values for some fields are now expressed in the schema.
         * When defining record types with `CommandInputRecordSchema`, fields of
