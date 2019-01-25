@@ -74,6 +74,8 @@ $graph:
         * [Addition](#Requirements_and_hints) of `cwl:requirments` field to
           input object documents
         * `secondaryFiles` can now be explicitly marked as `required` or not.
+        * Add note that undefined details related to execution are left open to
+          the platform.
 
       See also the [CWL Command Line Tool Description, v1.1.0-dev1 changelog](CommandLineTool.html#Changelog).
 
@@ -84,7 +86,9 @@ $graph:
       Physics, and Astronomy.  This specification is intended to define a data
       and execution model for Workflows that can be implemented on top of a
       variety of computing platforms, ranging from an individual workstation to
-      cluster, grid, cloud, and high performance computing systems.
+      cluster, grid, cloud, and high performance computing systems. Details related
+      to execution of these workflow not laid out in this specification are open to
+      interpretation by the computing platform implementing this specification.
 
     - {$include: concepts.md}
 

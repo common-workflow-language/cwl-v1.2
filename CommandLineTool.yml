@@ -81,6 +81,8 @@ $graph:
         * Clarify CommandLineTool.arguments documentation
         * Clarify that runtime.outdir and runtime.tmpdir must be distinct
           directories.
+        * Clarify that unspecified details related to execution are left open to
+          the platform.
 
       See also the [CWL Workflow Description, v1.1.0-dev1 changelog](Workflow.html#Changelog).
 
@@ -110,10 +112,12 @@ $graph:
       provide a common standard description of grammar and semantics for
       invoking programs used in data-intensive fields such as Bioinformatics,
       Chemistry, Physics, Astronomy, and Statistics.  This specification
-      defines a precise data and execution model for Command Line Tools that
+      attempts to define a precise data and execution model for Command Line Tools that
       can be implemented on a variety of computing platforms, ranging from a
       single workstation to cluster, grid, cloud, and high performance
-      computing platforms.
+      computing platforms. Details related to execution of these programs not
+      laid out in this specification are open to interpretation by the computing
+      platform implementing this specification.
 
     - {$include: concepts.md}
     - {$include: invocation.md}
