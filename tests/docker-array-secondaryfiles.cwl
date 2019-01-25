@@ -16,13 +16,25 @@ inputs:
       type: array
       items: File
     secondaryFiles:
-      - .fai
+      - pattern: .fai
+        required: true
+      - pattern: .crai
+        required: false
+      - .bai?
+      - "${ if (inputs.require_dat) {return '.dat'} else {return null} }"
+      - "${ return null; }"
+      - pattern: .dat2
+        required: $(inputs.require_dat)
+  require_dat: boolean?
 
 outputs:
   bai_list:
     type: File
     outputBinding:
       glob: "fai.list"
+    secondaryFiles:
+      - .bai?
+      - pattern: "${ return null }"
 
 arguments:
   - valueFrom: ${
