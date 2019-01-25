@@ -25,41 +25,53 @@ Also available are inheritance graphs (as SVG images) for the [Schema Salad obje
 
 # Running the CWL conformance tests
 
-1. Install a CWL runner of your choice. The reference runner can be installed as
+Install a CWL runner of your choice. The reference runner can be installed as
 the default runner by doing:
 ```
 pip install cwlref-runner
 ```
 
-2. Install the CWL test parser:
-
+Install the CWL test parser:
 ```
 pip install cwltest
 ```
 You may need to activate a virtualenv first, or do a local install by adding `--user` after `install` above.
 
-3. From within a copy of [this repository](https://github.com/common-workflow-language/cwl-v1.1) (e.g. cwl-v1.1) execute the main test script
+From within a copy of [this repository](https://github.com/common-workflow-language/cwl-v1.1) (e.g. cwl-v1.1) execute the main test script
 ```
 ./run_test.sh
 ```
 
-If the CWL runner isn't installed as `cwl-runner` then you can specify the name:
-
+If the CWL runner isn't installed as `cwl-runner` then you can specify the name for the runner:
 ```
 ./run_test.sh RUNNER=cwltool
 ```
 
 You can also specify additional options that are specific for the particular CWL runner you are using.
 For example, with CWL reference runner you can turn on parallel execution mode:
-
 ```
 ./run_test.sh RUNNER=cwltool EXTRA=--parallel
 ```
 
 This can be combined with launching more than one CWL conformance test at once with `-j`:
-
 ```
 ./run_test.sh -j4 RUNNER=cwltool EXTRA=--parallel
+```
+
+You can list all the tests
+```
+./run_test.sh -l
+```
+
+You can run a particular test
+```
+./run_test.sh -n23
+```
+
+
+If you are running tests for an unreleased CWL version use the `--enable-dev` flag:
+```
+./run_test.sh EXTRA=--enable-dev
 ```
 
 
