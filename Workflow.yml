@@ -50,6 +50,7 @@ $graph:
 
         * Clarify how Requirements are inherited by step processes
         * Document explicitly that CWL allows pass-through of workflow inputs to outputs
+        * Added optional name and doc fields to OutputRecordSchema
         * Default values for some fields are now expressed in the schema
         * When defining record types, fields of type `File` may now include
           `format`, `secondaryFiles`, and `streamable`.
