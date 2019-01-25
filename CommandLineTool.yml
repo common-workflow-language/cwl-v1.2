@@ -78,6 +78,7 @@ $graph:
         * Clarify behavior of `glob` for absolute paths and symlinks.
         * Clarify behavior of `glob` to include directories.
         * `secondaryFiles` can now be explicitly marked as `required` or not.
+        * Clarify CommandLineTool.arguments documentation
 
       See also the [CWL Workflow Description, v1.1.0-dev1 changelog](Workflow.html#Changelog).
 
