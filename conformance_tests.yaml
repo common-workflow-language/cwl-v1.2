@@ -2728,3 +2728,108 @@
           class: "Directory"
           listing: []
   tags: [ required, command_line_tool ]
+
+
+- doc: Test that array of input files can be staged to directory with entryname
+  label: stage_file_array
+  tool: tests/stage_file_array.cwl
+  job: tests/stage_file_array.job.json
+  output:
+    output:
+      [
+        {
+          "basename": "sfa-1.txt",
+          "checksum": "sha1$4c1cd0638ab3580310823fd1556d27ecb4816df6",
+          "class": "File",
+          "size": 49
+        },
+        {
+          "basename": "sfa-1.txt.sec",
+          "checksum": "sha1$40f4ee1bcd1a9466fcd2e48cf7fc3798025d2f9a",
+          "class": "File",
+          "size": 59
+        },
+        {
+          "basename": "sfa-2.txt",
+          "checksum": "sha1$4c1cd0638ab3580310823fd1556d27ecb4816df6",
+          "class": "File",
+          "size": 49
+        },
+        {
+          "basename": "sfa-2.txt.sec",
+          "checksum": "sha1$40f4ee1bcd1a9466fcd2e48cf7fc3798025d2f9a",
+          "class": "File",
+          "size": 59
+        }
+      ]
+  tags: [ required, command_line_tool ]
+
+
+- doc: Test that array of input files can be staged to directory with basename
+  label: stage_file_array
+  tool: tests/stage_file_array_basename.cwl
+  job: tests/stage_file_array.job.json
+  output:
+    output:
+      [
+        {
+          "basename": "sfa-1.txt",
+          "checksum": "sha1$4c1cd0638ab3580310823fd1556d27ecb4816df6",
+          "class": "File",
+          "size": 49
+        },
+        {
+          "basename": "sfa-1.txt.sec",
+          "checksum": "sha1$40f4ee1bcd1a9466fcd2e48cf7fc3798025d2f9a",
+          "class": "File",
+          "size": 59
+        },
+        {
+          "basename": "sfa-2.txt",
+          "checksum": "sha1$4c1cd0638ab3580310823fd1556d27ecb4816df6",
+          "class": "File",
+          "size": 49
+        },
+        {
+          "basename": "sfa-2.txt.sec",
+          "checksum": "sha1$40f4ee1bcd1a9466fcd2e48cf7fc3798025d2f9a",
+          "class": "File",
+          "size": 59
+        }
+      ]
+  tags: [ required, command_line_tool ]
+
+
+- doc: Test that if array of input files are staged to directory with basename and entryname, entryname overrides
+  label: stage_file_array
+  tool: tests/stage_file_array_basename_and_entryname.cwl
+  job: tests/stage_file_array.job.json
+  output:
+    output:
+      [
+        {
+          "basename": "sfa-1.txt",
+          "checksum": "sha1$4c1cd0638ab3580310823fd1556d27ecb4816df6",
+          "class": "File",
+          "size": 49
+        },
+        {
+          "basename": "sfa-1.txt.sec",
+          "checksum": "sha1$40f4ee1bcd1a9466fcd2e48cf7fc3798025d2f9a",
+          "class": "File",
+          "size": 59
+        },
+        {
+          "basename": "sfa-2.txt",
+          "checksum": "sha1$4c1cd0638ab3580310823fd1556d27ecb4816df6",
+          "class": "File",
+          "size": 49
+        },
+        {
+          "basename": "sfa-2.txt.sec",
+          "checksum": "sha1$40f4ee1bcd1a9466fcd2e48cf7fc3798025d2f9a",
+          "class": "File",
+          "size": 59
+        }
+      ]
+  tags: [ required, command_line_tool ]
