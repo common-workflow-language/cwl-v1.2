@@ -729,7 +729,7 @@ $graph:
     file paths in the input object to correspond to the Docker bind mounted
     locations. That is, the platform should rewrite values in the parameter context
     such as `runtime.outdir`, `runtime.tmpdir` and others to be valid paths
-    within the container. The platform will ensure that `runtime.outdir` and
+    within the container. The platform must ensure that `runtime.outdir` and
     `runtime.tmpdir` are distinct directories.
 
     When running a tool contained in Docker, the workflow platform must not
