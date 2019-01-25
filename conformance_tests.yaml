@@ -3002,7 +3002,6 @@
           listing: []
   tags: [ required, command_line_tool ]
 
-
 - doc: Test that array of input files can be staged to directory with entryname
   label: stage_file_array
   tool: tests/stage_file_array.cwl
@@ -3106,3 +3105,14 @@
         }
       ]
   tags: [ required, command_line_tool ]
+
+- job: tests/empty.json
+  output:
+    foo:
+      class: File
+      basename: foo
+      checksum: sha1$fa98d6085770a79e44853d575cd3ab40c0f1f4de
+  tool: tests/runtime-paths-distinct.cwl
+  label: tmpdir_is_not_outdir
+  doc: Test that runtime.tmpdir is not runtime.outdir
+  tags: [ command_line_tool ]
