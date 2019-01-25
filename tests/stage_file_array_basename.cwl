@@ -20,4 +20,3 @@ requirements:
   - class: InitialWorkDirRequirement
     listing:
       - entry: "${ return {class: 'Directory', basename: 'input_dir', listing: inputs.input_list} }"
-        writable: true

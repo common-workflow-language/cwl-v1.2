@@ -21,4 +21,3 @@ requirements:
     listing:
       - entryname: input_dir
         entry: "${ return {class: 'Directory', basename: 'not_input_dir', listing: inputs.input_list} }"
-        writable: true
