@@ -1896,7 +1896,7 @@
   tool: tests/import_schema-def_packed.cwl
   label: packed_import_schema
   id: 135
-  docs: SchemaDefRequirement with $import, and packed
+  doc: SchemaDefRequirement with $import, and packed
   tags: [ schema_def, workflow ]
 
 - job: tests/dir4-subdir-1-job.yml
