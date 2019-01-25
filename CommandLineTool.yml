@@ -79,6 +79,8 @@ $graph:
         * Clarify behavior of `glob` to include directories.
         * `secondaryFiles` can now be explicitly marked as `required` or not.
         * Clarify CommandLineTool.arguments documentation
+        * Clarify that runtime.outdir and runtime.tmpdir must be distinct
+          directories.
 
       See also the [CWL Workflow Description, v1.1.0-dev1 changelog](Workflow.html#Changelog).
 
@@ -727,7 +729,8 @@ $graph:
     file paths in the input object to correspond to the Docker bind mounted
     locations. That is, the platform should rewrite values in the parameter context
     such as `runtime.outdir`, `runtime.tmpdir` and others to be valid paths
-    within the container.
+    within the container. The platform must ensure that `runtime.outdir` and
+    `runtime.tmpdir` are distinct directories.
 
     When running a tool contained in Docker, the workflow platform must not
     assume anything about the contents of the Docker container, such as the
