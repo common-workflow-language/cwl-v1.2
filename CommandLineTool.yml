@@ -41,9 +41,9 @@ $graph:
       This specification represents the latest development release from the
       CWL group.  Since the v1.0 release, v1.1 introduces the
       following updates to the CWL Command Line Tool standard.
-      Documents should to use `cwlVersion: v1.1.0-dev1` to make use of new
+      Documents should use `cwlVersion: v1.1.0-dev1` to make use of new
       syntax and features introduced in v1.1.0-dev1.  Existing v1.0 documents
-      should be trivially updatav1.1.0-dev1ble by changing `cwlVersion`, however
+      should be trivially updatable by changing `cwlVersion`, however
       CWL documents that relied on previously undefined or
       underspecified behavior may have slightly different behavior in
       v1.1.0-dev1.
