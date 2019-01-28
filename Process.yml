@@ -436,21 +436,38 @@ $graph:
       doc: "The unique identifier for this object."
 
 
+- name: LoadListingEnum
+  type: enum
+  symbols: [no_listing, shallow_listing, deep_listing]
+  doc:
+    - |
+      Specify the desired behavior for loading the `listing` field of
+      a Directory object for use by expressions.
+    - "no_listing: Do not load the directory listing."
+    - "shallow_listing: Only load the top level listing, do not recurse into subdirectories."
+    - "deep_listing: Load the directory listing and recursively load all subdirectories as well."
+
+
 - name: LoadContents
   type: record
   abstract: true
   fields:
     - name: loadContents
-      type:
-        - "null"
-        - boolean
+      type: boolean?
       jsonldPredicate: "cwl:loadContents"
       doc: |
         Only valid when `type: File` or is an array of `items: File`.
 
         Read up to the first 64 KiB of text from the file and place it in the
         "contents" field of the file object for use by expressions.
+    - name: loadListing
+      type: LoadListingEnum?
+      jsonldPredicate: "cwl:loadListing"
+      doc: |
+        Only valid when `type: Directory` or is an array of `items: Directory`.
 
+        Specify the desired behavior for loading the `listing` field of
+        a Directory object for use by expressions.
 
 - name: FieldBase
   type: record
@@ -914,3 +931,20 @@ $graph:
         set to `false` and the expected secondary file does not exist.
         Default value for `required` field is `true` for secondary files on
         input and `false` for secondary files on output.
+
+- name: LoadListingRequirement
+  type: record
+  extends: ProcessRequirement
+  doc: |
+    Specify the desired behavior for loading the `listing` field of
+    a Directory object for use by expressions.
+  fields:
+    class:
+      type: string
+      doc: "Always 'LoadListingRequirement'"
+      jsonldPredicate:
+        "_id": "@type"
+        "_type": "@vocab"
+    loadListing:
+      type: LoadListingEnum?
+      jsonldPredicate: "cwl:loadListing"
