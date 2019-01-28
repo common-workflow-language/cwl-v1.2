@@ -50,8 +50,8 @@ $graph:
 
       ## Changelog
 
-        * Added optional name and doc fields to CommandOutputRecordSchema
-        * Clarify behavior around `ENTRYPOINT` and `CMD` in containers
+        * Added optional `name` and `doc` fields to `CommandOutputRecordSchema`.
+        * Clarify behavior around `ENTRYPOINT` and `CMD` in containers.
         * Clarify documentation around `valueFrom` and `null` inputs.
         * Default values for some fields are now expressed in the schema.
         * When defining record types with `CommandInputRecordSchema`, fields of
@@ -61,7 +61,7 @@ $graph:
           `CommandInputArraySchema` now have an optional `doc` field.
         * `inputBinding` has been added as an optional field for
           `CommandInputRecordSchema` (was previously in CWL `draft-3` but
-          disappeared in `v1.0`)
+          disappeared in `v1.0`).
         * Any `doc` field may be an array of strings in addition to the
           previously allowed single string.
         * Addition of `stdin` type shortcut for
@@ -69,7 +69,7 @@ $graph:
         * Clarify that the designated output directory should be empty
           except for files or directories specified using
           [InitialWorkDirRequirement](#InitialWorkDirRequirement).
-        * Clarify semantics of `shellQuote`
+        * Clarify semantics of `shellQuote`.
         * Expressions are now allowed to evaluate to `null` or `Dirent` in
           [InitialWorkDirRequirement.listing](#InitialWorkDirRequirement).
         * Clarify behavior of secondaryFiles on output.
@@ -78,11 +78,14 @@ $graph:
         * Clarify behavior of `glob` for absolute paths and symlinks.
         * Clarify behavior of `glob` to include directories.
         * `secondaryFiles` can now be explicitly marked as `required` or not.
-        * Clarify CommandLineTool.arguments documentation
-        * Clarify that runtime.outdir and runtime.tmpdir must be distinct
+        * Clarify `CommandLineTool.arguments` documentation.
+        * Clarify that `runtime.outdir` and `runtime.tmpdir` must be distinct
           directories.
         * Clarify that unspecified details related to execution are left open to
           the platform.
+        * Added `InputParameter.loadContents` field. Use of `loadContents` in 
+          `InputBinding` is deprecated; it is preserved for v1.0 backwards 
+           compatability and will be removed in CWL v2.0.
 
       See also the [CWL Workflow Description, v1.1.0-dev1 changelog](Workflow.html#Changelog).
 
