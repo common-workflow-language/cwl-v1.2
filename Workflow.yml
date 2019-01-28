@@ -48,15 +48,15 @@ $graph:
 
       ## Changelog
 
-        * Clarify how Requirements are inherited by step processes
+        * Clarify how Requirements are inherited by step processes.
         * Clarify behavior around step inputs not consumed by the target
           run process.
-        * Document explicitly that CWL allows pass-through of workflow inputs to outputs
-        * Added optional name and doc fields to OutputRecordSchema
-        * Default values for some fields are now expressed in the schema
+        * Document explicitly that CWL allows pass-through of workflow inputs to outputs.
+        * Added optional name and doc fields to `OutputRecordSchema`.
+        * Default values for some fields are now expressed in the schema.
         * When defining record types, fields of type `File` may now include
           `format`, `secondaryFiles`, and `streamable`.
-        * The Input schemas (Record, Array, Enum),  now permits a `doc` field
+        * The `Input` schemas (`Record`, `Array`, `Enum`),  now permits a `doc` field.
         * Any `doc` field may be an array of strings in addition to the
           previously allowed single string.
         * The `run` field now introduces a subscope so that embedded
@@ -70,9 +70,9 @@ $graph:
           `WorkflowInputParameter.loadContents` instead.
         * The presence of `OutputRecordField.outputBinding` in v1.0 was due to
           a technical error and as it makes no semantic sense it was removed.
-        * `WorkflowStepInput` now has a `label` field
-        * [Addition](#Requirements_and_hints) of `cwl:requirments` field to
-          input object documents
+        * `WorkflowStepInput` now has a `label` field.
+        * [Addition](#Requirements_and_hints) of `cwl:requirements` field to
+          input object documents.
         * `secondaryFiles` can now be explicitly marked as `required` or not.
         * Add note that undefined details related to execution are left open to
           the platform.
