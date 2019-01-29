@@ -32,12 +32,10 @@ steps:
       inputs:
         d1:
           type: Directory
-#          inputBinding:
-#            loadListing: shallow_listing
+          loadListing: shallow_listing
         d2:
           type: Directory
-#          inputBinding:
-#            loadListing: shallow_listing
+          loadListing: shallow_listing
       outputs:
         d1out: File[]
         d2out: File[]

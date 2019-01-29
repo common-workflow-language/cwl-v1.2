@@ -5,7 +5,9 @@ requirements:
   - class: InitialWorkDirRequirement
     listing: $(inputs.indir.listing)
 inputs:
-  indir: Directory
+  indir:
+    type: Directory
+    loadListing: shallow_listing
 outputs:
   outlist:
     type: File
