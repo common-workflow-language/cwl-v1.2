@@ -76,6 +76,15 @@ $graph:
         * `secondaryFiles` can now be explicitly marked as `required` or not.
         * Add note that undefined details related to execution are left open to
           the platform.
+        * Added `TimeLimit` feature, allowing to set an upper limit on the 
+          execution time of a CommandLineTool or ExpressionTool.
+        * Added `WorkReuse` feature, allowing to enable or disable the reuse 
+          behavior for a particular tool or step for implementations that
+          support reusing output from past work.
+        * Added `NetworkAccess` feature, allowing to incicate whether a 
+          process requires outgoing network access.
+        * Added `InplaceUpdateRequirement` feature, allowing tools to directly 
+          update files with `writable: true` in `InitialWorkDirRequirement`.
 
       See also the [CWL Command Line Tool Description, v1.1.0-dev1 changelog](CommandLineTool.html#Changelog).
 
