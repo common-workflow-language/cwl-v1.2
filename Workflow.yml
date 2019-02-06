@@ -48,6 +48,7 @@ $graph:
 
       ## Changelog
 
+        * Clarify intent of ExpressionTool and clarify that they can be run standalone. 
         * Clarify how Requirements are inherited by step processes.
         * Clarify behavior around step inputs not consumed by the target
           run process.
