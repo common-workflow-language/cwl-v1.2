@@ -1096,29 +1096,6 @@ $graph:
 
 
 - type: record
-  name: TimeLimit
-  extends: ProcessRequirement
-  doc: |
-    Set an upper limit on the execution time of a process
-    (e.g. a CommandLineTool or a Workflow).  A process whose
-    execution duration exceeds the time limit may be
-    preemptively terminated and considered failed.  May also be
-    used by batch systems to make scheduling decisions.
-  fields:
-    - name: class
-      type: string
-      doc: "Always 'TimeLimit'"
-      jsonldPredicate:
-        "_id": "@type"
-        "_type": "@vocab"
-    - name: timelimit
-      type: [long, string, Expression]
-      doc: |
-        The time limit, in seconds.  A time limit of zero means no
-        time limit.  Negative time limits are an error.
-
-
-- type: record
   name: WorkReuse
   extends: ProcessRequirement
   doc: |
