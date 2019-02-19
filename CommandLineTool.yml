@@ -1101,9 +1101,10 @@ $graph:
   name: TimeLimit
   extends: ProcessRequirement
   doc: |
-    Set an upper limit on the execution time of a CommandLineTool or
-    ExpressionTool.  A tool execution which exceeds the time limit may
-    be preemptively terminated and considered failed.  May also be
+    Set an upper limit on the execution time of a process
+    (e.g. a CommandLineTool or a Workflow).  A process whose
+    execution duration exceeds the time limit may be
+    preemptively terminated and considered failed.  May also be
     used by batch systems to make scheduling decisions.
   fields:
     - name: class
