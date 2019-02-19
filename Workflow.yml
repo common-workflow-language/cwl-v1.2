@@ -77,8 +77,6 @@ $graph:
         * `secondaryFiles` can now be explicitly marked as `required` or not.
         * Add note that undefined details related to execution are left open to
           the platform.
-        * [Added](#ExpressionToolTimeLimit) `TimeLimit` feature, allows setting
-          of an upper limit on the execution time of an ExpressionTool.
         * [Added](#WorkReuse) `WorkReuse` feature, allowing to enable or disable the reuse
           behavior for a particular tool or step for implementations that
           support reusing output from past work.
@@ -166,31 +164,6 @@ $graph:
         Deprecated.  Preserved for v1.0 backwards compatability.  Will be removed in
         CWL v2.0.  Use `WorkflowInputParameter.loadContents` instead.
       jsonldPredicate: "cwl:inputBinding"
-
-
-- type: record
-  name: ExpressionToolTimeLimit
-  extends: ProcessRequirement
-  doc: |
-    Set an upper limit on the execution time of an ExpressionTool.
-    A ExpressionTool whose execution duration exceeds the time
-    limit may be preemptively terminated and considered failed.
-    May also be used by batch systems to make scheduling decisions.
-    The execution duration excludes external operations, such as
-    staging of files etc, and only counts wall-time for the
-    evaluation of the expression itself.
-  fields:
-    - name: class
-      type: string
-      doc: "Always 'TimeLimit'"
-      jsonldPredicate:
-        "_id": "@type"
-        "_type": "@vocab"
-    - name: timelimit
-      type: [long, string, Expression]
-      doc: |
-        The time limit, in seconds.  A time limit of zero means no
-        time limit.  Negative time limits are an error.
 
 
 - type: record

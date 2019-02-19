@@ -1198,7 +1198,7 @@ $graph:
       type: boolean
 
 - type: record
-  name: CommandLineToolTimeLimit
+  name: ToolTimeLimit
   extends: ProcessRequirement
   doc: |
     Set an upper limit on the execution time of a CommandLineTool.
@@ -1211,7 +1211,7 @@ $graph:
   fields:
     - name: class
       type: string
-      doc: "Always 'TimeLimit'"
+      doc: "Always 'ToolTimeLimit'"
       jsonldPredicate:
         "_id": "@type"
         "_type": "@vocab"
