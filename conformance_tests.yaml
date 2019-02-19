@@ -2811,6 +2811,35 @@
   tags: [ command_line_tool, timelimit, inline_javascript ]
 
 - job: tests/empty.json
+  should_fail: true
+  tool: tests/timelimit-wf.cwl
+  label: timelimit_basic_wf
+  doc: Test that workflow fails when exceeding time limit
+  tags: [ workflow, timelimit ]
+
+- job: tests/empty.json
+  should_fail: true
+  tool: tests/timelimit2-wf.cwl
+  label: timelimit_invalid_wf
+  doc: Test invalid time limit value workflow level
+  tags: [ workflow, timelimit ]
+
+- job: tests/empty.json
+  output:
+    o: time passed
+  tool: tests/timelimit3-wf.cwl
+  label: timelimit_zero_unlimited_wf
+  doc: Test zero timelimit means no limit in workflow
+  tags: [ workflow, timelimit ]
+
+- job: tests/empty.json
+  should_fail: true
+  tool: tests/timelimit4.cwl
+  label: timelimit_from_expression_wf
+  doc: Test expression in time limit in workflow
+  tags: [ workflow, timelimit, inline_javascript ]
+
+- job: tests/empty.json
   output: {}
   tool: tests/networkaccess.cwl
   doc: Test networkaccess enabled
