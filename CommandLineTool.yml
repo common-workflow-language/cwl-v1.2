@@ -88,7 +88,7 @@ $graph:
         * Added `InputParameter.loadContents` field. Use of `loadContents` in
           `InputBinding` is deprecated; it is preserved for v1.0 backwards
            compatability and will be removed in CWL v2.0.
-        * [Added](#CommandLineToolTimeLimit) `TimeLimit` feature, allows setting
+        * [Added](#ToolTimeLimit) `ToolTimeLimit` feature, allows setting
           an upper limit on the execution time of a CommandLineTool.
         * [Added](#WorkReuse) `WorkReuse` feature, allowing to enable or disable the reuse
           behavior for a particular tool or step for implementations that
