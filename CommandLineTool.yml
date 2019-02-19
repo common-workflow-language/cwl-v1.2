@@ -50,15 +50,15 @@ $graph:
 
       ## Changelog
 
-        * Added optional `name` and `doc` fields to `CommandOutputRecordSchema`.
         * Clarify behavior around `ENTRYPOINT` and `CMD` in containers.
         * Clarify documentation around `valueFrom` and `null` inputs.
         * Default values for some fields are now expressed in the schema.
         * When defining record types with `CommandInputRecordSchema`, fields of
           type `File` may now include `format`, `loadContents`,
           `secondaryFiles` and `streamable`.
-        * `CommandInputRecordSchema`, `CommandInputEnumSchema`, and
-          `CommandInputArraySchema` now have an optional `doc` field.
+        * `CommandInputRecordSchema`, `CommandOutputRecordSchema`, 
+          `CommandInputEnumSchema and `CommandInputArraySchema` now have an optional 
+          `doc` field.
         * `inputBinding` has been added as an optional field for
           `CommandInputRecordSchema` (was previously in CWL `draft-3` but
           disappeared in `v1.0`).
@@ -72,6 +72,8 @@ $graph:
         * Clarify semantics of `shellQuote`.
         * Expressions are now allowed to evaluate to `null` or `Dirent` in
           [InitialWorkDirRequirement.listing](#InitialWorkDirRequirement).
+        * Items in [InitialWorkDirRequirement.listing](#InitialWorkDirRequirement)
+          are now allowed to be `null` and `array<File | Directory>`.
         * Clarify behavior of secondaryFiles on output.
         * [Addition](#Requirements_and_hints) of `cwl:requirements` field to
           input object documents.
