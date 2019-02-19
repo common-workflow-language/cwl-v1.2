@@ -3120,15 +3120,15 @@
 - job: tests/listing-job.yml
   tool: tests/listing_none1.cwl
   label: listing_default_none
-  out:
+  output:
     out: true
-  doc: Test that default behavior is that 'listing' is not loaded
+  doc: Test that default behavior is 'no_listing' if not specified
   tags: [ command_line_tool ]
 
 - job: tests/listing-job.yml
   tool: tests/listing_none2.cwl
   label: listing_requirement_none
-  out:
+  output:
     out: true
   doc: Test that 'listing' is not present when LoadListingRequirement is 'no_listing'
   tags: [ command_line_tool ]
@@ -3136,7 +3136,7 @@
 - job: tests/listing-job.yml
   tool: tests/listing_none3.cwl
   label: listing_loadListing_none
-  out:
+  output:
     out: true
   doc: Test that 'listing' is not present when loadListing on input parameter is 'no_listing'
   tags: [ command_line_tool ]
@@ -3144,7 +3144,7 @@
 - job: tests/listing-job.yml
   tool: tests/listing_shallow1.cwl
   label: listing_requirement_shallow
-  out:
+  output:
     out: true
   doc: |
     Test that 'listing' is present in top directory object but not
@@ -3155,7 +3155,7 @@
 - job: tests/listing-job.yml
   tool: tests/listing_shallow2.cwl
   label: listing_loadListing_shallow
-  out:
+  output:
     out: true
   doc: |
     Test that 'listing' is present in top directory object but not
@@ -3166,7 +3166,7 @@
 - job: tests/listing-job.yml
   tool: tests/listing_deep1.cwl
   label: listing_requirement_deep
-  out:
+  output:
     out: true
   doc: |
     Test that 'listing' is present in top directory object and in
@@ -3177,7 +3177,7 @@
 - job: tests/listing-job.yml
   tool: tests/listing_deep2.cwl
   label: listing_loadListing_deep
-  out:
+  output:
     out: true
   doc: |
     Test that 'listing' is present in top directory object and in
