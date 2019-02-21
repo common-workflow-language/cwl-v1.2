@@ -88,8 +88,8 @@ $graph:
         * Added `InputParameter.loadContents` field. Use of `loadContents` in
           `InputBinding` is deprecated; it is preserved for v1.0 backwards
            compatability and will be removed in CWL v2.0.
-        * [Added](#TimeLimit) `TimeLimit` feature, allowing to set an upper limit on the
-          execution time of a CommandLineTool or ExpressionTool.
+        * [Added](#ToolTimeLimit) `ToolTimeLimit` feature, allows setting
+          an upper limit on the execution time of a CommandLineTool.
         * [Added](#WorkReuse) `WorkReuse` feature, allowing to enable or disable the reuse
           behavior for a particular tool or step for implementations that
           support reusing output from past work.
@@ -1098,29 +1098,6 @@ $graph:
 
 
 - type: record
-  name: TimeLimit
-  extends: ProcessRequirement
-  doc: |
-    Set an upper limit on the execution time of a process
-    (e.g. a CommandLineTool or a Workflow).  A process whose
-    execution duration exceeds the time limit may be
-    preemptively terminated and considered failed.  May also be
-    used by batch systems to make scheduling decisions.
-  fields:
-    - name: class
-      type: string
-      doc: "Always 'TimeLimit'"
-      jsonldPredicate:
-        "_id": "@type"
-        "_type": "@vocab"
-    - name: timelimit
-      type: [long, string, Expression]
-      doc: |
-        The time limit, in seconds.  A time limit of zero means no
-        time limit.  Negative time limits are an error.
-
-
-- type: record
   name: WorkReuse
   extends: ProcessRequirement
   doc: |
@@ -1219,3 +1196,27 @@ $graph:
         "_type": "@vocab"
     inplaceUpdate:
       type: boolean
+
+- type: record
+  name: ToolTimeLimit
+  extends: ProcessRequirement
+  doc: |
+    Set an upper limit on the execution time of a CommandLineTool.
+    A CommandLineTool whose execution duration exceeds the time
+    limit may be preemptively terminated and considered failed.
+    May also be used by batch systems to make scheduling decisions.
+    The execution duration excludes external operations, such as
+    staging of files, pulling a docker image etc, and only counts
+    wall-time for the execution of the command line itself.
+  fields:
+    - name: class
+      type: string
+      doc: "Always 'ToolTimeLimit'"
+      jsonldPredicate:
+        "_id": "@type"
+        "_type": "@vocab"
+    - name: timelimit
+      type: [long, string, Expression]
+      doc: |
+        The time limit, in seconds.  A time limit of zero means no
+        time limit.  Negative time limits are an error.
