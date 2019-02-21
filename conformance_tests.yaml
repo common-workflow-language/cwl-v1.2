@@ -2349,8 +2349,8 @@
   tags: [ command_line_tool, required ]
 
 - job: tests/empty.json
-  output: 
-    wc_output: 
+  output:
+    wc_output:
         class: File
         checksum: sha1$3596ea087bfdaf52380eae441077572ed289d657
         size: 3
@@ -2362,7 +2362,7 @@
 
 - job: tests/cat-job.json
   output:
-    wc_output: 
+    wc_output:
         class: File
         checksum: sha1$e5fa44f2b31c1fb553b6021e7360d07d5d91ff5e
         size: 2
@@ -2373,8 +2373,8 @@
   tags: [ workflow, required ]
 
 - job: tests/wc-job.json
-  output: 
-    wc_output: 
+  output:
+    wc_output:
         class: File
         checksum: sha1$3596ea087bfdaf52380eae441077572ed289d657
         size: 3
@@ -2385,8 +2385,8 @@
   tags: [ workflow, subworkflow ]
 
 - job: tests/sum-job.json
-  output: 
-    result: 
+  output:
+    result:
         class: File
         checksum: sha1$ad552e6dc057d1d825bf49df79d6b98eba846ebe
         size: 3
@@ -3115,4 +3115,72 @@
   tool: tests/runtime-paths-distinct.cwl
   label: tmpdir_is_not_outdir
   doc: Test that runtime.tmpdir is not runtime.outdir
+  tags: [ command_line_tool ]
+
+- job: tests/listing-job.yml
+  tool: tests/listing_none1.cwl
+  label: listing_default_none
+  output:
+    out: true
+  doc: Test that default behavior is 'no_listing' if not specified
+  tags: [ command_line_tool ]
+
+- job: tests/listing-job.yml
+  tool: tests/listing_none2.cwl
+  label: listing_requirement_none
+  output:
+    out: true
+  doc: Test that 'listing' is not present when LoadListingRequirement is 'no_listing'
+  tags: [ command_line_tool ]
+
+- job: tests/listing-job.yml
+  tool: tests/listing_none3.cwl
+  label: listing_loadListing_none
+  output:
+    out: true
+  doc: Test that 'listing' is not present when loadListing on input parameter is 'no_listing'
+  tags: [ command_line_tool ]
+
+- job: tests/listing-job.yml
+  tool: tests/listing_shallow1.cwl
+  label: listing_requirement_shallow
+  output:
+    out: true
+  doc: |
+    Test that 'listing' is present in top directory object but not
+    subdirectory object when LoadListingRequirement is
+    'shallow_listing'
+  tags: [ command_line_tool ]
+
+- job: tests/listing-job.yml
+  tool: tests/listing_shallow2.cwl
+  label: listing_loadListing_shallow
+  output:
+    out: true
+  doc: |
+    Test that 'listing' is present in top directory object but not
+    subdirectory object when loadListing on input parameter loadListing is
+    'shallow_listing'
+  tags: [ command_line_tool ]
+
+- job: tests/listing-job.yml
+  tool: tests/listing_deep1.cwl
+  label: listing_requirement_deep
+  output:
+    out: true
+  doc: |
+    Test that 'listing' is present in top directory object and in
+    subdirectory objects when LoadListingRequirement is
+    'deep_listing'
+  tags: [ command_line_tool ]
+
+- job: tests/listing-job.yml
+  tool: tests/listing_deep2.cwl
+  label: listing_loadListing_deep
+  output:
+    out: true
+  doc: |
+    Test that 'listing' is present in top directory object and in
+    subdirectory objects when input parameter loadListing is
+    'deep_listing'
   tags: [ command_line_tool ]
