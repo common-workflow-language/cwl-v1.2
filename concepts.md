@@ -91,6 +91,115 @@ An implementation may formally validate the structure of a CWL document using
 SALAD schemas located at
 https://github.com/common-workflow-language/common-workflow-language/tree/master/v1.1.0-dev1
 
+### `map<>`
+
+The "type: `array<ComplexType> | map<key_field, ComplexType>`" syntax in the CWL
+specifications means there are two or more ways to write the given value.
+
+Option one is a array and is the most verbose option.
+In our example here we use the generic`ComplexType`, but
+in reality it would be one of `InputRecordField`, `OutputRecordField`,
+`CommandInputRecordField`, `SoftwarePackage`, `CommandInputParameter`,
+`CommandOutputParamter`, `EnvironmentDef`, `WorkflowStepInput`,
+`WorkflowInputParameter`, `WorkflowOutputParameter`, `WorkflowStep`,
+`ExpressionToolOutputParameter`, or a specific `*Requirement` entry.
+
+Generic example:
+```
+some_cwl_field:
+  - key_field: a_complex_type1
+    field2: foo
+    field3: bar
+  - key_field: a_complex_type2
+    field2: foo2
+    field3: bar2
+```
+
+Specific example using [Workflow.inputs](Workflow.html#InputParameter)
+```
+inputs:
+  - id: workflow_input01
+    type: string
+  - id: workflow_input02
+    type: File
+    format: http://edamontology.org/format_2572
+```
+
+Option two is enabled by the `map<…>` syntax. Instead of an array of entries we
+use a mapping, where one field of the `ComplexType` (here named `key_field`)
+becomes the key in the map, and its value is the rest of the `ComplexType`.
+
+Generic example:
+```
+some_cwl_field:
+  a_complex_type1:  # this was the "key_field" from above
+    field2: foo
+    field3: bar
+  a_complex_type2:
+    field2: foo2
+    field3: bar2
+```
+
+Specific example using [Workflow.inputs](Workflow.html#InputParameter)
+```
+inputs:
+  workflow_input01:
+    type: string
+  workflow_input02:
+    type: File
+    format: http://edamontology.org/format_2572
+```
+
+Sometimes we have a third and even more compact option denoted like this:
+"type: `array<ComplexType> | map<key_field, field2 | ComplexType>`"
+
+For this example, if we only need the `key_field` and `field2` when specifying
+our `ComplexType`s (because the other fields are optional and we are fine with
+their default values) then we can abbreviate.
+
+Here's the generic example:
+```
+some_cwl_field:
+  a_complex_type1: foo   # we accept the default value for field3
+  a_complex_type2: foo2  # we accept the default value for field3
+```
+
+Specific example using [Workflow.inputs](Workflow.html#InputParameter)
+```
+inputs:
+  workflow_input01: string
+  workflow_input02: File  # we accept the default of no File format
+```
+
+
+What if some entries we want to mix the option 2 and 3? You can!
+
+Generic example:
+```
+some_cwl_field:
+  my_complex_type1: foo   # we accept the default value for field3
+  my_complex_type2:
+    field2: foo2
+    field3: bar2          # we did not accept the default value for field3
+                          # so we had to use the slightly expanded syntax
+```
+
+Specific example using [Workflow.inputs](Workflow.html#InputParameter)
+```
+inputs:
+  workflow_input01: string
+  workflow_input02:  # we use the longer way
+    type: File       # because we want to specify the format too
+    format: http://edamontology.org/format_2572
+```
+
+
+Note: The `map<…>` version is optional, the verbose option #1 is always allowed,
+but for presentation reasons option 3 and 2 may be preferred by human readers.
+
+Another explanation, aimed at implementors, is in the
+[Schema Salad specification](SchemaSalad.html#Identifier_maps).
+
 ## Identifiers
 
 If an object contains an `id` field, that is used to uniquely identify the
