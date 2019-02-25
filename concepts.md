@@ -115,7 +115,11 @@ some_cwl_field:
     field3: bar2
 ```
 
-Specific example using [Workflow.inputs](Workflow.html#InputParameter)
+Specific example using [Workflow.inputs](Workflow.html#InputParameter):
+> array<InputParameter> |
+> map<`id`, `type` | InputParameter>
+
+
 ```
 inputs:
   - id: workflow_input01
@@ -140,7 +144,11 @@ some_cwl_field:
     field3: bar2
 ```
 
-Specific example using [Workflow.inputs](Workflow.html#InputParameter)
+Specific example using [Workflow.inputs](Workflow.html#InputParameter):
+> array<InputParameter> |
+> map<`id`, `type` | InputParameter>
+
+
 ```
 inputs:
   workflow_input01:
@@ -164,7 +172,11 @@ some_cwl_field:
   a_complex_type2: foo2  # we accept the default value for field3
 ```
 
-Specific example using [Workflow.inputs](Workflow.html#InputParameter)
+Specific example using [Workflow.inputs](Workflow.html#InputParameter):
+> array<InputParameter> |
+> map<`id`, `type` | InputParameter>
+
+
 ```
 inputs:
   workflow_input01: string
@@ -184,7 +196,11 @@ some_cwl_field:
                           # so we had to use the slightly expanded syntax
 ```
 
-Specific example using [Workflow.inputs](Workflow.html#InputParameter)
+Specific example using [Workflow.inputs](Workflow.html#InputParameter):
+> array<InputParameter> |
+> map<`id`, `type` | InputParameter>
+
+
 ```
 inputs:
   workflow_input01: string
