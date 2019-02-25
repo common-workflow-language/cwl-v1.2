@@ -91,7 +91,7 @@ An implementation may formally validate the structure of a CWL document using
 SALAD schemas located at
 https://github.com/common-workflow-language/common-workflow-language/tree/master/v1.1.0-dev1
 
-### `map<>`
+### <a name="map">`map<>`</a>
 
 The "type: `array<ComplexType> | map<key_field, ComplexType>`" syntax in the CWL
 specifications means there are two or more ways to write the given value.
