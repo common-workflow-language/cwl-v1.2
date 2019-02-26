@@ -87,6 +87,7 @@ $graph:
         * [Added](#LoadListingRequirement) `LoadListingRequirement`
           and [loadListing](#LoadContents) to control whether and how
           `Directory` listings should be loaded for use in expressions.
+        * [Better explain](#map) the `map<…>` notation that has existing since v1.0.
 
       See also the [CWL Command Line Tool Description, v1.1.0-dev1 changelog](CommandLineTool.html#Changelog).
 
