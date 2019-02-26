@@ -93,8 +93,12 @@ https://github.com/common-workflow-language/common-workflow-language/tree/master
 
 ### <a name="map">`map<>`</a>
 
-The "type: `array<ComplexType> | map<key_field, ComplexType>`" syntax in the CWL
-specifications means there are two or more ways to write the given value.
+Note: This section is non-normative.
+
+The
+> type: array<ComplexType> |
+> map<`key_field`, ComplexType>
+syntax in the CWL specifications means there are two or more ways to write the given value.
 
 Option one is a array and is the most verbose option.
 In our example here we use the generic`ComplexType`, but
@@ -113,6 +117,7 @@ some_cwl_field:
   - key_field: a_complex_type2
     field2: foo2
     field3: bar2
+  - key_field: a_complex_type3
 ```
 
 Specific example using [Workflow.inputs](Workflow.html#InputParameter):
@@ -127,11 +132,15 @@ inputs:
   - id: workflow_input02
     type: File
     format: http://edamontology.org/format_2572
+  - id: workflow_input03
 ```
 
 Option two is enabled by the `map<…>` syntax. Instead of an array of entries we
 use a mapping, where one field of the `ComplexType` (here named `key_field`)
-becomes the key in the map, and its value is the rest of the `ComplexType`.
+becomes the key in the map, and its value is the rest of the `ComplexType`
+without the key field. If all of the other fields of the `ComplexType` are
+optional and unneeded, then we can indicate this with an empty mapping as the
+value: `a_complex_type3: {}`
 
 Generic example:
 ```
@@ -142,6 +151,7 @@ some_cwl_field:
   a_complex_type2:
     field2: foo2
     field3: bar2
+  a_complex_type3: {}  # we accept the defualt values for "field2" and "field3"
 ```
 
 Specific example using [Workflow.inputs](Workflow.html#InputParameter):
@@ -156,6 +166,7 @@ inputs:
   workflow_input02:
     type: File
     format: http://edamontology.org/format_2572
+  workflow_input03: {}  # we accept the default value for "type"
 ```
 
 Sometimes we have a third and even more compact option denoted like this:
@@ -170,6 +181,7 @@ Here's the generic example:
 some_cwl_field:
   a_complex_type1: foo   # we accept the default value for field3
   a_complex_type2: foo2  # we accept the default value for field3
+  a_complex_type3: {}    # we accept the defualt values for "field2" and "field3"
 ```
 
 Specific example using [Workflow.inputs](Workflow.html#InputParameter):
@@ -181,6 +193,7 @@ Specific example using [Workflow.inputs](Workflow.html#InputParameter):
 inputs:
   workflow_input01: string
   workflow_input02: File  # we accept the default of no File format
+  workflow_input03: {}    # we accept the default of no "type"
 ```
 
 
@@ -194,6 +207,8 @@ some_cwl_field:
     field2: foo2
     field3: bar2          # we did not accept the default value for field3
                           # so we had to use the slightly expanded syntax
+  my_complex_type3: {}    # as before, we accept the default values for both
+                          # "field2" and "field3"
 ```
 
 Specific example using [Workflow.inputs](Workflow.html#InputParameter):
@@ -204,16 +219,19 @@ Specific example using [Workflow.inputs](Workflow.html#InputParameter):
 ```
 inputs:
   workflow_input01: string
-  workflow_input02:  # we use the longer way
-    type: File       # because we want to specify the format too
+  workflow_input02:     # we use the longer way
+    type: File          # because we want to specify the "format" too
     format: http://edamontology.org/format_2572
+  workflow_input03: {}  # back to the short form as this entry
+                        # uses the default of no "type" just like the prior
+                        # examples
 ```
 
 
 Note: The `map<…>` version is optional, the verbose option #1 is always allowed,
 but for presentation reasons option 3 and 2 may be preferred by human readers.
 
-Another explanation, aimed at implementors, is in the
+The normative explanation for these variations, aimed at implementors, is in the
 [Schema Salad specification](SchemaSalad.html#Identifier_maps).
 
 ## Identifiers
