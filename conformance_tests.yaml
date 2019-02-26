@@ -3184,3 +3184,11 @@
     subdirectory objects when input parameter loadListing is
     'deep_listing'
   tags: [ command_line_tool ]
+
+- job: tests/echo-position-expr-job.yml
+  tool: tests/echo-position-expr.cwl
+  label: inputBinding_position_expr
+  output:
+    out: "🕺 1 singular sensation!\n"
+  doc: TBD
+  tags: [ command_line_tool, required ]
