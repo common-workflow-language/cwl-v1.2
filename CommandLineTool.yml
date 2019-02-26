@@ -57,8 +57,8 @@ $graph:
         * When defining record types with `CommandInputRecordSchema`, fields of
           type `File` may now include `format`, `loadContents`,
           `secondaryFiles` and `streamable`.
-        * `CommandInputRecordSchema`, `CommandOutputRecordSchema`,
-          `CommandInputEnumSchema and `CommandInputArraySchema` now have an optional
+        * `CommandInputRecordSchema`, `CommandOutputRecordSchema`, 
+          `CommandInputEnumSchema and `CommandInputArraySchema` now have an optional 
           `doc` field.
         * `inputBinding` has been added as an optional field for
           `CommandInputRecordSchema` (was previously in CWL `draft-3` but
@@ -108,6 +108,8 @@ $graph:
         * [Better explain](#map) the `map<…>` notation that has existed since v1.0.
         * Fixed schema error where the `type` field inside the `inputs` and
           `outputs` field was incorrectly listed as optional.
+        * For multi-Process CWL documents, if no particular process is named then
+          the process with the `id` of `#main` is chosen.
 
       See also the [CWL Workflow Description, v1.1.0-dev1 changelog](Workflow.html#Changelog).
 

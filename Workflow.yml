@@ -92,6 +92,8 @@ $graph:
         * Fixed schema error where the `type` field inside the `inputs` and
           `outputs` fields for both `Workflow` and `ExpressionTool` was
            incorrectly listed as optional.
+        * For multi-Process CWL documents, if no particular process is named then
+          the process with the `id` of `#main` is chosen.
 
       See also the [CWL Command Line Tool Description, v1.1.0-dev1 changelog](CommandLineTool.html#Changelog).
 

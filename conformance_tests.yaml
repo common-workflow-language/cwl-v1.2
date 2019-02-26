@@ -3200,3 +3200,12 @@
     code: 7
   doc: Can access exit code in outputEval
   tags: [ command_line_tool, required ]
+
+- tool: tests/echo-tool-packed.cwl
+  job: tests/env-job.json
+  output:
+    {"out": "hello test env\n"}
+  label: any_input_param_graph_no_default
+  doc: Test use of $graph without specifying which process to run
+  tags: [ required, command_line_tool ]
+
