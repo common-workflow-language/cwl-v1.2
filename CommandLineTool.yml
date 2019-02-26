@@ -101,6 +101,8 @@ $graph:
           and [loadListing](#LoadContents) to control whether and how
           `Directory` listings should be loaded for use in expressions.
         * [Better explain](#map) the `map<…>` notation that has existing since v1.0.
+        * Fixed schema error where the `type` field inside the `inputs` and
+          `outputs` field was incorrectly listed as optional.
 
       See also the [CWL Workflow Description, v1.1.0-dev1 changelog](Workflow.html#Changelog).
 
@@ -437,7 +439,6 @@ $graph:
   fields:
     - name: type
       type:
-        - "null"
         - CWLType
         - stdin
         - CommandInputRecordSchema
@@ -472,7 +473,6 @@ $graph:
   fields:
     - name: type
       type:
-        - "null"
         - CWLType
         - stdout
         - stderr
