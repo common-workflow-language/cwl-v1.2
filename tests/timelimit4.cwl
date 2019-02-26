@@ -4,6 +4,6 @@ inputs: []
 outputs: []
 requirements:
   InlineJavascriptRequirement: {}
-  TimeLimit:
+  ToolTimeLimit:
     timelimit: $(1+2)
 baseCommand: [sleep, "15"]

@@ -3,17 +3,17 @@ class: Workflow
 cwlVersion: v1.1.0-dev1
 
 requirements:
-  TimeLimit:
-    timelimit: -1
+  ToolTimeLimit:
+    timelimit: 5
 
 inputs:
   i:
-    type: int?
+    type: string?
 
 outputs:
   o:
     type: string?
-    outputSource: step1/o
+    outputSource: step2/o
 
 steps:
   step1:
@@ -22,10 +22,25 @@ steps:
     out: [o]
     run:
       class: CommandLineTool
-      baseCommand: ["sleep", "10"]
+      baseCommand: ["sleep", "3"]
       inputs:
         i:
-          type: int?
+          type: string?
+      outputs:
+        o:
+          type: string?
+          outputBinding:
+            outputEval: "time passed"
+  step2:
+    in:
+      i: step1/o
+    out: [o]
+    run:
+      class: CommandLineTool
+      baseCommand: ["sleep", "3"]
+      inputs:
+        i:
+          type: string?
       outputs:
         o:
           type: string?

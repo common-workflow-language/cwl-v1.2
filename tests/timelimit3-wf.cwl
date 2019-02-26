@@ -3,7 +3,7 @@ class: Workflow
 cwlVersion: v1.1.0-dev1
 
 requirements:
-  TimeLimit:
+  ToolTimeLimit:
     timelimit: 0
 
 inputs:

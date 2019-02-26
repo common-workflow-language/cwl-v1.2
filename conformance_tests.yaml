@@ -2811,17 +2811,26 @@
   tags: [ command_line_tool, timelimit, inline_javascript ]
 
 - job: tests/empty.json
-  should_fail: true
-  tool: tests/timelimit-wf.cwl
-  label: timelimit_basic_wf
-  doc: Test that workflow fails when exceeding time limit
-  tags: [ workflow, timelimit ]
+  output:
+    status: Done
+  tool: tests/timelimit5.cwl
+  label: timelimit_expressiontool
+  doc: Test timelimit in expressiontool is ignored
+  tags: [ expression_tool, timelimit, inline_javascript ]
 
 - job: tests/empty.json
   should_fail: true
+  tool: tests/timelimit-wf.cwl
+  label: timelimit_basic_wf
+  doc: Test that tool in workflow fails when exceeding time limit
+  tags: [ workflow, timelimit ]
+
+- job: tests/empty.json
+  output:
+    o: time passed
   tool: tests/timelimit2-wf.cwl
   label: timelimit_invalid_wf
-  doc: Test invalid time limit value workflow level
+  doc: Test workflow level time limit propagation
   tags: [ workflow, timelimit ]
 
 - job: tests/empty.json
@@ -2834,7 +2843,7 @@
 
 - job: tests/empty.json
   should_fail: true
-  tool: tests/timelimit4.cwl
+  tool: tests/timelimit4-wf.cwl
   label: timelimit_from_expression_wf
   doc: Test expression in time limit in workflow
   tags: [ workflow, timelimit, inline_javascript ]
