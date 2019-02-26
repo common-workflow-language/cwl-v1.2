@@ -2830,7 +2830,7 @@
     o: time passed
   tool: tests/timelimit2-wf.cwl
   label: timelimit_invalid_wf
-  doc: Test workflow level time limit propagation
+  doc: Test that workflow level time limit is not applied to workflow execution time
   tags: [ workflow, timelimit ]
 
 - job: tests/empty.json
