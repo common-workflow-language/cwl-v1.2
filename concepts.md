@@ -91,14 +91,13 @@ An implementation may formally validate the structure of a CWL document using
 SALAD schemas located at
 https://github.com/common-workflow-language/common-workflow-language/tree/master/v1.1.0-dev1
 
-### <a name="map">`map<>`</a>
+### map
 
 Note: This section is non-normative.
+> type: array&lt;ComplexType&gt; |  
+> map&lt;`key_field`, ComplexType&gt;
 
-The
-> type: array<ComplexType> |
-> map<`key_field`, ComplexType>
-syntax in the CWL specifications means there are two or more ways to write the given value.
+The above syntax in the CWL specifications means there are two or more ways to write the given value.
 
 Option one is a array and is the most verbose option.
 In our example here we use the generic`ComplexType`, but
@@ -108,7 +107,7 @@ in reality it would be one of `InputRecordField`, `OutputRecordField`,
 `WorkflowInputParameter`, `WorkflowOutputParameter`, `WorkflowStep`,
 `ExpressionToolOutputParameter`, or a specific `*Requirement` entry.
 
-Generic example:
+A generic example:
 ```
 some_cwl_field:
   - key_field: a_complex_type1
@@ -120,9 +119,9 @@ some_cwl_field:
   - key_field: a_complex_type3
 ```
 
-Specific example using [Workflow.inputs](Workflow.html#InputParameter):
-> array<InputParameter> |
-> map<`id`, `type` | InputParameter>
+A specific example using [Workflow](Workflow.html#Workflow).[inputs](Workflow.html#WorkflowInputParameter):
+> array&lt;InputParameter&gt; |  
+> map&lt;`id`, `type` | InputParameter&gt;
 
 
 ```
@@ -142,7 +141,7 @@ without the key field. If all of the other fields of the `ComplexType` are
 optional and unneeded, then we can indicate this with an empty mapping as the
 value: `a_complex_type3: {}`
 
-Generic example:
+A generic example:
 ```
 some_cwl_field:
   a_complex_type1:  # this was the "key_field" from above
@@ -154,9 +153,9 @@ some_cwl_field:
   a_complex_type3: {}  # we accept the defualt values for "field2" and "field3"
 ```
 
-Specific example using [Workflow.inputs](Workflow.html#InputParameter):
-> array<InputParameter> |
-> map<`id`, `type` | InputParameter>
+A specific example using [Workflow](Workflow.html#Workflow).[inputs](Workflow.html#WorkflowInputParameter):
+> array&lt;InputParameter&gt; |  
+> map&lt;`id`, `type` | InputParameter&gt;
 
 
 ```
@@ -170,13 +169,14 @@ inputs:
 ```
 
 Sometimes we have a third and even more compact option denoted like this:
-"type: `array<ComplexType> | map<key_field, field2 | ComplexType>`"
+> type: array&lt;ComplexType&gt; |  
+> map&lt;`key_field`, `field2` | ComplexType&gt;
 
 For this example, if we only need the `key_field` and `field2` when specifying
 our `ComplexType`s (because the other fields are optional and we are fine with
 their default values) then we can abbreviate.
 
-Here's the generic example:
+A generic example:
 ```
 some_cwl_field:
   a_complex_type1: foo   # we accept the default value for field3
@@ -184,9 +184,9 @@ some_cwl_field:
   a_complex_type3: {}    # we accept the defualt values for "field2" and "field3"
 ```
 
-Specific example using [Workflow.inputs](Workflow.html#InputParameter):
-> array<InputParameter> |
-> map<`id`, `type` | InputParameter>
+A specific example using [Workflow](Workflow.html#Workflow).[inputs](Workflow.html#WorkflowInputParameter):
+> array&lt;InputParameter&gt; |
+> map&lt;`id`, `type` | InputParameter&gt;
 
 
 ```
@@ -199,7 +199,7 @@ inputs:
 
 What if some entries we want to mix the option 2 and 3? You can!
 
-Generic example:
+A generic example:
 ```
 some_cwl_field:
   my_complex_type1: foo   # we accept the default value for field3
@@ -211,9 +211,9 @@ some_cwl_field:
                           # "field2" and "field3"
 ```
 
-Specific example using [Workflow.inputs](Workflow.html#InputParameter):
-> array<InputParameter> |
-> map<`id`, `type` | InputParameter>
+A specific example using [Workflow](Workflow.html#Workflow).[inputs](Workflow.html#WorkflowInputParameter):
+> array&lt;InputParameter&gt; |
+> map&lt;`id`, `type` | InputParameter&gt;
 
 
 ```
@@ -228,8 +228,9 @@ inputs:
 ```
 
 
-Note: The `map<…>` version is optional, the verbose option #1 is always allowed,
-but for presentation reasons option 3 and 2 may be preferred by human readers.
+Note: The `map<…>` (compact) versions are optional, the verbose option #1 is
+always allowed, but for presentation reasons option 3 and 2 may be preferred
+by human readers.
 
 The normative explanation for these variations, aimed at implementors, is in the
 [Schema Salad specification](SchemaSalad.html#Identifier_maps).
