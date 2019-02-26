@@ -7,4 +7,16 @@ requirements:
   ToolTimeLimit:
     timelimit: 3
   InlineJavascriptRequirement: {}
-expression: "${\n    function sleep(milliseconds) {\n      var start = new Date().getTime();\n      for (var i = 0; i < 1e7; i++) {\n        if ((new Date().getTime() - start) > milliseconds){\n          break;\n        }\n      }\n    };\n    sleep(5000);\n    return {\"status\": \"Done\"}\n}"
+expression: |
+  ${
+    function sleep(milliseconds) {
+      var start = new Date().getTime();
+      for (var i = 0; i < 1e7; i++) {
+        if ((new Date().getTime() - start) > milliseconds){
+          break;
+        }
+      }
+    };
+    sleep(5000);
+    return {"status": "Done"}
+  }
