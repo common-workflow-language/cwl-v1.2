@@ -100,14 +100,8 @@ Note: This section is non-normative.
 The above syntax in the CWL specifications means there are two or more ways to write the given value.
 
 Option one is a array and is the most verbose option.
-In our example here we use the generic`ComplexType`, but
-in reality it would be one of `InputRecordField`, `OutputRecordField`,
-`CommandInputRecordField`, `SoftwarePackage`, `CommandInputParameter`,
-`CommandOutputParamter`, `EnvironmentDef`, `WorkflowStepInput`,
-`WorkflowInputParameter`, `WorkflowOutputParameter`, `WorkflowStep`,
-`ExpressionToolOutputParameter`, or a specific `*Requirement` entry.
 
-A generic example:
+Option one generic example:
 ```
 some_cwl_field:
   - key_field: a_complex_type1
@@ -119,7 +113,7 @@ some_cwl_field:
   - key_field: a_complex_type3
 ```
 
-A specific example using [Workflow](Workflow.html#Workflow).[inputs](Workflow.html#WorkflowInputParameter):
+Option one specific example using [Workflow](Workflow.html#Workflow).[inputs](Workflow.html#WorkflowInputParameter):
 > array&lt;InputParameter&gt; |  
 > map&lt;`id`, `type` | InputParameter&gt;
 
@@ -131,7 +125,6 @@ inputs:
   - id: workflow_input02
     type: File
     format: http://edamontology.org/format_2572
-  - id: workflow_input03
 ```
 
 Option two is enabled by the `map<…>` syntax. Instead of an array of entries we
@@ -141,7 +134,7 @@ without the key field. If all of the other fields of the `ComplexType` are
 optional and unneeded, then we can indicate this with an empty mapping as the
 value: `a_complex_type3: {}`
 
-A generic example:
+Option two generic example:
 ```
 some_cwl_field:
   a_complex_type1:  # this was the "key_field" from above
@@ -153,7 +146,7 @@ some_cwl_field:
   a_complex_type3: {}  # we accept the defualt values for "field2" and "field3"
 ```
 
-A specific example using [Workflow](Workflow.html#Workflow).[inputs](Workflow.html#WorkflowInputParameter):
+Option two specific example using [Workflow](Workflow.html#Workflow).[inputs](Workflow.html#WorkflowInputParameter):
 > array&lt;InputParameter&gt; |  
 > map&lt;`id`, `type` | InputParameter&gt;
 
@@ -165,9 +158,24 @@ inputs:
   workflow_input02:
     type: File
     format: http://edamontology.org/format_2572
-  workflow_input03: {}  # we accept the default value for "type"
 ```
 
+Option two specific example using [SoftwareRequirement](#SoftwareRequirement).[packages](#SoftwarePackage):
+> array&lt;SoftwarePackage&gt; |  
+> map&lt;`package`, `specs` | SoftwarePackage&gt;
+
+
+```
+hints:
+  SoftwareRequirement:
+    packages:
+      sourmash:
+        specs: [ https://doi.org/10.21105/joss.00027 ]
+      screed:
+        version: [ "1.0" ]
+      python: {}
+```
+`
 Sometimes we have a third and even more compact option denoted like this:
 > type: array&lt;ComplexType&gt; |  
 > map&lt;`key_field`, `field2` | ComplexType&gt;
@@ -176,15 +184,15 @@ For this example, if we only need the `key_field` and `field2` when specifying
 our `ComplexType`s (because the other fields are optional and we are fine with
 their default values) then we can abbreviate.
 
-A generic example:
+Option three generic example:
 ```
 some_cwl_field:
   a_complex_type1: foo   # we accept the default value for field3
   a_complex_type2: foo2  # we accept the default value for field3
-  a_complex_type3: {}    # we accept the defualt values for "field2" and "field3"
+  a_complex_type3: {}    # we accept the default values for "field2" and "field3"
 ```
 
-A specific example using [Workflow](Workflow.html#Workflow).[inputs](Workflow.html#WorkflowInputParameter):
+Option three specific example using [Workflow](Workflow.html#Workflow).[inputs](Workflow.html#WorkflowInputParameter):
 > array&lt;InputParameter&gt; |
 > map&lt;`id`, `type` | InputParameter&gt;
 
@@ -193,13 +201,25 @@ A specific example using [Workflow](Workflow.html#Workflow).[inputs](Workflow.ht
 inputs:
   workflow_input01: string
   workflow_input02: File  # we accept the default of no File format
-  workflow_input03: {}    # we accept the default of no "type"
+```
+
+Option three specific example using [SoftwareRequirement](#SoftwareRequirement).[packages](#SoftwarePackage):
+> array&lt;SoftwarePackage&gt; |  
+> map&lt;`package`, `specs` | SoftwarePackage&gt;
+
+
+```
+hints:
+  SoftwareRequirement:
+    packages:
+      sourmash: [ https://doi.org/10.21105/joss.00027 ]
+      python: {}
 ```
 
 
 What if some entries we want to mix the option 2 and 3? You can!
 
-A generic example:
+Mixed option 2 and 3 generic example:
 ```
 some_cwl_field:
   my_complex_type1: foo   # we accept the default value for field3
@@ -211,7 +231,7 @@ some_cwl_field:
                           # "field2" and "field3"
 ```
 
-A specific example using [Workflow](Workflow.html#Workflow).[inputs](Workflow.html#WorkflowInputParameter):
+Mixed option 2 and 3 specific example using [Workflow](Workflow.html#Workflow).[inputs](Workflow.html#WorkflowInputParameter):
 > array&lt;InputParameter&gt; |
 > map&lt;`id`, `type` | InputParameter&gt;
 
@@ -227,6 +247,21 @@ inputs:
                         # examples
 ```
 
+Mixed option 2 and 3 specific example using [SoftwareRequirement](#SoftwareRequirement).[packages](#SoftwarePackage):
+> array&lt;SoftwarePackage&gt; |  
+> map&lt;`package`, `specs` | SoftwarePackage&gt;
+
+
+```
+hints:
+  SoftwareRequirement:
+    packages:
+      sourmash: [ https://doi.org/10.21105/joss.00027 ]
+      screed:
+        specs: [ https://github.com/dib-lab/screed ]
+        version: [ "1.0" ]
+      python: {}
+```
 
 Note: The `map<…>` (compact) versions are optional, the verbose option #1 is
 always allowed, but for presentation reasons option 3 and 2 may be preferred

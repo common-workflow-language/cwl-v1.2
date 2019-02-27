@@ -100,7 +100,7 @@ $graph:
         * [Added](#LoadListingRequirement) `LoadListingRequirement`
           and [loadListing](#LoadContents) to control whether and how
           `Directory` listings should be loaded for use in expressions.
-        * [Better explain](#map) the `map<…>` notation that has existing since v1.0.
+        * [Better explain](#map) the `map<…>` notation that has existed since v1.0.
         * Fixed schema error where the `type` field inside the `inputs` and
           `outputs` field was incorrectly listed as optional.
 
