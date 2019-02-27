@@ -15,7 +15,7 @@ $graph:
     baseCommand: [ echo, first ]
     stdout: out.txt
   - class: CommandLineTool
-    id: main
+    id: '#main'
     inputs:
       in:
         type: Any

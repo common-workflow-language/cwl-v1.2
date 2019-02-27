@@ -366,12 +366,12 @@ of [process requirements](#Requirements_and_hints).
 The generic execution sequence of a CWL process (including workflows and
 command line line tools) is as follows.
 
-1. Load, process and validate a CWL document, yielding one or more process objects.
 1. Load input object.
+1. Load, process and validate a CWL document, yielding one or more process objects.
 1. If there are multiple process objects (due to [`$graph`](SchemaSalad.html#Document_graph))
 and which process object to start with is not specified in the input object (via
 a [`cwl:tool`](#Executing_CWL_documents_as_scripts) entry) or by any other means
-(like a URL fragment) then choose the process with the `id` of "#main".
+(like a URL fragment) then choose the process with the `id` of "#main" or "main".
 1. Validate the input object against the `inputs` schema for the process.
 1. Validate process requirements are met.
 1. Perform any further setup required by the specific process type.
