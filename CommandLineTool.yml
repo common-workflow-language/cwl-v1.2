@@ -56,8 +56,8 @@ $graph:
         * When defining record types with `CommandInputRecordSchema`, fields of
           type `File` may now include `format`, `loadContents`,
           `secondaryFiles` and `streamable`.
-        * `CommandInputRecordSchema`, `CommandOutputRecordSchema`, 
-          `CommandInputEnumSchema and `CommandInputArraySchema` now have an optional 
+        * `CommandInputRecordSchema`, `CommandOutputRecordSchema`,
+          `CommandInputEnumSchema and `CommandInputArraySchema` now have an optional
           `doc` field.
         * `inputBinding` has been added as an optional field for
           `CommandInputRecordSchema` (was previously in CWL `draft-3` but
@@ -102,6 +102,8 @@ $graph:
           `Directory` listings should be loaded for use in expressions.
         * The position field of the [CommandLineBinding](#CommandLineBinding) can
           now be calculated from a CWL Expression.
+        * The exit code of a CommandLineTool invocation is now
+          available to expressions in `outputEval` as `runtime.exitCode`
 
       See also the [CWL Workflow Description, v1.1.0-dev1 changelog](Workflow.html#Changelog).
 
@@ -324,13 +326,15 @@ $graph:
         - string
         - Expression
       doc: |
-        Evaluate an expression to generate the output value.  If `glob` was
-        specified, the value of `self` must be an array containing file objects
-        that were matched.  If no files were matched, `self` must be a zero
-        length array; if a single file was matched, the value of `self` is an
-        array of a single element.  Additionally, if `loadContents` is `true`,
-        the File objects must include up to the first 64 KiB of file contents
-        in the `contents` field.
+        Evaluate an expression to generate the output value.  If
+        `glob` was specified, the value of `self` must be an array
+        containing file objects that were matched.  If no files were
+        matched, `self` must be a zero length array; if a single file
+        was matched, the value of `self` is an array of a single
+        element.  Additionally, if `loadContents` is `true`, the File
+        objects must include up to the first 64 KiB of file contents
+        in the `contents` field.  The exit code of the process is
+        available in the expression as `runtime.exitCode`.
 
 - name: CommandLineBindable
   type: record

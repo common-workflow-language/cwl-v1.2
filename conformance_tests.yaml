@@ -3192,3 +3192,11 @@
     out: "🕺 1 singular sensation!\n"
   doc: TBD
   tags: [ command_line_tool, required ]
+
+- job: tests/empty.json
+  tool: tests/exitcode.cwl
+  label: outputEval_exitCode
+  output:
+    code: 7
+  doc: Can access exit code in outputEval
+  tags: [ command_line_tool, required ]
