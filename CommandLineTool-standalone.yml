@@ -1,3 +1,2 @@
-saladVersion: v1.1
 - $import: Process.yml
 - $import: CommandLineTool.yml
