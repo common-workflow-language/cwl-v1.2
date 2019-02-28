@@ -110,6 +110,7 @@ $graph:
           `outputs` field was incorrectly listed as optional.
         * For multi-Process CWL documents, if no particular process is named then
           the process with the `id` of `#main` is chosen.
+        * Added explicit defaults for [ResourceRequirement](#ResourceRequirement)s.
 
       See also the [CWL Workflow Description, v1.1.0-dev1 changelog](Workflow.html#Changelog).
 
@@ -1071,7 +1072,7 @@ $graph:
 
     It is an error if the value of any of these fields is negative.
 
-    If neither "min" nor "max" is specified for a resource, an implementation may provide a default.
+    If neither "min" nor "max" is specified for a resource, use the default values below.
 
   fields:
     - name: class
@@ -1082,7 +1083,7 @@ $graph:
         "_type": "@vocab"
     - name: coresMin
       type: ["null", long, string, Expression]
-      doc: Minimum reserved number of CPU cores
+      doc: Minimum reserved number of CPU cores (default is 1)
 
     - name: coresMax
       type: ["null", int, string, Expression]
@@ -1090,7 +1091,7 @@ $graph:
 
     - name: ramMin
       type: ["null", long, string, Expression]
-      doc: Minimum reserved RAM in mebibytes (2**20)
+      doc: Minimum reserved RAM in mebibytes (2**20) (default is 256)
 
     - name: ramMax
       type: ["null", long, string, Expression]
@@ -1098,7 +1099,7 @@ $graph:
 
     - name: tmpdirMin
       type: ["null", long, string, Expression]
-      doc: Minimum reserved filesystem based storage for the designated temporary directory, in mebibytes (2**20)
+      doc: Minimum reserved filesystem based storage for the designated temporary directory, in mebibytes (2**20) (default is 1024)
 
     - name: tmpdirMax
       type: ["null", long, string, Expression]
@@ -1106,7 +1107,7 @@ $graph:
 
     - name: outdirMin
       type: ["null", long, string, Expression]
-      doc: Minimum reserved filesystem based storage for the designated output directory, in mebibytes (2**20)
+      doc: Minimum reserved filesystem based storage for the designated output directory, in mebibytes (2**20) (default is 1024)
 
     - name: outdirMax
       type: ["null", long, string, Expression]
