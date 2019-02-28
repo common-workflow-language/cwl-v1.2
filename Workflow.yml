@@ -94,6 +94,9 @@ $graph:
            incorrectly listed as optional.
         * For multi-Process CWL documents, if no particular process is named then
           the process with the `id` of `#main` is chosen.
+        * [Made explicit](#Generic_execution_process) that the `$namespaces` of
+          the top level CWL document are also available to the input object as
+          well.
 
       See also the [CWL Command Line Tool Description, v1.1.0-dev1 changelog](CommandLineTool.html#Changelog).
 

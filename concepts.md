@@ -368,6 +368,8 @@ command line line tools) is as follows.
 
 1. Load input object.
 1. Load, process and validate a CWL document, yielding one or more process objects.
+The [`$namespaces`](SchemaSalad.html#Explicit_context) present in the CWL document
+are also used when validating and processing the input object.
 1. If there are multiple process objects (due to [`$graph`](SchemaSalad.html#Document_graph))
 and which process object to start with is not specified in the input object (via
 a [`cwl:tool`](#Executing_CWL_documents_as_scripts) entry) or by any other means

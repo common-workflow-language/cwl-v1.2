@@ -3228,7 +3228,8 @@
   label: inputBinding_position_expr
   output:
     out: "🕺 1 singular sensation!\n"
-  doc: TBD
+  doc: |
+    Test for expression in the InputBinding.position field; also test using emoji in CWL document and tool output
   tags: [ command_line_tool, required ]
 
 - job: tests/empty.json
