@@ -23,8 +23,6 @@ steps:
     in: {file1: file1}
     out: [count_output]
     scatter: file1
-    in:
-      file1: [file1, file2]
     run:
       class: Workflow
       inputs:

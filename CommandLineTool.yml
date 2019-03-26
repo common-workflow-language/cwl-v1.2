@@ -57,8 +57,8 @@ $graph:
         * When defining record types with `CommandInputRecordSchema`, fields of
           type `File` may now include `format`, `loadContents`,
           `secondaryFiles` and `streamable`.
-        * `CommandInputRecordSchema`, `CommandOutputRecordSchema`, 
-          `CommandInputEnumSchema and `CommandInputArraySchema` now have an optional 
+        * `CommandInputRecordSchema`, `CommandOutputRecordSchema`,
+          `CommandInputEnumSchema and `CommandInputArraySchema` now have an optional
           `doc` field.
         * `inputBinding` has been added as an optional field for
           `CommandInputRecordSchema` (was previously in CWL `draft-3` but
@@ -114,6 +114,12 @@ $graph:
         * [Made explicit](#Generic_execution_process) that the `$namespaces` of
           the top level CWL document are also available to the input object as
           well.
+        * Fields with type "Expression" no longer include "string" in
+          the type union unless a string is semantically valid.  Where
+          a bare string is not semantically valid, these fields must
+          contain either a non-string value accepted by the field
+          type, or a valid expression which returns a value having one
+          of the the other types defined for that field.
 
       See also the [CWL Workflow Description, v1.1.0-dev1 changelog](Workflow.html#Changelog).
 
@@ -211,7 +217,7 @@ $graph:
 
   fields:
     - name: position
-      type: [ int, Expression, string, "null" ]
+      type: [ "null", int, Expression ]
       doc: |
         The sorting key.  Default position is 0. If the inputBinding is
         associated with an input parameter, then the value of `self` in the
@@ -331,10 +337,7 @@ $graph:
         container filesystem except for declared input and output.
 
     - name: outputEval
-      type:
-        - "null"
-        - string
-        - Expression
+      type: Expression?
       doc: |
         Evaluate an expression to generate the output value.  If
         `glob` was specified, the value of `self` must be an array
@@ -990,9 +993,7 @@ $graph:
                 - Directory
             - Directory
             - Dirent
-            - string
             - Expression
-        - string
         - Expression
       jsonldPredicate:
         _id: "cwl:listing"
@@ -1085,35 +1086,35 @@ $graph:
         "_id": "@type"
         "_type": "@vocab"
     - name: coresMin
-      type: ["null", long, string, Expression]
+      type: ["null", long, Expression]
       doc: Minimum reserved number of CPU cores (default is 1)
 
     - name: coresMax
-      type: ["null", int, string, Expression]
+      type: ["null", int, Expression]
       doc: Maximum reserved number of CPU cores
 
     - name: ramMin
-      type: ["null", long, string, Expression]
+      type: ["null", long, Expression]
       doc: Minimum reserved RAM in mebibytes (2**20) (default is 256)
 
     - name: ramMax
-      type: ["null", long, string, Expression]
+      type: ["null", long, Expression]
       doc: Maximum reserved RAM in mebibytes (2**20)
 
     - name: tmpdirMin
-      type: ["null", long, string, Expression]
+      type: ["null", long, Expression]
       doc: Minimum reserved filesystem based storage for the designated temporary directory, in mebibytes (2**20) (default is 1024)
 
     - name: tmpdirMax
-      type: ["null", long, string, Expression]
+      type: ["null", long, Expression]
       doc: Maximum reserved filesystem based storage for the designated temporary directory, in mebibytes (2**20)
 
     - name: outdirMin
-      type: ["null", long, string, Expression]
+      type: ["null", long, Expression]
       doc: Minimum reserved filesystem based storage for the designated output directory, in mebibytes (2**20) (default is 1024)
 
     - name: outdirMax
-      type: ["null", long, string, Expression]
+      type: ["null", long, Expression]
       doc: Maximum reserved filesystem based storage for the designated output directory, in mebibytes (2**20)
 
 
@@ -1138,7 +1139,7 @@ $graph:
         "_id": "@type"
         "_type": "@vocab"
     - name: enableReuse
-      type: [boolean, string, Expression]
+      type: [boolean, Expression]
       default: true
 
 
@@ -1170,7 +1171,7 @@ $graph:
         "_id": "@type"
         "_type": "@vocab"
     - name: networkAccess
-      type: [boolean, string, Expression]
+      type: [boolean, Expression]
 
 - name: InplaceUpdateRequirement
   type: record
@@ -1236,7 +1237,7 @@ $graph:
         "_id": "@type"
         "_type": "@vocab"
     - name: timelimit
-      type: [long, string, Expression]
+      type: [long, Expression]
       doc: |
         The time limit, in seconds.  A time limit of zero means no
         time limit.  Negative time limits are an error.

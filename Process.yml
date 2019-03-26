@@ -932,7 +932,7 @@ $graph:
             extensions, the path is unchanged.
           3. Append the remainder of the string to the end of the file path.
     - name: required
-      type: ["null", boolean, string, Expression]
+      type: ["null", boolean, Expression]
       doc: |
         An implementation must not fail workflow execution if `required` is
         set to `false` and the expected secondary file does not exist.

@@ -49,7 +49,7 @@ $graph:
 
       ## Changelog
 
-        * Clarify intent of ExpressionTool and clarify that they can be run standalone. 
+        * Clarify intent of ExpressionTool and clarify that they can be run standalone.
         * Clarify how Requirements are inherited by step processes.
         * Clarify behavior around step inputs not consumed by the target
           run process.
@@ -97,6 +97,12 @@ $graph:
         * [Made explicit](#Generic_execution_process) that the `$namespaces` of
           the top level CWL document are also available to the input object as
           well.
+        * Fields with type "Expression" no longer include "string" in
+          the type union unless a string is semantically valid.  Where
+          a bare string is not semantically valid, these fields must
+          contain either a non-string value accepted by the field
+          type, or a valid expression which returns a value having one
+          of the the other types defined for that field.
 
       See also the [CWL Command Line Tool Description, v1.1.0-dev1 changelog](CommandLineTool.html#Changelog).
 
@@ -198,7 +204,7 @@ $graph:
         "_type": "@vocab"
       type: string
     - name: expression
-      type: [string, Expression]
+      type: Expression
       doc: |
         The expression to execute.  The expression must return a JSON object which
         matches the output parameters of the ExpressionTool.
