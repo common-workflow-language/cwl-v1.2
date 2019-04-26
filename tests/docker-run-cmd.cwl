@@ -1,5 +1,5 @@
 class: CommandLineTool
-cwlVersion: v1.1.0-dev1
+cwlVersion: v1.1
 requirements:
   DockerRequirement:
     dockerPull: bash:4.4.12

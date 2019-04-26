@@ -1,7 +1,7 @@
 #!/usr/bin/env cwl-runner
 
 class: CommandLineTool
-cwlVersion: v1.1.0-dev1
+cwlVersion: v1.1
 id: stage_file_array
 label: Stage File Array
 arguments: [ls]

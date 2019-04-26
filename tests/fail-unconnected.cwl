@@ -1,5 +1,5 @@
 class: Workflow
-cwlVersion: v1.1.0-dev1
+cwlVersion: v1.1
 inputs:
   inp1:
     type: string
