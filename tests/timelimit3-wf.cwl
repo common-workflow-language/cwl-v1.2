@@ -5,6 +5,8 @@ cwlVersion: v1.1.0-dev1
 requirements:
   ToolTimeLimit:
     timelimit: 0
+  WorkReuse:
+    enableReuse: false
 
 inputs:
   i:
@@ -31,4 +33,3 @@ steps:
           type: string?
           outputBinding:
             outputEval: "time passed"
-      

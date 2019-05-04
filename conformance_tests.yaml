@@ -2998,14 +2998,15 @@
 - job: tests/empty.json
   tool: tests/inp_update_wf.cwl
   doc: inplace update has side effect on file content
+  tags: [ inplace_update ]
   output:
     a: 4
     b: 4
 
-
 - job: tests/empty.json
   tool: tests/inpdir_update_wf.cwl
   doc: inplace update has side effect on directory content
+  tags: [ inplace_update ]
   output: {
     a: [
             {
@@ -3257,4 +3258,3 @@
     Test use of $graph without specifying which process to run,
     hash-prefixed "main"
   tags: [ required, command_line_tool ]
-

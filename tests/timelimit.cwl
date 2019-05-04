@@ -5,4 +5,6 @@ outputs: []
 requirements:
   ToolTimeLimit:
     timelimit: 3
+  WorkReuse:
+    enableReuse: false
 baseCommand: [sleep, "15"]

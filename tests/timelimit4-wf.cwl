@@ -5,6 +5,8 @@ cwlVersion: v1.1.0-dev1
 requirements:
   ToolTimeLimit:
     timelimit: $(1+2)
+  WorkReuse:
+    enableReuse: false
   InlineJavascriptRequirement: {}
 
 inputs:
@@ -32,4 +34,3 @@ steps:
           type: string?
           outputBinding:
             outputEval: "time passed"
-      
