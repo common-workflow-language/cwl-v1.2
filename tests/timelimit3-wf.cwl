@@ -7,6 +7,7 @@ requirements:
     timelimit: 0
   WorkReuse:
     enableReuse: false
+  InlineJavascriptRequirement: {}
 
 inputs:
   i:
@@ -32,4 +33,4 @@ steps:
         o:
           type: string?
           outputBinding:
-            outputEval: "time passed"
+            outputEval: $("time passed")
