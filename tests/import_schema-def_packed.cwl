@@ -1,86 +1,86 @@
 {
-    "cwlVersion": "v1.1.0-dev1", 
+    "cwlVersion": "v1.1",
     "$graph": [
         {
             "inputs": [
                 {
-                    "type": "string", 
+                    "type": "string",
                     "id": "#main/bam"
-                }, 
+                },
                 {
-                    "type": "#capture_kit.yml/capture_kit", 
+                    "type": "#capture_kit.yml/capture_kit",
                     "id": "#main/capture_kit"
                 }
-            ], 
+            ],
             "requirements": [
                 {
-                    "class": "SchemaDefRequirement", 
+                    "class": "SchemaDefRequirement",
                     "types": [
                         {
                             "fields": [
                                 {
-                                    "type": "string", 
+                                    "type": "string",
                                     "name": "#capture_kit.yml/capture_kit/bait"
                                 }
-                            ], 
-                            "type": "record", 
+                            ],
+                            "type": "record",
                             "name": "#capture_kit.yml/capture_kit"
                         }
                     ]
                 }
-            ], 
+            ],
             "outputs": [
                 {
-                    "outputSource": "#main/touch_bam/empty_file", 
-                    "type": "File", 
+                    "outputSource": "#main/touch_bam/empty_file",
+                    "type": "File",
                     "id": "#main/output_bam"
                 }
-            ], 
-            "class": "Workflow", 
+            ],
+            "class": "Workflow",
             "steps": [
                 {
                     "out": [
                         "#main/touch_bam/empty_file"
-                    ], 
-                    "run": "#touch.cwl", 
-                    "id": "#main/touch_bam", 
+                    ],
+                    "run": "#touch.cwl",
+                    "id": "#main/touch_bam",
                     "in": [
                         {
-                            "source": "#main/bam", 
+                            "source": "#main/bam",
                             "id": "#main/touch_bam/name"
                         }
                     ]
                 }
-            ], 
+            ],
             "id": "#main"
-        }, 
+        },
         {
             "inputs": [
                 {
                     "inputBinding": {
                         "position": 0
-                    }, 
-                    "type": "string", 
+                    },
+                    "type": "string",
                     "id": "#touch.cwl/name"
                 }
-            ], 
+            ],
             "outputs": [
                 {
                     "outputBinding": {
                         "glob": "$(inputs.name)"
-                    }, 
-                    "type": "File", 
+                    },
+                    "type": "File",
                     "id": "#touch.cwl/empty_file"
                 }
-            ], 
+            ],
             "baseCommand": [
                 "touch"
-            ], 
-            "class": "CommandLineTool", 
-            "id": "#touch.cwl", 
+            ],
+            "class": "CommandLineTool",
+            "id": "#touch.cwl",
             "hints": [
                 {
-                    "dockerPull": "debian:stretch-slim", 
+                    "dockerPull": "debian:stretch-slim",
                     "class": "DockerRequirement"
                 }
             ]

@@ -6,4 +6,4 @@ Proposed changes that aren't yet implemented are tracked at https://github.com/c
 
 You can render this using https://github.com/common-workflow-language/cwl-website/blob/master/website.sh
 
-The current rendering is at https://www.commonwl.org/v1.1.0-dev1/
+The current rendering is at https://www.commonwl.org/v1.1/
