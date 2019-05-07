@@ -293,7 +293,7 @@ Type `<T>` ending with `[]` should be transformed to `{"type": "array", "items":
 
 ## Extensions and metadata
 
-Input metadata (for example, a lab sample identifier) may be represented within
+Input metadata (for example, a sample identifier) may be represented within
 a tool or workflow using input parameters which are explicitly propagated to
 output.  Future versions of this specification may define additional facilities
 for working with input/output metadata.
@@ -304,6 +304,9 @@ itself (for example, authorship for use in citations) may be provided as
 additional fields on any object.  Such extensions fields must use a namespace
 prefix listed in the `$namespaces` section of the document as described in the
 [Schema Salad specification](SchemaSalad.html#Explicit_context).
+
+It is recommended that concepts from schema.org are used whenever possible.
+For the `$schema` field we recommend their RDF encoding: http://schema.org/version/latest/schema.rdf
 
 Implementation extensions which modify execution semantics must be [listed in
 the `requirements` field](#Requirements_and_hints).
