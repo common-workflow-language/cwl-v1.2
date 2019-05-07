@@ -312,9 +312,8 @@ $graph:
         path pattern (it does begin with a slash '/') then it must
         refer to a path within the output directory.  It is an error
         if any glob resolves to a path outside the output directory.
-        Specifically this means globs with relative paths containing
-        '..' or absolute paths that refer outside the output directory
-        are illegal.
+        Specifically this means globs that resolve to paths outside the output
+        directory are illegal.
 
         A glob may match a path within the output directory which is
         actually a symlink to another file.  In this case, the
