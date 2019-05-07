@@ -245,9 +245,6 @@ inputs:
   workflow_input02:     # we use the longer way
     type: File          # because we want to specify the "format" too
     format: http://edamontology.org/format_2572
-  workflow_input03: {}  # back to the short form as this entry
-                        # uses the default of no "type" just like the prior
-                        # examples
 ```
 
 Mixed option 2 and 3 specific example using [SoftwareRequirement](#SoftwareRequirement).[packages](#SoftwarePackage):
@@ -266,9 +263,9 @@ hints:
       python: {}
 ```
 
-Note: The `map<…>` (compact) versions are optional, the verbose option #1 is
+Note: The `map<…>` (compact) versions are optional for users, the verbose option #1 is
 always allowed, but for presentation reasons option 3 and 2 may be preferred
-by human readers.
+by human readers. Consumers of CWL must support all three options.
 
 The normative explanation for these variations, aimed at implementors, is in the
 [Schema Salad specification](SchemaSalad.html#Identifier_maps).
