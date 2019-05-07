@@ -356,8 +356,6 @@ platform include:
 (except as described in [DockerRequirement](CommandLineTool.html#DockerRequirement)).
 * Using remote or distributed file systems to manage input and output files.
 * Transforming file paths.
-* Determining if a process has previously been executed, and if so skipping it
-and reusing previous results.
 * Pausing, resuming or checkpointing processes or workflows.
 
 Conforming CWL processes must not assume anything about the runtime
