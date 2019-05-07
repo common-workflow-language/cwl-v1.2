@@ -17,6 +17,9 @@ https://tools.ietf.org/html/rfc3987
 
 **Resource Description Framework (RDF)**: http://www.w3.org/RDF/
 
+**XDG Base Directory Specification**: https://specifications.freedesktop.org/basedir-spec/basedir-spec-0.6.html
+
+
 ## Scope
 
 This document describes CWL syntax, execution, and object model.  It
@@ -578,11 +581,16 @@ documented in [cwl-runner.cwl](cwl-runner.cwl).
 
 To discover CWL documents look in the following locations:
 
-`/usr/share/commonwl/`
+For each value in the `XDG_DATA_DIRS` environment variable (which is a `:` colon
+separated list), check the `./commonwl` subdirectory. If `XDG_DATA_DIRS` is
+unset or empty, then check using the default value for `XDG_DATA_DIRS`:
+`/usr/local/share/:/usr/share/` (That is to say, check `/usr/share/commonwl/`
+and `/usr/local/share/commonwl/`)
 
-`/usr/local/share/commonwl/`
+Then check `$XDG_DATA_HOME/commonwl/`.
 
-`$XDG_DATA_HOME/commonwl/` (usually `$HOME/.local/share/commonwl`)
+If the `XDG_DATA_HOME` environment variable is unset, its default value is
+`$HOME/.local/share` (That is to say, check `$HOME/.local/share/commonwl`)
 
-`$XDG_DATA_HOME` is from the [XDG Base Directory
+`$XDG_DATA_HOME` and `$XDG_DATA_DIRS` are from the [XDG Base Directory
 Specification](http://standards.freedesktop.org/basedir-spec/basedir-spec-0.6.html)
