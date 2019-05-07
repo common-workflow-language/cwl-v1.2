@@ -500,7 +500,7 @@ must be treated as a string interpolation.  After interpolating the first
 parameter reference, interpolation must be recursively applied to the
 trailing characters to yield the final string value.
 
-## Expressions
+## Expressions (Optional)
 
 An expression is a fragment of [Javascript/ECMAScript
 5.1](http://www.ecma-international.org/ecma-262/5.1/) code evaluated by the
@@ -510,6 +510,12 @@ be evaluated during step 5 (process setup), step 6 (execute process),
 and/or step 7 (capture output).  Expressions are distinct from regular
 processes in that they are intended to modify the behavior of the workflow
 itself rather than perform the primary work of the workflow.
+
+Expressions in CWL are an optional feature and are not required to be
+implemented by all consumers of CWL documents. They should be used sparingly,
+when there is no other way to achieve the desired outcome. Excessive use of
+expressions may be a signal that other refactoring of the tools or workflows
+would benefit the author, runtime, and users of the CWL document in question.
 
 To declare the use of expressions, the document must include the process
 requirement `InlineJavascriptRequirement`.  Expressions may be used in any
@@ -555,8 +561,8 @@ Implementations may apply other limits, such as process isolation, timeouts,
 and operating system containers/jails to minimize the security risks associated
 with running untrusted code embedded in a CWL document.
 
-Exceptions thrown from an exception must result in a `permanentFailure` of the
-process.
+Javascript exceptions thrown from an exception must result in a
+`permanentFailure` of the CWL process.
 
 ## Executing CWL documents as scripts
 
