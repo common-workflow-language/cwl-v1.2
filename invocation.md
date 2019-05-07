@@ -96,9 +96,10 @@ output directory may each reside on different mount points on different file
 systems.
 
 An implementation may forbid the tool from directly accessing network
-resources.  Correct tools must not assume any network access.  Future versions
-of the specification may incorporate optional process requirements that
-describe the networking needs of a tool.
+resources.  Correct tools must not assume any network access unless they have
+the 'networkAccess' field of a ['NetworkAccess'](#NetworkAccess) requirement set
+to `true` but even then this does not imply a publically routable IP address or
+the ability to accept inbound connections.
 
 The `runtime` section available in [parameter references](#Parameter_references)
 and [expressions](#Expressions) contains the following fields.  As noted
