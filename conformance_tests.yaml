@@ -2831,7 +2831,7 @@
   tool: tests/timelimit2-wf.cwl
   label: timelimit_invalid_wf
   doc: Test that workflow level time limit is not applied to workflow execution time
-  tags: [ workflow, timelimit ]
+  tags: [ workflow, timelimit, inline_javascript ]
 
 - job: tests/empty.json
   output:
@@ -2839,7 +2839,7 @@
   tool: tests/timelimit3-wf.cwl
   label: timelimit_zero_unlimited_wf
   doc: Test zero timelimit means no limit in workflow
-  tags: [ workflow, timelimit ]
+  tags: [ workflow, timelimit, inline_javascript ]
 
 - job: tests/empty.json
   should_fail: true
