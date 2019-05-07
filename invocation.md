@@ -116,23 +116,23 @@ not perform computation on the contents.
   * `runtime.tmpdirSize`: reserved storage space available in the designated temporary directory
 
 For `cores`, `ram`, `outdirSize` and `tmpdirSize`, if an implementation can't
-provide the actual number of reserved cores during the expression evaluation time,
+provide the actual number of reserved resources during the expression evaluation time,
 it should report back the minimal requested amount.
 
 See [ResourceRequirement](#ResourceRequirement) for details on how to
 describe the hardware resources required by a tool.
 
-The standard input stream and standard output stream may be redirected as
-described in the `stdin` and `stdout` fields.
+The standard input stream, the standard output stream, and/or the standard error
+stream may be redirected as described in the [`stdin`](#stdin),
+[`stdout`](#stdout), and [`stderr`](#stderr) fields.
 
 ## Execution
 
 Once the command line is built and the runtime environment is created, the
 actual tool is executed.
 
-The standard error stream and standard output stream (unless redirected by
-setting `stdout` or `stderr`) may be captured by platform logging facilities
-for storage and reporting.
+The standard error stream and standard output stream may be captured by
+platform logging facilities for storage and reporting.
 
 Tools may be multithreaded or spawn child processes; however, when the
 parent process exits, the tool is considered finished regardless of whether
