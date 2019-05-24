@@ -1,6 +1,6 @@
 #!/usr/bin/env cwl-runner
 class: CommandLineTool
-cwlVersion: v1.1.0-dev1
+cwlVersion: v1.1
 doc: "Create a file under adir/, symlink it to working directory (./) and glob symlink. The executor should resolve this symlink"
 hints:
   DockerRequirement:

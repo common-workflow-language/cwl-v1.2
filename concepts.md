@@ -89,12 +89,12 @@ preprocessing steps described in the
 [Semantic Annotations for Linked Avro Data (SALAD) Specification](SchemaSalad.html).
 An implementation may formally validate the structure of a CWL document using
 SALAD schemas located at
-https://github.com/common-workflow-language/common-workflow-language/tree/master/v1.1.0-dev1
+https://github.com/common-workflow-language/common-workflow-language/tree/master/v1.1
 
 ### map
 
 Note: This section is non-normative.
-> type: array&lt;ComplexType&gt; |  
+> type: array&lt;ComplexType&gt; |
 > map&lt;`key_field`, ComplexType&gt;
 
 The above syntax in the CWL specifications means there are two or more ways to write the given value.
@@ -114,7 +114,7 @@ some_cwl_field:
 ```
 
 Option one specific example using [Workflow](Workflow.html#Workflow).[inputs](Workflow.html#WorkflowInputParameter):
-> array&lt;InputParameter&gt; |  
+> array&lt;InputParameter&gt; |
 > map&lt;`id`, `type` | InputParameter&gt;
 
 
@@ -147,7 +147,7 @@ some_cwl_field:
 ```
 
 Option two specific example using [Workflow](Workflow.html#Workflow).[inputs](Workflow.html#WorkflowInputParameter):
-> array&lt;InputParameter&gt; |  
+> array&lt;InputParameter&gt; |
 > map&lt;`id`, `type` | InputParameter&gt;
 
 
@@ -161,7 +161,7 @@ inputs:
 ```
 
 Option two specific example using [SoftwareRequirement](#SoftwareRequirement).[packages](#SoftwarePackage):
-> array&lt;SoftwarePackage&gt; |  
+> array&lt;SoftwarePackage&gt; |
 > map&lt;`package`, `specs` | SoftwarePackage&gt;
 
 
@@ -177,7 +177,7 @@ hints:
 ```
 `
 Sometimes we have a third and even more compact option denoted like this:
-> type: array&lt;ComplexType&gt; |  
+> type: array&lt;ComplexType&gt; |
 > map&lt;`key_field`, `field2` | ComplexType&gt;
 
 For this example, if we only need the `key_field` and `field2` when specifying
@@ -204,7 +204,7 @@ inputs:
 ```
 
 Option three specific example using [SoftwareRequirement](#SoftwareRequirement).[packages](#SoftwarePackage):
-> array&lt;SoftwarePackage&gt; |  
+> array&lt;SoftwarePackage&gt; |
 > map&lt;`package`, `specs` | SoftwarePackage&gt;
 
 
@@ -248,7 +248,7 @@ inputs:
 ```
 
 Mixed option 2 and 3 specific example using [SoftwareRequirement](#SoftwareRequirement).[packages](#SoftwarePackage):
-> array&lt;SoftwarePackage&gt; |  
+> array&lt;SoftwarePackage&gt; |
 > map&lt;`package`, `specs` | SoftwarePackage&gt;
 
 
@@ -403,7 +403,7 @@ as if they were specified there.
 Requirements specified in a parent Workflow are inherited by step processes
 if they are valid for that step. If the substep is a CommandLineTool
 only the `InlineJavascriptRequirement`, `SchemaDefRequirement`, `DockerRequirement`,
-`SoftwareRequirement`, `InitialWorkDirRequirement`, `EnvVarRequirement`, 
+`SoftwareRequirement`, `InitialWorkDirRequirement`, `EnvVarRequirement`,
 `ShellCommandRequirement`, `ResourceRequirement` are valid.
 
 *As good practice, it is best to have process requirements be self-contained,

@@ -1,10 +1,11 @@
 #!/usr/bin/env cwl-runner
 class: Workflow
-cwlVersion: v1.1.0-dev1
+cwlVersion: v1.1
 
 requirements:
   ToolTimeLimit:
     timelimit: 5
+  InlineJavascriptRequirement: {}
 
 inputs:
   i:
@@ -30,7 +31,7 @@ steps:
         o:
           type: string?
           outputBinding:
-            outputEval: "time passed"
+            outputEval: $("time passed")
   step2:
     in:
       i: step1/o
@@ -45,5 +46,4 @@ steps:
         o:
           type: string?
           outputBinding:
-            outputEval: "time passed"
-      
+            outputEval: $("time passed")

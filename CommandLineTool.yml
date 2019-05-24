@@ -10,10 +10,10 @@ $graph:
   type: documentation
   doc:
     - |
-      # Common Workflow Language (CWL) Command Line Tool Description, v1.1.0-dev1
+      # Common Workflow Language (CWL) Command Line Tool Description, v1.1
 
       This version:
-        * https://w3id.org/cwl/v1.1.0-dev1/
+        * https://w3id.org/cwl/v1.1/
 
       Current version:
         * https://w3id.org/cwl/
@@ -37,17 +37,17 @@ $graph:
     - {$include: intro.md}
 
     - |
-      ## Introduction to the CWL Command Line Tool standard v1.1.0-dev1
+      ## Introduction to the CWL Command Line Tool standard v1.1
 
       This specification represents the latest development release from the
       CWL group.  Since the v1.0 release, v1.1 introduces the
       following updates to the CWL Command Line Tool standard.
-      Documents should use `cwlVersion: v1.1.0-dev1` to make use of new
-      syntax and features introduced in v1.1.0-dev1.  Existing v1.0 documents
+      Documents should use `cwlVersion: v1.1` to make use of new
+      syntax and features introduced in v1.1.  Existing v1.0 documents
       should be trivially updatable by changing `cwlVersion`, however
       CWL documents that relied on previously undefined or
       underspecified behavior may have slightly different behavior in
-      v1.1.0-dev1.
+      v1.1.
 
       ## Changelog
 
@@ -121,7 +121,7 @@ $graph:
           type, or a valid expression which returns a value having one
           of the the other types defined for that field.
 
-      See also the [CWL Workflow Description, v1.1.0-dev1 changelog](Workflow.html#Changelog).
+      See also the [CWL Workflow Description, v1.1 changelog](Workflow.html#Changelog).
 
       ## Purpose
 

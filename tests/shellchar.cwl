@@ -1,6 +1,6 @@
 #!/usr/bin/env cwl-runner
 class: CommandLineTool
-cwlVersion: v1.1.0-dev1
+cwlVersion: v1.1
 doc: |
   Ensure that arguments containing shell directives are not interpreted and
   that `shellQuote: false` has no effect when ShellCommandRequirement is not in
