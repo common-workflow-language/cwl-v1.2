@@ -3304,3 +3304,12 @@
   tags: [ required, command_line_tool ]
   id: 252
 
+- tool: tests/optional-numerical-output-0.cwl
+  job: tests/empty.json
+  output:
+    {"out": 0}
+  label: optional_numerical_output_returns_0_not_null
+  doc: |
+    Test that optional number output is returned as 0, not null
+  tags: [ required, command_line_tool ]
+  id: 253
