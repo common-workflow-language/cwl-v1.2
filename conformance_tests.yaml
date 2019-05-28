@@ -3311,5 +3311,5 @@
   label: optional_numerical_output_returns_0_not_null
   doc: |
     Test that optional number output is returned as 0, not null
-  tags: [ required, inline_javascript, ommand_line_tool ]
+  tags: [ required, inline_javascript, command_line_tool ]
   id: 253
