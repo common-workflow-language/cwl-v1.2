@@ -1,6 +1,6 @@
 #!/usr/bin/env cwl-runner
 class: CommandLineTool
-cwlVersion: v1.1.0-dev1
+cwlVersion: v1.1
 
 requirements:
   - $import: schemadef-type.yml
