@@ -91,8 +91,7 @@ JSON or YAML syntax.  Upon loading, a CWL implementation must apply the
 preprocessing steps described in the
 [Semantic Annotations for Linked Avro Data (SALAD) Specification](SchemaSalad.html).
 An implementation may formally validate the structure of a CWL document using
-SALAD schemas located at
-https://github.com/common-workflow-language/common-workflow-language/tree/master/v1.1
+SALAD schemas located at https://github.com/common-workflow-language/cwl-v1.1/
 
 ### map
 
@@ -561,7 +560,7 @@ Implementations may apply other limits, such as process isolation, timeouts,
 and operating system containers/jails to minimize the security risks associated
 with running untrusted code embedded in a CWL document.
 
-Javascript exceptions thrown from an exception must result in a
+Javascript exceptions thrown from a CWL expression must result in a
 `permanentFailure` of the CWL process.
 
 ## Executing CWL documents as scripts
