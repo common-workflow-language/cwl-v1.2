@@ -773,8 +773,7 @@
   tool: tests/params.cwl
   label: param_evaluation_noexpr
   id: 61
-  doc: |
-    Test parameter evaluation, no support for JS expressions
+  doc: Test parameter evaluation, no support for JS expressions
   tags: [ required, command_line_tool ]
 
 - job: tests/empty.json
@@ -2883,8 +2882,7 @@
 
 - job: tests/stage-array-job.json
   tool: tests/stage-array.cwl
-  doc: |
-    Test null and array input in InitialWorkDirRequirement
+  doc: Test null and array input in InitialWorkDirRequirement
   output:
       "output": {
         "basename": "lsout",
@@ -2898,8 +2896,7 @@
 
 - job: tests/stage-array-dirs-job.yml
   tool: tests/stage-array-dirs.cwl
-  doc: |
-    Test array of directories InitialWorkDirRequirement
+  doc: Test array of directories InitialWorkDirRequirement
   output: {
     "output": [
             {
@@ -3222,7 +3219,7 @@
   label: listing_requirement_shallow
   output:
     out: true
-  doc: |
+  doc: >
     Test that 'listing' is present in top directory object but not
     subdirectory object when LoadListingRequirement is
     'shallow_listing'
@@ -3234,7 +3231,7 @@
   label: listing_loadListing_shallow
   output:
     out: true
-  doc: |
+  doc: >
     Test that 'listing' is present in top directory object but not
     subdirectory object when loadListing on input parameter loadListing is
     'shallow_listing'
@@ -3246,7 +3243,7 @@
   label: listing_requirement_deep
   output:
     out: true
-  doc: |
+  doc: >
     Test that 'listing' is present in top directory object and in
     subdirectory objects when LoadListingRequirement is
     'deep_listing'
@@ -3258,7 +3255,7 @@
   label: listing_loadListing_deep
   output:
     out: true
-  doc: |
+  doc: >
     Test that 'listing' is present in top directory object and in
     subdirectory objects when input parameter loadListing is
     'deep_listing'
@@ -3270,7 +3267,7 @@
   label: inputBinding_position_expr
   output:
     out: "🕺 1 singular sensation!\n"
-  doc: |
+  doc: >
     Test for expression in the InputBinding.position field; also test using emoji in CWL document and tool output
   tags: [ command_line_tool, required ]
   id: 249
@@ -3298,7 +3295,7 @@
   output:
     {"out": "hello test env\n"}
   label: any_input_param_graph_no_default_hashmain
-  doc: |
+  doc: >
     Test use of $graph without specifying which process to run,
     hash-prefixed "main"
   tags: [ required, command_line_tool ]
