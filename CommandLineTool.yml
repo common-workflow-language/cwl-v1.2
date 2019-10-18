@@ -10,10 +10,10 @@ $graph:
   type: documentation
   doc:
     - |
-      # Common Workflow Language (CWL) Command Line Tool Description, v1.1
+      # Common Workflow Language (CWL) Command Line Tool Description, v1.2.0-dev1
 
       This version:
-        * https://w3id.org/cwl/v1.1/
+        * https://w3id.org/cwl/v1.2.0-dev1/
 
       Current version:
         * https://w3id.org/cwl/
@@ -37,91 +37,21 @@ $graph:
     - {$include: intro.md}
 
     - |
-      ## Introduction to the CWL Command Line Tool standard v1.1
+      ## Introduction to the CWL Command Line Tool standard v1.2.0-dev1
 
       This specification represents the latest development release from the
-      CWL group.  Since the v1.0 release, v1.1 introduces the
+      CWL group.  Since the v1.1 release, v1.2.0-dev1 introduces the
       following updates to the CWL Command Line Tool standard.
-      Documents should use `cwlVersion: v1.1` to make use of new
-      syntax and features introduced in v1.1.  Existing v1.0 documents
+      Documents should use `cwlVersion: v1.2.0-dev1` to make use of new
+      syntax and features introduced in v1.2.0-dev1.  Existing v1.1 documents
       should be trivially updatable by changing `cwlVersion`, however
       CWL documents that relied on previously undefined or
       underspecified behavior may have slightly different behavior in
-      v1.1.
+      v1.2.0-dev1.
 
       ## Changelog
 
-        * Clarify behavior around `ENTRYPOINT` and `CMD` in containers.
-        * Clarify documentation around `valueFrom` and `null` inputs.
-        * Default values for some fields are now expressed in the schema.
-        * When defining record types with `CommandInputRecordSchema`, fields of
-          type `File` may now include `format`, `loadContents`,
-          `secondaryFiles` and `streamable`.
-        * `CommandInputRecordSchema`, `CommandOutputRecordSchema`,
-          `CommandInputEnumSchema and `CommandInputArraySchema` now have an optional
-          `doc` field.
-        * `inputBinding` has been added as an optional field for
-          `CommandInputRecordSchema` (was previously in CWL `draft-3` but
-          disappeared in `v1.0`).
-        * Any `doc` field may be an array of strings in addition to the
-          previously allowed single string.
-        * Addition of `stdin` type shortcut for
-          [`CommandInputParameter`](#CommandInputParameter).
-        * Clarify that the designated output directory should be empty
-          except for files or directories specified using
-          [InitialWorkDirRequirement](#InitialWorkDirRequirement).
-        * Clarify semantics of `shellQuote`.
-        * Expressions are now allowed to evaluate to `null` or `Dirent` in
-          [InitialWorkDirRequirement.listing](#InitialWorkDirRequirement).
-        * Items in [InitialWorkDirRequirement.listing](#InitialWorkDirRequirement)
-          are now allowed to be `null` and `array<File | Directory>`.
-        * Clarify behavior of secondaryFiles on output.
-        * [Addition](#Requirements_and_hints) of `cwl:requirements` field to
-          input object documents.
-        * Clarify behavior of `glob` for absolute paths and symlinks.
-        * Clarify behavior of `glob` to include directories.
-        * `secondaryFiles` can now be explicitly marked as `required` or not.
-        * Clarify `CommandLineTool.arguments` documentation.
-        * Clarify that `runtime.outdir` and `runtime.tmpdir` must be distinct
-          directories.
-        * Clarify that unspecified details related to execution are left open to
-          the platform.
-        * Added `InputParameter.loadContents` field. Use of `loadContents` in
-          `InputBinding` is deprecated; it is preserved for v1.0 backwards
-           compatability and will be removed in CWL v2.0.
-        * [Added](#ToolTimeLimit) `ToolTimeLimit` feature, allows setting
-          an upper limit on the execution time of a CommandLineTool.
-        * [Added](#WorkReuse) `WorkReuse` feature, allowing to enable or disable the reuse
-          behavior for a particular tool or step for implementations that
-          support reusing output from past work.
-        * [Added](#NetworkAccess) `NetworkAccess` feature, allowing to indicate whether a
-          process requires outgoing network access.
-        * [Added](#InplaceUpdateRequirement) `InplaceUpdateRequirement` feature, allowing tools to directly
-          update files with `writable: true` in `InitialWorkDirRequirement`.
-        * [Added](#LoadListingRequirement) `LoadListingRequirement`
-          and [loadListing](#LoadContents) to control whether and how
-          `Directory` listings should be loaded for use in expressions.
-        * The position field of the [CommandLineBinding](#CommandLineBinding) can
-          now be calculated from a CWL Expression.
-        * The exit code of a CommandLineTool invocation is now
-          available to expressions in `outputEval` as `runtime.exitCode`
-        * [Better explain](#map) the `map<…>` notation that has existed since v1.0.
-        * Fixed schema error where the `type` field inside the `inputs` and
-          `outputs` field was incorrectly listed as optional.
-        * For multi-Process CWL documents, if no particular process is named then
-          the process with the `id` of `#main` is chosen.
-        * Added explicit defaults for [ResourceRequirement](#ResourceRequirement)s.
-        * [Made explicit](#Generic_execution_process) that the `$namespaces` of
-          the top level CWL document are also available to the input object as
-          well.
-        * Fields with type "Expression" no longer include "string" in
-          the type union unless a string is semantically valid.  Where
-          a bare string is not semantically valid, these fields must
-          contain either a non-string value accepted by the field
-          type, or a valid expression which returns a value having one
-          of the the other types defined for that field.
-
-      See also the [CWL Workflow Description, v1.1 changelog](Workflow.html#Changelog).
+      See also the [CWL Workflow Description, v1.2.0-dev1 changelog](Workflow.html#Changelog).
 
       ## Purpose
 
