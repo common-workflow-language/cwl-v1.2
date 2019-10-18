@@ -6,7 +6,7 @@ source for the latest stable version of this document is available in the "v1.0"
 
 https://github.com/common-workflow-language/common-workflow-language
 
-The current development version is at https://github.com/common-workflow-language/cwl-v1.1/
+The current development version is at https://github.com/common-workflow-language/cwl-v1.2/
 
 The products of the CWL working group (including this document) are made available
 under the terms of the Apache License, version 2.0.

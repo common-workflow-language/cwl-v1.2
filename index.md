@@ -1,4 +1,4 @@
-# Common Workflow Language Specifications, v1.1
+# Common Workflow Language Specifications, v1.2.0-dev1
 
 The CWL specifications are divided up into several documents.
 
@@ -34,7 +34,7 @@ pip install cwltest
 ```
 You may need to activate a virtualenv first, or do a local install by adding `--user` after `install` above.
 
-From within a copy of [this repository](https://github.com/common-workflow-language/cwl-v1.1) (e.g. cwl-v1.1) execute the main test script
+From within a copy of [this repository](https://github.com/common-workflow-language/cwl-v1.2) (e.g. cwl-v1.2) execute the main test script
 ```
 ./run_test.sh
 ```

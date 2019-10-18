@@ -1,6 +1,6 @@
 #!/usr/bin/env cwl-runner
 class: Workflow
-cwlVersion: v1.1
+cwlVersion: v1.2.0-dev1
 doc: "Workflow without inputs."
 inputs: []
 outputs: 
@@ -13,7 +13,7 @@ steps:
     out: [output]
     run: 
       class: CommandLineTool
-      cwlVersion: v1.1
+      cwlVersion: v1.2.0-dev1
       doc: "CommandLineTool without inputs."
       hints:
         DockerRequirement:
