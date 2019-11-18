@@ -10,3 +10,4 @@ $graph:
 - $import: Process.yml
 - $import: CommandLineTool.yml
 - $import: Workflow.yml
+- $import: Operation.yml
