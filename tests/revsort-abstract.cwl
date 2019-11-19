@@ -36,6 +36,7 @@ steps:
     out: [sorted]
     run:
       class: Operation
+      id: "sort"
       doc: "Sort the lines of the file"
       inputs:
         input:
