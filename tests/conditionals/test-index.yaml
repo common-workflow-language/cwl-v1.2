@@ -1,0 +1,29 @@
+# Run with cwltest --test test-index.yaml --tool cwltoil -- --enable-dev
+
+- id: cond-1
+  label: pass_through_optional
+  doc: Simplest conditional pattern (False)
+  tool: cond-wf-001.cwl
+  job: val.1.job.yaml
+  output:
+    out1: null
+  tags: [ conditional ]
+
+- id: cond-2
+  label: pass_through_optional
+  doc: Simplest conditional pattern (True)
+  tool: cond-wf-001.cwl
+  job: val.3.job.yaml
+  output:
+    out1: "foo 3"
+  tags: [ conditional ]
+
+- id: cond-3
+  label: pass_through_required
+  doc: Should give validation warning because of required sink
+  tool: cond-wf-001.cwl
+  job: val.1.job.yaml
+  output:
+    out1: null
+  tags: [ conditional ]
+
