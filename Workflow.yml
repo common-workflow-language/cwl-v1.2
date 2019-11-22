@@ -49,6 +49,10 @@ $graph:
 
       ## Changelog
 
+        * Adds new `WorkflowStep` field: `when: Expression` for conditional executions
+        * Adds new `Sink` and `WorkflowOutputParameter` field:  `pickValue: first_non_null | only_non_null |
+        all_non_null`
+
       See also the [CWL Command Line Tool Description, v1.2.0-dev1 changelog](CommandLineTool.html#Changelog).
 
       ## Purpose
@@ -163,6 +167,56 @@ $graph:
     - merge_flattened
 
 
+- name: PickValueMethod
+  type: enum
+  docParent: "#WorkflowStepInput"
+  doc: |
+    - If present, the `pickValue` describes how `null` values are to be handled
+    - `pickValue` is evaluated
+      - after all ancestor workflow steps have completed and
+      - before `linkMerge` and before `scatter`
+    - Static type checkers should check for type consistency after infering what the type
+      will be after `pickValue` is applied, just as they do currently for `linkMerge`
+    - Also see the documentation for `when`.
+
+    ## `pickValue: first_non_null => [a] -> a`
+    For the first level of a list input, pick the first non-null element and pass as a scalar.
+    It is a step level error if there is no non-null element.
+    - `[null, x, null, y] -> x`
+    - `[null, [null], null, y] -> [null]`
+    - `[null, null, null] -> Runtime Error`
+
+      *Targeted use case*: If-Else pattern where one input is always present and another
+       comes from a conditional step. The conditional step(s) should be placed first in
+       the list.
+
+    ## `pickValue: only_non_null => [a] -> a`
+    For the first level of a list input, pick the single non-null element and pass as a scalar.
+    It is a step level error if there is more than one non-null element.
+    - `[null, x, null] -> x`
+    - `[null, x, null, y] -> Runtime Error`
+    - `[null, [null], null] -> [null]`
+    - `[null, null, null] -> Runtime Error`
+
+      *Targeted use case*: Switch type patterns where developer considers
+      more than one active code path as a workflow error
+      (possibly indicating an error in writing `when` condition expressions).
+
+    ## `pickValue: all_non_null => [a] -> [a]`
+    For the first level of a list input, pick all non-null values
+    - `[null, x, null] -> [x]`
+    - `[x, null, y] -> [x, y]`
+    - `[null, [x], [null]] -> [[x], [null]]`
+    - `[null, null, null] -> []`
+
+      *Targeted use case*: Parallel nodes, zero or more of which may run
+
+  symbols:
+    - first_non_null
+    - only_non_null
+    - all_non_null
+
+
 - name: WorkflowOutputParameter
   type: record
   extends: OutputParameter
@@ -191,6 +245,13 @@ $graph:
       doc: |
         The method to use to merge multiple sources into a single array.
         If not specified, the default method is "merge_nested".
+
+    - name: pickValue
+      type: ["null", PickValueMethod]
+      jsonldPredicate: "cwl:pickValue"
+      doc: |
+        The method to use to filter null elements in the sources
+
     - name: type
       type:
         - CWLType
@@ -236,6 +297,11 @@ $graph:
       doc: |
         The method to use to merge multiple inbound links into a single array.
         If not specified, the default method is "merge_nested".
+    - name: pickValue
+      type: ["null", PickValueMethod]
+      jsonldPredicate: "cwl:pickValue"
+      doc: |
+        The method to use to filter null elements in the sources
 
 
 - type: record
@@ -469,6 +535,14 @@ $graph:
         subscope: run
       doc: |
         Specifies the process to run.
+    - name: when
+      type:
+        - "null"
+        - Expression
+      jsonldPredicate: "cwl:when"
+      doc: |
+        - The step will only be run when the expression evaluates to `True`.
+        - A skipped step produces a `null` on each output
     - name: scatter
       type:
         - string?
