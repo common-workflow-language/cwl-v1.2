@@ -1,0 +1,33 @@
+class: Workflow
+cwlVersion: v1.2.0-dev1
+inputs:
+  val: int
+
+steps:
+
+  step1:
+    in:
+      in1: val
+      a_new_var: val
+    run: foo.cwl
+    when: $(inputs.a_new_var > 2)
+    out: [out1]
+
+  step2:
+    in:
+      in1: val
+      a_new_var: val
+    run: bar.cwl
+    when: $(inputs.a_new_var > 0)
+    out: [out1]
+  
+outputs:
+  out1:
+    type: string[]
+    outputSource:
+      - step1/out1
+      - step2/out1
+    pickValue: all_non_null
+
+requirements:
+  InlineJavascriptRequirement: {}

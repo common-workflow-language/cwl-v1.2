@@ -77,3 +77,47 @@
   job: val.3.job.yaml
   should_fail: True
   tags: [ conditional ]
+
+- id: cond-10
+  label: 
+  doc: "pickValue: only_non_null will pass for only one active node"
+  tool: cond-wf-006.cwl
+  job: val.1.job.yaml
+  output:
+    out1: "bar 1"
+  tags: [ conditional ]
+
+- id: cond-11
+  label: 
+  doc: "pickValue: only_non_null will fail with two active nodes"
+  tool: cond-wf-006.cwl
+  job: val.3.job.yaml
+  should_fail: True
+  tags: [ conditional ]
+
+- id: cond-12
+  label: 
+  doc: "pickValue: all_non_null will produce a list"
+  tool: cond-wf-007.cwl
+  job: val.0.job.yaml
+  output:
+    out1: []
+  tags: [ conditional ]
+
+- id: cond-13
+  label: 
+  doc: "pickValue: all_non_null will produce a list"
+  tool: cond-wf-007.cwl
+  job: val.1.job.yaml
+  output:
+    out1: ["bar 1"]
+  tags: [ conditional ]
+
+- id: cond-14
+  label: 
+  doc: "pickValue: all_non_null will produce a list"
+  tool: cond-wf-007.cwl
+  job: val.3.job.yaml
+  output:
+    out1: ["foo 3", "bar 3"]
+  tags: [ conditional ]
