@@ -148,3 +148,24 @@
   output:
     out1: ["foo 4", "foo 5", "foo 6"]
   tags: [ conditional ]
+
+- id: cond-18
+  label: 
+  doc: "Nested cross product scatter with condition on one dimension"
+  tool: cond-wf-011.cwl
+  job: cond18.job.yaml
+  output:
+    out1: 
+      [
+        [ 
+          [ null, "112", null, "114" ],
+          [ null, "122", null, "124" ],
+          [ null, "132", null, "134" ]
+        ],
+        [
+          [ null, "212", null, "214" ],
+          [ null, "222", null, "224" ],
+          [ null, "232", null, "234" ]
+        ]
+      ]
+  tags: [ conditional ]
