@@ -121,3 +121,30 @@
   output:
     out1: ["foo 3", "bar 3"]
   tags: [ conditional ]
+
+- id: cond-15
+  label: 
+  doc: "Simple scatter: conditional on a non scattered variable"
+  tool: cond-wf-008.cwl
+  job: val.6.list.job.yaml
+  output:
+    out1: []
+  tags: [ conditional ]
+
+- id: cond-16
+  label: 
+  doc: "Simple scatter: conditional on a non scattered variable"
+  tool: cond-wf-009.cwl
+  job: cond16.job.yaml
+  output:
+    out1: ["foo 1", "foo 2", "foo 3", "foo 4", "foo 5", "foo 6"]
+  tags: [ conditional ]
+
+- id: cond-17
+  label: 
+  doc: "Simple scatter: Add conditional variable to scatter"
+  tool: cond-wf-010.cwl
+  job: val.6.list.job.yaml
+  output:
+    out1: ["foo 4", "foo 5", "foo 6"]
+  tags: [ conditional ]
