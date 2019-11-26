@@ -17,12 +17,13 @@ steps:
     out: [out1]
 
 outputs:
-  out1: 
+  out1:
     type: string
-    outputSource: 
+    outputSource:
       - step1/out1
       - def
     pickValue: all_non_null
 
-requirements: 
+requirements:
   InlineJavascriptRequirement: {}
+  MultipleInputFeatureRequirement: {}
