@@ -177,3 +177,14 @@
   job: val.1.job.yaml
   should_fail: True
   tags: [ conditional ]
+
+- id: cond-20
+  label: 
+  doc: "Scatter two steps, flatten result + pickValue"
+  tool: cond-wf-013.cwl
+  job: cond20.job.yaml
+  output:
+    out1: [
+      "foo 2", "foo 4", "foo 6", 
+      "bar 1", "bar 3", "bar 5"]
+  tags: [ conditional ]
