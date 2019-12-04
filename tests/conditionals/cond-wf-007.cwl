@@ -20,7 +20,7 @@ steps:
     run: bar.cwl
     when: $(inputs.a_new_var > 0)
     out: [out1]
-  
+
 outputs:
   out1:
     type: string[]
@@ -31,3 +31,4 @@ outputs:
 
 requirements:
   InlineJavascriptRequirement: {}
+  MultipleInputFeatureRequirement: {}
