@@ -45,12 +45,30 @@
     out1: "foo 3"
   tags: [ conditional ]
 
-- id: cond-6
-  label: pass_through_required
-  doc: "pickValue: first_non_null needs to find at least one non null"
-  tool: cond-wf-003.cwl
-  job: val.2.job.yaml
+- id: cond-6.0
+  label: first_non_null
+  doc: "pickValue: first_non_null first item is non null"
+  tool: cond-wf-003.1.cwl
+  job: val.0.job.yaml
+  output:
+    out1: "foo 0"
+  tags: [ conditional ]
+
+- id: cond-6.1
+  label: first_non_null
+  doc: "pickValue: first_non_null needs at least one non null"
+  tool: cond-wf-003.1.cwl
+  job: val.1.job.yaml
   should_fail: True
+  tags: [ conditional ]
+
+- id: cond-6.2
+  label: first_non_null
+  doc: "pickValue: first_non_null second item is non null"
+  tool: cond-wf-003.1.cwl
+  job: val.3.job.yaml
+  output:
+    out1: "foo 3"
   tags: [ conditional ]
 
 - id: cond-7
