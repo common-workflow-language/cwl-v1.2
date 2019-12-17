@@ -142,16 +142,16 @@
 
 - id: cond-15
   label: 
-  doc: "Simple scatter: conditional on a non scattered variable"
-  tool: cond-wf-008.cwl
-  job: val.6.list.job.yaml
+  doc: "Simple scatter: conditional on a non scattered variable (False)"
+  tool: cond-wf-009.cwl
+  job: cond15.job.yaml
   output:
     out1: []
   tags: [ conditional ]
 
 - id: cond-16
   label: 
-  doc: "Simple scatter: conditional on a non scattered variable"
+  doc: "Simple scatter: conditional on a non scattered variable (True)"
   tool: cond-wf-009.cwl
   job: cond16.job.yaml
   output:
