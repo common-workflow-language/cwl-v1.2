@@ -22,9 +22,9 @@ steps:
     scatter: in1
 
 outputs:
-  out1: 
+  out1:
     type: string[]
-    outputSource: 
+    outputSource:
       - step1/out1
       - step2/out1
     linkMerge: merge_flattened
@@ -33,3 +33,4 @@ outputs:
 requirements:
   InlineJavascriptRequirement: {}
   ScatterFeatureRequirement: {}
+  MultipleInputFeatureRequirement: {}

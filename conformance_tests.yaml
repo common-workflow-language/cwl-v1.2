@@ -3310,3 +3310,5 @@
     Test that optional number output is returned as 0, not null
   tags: [ required, inline_javascript, command_line_tool ]
   id: 253
+
+- $import: tests/conditionals/test-index.yaml
