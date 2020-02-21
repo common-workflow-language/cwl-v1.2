@@ -2,7 +2,7 @@
 # Example of an operation that has not yet been implemented
 #
 class: Operation
-cwlVersion: v1.2.0-dev2
+cwlVersion: v1.2.0-dev1
 
 # an Operation is a placeholder for a CommandLineTool or
 # Workflow to be added later, therefore its documentation
@@ -23,4 +23,3 @@ outputs:
     type: File
 
 # There are no "run" or "steps" command (FIXME: Should they be allowed?)
-
