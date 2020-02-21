@@ -6,26 +6,6 @@ $namespaces:
 
 $graph:
 
-- name: OperationDoc
-  type: documentation
-  doc:
-    - |
-      # Common Workflow Language (CWL) Abstract Operation Description, v1.2.0-dev1
-
-      This version:
-        * https://w3id.org/cwl/v1.2.0-dev1/
-
-      Current version:
-        * https://w3id.org/cwl/
-    - "\n\n"
-    - {$include: contrib.md}
-    - "\n\n"
-    - |
-      # Abstract  
-      An abstract operation is a potential step of a workflow
-      that has not yet been bound to an implementationimplementation
-      in the form of a CommandLineTool or Workflow.
-
 - name: OperationInputParameter
   type: record
   extends: InputParameter
@@ -94,7 +74,10 @@ $graph:
     - specializeFrom: OutputParameter
       specializeTo: OperationOutputParameter
   doc: |
-    This defines the schema of the CWL Abstract Operation document.
+    This record describes an abstract operation.  It is a potential
+    step of a workflow that has not yet been bound to a concrete
+    implementation.  It specifies an input and output signature, but
+    cannot be executed.
 
   fields:
     - name: class
@@ -102,4 +85,3 @@ $graph:
         "_id": "@type"
         "_type": "@vocab"
       type: string
-
