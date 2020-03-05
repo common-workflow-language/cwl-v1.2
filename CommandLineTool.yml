@@ -1018,12 +1018,17 @@ $graph:
         "_id": "@type"
         "_type": "@vocab"
     - name: coresMin
-      type: ["null", long, Expression]
-      doc: Minimum reserved number of CPU cores (default is 1)
+      type: ["null", long, float, Expression]
+      doc: Minimum reserved number of CPU cores (default is 1). It is allowed to provide a
+           fractional value to indicate to a scheduling algorithm that one core can be used
+           for multiple parallel jobs. For example, setting the value to 0.25 in a scattered
+           tool means that 4 jobs can run in parallel on 1 core.
 
     - name: coresMax
-      type: ["null", int, Expression]
-      doc: Maximum reserved number of CPU cores
+      type: ["null", long, float, Expression]
+      doc: Maximum reserved number of CPU cores. It is allowed to provide a
+           fractional value to indicate to a scheduling algorithm that one core can be used
+           for multiple parallel jobs.s
 
     - name: ramMin
       type: ["null", long, Expression]
