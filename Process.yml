@@ -843,6 +843,11 @@ $graph:
       jsonldPredicate:
         "_id": "cwl:cwlVersion"
         "_type": "@vocab"
+    - name: intent
+      type: string[]?
+      jsonldPredicate:
+        _type: "@id"
+        identity: true
 
 - name: InlineJavascriptRequirement
   type: record
