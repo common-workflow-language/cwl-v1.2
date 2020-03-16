@@ -2596,10 +2596,10 @@
   output:
     output:
       class: File
-      checksum: sha1$2936abd60952276ffbf91d709b19c6c48c263947
+      checksum: sha1$327fc7aedf4f6b69a42a7c8b808dc5a7aff61376
       location: output
-      size: 24
-  tool: tests/wc-tool-shortcut.cwl
+      size: 1111
+  tool: tests/cat-tool-shortcut.cwl
   label: stdin_shorcut
   doc: Test command execution in with stdin and stdout redirection using stdin shortcut
   tags: [ command_line_tool, docker ]
@@ -3310,5 +3310,19 @@
     Test that optional number output is returned as 0, not null
   tags: [ required, inline_javascript, command_line_tool ]
   id: 253
+
+- job: tests/empty.json
+  tool: tests/cores_float.cwl
+  label: cores_float
+  doc: Test float value for coresMin(Max) is rounded up in runtime.cores
+  output:
+     output: {
+        "location": "cores.txt",
+        "size": 2,
+        "class": "File",
+        "checksum": "sha1$7448d8798a4380162d4b56f9b452e2f6f9e24e7a"
+     }
+  tags: [ resource, command_line_tool ]
+  id: 254
 
 - $import: tests/conditionals/test-index.yaml

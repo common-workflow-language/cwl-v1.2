@@ -54,6 +54,11 @@ $graph:
         * Adds `pickValue` field to [WorkflowStepInput](#WorkflowStepInput) and
           [WorkflowOutputParameter](#WorkflowOutputParameter) for selecting among null and
           non-null source values
+        * Add abstract [Operation](#Operation) that can be used as a
+          no-op stand-in to describe abstract workflows.
+        * (Workflow)[#Workflow], (ExpressionTool)[#ExpressionTool] and
+          (Operation)[#Operation] can now express `intent` with an
+          identifier for the type of computational operation.
 
       See also the [CWL Command Line Tool Description, v1.2.0-dev2 changelog](CommandLineTool.html#Changelog).
 
