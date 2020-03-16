@@ -3311,4 +3311,18 @@
   tags: [ required, inline_javascript, command_line_tool ]
   id: 253
 
+- job: tests/empty.json
+  tool: tests/cores_float.cwl
+  label: cores_float
+  doc: Test float value for coresMin(Max) is rounded up in runtime.cores
+  output:
+     output: {
+        "location": "cores.txt",
+        "size": 2,
+        "class": "File",
+        "checksum": "sha1$7448d8798a4380162d4b56f9b452e2f6f9e24e7a"
+     }
+  tags: [ resource, command_line_tool ]
+  id: 254
+
 - $import: tests/conditionals/test-index.yaml
