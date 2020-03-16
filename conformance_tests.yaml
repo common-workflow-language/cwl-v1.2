@@ -3324,3 +3324,5 @@
      }
   tags: [ resource, command_line_tool ]
   id: 254
+
+- $import: tests/conditionals/test-index.yaml

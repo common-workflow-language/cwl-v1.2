@@ -1,0 +1,208 @@
+# Run with cwltest --test test-index.yaml --tool cwltoil -- --enable-dev
+
+- id: cond-1
+  label: direct_optional
+  doc: Simplest conditional pattern (False)
+  tool: cond-wf-001.cwl
+  job: val.1.job.yaml
+  output:
+    out1: null
+  tags: [ conditional ]
+
+- id: cond-2
+  label: direct_optional
+  doc: Simplest conditional pattern (True)
+  tool: cond-wf-001.cwl
+  job: val.3.job.yaml
+  output:
+    out1: "foo 3"
+  tags: [ conditional ]
+
+- id: cond-3
+  label: direct_required
+  doc: Should give validation warning because of required sink
+  tool: cond-wf-002.cwl
+  job: val.1.job.yaml
+  output:
+    out1: null
+  tags: [ conditional ]
+
+- id: cond-4
+  label: pass_through_required
+  doc: "Pass through pattern with pickValue: first_non_null"
+  tool: cond-wf-003.cwl
+  job: val.1.job.yaml
+  output:
+    out1: "Direct"
+  tags: [ conditional ]
+
+- id: cond-5
+  label: pass_through_required
+  doc: "Pass through pattern with pickValue: first_non_null"
+  tool: cond-wf-003.cwl
+  job: val.3.job.yaml
+  output:
+    out1: "foo 3"
+  tags: [ conditional ]
+
+- id: cond-6.0
+  label: first_non_null
+  doc: "pickValue: first_non_null first item is non null"
+  tool: cond-wf-003.1.cwl
+  job: val.0.job.yaml
+  output:
+    out1: "foo 0"
+  tags: [ conditional ]
+
+- id: cond-6.1
+  label: first_non_null
+  doc: "pickValue: first_non_null needs at least one non null"
+  tool: cond-wf-003.1.cwl
+  job: val.1.job.yaml
+  should_fail: True
+  tags: [ conditional ]
+
+- id: cond-6.2
+  label: first_non_null
+  doc: "pickValue: first_non_null second item is non null"
+  tool: cond-wf-003.1.cwl
+  job: val.3.job.yaml
+  output:
+    out1: "foo 3"
+  tags: [ conditional ]
+
+- id: cond-7
+  label: pass_through_required
+  doc: "pickValue: only_non_null will pass, only for False condition"
+  tool: cond-wf-004.cwl
+  job: val.1.job.yaml
+  output:
+    out1: "Direct"
+  tags: [ conditional ]
+ 
+- id: cond-8
+  label: 
+  doc: "pickValue: only_non_null will fail due to multiple non nulls"
+  tool: cond-wf-004.cwl
+  job: val.3.job.yaml
+  should_fail: True
+  tags: [ conditional ]
+ 
+- id: cond-9
+  label: 
+  doc: "pickValue: all_non_null will fail validation"
+  tool: cond-wf-005.cwl
+  job: val.3.job.yaml
+  should_fail: True
+  tags: [ conditional ]
+
+- id: cond-10
+  label: 
+  doc: "pickValue: only_non_null will pass for only one active node"
+  tool: cond-wf-006.cwl
+  job: val.1.job.yaml
+  output:
+    out1: "bar 1"
+  tags: [ conditional ]
+
+- id: cond-11
+  label: 
+  doc: "pickValue: only_non_null will fail with two active nodes"
+  tool: cond-wf-006.cwl
+  job: val.3.job.yaml
+  should_fail: True
+  tags: [ conditional ]
+
+- id: cond-12
+  label: 
+  doc: "pickValue: all_non_null will produce a list"
+  tool: cond-wf-007.cwl
+  job: val.0.job.yaml
+  output:
+    out1: []
+  tags: [ conditional ]
+
+- id: cond-13
+  label: 
+  doc: "pickValue: all_non_null will produce a list"
+  tool: cond-wf-007.cwl
+  job: val.1.job.yaml
+  output:
+    out1: ["bar 1"]
+  tags: [ conditional ]
+
+- id: cond-14
+  label: 
+  doc: "pickValue: all_non_null will produce a list"
+  tool: cond-wf-007.cwl
+  job: val.3.job.yaml
+  output:
+    out1: ["foo 3", "bar 3"]
+  tags: [ conditional ]
+
+- id: cond-15
+  label: 
+  doc: "Simple scatter: conditional on a non scattered variable (False)"
+  tool: cond-wf-009.cwl
+  job: cond15.job.yaml
+  output:
+    out1: []
+  tags: [ conditional ]
+
+- id: cond-16
+  label: 
+  doc: "Simple scatter: conditional on a non scattered variable (True)"
+  tool: cond-wf-009.cwl
+  job: cond16.job.yaml
+  output:
+    out1: ["foo 1", "foo 2", "foo 3", "foo 4", "foo 5", "foo 6"]
+  tags: [ conditional ]
+
+- id: cond-17
+  label: 
+  doc: "Simple scatter: Add conditional variable to scatter"
+  tool: cond-wf-010.cwl
+  job: val.6.list.job.yaml
+  output:
+    out1: ["foo 4", "foo 5", "foo 6"]
+  tags: [ conditional ]
+
+- id: cond-18
+  label: 
+  doc: "Nested cross product scatter with condition on one dimension"
+  tool: cond-wf-011.cwl
+  job: cond18.job.yaml
+  output:
+    out1: 
+      [
+        [ 
+          [ null, "112", null, "114" ],
+          [ null, "122", null, "124" ],
+          [ null, "132", null, "134" ]
+        ],
+        [
+          [ null, "212", null, "214" ],
+          [ null, "222", null, "224" ],
+          [ null, "232", null, "234" ]
+        ]
+      ]
+  tags: [ conditional ]
+
+- id: cond-19
+  label: non_boolean_fail
+  doc: Non-boolean values from "when" should fail
+  tool: cond-wf-012.cwl
+  job: val.1.job.yaml
+  should_fail: True
+  tags: [ conditional ]
+
+- id: cond-20
+  label: 
+  doc: "Scatter two steps, flatten result + pickValue"
+  tool: cond-wf-013.cwl
+  job: cond20.job.yaml
+  output:
+    out1: [
+      "foo 2", "foo 4", "foo 6", 
+      "bar 1", "bar 3", "bar 5"]
+  tags: [ conditional ]
