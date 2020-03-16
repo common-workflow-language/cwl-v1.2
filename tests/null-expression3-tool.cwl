@@ -2,7 +2,7 @@
 
 class: ExpressionTool
 requirements: { InlineJavascriptRequirement: {} }
-cwlVersion: v1.2.0-dev1
+cwlVersion: v1.2.0-dev2
 
 inputs: []
 

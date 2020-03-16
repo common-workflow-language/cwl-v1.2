@@ -1,4 +1,4 @@
-cwlVersion: v1.2.0-dev1
+cwlVersion: v1.2.0-dev2
 tool:
   class: File
   path: echo-tool.cwl  # could have been any file, this isn't a secret CWL feature :-)

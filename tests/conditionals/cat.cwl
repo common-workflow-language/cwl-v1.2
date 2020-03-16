@@ -1,5 +1,5 @@
 class: CommandLineTool
-cwlVersion: v1.0
+cwlVersion: v1.2.0-dev2
 inputs:
   in1: int
   in2: int

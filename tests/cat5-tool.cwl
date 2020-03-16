@@ -1,7 +1,7 @@
 #!/usr/bin/env cwl-runner
 $namespaces:
   ex: http://example.com/
-cwlVersion: v1.2.0-dev1
+cwlVersion: v1.2.0-dev2
 class: CommandLineTool
 doc: "Print the contents of a file to stdout using 'cat' running in a docker container."
 hints:
