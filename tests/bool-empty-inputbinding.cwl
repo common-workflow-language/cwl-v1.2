@@ -1,6 +1,6 @@
 #!/usr/bin/env cwl-runner
 class: CommandLineTool
-cwlVersion: v1.2.0-dev1
+cwlVersion: v1.2.0-dev2
 hints:
   - class: DockerRequirement
     dockerPull: python:2-slim
