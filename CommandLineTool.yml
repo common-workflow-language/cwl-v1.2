@@ -57,6 +57,7 @@ $graph:
         with an identifier for the type of computational operation.
       * Added conformance tests for order of operations evaluating `secondaryFiles` on input
         and ensure that input and output secondaryFiles expressions can return a File object.
+      * Note that only enum and record types can be typedef-ed 
 
       See also the [CWL Workflow Description, v1.2.0-dev3 changelog](Workflow.html#Changelog).
 
