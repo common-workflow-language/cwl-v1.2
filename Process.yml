@@ -902,6 +902,12 @@ $graph:
     `schemaDefs`, it is an error.  The entries in `schemaDefs` must be
     processed in the order listed such that later schema definitions may refer
     to earlier schema definitions.
+
+    - **Type definitions are allowed for `enum` and `record` types only.**
+    - Type definitions may be shared by defining them in a file and then 
+      `$include`-ing them in the `types` field.
+    - A file can contain a list of type definitions 
+
   fields:
     - name: class
       type: string
