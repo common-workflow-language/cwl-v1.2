@@ -1102,7 +1102,7 @@ $graph:
     assumption is incorrect).  A reused step is not executed but
     instead returns the same output as the original execution.
 
-    If `enableReuse` is not specified, correct tools should assume it
+    If `WorkReuse` is not specified, correct tools should assume it
     is enabled by default.
   fields:
     - name: class
