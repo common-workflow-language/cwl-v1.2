@@ -181,7 +181,7 @@ $graph:
     Picking non-null values among inbound data links, described in [WorkflowStepInput](#WorkflowStepInput).
   symbols:
     - first_non_null
-    - only_non_null
+    - exactly_one_non_null
     - all_non_null
 
 
@@ -354,7 +354,7 @@ $graph:
       fallback value. The conditional step(s) should be placed first in
       the list.
 
-    * **only_non_null**
+    * **exactly_one_non_null**
 
       For the first level of a list input, pick the single non-null element.  The result is a scalar.
       It is an error if there is more than one non-null element.  Examples:
