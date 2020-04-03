@@ -1,0 +1,3 @@
+inputWithSecondary: 
+    class: File
+    path: secondary_file_test.txt
