@@ -3326,3 +3326,4 @@
   id: 254
 
 - $import: tests/conditionals/test-index.yaml
+- $import: tests/secondaryfiles/test-index.yaml
