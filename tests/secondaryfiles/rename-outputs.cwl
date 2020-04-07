@@ -30,8 +30,9 @@ outputs:
         }
         return [
           {
-            path: resolveSecondary(self.path, "^.accessory"),
-            basename: resolveSecondary(self.basename, ".accessory")
+            "class": "File",
+            "path": resolveSecondary(self.path, "^.accessory"),
+            "basename": resolveSecondary(self.basename, ".accessory")
           }
         ];
    }

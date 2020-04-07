@@ -34,8 +34,9 @@ inputs:
           return base + secPattern;
         }
         return [{
-            location: resolveSecondary(self.location, '.accessory'),
-            basename: resolveSecondary(self.basename, '^.accessory')
+            "class": "File",
+            "location": resolveSecondary(self.location, '.accessory'),
+            "basename": resolveSecondary(self.basename, '^.accessory')
         }];
     }
 
