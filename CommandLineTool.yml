@@ -888,7 +888,7 @@ $graph:
         If the value is an expression that evaluates to an array of `File` or
         `Directory` objects, this indicates the referenced files or directories
         should be added to the designated output directory prior to executing
-        the tool, with ignoring the value in `entryname`.
+        the tool.
 
         If the value is an expression that evaluates to a `Dirent` object, this
         indicates that the File or Directory in `entry` should be added to the
