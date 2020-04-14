@@ -6,7 +6,7 @@
       class: File
       checksum: sha1$901c3d387a263c57eaed6f24a82517c1fb0e198d
       size: 54
-      location: Any
+      location: result
   tags: [ inline_javascript, secondary_files ]
 
 - tool: rename-outputs.cwl
@@ -16,10 +16,10 @@
       class: File
       checksum: sha1$da39a3ee5e6b4b0d3255bfef95601890afd80709
       size: 0
-      location: Any
+      location: secondary_file_test.txt
       secondaryFiles:
       - class: File
         checksum: sha1$da39a3ee5e6b4b0d3255bfef95601890afd80709
-        location: Any
+        location: secondary_file_test.txt.accessory
         size: 0
   tags: [ inline_javascript, secondary_files ]

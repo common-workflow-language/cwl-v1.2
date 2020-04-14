@@ -8,7 +8,7 @@ doc: |
   Simple test to confirm the implementation of expressions returning a File within a CommandInputParameter.secondaryFile field.
 
   Use GREP to filter the result from ls to ensure we only get the secondary files in there.
-  
+
   Related links:
   - Issue: https://github.com/common-workflow-language/cwltool/issues/1232
   - PR: https://github.com/common-workflow-language/cwltool/pull/1233
@@ -23,8 +23,10 @@ inputs:
     touch secondary_file_test.txt
     touch secondary_file_test.txt.accessory
     ```
-  secondaryFiles: |
-    ${
+  secondaryFiles:
+    - .accessory
+    - |
+      ${
         function resolveSecondary(base, secPattern) {
           if (secPattern[0] == '^') {
             var spl = base.split('.');
@@ -35,10 +37,10 @@ inputs:
         }
         return [{
             "class": "File",
-            "location": resolveSecondary(self.location, '.accessory'),
+            "location": self.secondaryFiles[0].location,
             "basename": resolveSecondary(self.basename, '^.accessory')
         }];
-    }
+      }
 
 arguments:
 - valueFrom: "|"
@@ -52,7 +54,7 @@ arguments:
 outputs:
 - id: output_file
   type: stdout
-
+stdout: result
 requirements:
   InlineJavascriptRequirement: {}
   ShellCommandRequirement: {}

@@ -43,5 +43,7 @@ requirements:
     listing:
     - entry: ""
       entryname: secondary_file_test.txt
+      writable: true
     - entry: ""
       entryname: secondary_file_test.accessory
+      writable: true

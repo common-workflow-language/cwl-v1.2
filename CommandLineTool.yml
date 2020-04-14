@@ -55,7 +55,8 @@ $graph:
           [ResourceRequirement](#ResourceRequirement) may now request fractional CPUs.
       * (CommandLineTool)[#CommandLineTool] can now express `intent`
         with an identifier for the type of computational operation.
-      * Added conformance tests to ensure a `secondaryFiles` expression accepts a File object.
+      * Added conformance tests for order of operations evaluating `secondaryFiles` on input
+        and ensure that input and output secondaryFiles expressions can return a File object.
 
       See also the [CWL Workflow Description, v1.2.0-dev2 changelog](Workflow.html#Changelog).
 
