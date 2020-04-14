@@ -1,4 +1,4 @@
-# Run with cwltest --test test-index.yaml --tool cwltoil -- --enable-dev
+# Run with cwltest --test test-index.yaml --tool toil-cwl-runner -- --enable-dev
 
 - id: cond-1
   label: direct_optional
