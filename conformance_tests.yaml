@@ -2891,7 +2891,7 @@
         "location": "lsout",
         "size": 32
       }
-  tags: [ resource, command_line_tool ]
+  tags: [ resource, command_line_tool, initial_work_dir ]
   id: 225
 
 - job: tests/stage-array-dirs-job.yml
@@ -2913,7 +2913,7 @@
             }
         ]
     }
-  tags: [ resource, command_line_tool ]
+  tags: [ resource, command_line_tool, initial_work_dir ]
   id: 226
 
 - job: tests/env-job3.yaml
@@ -3102,7 +3102,7 @@
           "size": 59
         }
       ]
-  tags: [ required, command_line_tool ]
+  tags: [ required, command_line_tool, initial_work_dir ]
   id: 238
 
 - doc: Test that array of input files can be staged to directory with basename
@@ -3137,7 +3137,7 @@
           "size": 59
         }
       ]
-  tags: [ required, command_line_tool ]
+  tags: [ required, command_line_tool, initial_work_dir ]
   id: 239
 
 - doc: Test that if array of input files are staged to directory with basename and entryname, entryname overrides
@@ -3172,7 +3172,7 @@
           "size": 59
         }
       ]
-  tags: [ required, command_line_tool ]
+  tags: [ required, command_line_tool, initial_work_dir ]
   id: 240
 
 - job: tests/empty.json
@@ -3328,3 +3328,4 @@
 - $import: tests/initialworkdir/test-index.yaml
   
 - $import: tests/conditionals/test-index.yaml
+- $import: tests/secondaryfiles/test-index.yaml

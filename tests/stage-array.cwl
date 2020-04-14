@@ -27,6 +27,7 @@ requirements:
       - $(inputs.input_file)
       - $(inputs.optional_file)
       - entry: $(inputs.input_list)
+      - entry: $(null)
       - entryname: a
         entry: b
   - class: ShellCommandRequirement

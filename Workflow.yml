@@ -56,8 +56,8 @@ $graph:
           non-null source values
         * Add abstract [Operation](#Operation) that can be used as a
           no-op stand-in to describe abstract workflows.
-        * (Workflow)[#Workflow], (ExpressionTool)[#ExpressionTool] and
-          (Operation)[#Operation] can now express `intent` with an
+        * [Workflow](#Workflow), [ExpressionTool](#ExpressionTool) and
+          [Operation](#Operation) can now express `intent` with an
           identifier for the type of computational operation.
         * Note that only enum and record types can be typedef-ed
 
@@ -182,7 +182,7 @@ $graph:
     Picking non-null values among inbound data links, described in [WorkflowStepInput](#WorkflowStepInput).
   symbols:
     - first_non_null
-    - only_non_null
+    - the_only_non_null
     - all_non_null
 
 
@@ -355,7 +355,7 @@ $graph:
       fallback value. The conditional step(s) should be placed first in
       the list.
 
-    * **only_non_null**
+    * **the_only_non_null**
 
       For the first level of a list input, pick the single non-null element.  The result is a scalar.
       It is an error if there is more than one non-null element.  Examples:

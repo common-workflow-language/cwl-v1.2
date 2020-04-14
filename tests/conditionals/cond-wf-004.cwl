@@ -22,7 +22,7 @@ outputs:
     outputSource:
       - step1/out1
       - def
-    pickValue: only_non_null
+    pickValue: the_only_non_null
 
 requirements:
   InlineJavascriptRequirement: {}

@@ -56,6 +56,8 @@ $graph:
       * (CommandLineTool)[#CommandLineTool] can now express `intent`
         with an identifier for the type of computational operation.
       * Note that only enum and record types can be typedef-ed 
+      * Added conformance tests for order of operations evaluating `secondaryFiles` on input
+        and ensure that input and output secondaryFiles expressions can return a File object.
 
       See also the [CWL Workflow Description, v1.2.0-dev2 changelog](Workflow.html#Changelog).
 
@@ -887,7 +889,7 @@ $graph:
         If the value is an expression that evaluates to an array of `File` or
         `Directory` objects, this indicates the referenced files or directories
         should be added to the designated output directory prior to executing
-        the tool, with ignoring the value in `entryname`.
+        the tool.
 
         If the value is an expression that evaluates to a `Dirent` object, this
         indicates that the File or Directory in `entry` should be added to the
@@ -1103,7 +1105,7 @@ $graph:
     assumption is incorrect).  A reused step is not executed but
     instead returns the same output as the original execution.
 
-    If `enableReuse` is not specified, correct tools should assume it
+    If `WorkReuse` is not specified, correct tools should assume it
     is enabled by default.
   fields:
     - name: class

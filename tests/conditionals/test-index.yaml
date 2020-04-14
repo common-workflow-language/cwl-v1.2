@@ -73,7 +73,7 @@
 
 - id: cond-7
   label: pass_through_required
-  doc: "pickValue: only_non_null will pass, only for False condition"
+  doc: "pickValue: the_only_non_null will pass, only for False condition"
   tool: cond-wf-004.cwl
   job: val.1.job.yaml
   output:
@@ -82,7 +82,7 @@
  
 - id: cond-8
   label: 
-  doc: "pickValue: only_non_null will fail due to multiple non nulls"
+  doc: "pickValue: the_only_non_null will fail due to multiple non nulls"
   tool: cond-wf-004.cwl
   job: val.3.job.yaml
   should_fail: True
@@ -98,7 +98,7 @@
 
 - id: cond-10
   label: 
-  doc: "pickValue: only_non_null will pass for only one active node"
+  doc: "pickValue: the_only_non_null will pass for only one active node"
   tool: cond-wf-006.cwl
   job: val.1.job.yaml
   output:
@@ -107,7 +107,7 @@
 
 - id: cond-11
   label: 
-  doc: "pickValue: only_non_null will fail with two active nodes"
+  doc: "pickValue: the_only_non_null will fail with two active nodes"
   tool: cond-wf-006.cwl
   job: val.3.job.yaml
   should_fail: True
