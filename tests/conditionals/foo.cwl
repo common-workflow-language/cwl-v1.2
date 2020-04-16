@@ -7,7 +7,4 @@ outputs:
   out1:
     type: string
     outputBinding:
-      outputEval: ${return "foo " + inputs.in1}
-
-requirements:
-  InlineJavascriptRequirement: {}
+      outputEval: foo $(inputs.in1)
