@@ -1,5 +1,5 @@
 class: Workflow
-cwlVersion: v1.2.0-dev2
+cwlVersion: v1.2.0-dev3
 inputs:
   in1:
     type: int[]

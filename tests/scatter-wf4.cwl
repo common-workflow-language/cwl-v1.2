@@ -1,5 +1,5 @@
 #!/usr/bin/env cwl-runner
-cwlVersion: v1.2.0-dev2
+cwlVersion: v1.2.0-dev3
 $graph:
 - id: echo
   class: CommandLineTool
