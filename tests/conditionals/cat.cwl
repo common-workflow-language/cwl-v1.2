@@ -9,7 +9,4 @@ outputs:
   out1:
     type: string
     outputBinding:
-      outputEval: $("" + inputs.in1 + inputs.in2 + inputs.in3)
-
-requirements:
-  InlineJavascriptRequirement: {}
+      outputEval: $(inputs.in1)$(inputs.in2)$(inputs.in3)
