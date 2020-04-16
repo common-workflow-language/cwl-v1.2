@@ -1,5 +1,5 @@
 class: Workflow
-cwlVersion: v1.2.0-dev2
+cwlVersion: v1.2.0-dev3
 inputs:
   test1: boolean
   test2: boolean
@@ -30,7 +30,7 @@ outputs:
     outputSource:
       - step1/out1
       - step2/out1
-    pickValue: only_non_null
+    pickValue: the_only_non_null
 
 requirements:
   MultipleInputFeatureRequirement: {}

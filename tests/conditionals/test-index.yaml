@@ -100,7 +100,7 @@
   tags: [ conditional, inline_javascript, multiple_input ]
 
 - id: cond-10
-  label: only_non_null_single_true
+  label: the_only_non_null_single_true
   doc: "pickValue: the_only_non_null will pass for only one active node"
   tool: cond-wf-006.cwl
   job: val.1.job.yaml
