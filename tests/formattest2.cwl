@@ -3,7 +3,7 @@ $namespaces:
 $schemas:
   - EDAM.owl
 class: CommandLineTool
-cwlVersion: v1.2.0-dev2
+cwlVersion: v1.2.0-dev3
 doc: "Reverse each line using the `rev` command"
 hints:
   DockerRequirement:

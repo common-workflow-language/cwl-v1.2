@@ -1,3 +1,8 @@
+# every "id" must be unique
+# every "label" must be unique and have no spaces
+# every "doc" must be unique
+# "label" and "doc" should be meaningful
+
 - job: tests/bwa-mem-job.json
   tool: tests/bwa-mem-tool.cwl
   output:

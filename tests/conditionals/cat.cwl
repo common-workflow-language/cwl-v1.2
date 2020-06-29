@@ -1,5 +1,5 @@
 class: CommandLineTool
-cwlVersion: v1.2.0-dev2
+cwlVersion: v1.2.0-dev3
 inputs:
   in1: int
   in2: int
@@ -9,7 +9,4 @@ outputs:
   out1:
     type: string
     outputBinding:
-      outputEval: $("" + inputs.in1 + inputs.in2 + inputs.in3)
-
-requirements:
-  InlineJavascriptRequirement: {}
+      outputEval: $(inputs.in1)$(inputs.in2)$(inputs.in3)

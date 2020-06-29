@@ -1,16 +1,19 @@
 class: Workflow
-cwlVersion: v1.2.0-dev2
+cwlVersion: v1.2.0-dev3
 inputs:
-  val: int[]
+  data:
+    type: int[]
+    default: [1, 2, 3, 4, 5, 6]
+  test: boolean
 
 steps:
 
   step1:
     in:
-      in1: val
-      a_new_var: val
+      in1: data
+      a_new_var: test
     run: foo.cwl
-    when: $(inputs.a_new_var > 3)
+    when: $(inputs.a_new_var)
     out: [out1]
     scatter: in1
 
@@ -21,5 +24,4 @@ outputs:
     pickValue: all_non_null
 
 requirements:
-  InlineJavascriptRequirement: {}
   ScatterFeatureRequirement: {}

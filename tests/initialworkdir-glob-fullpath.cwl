@@ -1,6 +1,6 @@
 #!/usr/bin/env cwl-runner
 
-cwlVersion: v1.2.0-dev2
+cwlVersion: v1.2.0-dev3
 
 requirements:
   - class: InitialWorkDirRequirement
