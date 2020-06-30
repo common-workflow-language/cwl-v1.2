@@ -492,7 +492,9 @@ followed by the string value of the parameter reference, followed by the
 trailing characters.  The string value of the parameter reference is its
 textual JSON representation with the following rules:
 
-  * Leading and trailing quotes are stripped from strings
+  * Strings are replaced the literal text of the string, any escaped
+    characters replaced by the literal characters they represent, and
+    there are no leading or trailing quotes.
   * Objects entries are sorted by key
 
 Multiple parameter references may appear in a single field.  This case
@@ -507,7 +509,7 @@ example, when writing shell scripts, `$(...)` is used to execute a
 command in a subshell and replace a portion of the command line with
 the standard output of that command.
 
-The following quoting rules apply.  The scanner makes a single pass
+The following escaping rules apply.  The scanner makes a single pass
 from start to end with 3-character lookahead.  After performing a
 replacement scanning resumes at the next character following the
 replaced substring.
