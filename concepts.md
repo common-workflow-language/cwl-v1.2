@@ -431,18 +431,17 @@ references use the following subset of
 [Javascript/ECMAScript 5.1](http://www.ecma-international.org/ecma-262/5.1/)
 syntax, but they are designed to not require a Javascript engine for evaluation.
 
-In the following [BNF
-grammar](https://en.wikipedia.org/wiki/Backus%E2%80%93Naur_Form), character
-classes, and grammar rules are denoted in '{}', '-' denotes exclusion from a
-character class, '(())' denotes grouping, '|' denotes alternates, trailing
-'*' denotes zero or more repeats, '+' denote one or more repeats, '/' escapes
-these special characters, and all other characters are literal values.
+In the following [BNF grammar](https://en.wikipedia.org/wiki/Backus%E2%80%93Naur_Form),
+character classes and grammar rules are denoted in '{}', '-' denotes
+exclusion from a character class, '(())' denotes grouping, '|' denotes
+alternates, trailing '*' denotes zero or more repeats, '+' denote one
+or more repeats, and all other characters are literal values.
 
 <p>
 <table class="table">
 <tr><td>symbol::             </td><td>{Unicode alphanumeric}+</td></tr>
-<tr><td>singleq::            </td><td>[' (( {character - '} | \' ))* ']</td></tr>
-<tr><td>doubleq::            </td><td>[" (( {character - "} | \" ))* "]</td></tr>
+<tr><td>singleq::            </td><td>[' (( {character - { | \ ' \} } ))* ']</td></tr>
+<tr><td>doubleq::            </td><td>[" (( {character - { | \ " \} } ))* "]</td></tr>
 <tr><td>index::              </td><td>[ {decimal digit}+ ]</td></tr>
 <tr><td>segment::            </td><td>. {symbol} | {singleq} | {doubleq} | {index}</td></tr>
 <tr><td>parameter reference::</td><td>$( {symbol} {segment}*)</td></tr>
@@ -484,6 +483,8 @@ If the value of a field has no leading or trailing non-whitespace
 characters around a parameter reference, the effective value of the field
 becomes the value of the referenced parameter, preserving the return type.
 
+### String interpolation
+
 If the value of a field has non-whitespace leading or trailing characters
 around a parameter reference, it is subject to string interpolation.  The
 effective value of the field is a string containing the leading characters,
@@ -498,6 +499,25 @@ Multiple parameter references may appear in a single field.  This case
 must be treated as a string interpolation.  After interpolating the first
 parameter reference, interpolation must be recursively applied to the
 trailing characters to yield the final string value.
+
+When text embedded in a CWL file represents code for another
+programming language, the use of `$(...)` (and `${...}` in the case of
+expressions) may conflict with the syntax of that language.  For
+example, when writing shell scripts, `$(...)` is used to execute a
+command in a subshell and replace a portion of the command line with
+the standard output of that command.
+
+The following quoting rules apply.  The scanner makes a single pass
+from start to end with 3-character lookahead.  After performing a
+replacement scanning resumes at the next character following the
+replaced substring.
+
+  1. The substrings `\$(` and `\${` are replaced by `$(` and `${`
+     respectively.  No parameter or expression evaluation
+     interpolation occurs.
+  2. A double backslash `\\` is replaced by a single backslash `\`.
+  3. A substring starting with a backslash that does not match one of
+     the previous rules is left unchanged.
 
 ## Expressions (Optional)
 
