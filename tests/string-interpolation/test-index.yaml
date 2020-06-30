@@ -1,0 +1,53 @@
+# Run with cwltest --test test-index.yaml --tool toil-cwl-runner -- --enable-dev
+
+- id: iwdr-1
+  label: escaping
+  doc: Line continuations in bash scripts should behave correctly
+  tool: bash-line-continuation.cwl
+  output:
+    out: {
+        "checksum": "sha1$47d8510dce768c907f4dea6bcaf90f8d59cb265c",
+        "class": "File",
+        "location": "out.txt",
+        "size": 48
+    }
+  tags: [ inline_javascript ]
+
+- id: iwdr-2
+  label: escaping
+  doc: Line continuations in bash scripts should always behave correctly
+  tool: bash-line-continuation-with-expression.cwl
+  output:
+    out: {
+        "checksum": "sha1$47d8510dce768c907f4dea6bcaf90f8d59cb265c",
+        "class": "File",
+        "location": "out.txt",
+        "size": 48
+    }
+  tags: [ inline_javascript ]
+
+- id: iwdr-3
+  label: escaping
+  doc: Test quoting multiple backslashes
+  tool: bash-dollar-quote.cwl
+  output:
+    out: {
+        "checksum": "sha1$acfdc38aef5354c03b976cbb6d9f7d08a179951d",
+        "class": "File",
+        "location": "out.txt",
+        "size": 246
+    }
+  tags: [ inline_javascript ]
+
+- id: iwdr-4
+  label: quotes
+  doc: Strings returned from JS expressions should not have extra quotes around them
+  tool: js-quote.cwl
+  output:
+    out: {
+        "checksum": "sha1$726e9e616f278d9028b4a870653b01c125c2fc89",
+        "class": "File",
+        "location": "file.txt",
+        "size": 14
+    }
+  tags: [ inline_javascript ]
