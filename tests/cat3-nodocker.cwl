@@ -1,6 +1,6 @@
 #!/usr/bin/env cwl-runner
 class: CommandLineTool
-cwlVersion: v1.2.0-dev3
+cwlVersion: v1.2.0-dev4
 doc: "Print the contents of a file to stdout using 'cat'."
 inputs:
   file1:
