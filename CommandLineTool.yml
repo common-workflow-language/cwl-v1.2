@@ -57,6 +57,14 @@ $graph:
         with an identifier for the type of computational operation.
       * Added conformance tests for order of operations evaluating `secondaryFiles` on input
         and ensure that input and output secondaryFiles expressions can return a File object.
+      * Clarify there are no limits on the size of file literal `contents`.
+      * When using `loadContents` it now must fail when attempting to
+        load a file greater than 64 KiB instead of silently truncating
+        the data.
+      * Objects, arrays and numbers returned by parameter references
+        or expressions in `Dirent.entry` that are not `File`,
+        `Directory` or `Dirent` objects (or arrays of such) must now
+        be JSON serialized to get file contents.
 
       See also the [CWL Workflow Description, v1.2.0-dev3 changelog](Workflow.html#Changelog).
 
@@ -904,8 +912,15 @@ $graph:
         indicates that the File or Directory in `entry` should be added to the
         designated output directory with the name in `entryname`.
 
-        If the value is an expression that evaluates to `null`, nothing is added
-        to the designated output directory from this entry.
+        If the value is an expression that evaluates to `null`,
+        nothing is added to the designated output directory from this
+        entry.
+
+        If the value is some other object, array or number that does
+        not match one of the above types, a new file must be created
+        with the value serialized to JSON text as the file contents.
+        The JSON serialization behavior should match the behavior of
+        string interpolation of [Parameter references](#Parameter_references).
 
         If `writable` is false, the file may be made available using a bind
         mount or file system link to avoid unnecessary copying of the input
