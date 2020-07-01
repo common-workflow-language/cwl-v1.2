@@ -1,7 +1,7 @@
 #!/usr/bin/env cwl-runner
 
 class: CommandLineTool
-cwlVersion: v1.2.0-dev3
+cwlVersion: v1.2.0-dev4
 baseCommand: ["cat", "example.conf"]
 
 requirements:

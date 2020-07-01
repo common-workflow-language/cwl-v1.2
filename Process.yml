@@ -8,7 +8,7 @@ $namespaces:
 
 $graph:
 
-- name: "Common Workflow Language, v1.2.0-dev3"
+- name: "Common Workflow Language, v1.2.0-dev4"
   type: documentation
   doc: {$include: concepts.md}
 
@@ -43,6 +43,7 @@ $graph:
     - cwl:v1.2.0-dev1
     - cwl:v1.2.0-dev2
     - cwl:v1.2.0-dev3
+    - cwl:v1.2.0-dev4
 
 - name: CWLType
   type: enum
@@ -904,9 +905,9 @@ $graph:
     to earlier schema definitions.
 
     - **Type definitions are allowed for `enum` and `record` types only.**
-    - Type definitions may be shared by defining them in a file and then 
+    - Type definitions may be shared by defining them in a file and then
       `$include`-ing them in the `types` field.
-    - A file can contain a list of type definitions 
+    - A file can contain a list of type definitions
 
   fields:
     - name: class
