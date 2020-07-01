@@ -290,6 +290,10 @@ $graph:
         `outputEval`.  If the size of the file is greater than 64 KiB,
         the implementation must raise a fatal error.
 
+        If a tool needs to return a large amount of structured data to
+        the workflow, loading the output object from `cwl.output.json`
+        bypasses `outputEval` but is not subject to the 64 KiB
+        `loadContents` limit.
 
 - name: CommandLineBindable
   type: record
