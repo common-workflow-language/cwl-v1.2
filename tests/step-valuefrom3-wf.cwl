@@ -1,6 +1,6 @@
 #!/usr/bin/env cwl-runner
 class: Workflow
-cwlVersion: v1.2.0-dev3
+cwlVersion: v1.2.0-dev4
 requirements:
   - class: StepInputExpressionRequirement
   - class: InlineJavascriptRequirement

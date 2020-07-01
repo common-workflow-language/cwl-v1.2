@@ -1,6 +1,6 @@
 #!/usr/bin/env cwl-runner
 class: CommandLineTool
-cwlVersion: v1.2.0-dev3
+cwlVersion: v1.2.0-dev4
 
 doc: |
  Generic interface to run a Common Workflow Language tool or workflow from the
