@@ -280,10 +280,16 @@ $graph:
         containing file objects that were matched.  If no files were
         matched, `self` must be a zero length array; if a single file
         was matched, the value of `self` is an array of a single
-        element.  Additionally, if `loadContents` is `true`, the File
-        objects must include up to the first 64 KiB of file contents
-        in the `contents` field.  The exit code of the process is
+        element.  The exit code of the process is
         available in the expression as `runtime.exitCode`.
+
+        Additionally if `loadContents` is true, the file must be a
+        UTF-8 text file 64 KiB or smaller, and the implementation must
+        read the entire contents of the file (or file array) and place
+        it in the `contents` field of the File object for use in
+        `outputEval`.  If the size of the file is greater than 64 KiB,
+        the implementation must raise a fatal error.
+
 
 - name: CommandLineBindable
   type: record

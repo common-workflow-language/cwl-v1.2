@@ -202,17 +202,21 @@ $graph:
     - name: contents
       type: string?
       doc: |
-        File contents literal.  Maximum of 64 KiB.
+        File contents literal.
 
         If neither `location` nor `path` is provided, `contents` must be
         non-null.  The implementation must assign a unique identifier for the
         `location` field.  When the file is staged as input to CommandLineTool,
         the value of `contents` must be written to a file.
 
-        If `loadContents` of `inputBinding` or `outputBinding` is true and
-        `location` is valid, the implementation must read up to the first 64
-        KiB of text from the file and place it in the "contents" field.
+        If `loadContents` of `inputBinding` or `outputBinding` is true
+        and `location` is valid, it must refer to a UTF-8 text file 64
+        KiB or smaller, and the implementation must read the entire
+        contents of the file and place it in the "contents" field.  If
+        the size of the file is greater than 64 KiB, the implementation  must
+        raise a fatal error.
 
+        If "contents" is set as a result of an expression, InitialWorkDirRequirement, or cwl.input.json
 
 - name: Directory
   type: record
