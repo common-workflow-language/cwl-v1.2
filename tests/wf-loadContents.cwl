@@ -6,8 +6,7 @@ requirements:
 inputs:
   my_file:
     type: File
-    inputBinding:
-      loadContents: true
+    loadContents: true
 
 steps:
   one:

@@ -1,0 +1,153 @@
+- job: null
+  id: iwd-nolimit
+  tool: iwd-nolimit.cwl
+  output:
+   "filelist": {
+        "location": "out-filelist.txt",
+        "basename": "out-filelist.txt",
+        "class": "File",
+        "checksum": "sha1$57f77b36009332d236b52b4beca77301b503b27c",
+        "size": 268866,
+    }
+  doc: "Test that InitialWorkDir contents can be bigger than 64k"
+  tags: [ initial_work_dir, command_line_tool ]
+
+- job: null
+  id: iwd-jsondump1
+  tool: iwd-jsondump1.cwl
+  output:
+    "filelist": {
+        "location": "out-filelist.json",
+        "basename": "out-filelist.json",
+        "class": "File",
+        "checksum": "sha1$5bbeb2a75327927cb97d7e9716c8299682001b36",
+        "size": 298863
+    }
+  doc: "Test dump object to JSON in InitialWorkDir file contents, no trailing newline"
+  tags: [ initial_work_dir, command_line_tool ]
+
+- job: null
+  id: iwd-jsondump1-nl
+  tool: iwd-jsondump1-nl.cwl
+  output:
+    "filelist": {
+        "location": "out-filelist.json",
+        "basename": "out-filelist.json",
+        "class": "File",
+        "checksum": "sha1$7307f027449371b3642c1f7c32124218af0e41b5",
+        "size": 298864
+    }
+  doc: "Test dump object to JSON in InitialWorkDir file contents, with trailing newline"
+  tags: [ initial_work_dir, command_line_tool ]
+
+- job: null
+  id: iwd-jsondump2
+  tool: iwd-jsondump2.cwl
+  output:
+    "filelist": {
+        "location": "out-filelist.json",
+        "basename": "out-filelist.json",
+        "class": "File",
+        "checksum": "sha1$a0e2225d47c9ed2f07e7633d00dd19d1cbf65c9f",
+        "size": 298877,
+    }
+  doc: "Test array to JSON in InitialWorkDir file contents, no trailing newline"
+  tags: [ initial_work_dir, command_line_tool ]
+
+- job: null
+  id: iwd-jsondump2-nl
+  tool: iwd-jsondump2-nl.cwl
+  output:
+    "filelist": {
+        "location": "out-filelist.json",
+        "basename": "out-filelist.json",
+        "class": "File",
+        "checksum": "sha1$750c95cb45561cd1d863506f82a1a75fffd53a54",
+        "size": 298878,
+    }
+  doc: "Test array to JSON in InitialWorkDir file contents, with trailing newline"
+  tags: [ initial_work_dir, command_line_tool ]
+
+- job: null
+  id: iwd-jsondump3
+  tool: iwd-jsondump3.cwl
+  output:
+    "filelist": {
+        "location": "out-number.json",
+        "basename": "out-number.json",
+        "class": "File",
+        "checksum": "sha1$356b190d3274c960b34c2c9538023dda438d67d4",
+        "size": 4,
+    }
+  doc: "Test number to JSON in InitialWorkDir file contents, no trailing newline"
+  tags: [ initial_work_dir, command_line_tool ]
+
+- job: null
+  id: iwd-jsondump3-nl
+  tool: iwd-jsondump3-nl.cwl
+  output:
+    "filelist": {
+        "location": "out-number.json",
+        "basename": "out-number.json",
+        "class": "File",
+        "checksum": "sha1$0b02e6b07d199025bfdcfc6b9830d550a0a6bde9",
+        "size": 5,
+    }
+  doc: "Test number to JSON in InitialWorkDir file contents, with trailing newline"
+  tags: [ initial_work_dir, command_line_tool ]
+
+- job: ../loadContents/input.yml
+  id: iwd-passthrough1
+  tool: iwd-passthrough1.cwl
+  output:
+    "filelist": {
+        "location": "renamed-filelist.txt",
+        "basename": "renamed-filelist.txt",
+        "class": "File",
+        "checksum": "sha1$57f77b36009332d236b52b4beca77301b503b27c",
+        "size": 268866,
+    }
+  doc: "Test InitialWorkDir file passthrough"
+  tags: [ initial_work_dir, command_line_tool ]
+
+- job: ../loadContents/input.yml
+  id: iwd-passthrough2
+  tool: iwd-passthrough2.cwl
+  output:
+    "out": {
+        "location": "out.txt",
+        "basename": "out.txt",
+        "class": "File",
+        "checksum": "sha1$406e83b1cd694780f1b3ea4fe8fbb754511fe3f7",
+        "size": 49,
+    }
+  doc: "Test InitialWorkDir file object is serialized to json"
+  tags: [ initial_work_dir, command_line_tool ]
+
+- job: ../loadContents/input.yml
+  id: iwd-passthrough3
+  tool: iwd-passthrough3.cwl
+  output:
+    "filelist": {
+        "location": "renamed-filelist.txt",
+        "basename": "renamed-filelist.txt",
+        "class": "File",
+        "checksum": "sha1$57f77b36009332d236b52b4beca77301b503b27c",
+        "size": 268866,
+    }
+  doc: "Test InitialWorkDir file object is passed through"
+  tags: [ initial_work_dir, command_line_tool ]
+
+- job: ../loadContents/input.yml
+  id: iwd-passthrough4
+  tool: iwd-passthrough4.cwl
+  output:
+    "filelist": {
+        "location": "inp-filelist.txt",
+        "basename": "inp-filelist.txt",
+        "class": "File",
+        "checksum": "sha1$57f77b36009332d236b52b4beca77301b503b27c",
+        "size": 268866,
+    }
+  doc: "Test InitialWorkDir file object is passed through"
+  tags: [ initial_work_dir, command_line_tool ]

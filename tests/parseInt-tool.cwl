@@ -8,7 +8,7 @@ cwlVersion: v1.2.0-dev4
 inputs:
   file1:
     type: File
-    inputBinding: { loadContents: true }
+    loadContents: true
 
 outputs:
   output: int
