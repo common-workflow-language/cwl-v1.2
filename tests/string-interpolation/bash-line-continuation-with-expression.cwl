@@ -1,10 +1,10 @@
 class: CommandLineTool
-cwlVersion: v1.0
+cwlVersion: v1.2.0-dev4
 requirements:
   InitialWorkDirRequirement:
     listing:
       - entryname: script.sh
-        entry: |          
+        entry: |
           echo \
             "My country, 'tis of thee," \
             "Sweet land of $(inputs.liberty)"
