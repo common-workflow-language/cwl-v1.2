@@ -5,7 +5,7 @@ $schemas:
   - EDAM.owl
   - gx_edam.ttl
 class: CommandLineTool
-cwlVersion: v1.2.0-dev3
+cwlVersion: v1.2.0-dev4
 doc: "Reverse each line using the `rev` command"
 hints:
   DockerRequirement:

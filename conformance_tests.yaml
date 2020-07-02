@@ -3330,5 +3330,8 @@
   tags: [ resource, command_line_tool ]
   id: 254
 
+- $import: tests/string-interpolation/test-index.yaml
+
 - $import: tests/conditionals/test-index.yaml
 - $import: tests/secondaryfiles/test-index.yaml
+- $import: tests/mixed-versions/test-index.yaml

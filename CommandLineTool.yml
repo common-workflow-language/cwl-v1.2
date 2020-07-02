@@ -10,10 +10,10 @@ $graph:
   type: documentation
   doc:
     - |
-      # Common Workflow Language (CWL) Command Line Tool Description, v1.2.0-dev3
+      # Common Workflow Language (CWL) Command Line Tool Description, v1.2.0-dev4
 
       This version:
-        * https://w3id.org/cwl/v1.2.0-dev3/
+        * https://w3id.org/cwl/v1.2.0-dev4/
 
       Current version:
         * https://w3id.org/cwl/
@@ -37,17 +37,17 @@ $graph:
     - {$include: intro.md}
 
     - |
-      ## Introduction to the CWL Command Line Tool standard v1.2.0-dev3
+      ## Introduction to the CWL Command Line Tool standard v1.2.0-dev4
 
       This specification represents the latest development release from the
-      CWL group.  Since the v1.1 release, v1.2.0-dev3 introduces the
+      CWL group.  Since the v1.1 release, v1.2.0-dev4 introduces the
       following updates to the CWL Command Line Tool standard.
-      Documents should use `cwlVersion: v1.2.0-dev3` to make use of new
-      syntax and features introduced in v1.2.0-dev3.  Existing v1.1 documents
+      Documents should use `cwlVersion: v1.2.0-dev4` to make use of new
+      syntax and features introduced in v1.2.0-dev4.  Existing v1.1 documents
       should be trivially updatable by changing `cwlVersion`, however
       CWL documents that relied on previously undefined or
       underspecified behavior may have slightly different behavior in
-      v1.2.0-dev3.
+      v1.2.0-dev4.
 
       ## Changelog
 
@@ -65,8 +65,13 @@ $graph:
         or expressions in `Dirent.entry` that are not `File`,
         `Directory` or `Dirent` objects (or arrays of such) must now
         be JSON serialized to get file contents.
+      * Note that only enum and record types can be typedef-ed
+      * Added conformance tests for order of operations evaluating `secondaryFiles` on input
+        and ensure that input and output secondaryFiles expressions can return a File object.
+      * Escaping in "string interpolation":#String_Interpolation has
+        been added to the specification along with conformance tests.
 
-      See also the [CWL Workflow Description, v1.2.0-dev3 changelog](Workflow.html#Changelog).
+      See also the [CWL Workflow Description, v1.2.0-dev4 changelog](Workflow.html#Changelog).
 
       ## Purpose
 
@@ -75,8 +80,8 @@ $graph:
       are composed of multiple separate programs can be written in multiple
       languages and execute concurrently on multiple hosts.  However, POSIX
       does not dictate computer-readable grammar or semantics for program input
-      and output, resulting in extremely heterogeneous command line grammar and
-      input/output semantics among program.  This is a particular problem in
+      and output, resulting in extremely diverse command line grammar and
+      input/output semantics among programs.  This is a particular problem in
       distributed computing (multi-node compute clusters) and virtualized
       environments (such as Docker containers) where it is often necessary to
       provision resources such as input files before executing the program.

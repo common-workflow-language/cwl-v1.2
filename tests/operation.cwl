@@ -2,7 +2,7 @@
 # Example of an operation that has not yet been implemented
 #
 class: Operation
-cwlVersion: v1.2.0-dev3
+cwlVersion: v1.2.0-dev4
 
 # an Operation is a placeholder for a CommandLineTool or
 # Workflow to be added later, therefore its documentation
