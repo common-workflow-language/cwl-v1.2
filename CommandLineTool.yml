@@ -64,7 +64,12 @@ $graph:
       * Objects, arrays and numbers returned by parameter references
         or expressions in `Dirent.entry` that are not a `File` or
         `Directory` object are now required to be JSON serialized to
-        produce file contents.
+        produce file contents.  An expression in `Dirent.entry` that
+        returns an array of `File` or `Directory` objects is no longer
+        added to the output directory, but is instead a JSON
+        serialized.  An array of Files or Directories can still be
+        added with an expression under `listing` instead of
+        `Dirent.entry`.
       * Note that only enum and record types can be typedef-ed
       * Added conformance tests for order of operations evaluating `secondaryFiles` on input
         and ensure that input and output secondaryFiles expressions can return a File object.
