@@ -1,3 +1,9 @@
+#
+# Tests that workflow can call out to tools from other versions, also
+# tests that documents marked as older versions do not allow syntax
+# from newer versions.
+#
+
 - job: null
   tool: wf-v10.cwl
   output: {}
@@ -31,4 +37,11 @@
 - job: null
   tool: invalid-wf-v11.cwl
   doc: test wf with v1.2 syntax marked as v1.1 (should fail)
+  should_fail: true
+
+- job: null
+  tool: invalid-wf-v12.cwl
+  doc: |
+    test 1.2 wf that includes tools that are marked as v1.0 and v1.1 that
+    contain v1.2 features (should fail)
   should_fail: true
