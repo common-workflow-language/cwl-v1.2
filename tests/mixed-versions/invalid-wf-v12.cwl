@@ -1,5 +1,8 @@
 cwlVersion: v1.2.0-dev4
 class: Workflow
+doc: |
+  Workflow that includes tools that are marked as v1.0 and v1.1 that
+  contain v1.2 features.  Should fail.
 requirements:
   InlineJavascriptRequirement: {}
 inputs:
@@ -16,11 +19,11 @@ steps:
   toolv10:
     in: {inp1: inp1}
     out: []
-    run: tool-v10.cwl
+    run: invalid-tool-v10.cwl
   toolv11:
     in: {inp1: inp1}
     out: []
-    run: tool-v11.cwl
+    run: invalid-tool-v11.cwl
   toolv12:
     in: {inp1: inp1}
     out: []
