@@ -26,7 +26,7 @@ requirements:
     listing:
       - $(inputs.input_file)
       - $(inputs.optional_file)
-      - $(inputs.input_list)
+      - entry: $(inputs.input_list)
       - entry: $(null)
       - entryname: a
         entry: b

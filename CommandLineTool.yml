@@ -63,13 +63,8 @@ $graph:
         the data.
       * Objects, arrays and numbers returned by parameter references
         or expressions in `Dirent.entry` that are not a `File` or
-        `Directory` object are now required to be JSON serialized to
-        produce file contents.  An expression in `Dirent.entry` that
-        returns an array of `File` or `Directory` objects is no longer
-        added to the output directory, but is instead a JSON
-        serialized.  An array of Files or Directories can still be
-        added with an expression under `listing` instead of
-        `Dirent.entry`.
+        `Directory` object (or array of such) are now specified to be
+        JSON serialized to produce file contents.
       * Note that only enum and record types can be typedef-ed
       * Added conformance tests for order of operations evaluating `secondaryFiles` on input
         and ensure that input and output secondaryFiles expressions can return a File object.
@@ -901,8 +896,12 @@ $graph:
         The name of the file or subdirectory to create in the output
         directory.  If `entry` is a File or Directory, the `entryname`
         field overrides the value of `basename` of the File or
-        Directory object.  Required when `entry` implies creating a
-        new file, optional when `entry` refers to an existing file.
+        Directory object.
+
+        * Required when `entry` evaluates to file contents only
+        * Optional when `entry` evaluates to a File or Directory object with a `basename`
+        * Invalid when `entry` evaluates to an array of File or Directory objects.
+
     - name: entry
       type: [string, Expression]
       jsonldPredicate:
@@ -911,30 +910,37 @@ $graph:
         If the value is a string literal or an expression which evaluates to a
         string, a new text file must be created with the string as the file contents.
 
-        If the value is an expression that evaluates to a `File` or `Directory`
-        object, this indicates the referenced file or directory should be added
-        to the designated output directory prior to executing the tool.
+        If the value is an expression that evaluates to a `File` or
+        `Directory` object, or an array of `File` or `Directory`
+        objects, this indicates the referenced file or directory
+        should be added to the designated output directory prior to
+        executing the tool.
 
         If the value is an expression that evaluates to `null`,
         nothing is added to the designated output directory, the entry
         has no effect.
 
-        If the value is an expression that evaluates to an array,
-        number, or object that is not a File or Directory object, a
-        new file must be created with the value serialized to JSON
-        text as the file contents.  The JSON serialization behavior
-        should match the behavior of string interpolation of
-        [Parameter references](#Parameter_references).
+        If the value is an expression that evaluates to some other
+        array, number, or object not consisting of `File` or
+        `Directory` objects, a new file must be created with the value
+        serialized to JSON text as the file contents.  The JSON
+        serialization behavior should match the behavior of string
+        interpolation of [Parameter
+        references](#Parameter_references).
 
     - name: writable
       type: boolean?
       default: false
       doc: |
-        If true, the file or directory must be writable by the tool.  Changes
-        to the file or directory must be isolated and not visible by any other
-        CommandLineTool process.  This may be implemented by making a copy of
-        the original file or directory.  Default false (files and directories
-        read-only by default).
+        If true, the File or Directory (or array of Files or
+        Directories) declared in `entry` must be writable by the tool.
+
+        Changes to the file or directory must be isolated and not
+        visible by any other CommandLineTool process.  This may be
+        implemented by making a copy of the original file or
+        directory.
+
+        Default false (files and directories read-only by default).
 
         A directory marked as `writable: true` implies that all files and
         subdirectories are recursively writable as well.
@@ -973,9 +979,9 @@ $graph:
         The list of files or subdirectories that must be placed in the
         designated output directory prior to executing the command line tool.
 
-        The expression return value must validate as `["null", File,
-        Directory, Dirent, {type: array, items: [File, Directory,
-        Dirent]}]`.
+        Return type of each expression must validate as `["null",
+        File, Directory, Dirent, {type: array, items: [File,
+        Directory]}]`.
 
         Each `File` or `Directory` that is returned by an Expression
         must be added to the designated output directory prior to
