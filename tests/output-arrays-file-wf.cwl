@@ -23,7 +23,7 @@ steps:
       inputs:
         i:
           type: File
-          inputBinding: { loadContents: true }
+          loadContents: true
 
       outputs:
         o:

@@ -1,0 +1,14 @@
+- job: null
+  tool: cwloutput-nolimit.cwl
+  id: cwloutput-nolimit
+  output: {$import: compare-output.json}
+  doc: "Test that loading from cwl.output.json isn't limited to 64k"
+  tags: [ command_line_tool ]
+
+- job: input.yml
+  tool: loadContents-limit.cwl
+  id: loadContents-limit
+  output: {}
+  doc: "Test that loadContents on a file larger than 64k fails"
+  should_fail: true
+  tags: [ command_line_tool ]

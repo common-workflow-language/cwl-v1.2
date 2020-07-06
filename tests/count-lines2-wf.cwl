@@ -42,7 +42,7 @@ steps:
       inputs:
         parseInt_file1:
           type: File
-          inputBinding: { loadContents: true }
+          loadContents: true
       outputs:
         parseInt_output:
           type: int
