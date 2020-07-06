@@ -305,7 +305,7 @@ $graph:
 
         If a tool needs to return a large amount of structured data to
         the workflow, loading the output object from `cwl.output.json`
-        bypasses `outputEval` but is not subject to the 64 KiB
+        bypasses `outputEval` and is not subject to the 64 KiB
         `loadContents` limit.
 
 - name: CommandLineBindable
