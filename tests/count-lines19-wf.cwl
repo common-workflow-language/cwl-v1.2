@@ -12,8 +12,9 @@ outputs:
 
 steps:
   step1:
-    run: wc2-tool.cwl
+    run: wc3-tool.cwl
     in:
       file1:
         source: [file1]
+        linkMerge: merge_nested
     out: [output]
