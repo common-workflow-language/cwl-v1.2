@@ -313,7 +313,7 @@
 
 - job: tests/count-lines4-job.json
   output:
-    count_output: 32
+    count_output: 16
   tool: tests/count-lines13-wf.cwl
   label: wf_wc_nomultiple
   id: 30
@@ -325,7 +325,7 @@
 
 - job: tests/count-lines4-job.json
   output:
-    count_output: 32
+    count_output: 16
   tool: tests/count-lines19-wf.cwl
   label: wf_wc_nomultiple
   id: count-lines19-wf
