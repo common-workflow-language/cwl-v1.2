@@ -151,3 +151,101 @@
     }
   doc: "Test InitialWorkDir file object is passed through"
   tags: [ initial_work_dir, command_line_tool ]
+
+- job: null
+  id: iwd-fileobjs1
+  tool: iwd-fileobjs1.cwl
+  output:
+    "filelist": {
+        "location": "inp-filelist.txt",
+        "basename": "inp-filelist.txt",
+        "class": "File",
+        "checksum": "sha1$57f77b36009332d236b52b4beca77301b503b27c",
+        "size": 268866,
+    }
+    "testdir": {
+        "location": "testdir",
+        "basename": "testdir",
+        "class": "Directory",
+        "listing": [
+            {
+                "class": "File",
+                "location": "b",
+                "basename": "b",
+                "checksum": "sha1$da39a3ee5e6b4b0d3255bfef95601890afd80709",
+                "size": 0,
+            },
+            {
+                "class": "Directory",
+                "location": "c",
+                "basename": "c",
+                "listing": [
+                    {
+                        "class": "File",
+                        "location": "d",
+                        "basename": "d",
+                        "checksum": "sha1$da39a3ee5e6b4b0d3255bfef95601890afd80709",
+                        "size": 0,
+                    }
+                ],
+            },
+            {
+                "class": "File",
+                "location": "a",
+                "basename": "a",
+                "checksum": "sha1$da39a3ee5e6b4b0d3255bfef95601890afd80709",
+                "size": 0,
+            }
+        ],
+    }
+  doc: "Test File and Directory object in listing"
+  tags: [ initial_work_dir, command_line_tool ]
+
+- job: null
+  id: iwd-fileobjs2
+  tool: iwd-fileobjs2.cwl
+  output:
+    "filelist": {
+        "location": "inp-filelist.txt",
+        "basename": "inp-filelist.txt",
+        "class": "File",
+        "checksum": "sha1$57f77b36009332d236b52b4beca77301b503b27c",
+        "size": 268866,
+    }
+    "testdir": {
+        "location": "testdir",
+        "basename": "testdir",
+        "class": "Directory",
+        "listing": [
+            {
+                "class": "File",
+                "location": "b",
+                "basename": "b",
+                "checksum": "sha1$da39a3ee5e6b4b0d3255bfef95601890afd80709",
+                "size": 0,
+            },
+            {
+                "class": "Directory",
+                "location": "c",
+                "basename": "c",
+                "listing": [
+                    {
+                        "class": "File",
+                        "location": "d",
+                        "basename": "d",
+                        "checksum": "sha1$da39a3ee5e6b4b0d3255bfef95601890afd80709",
+                        "size": 0,
+                    }
+                ],
+            },
+            {
+                "class": "File",
+                "location": "a",
+                "basename": "a",
+                "checksum": "sha1$da39a3ee5e6b4b0d3255bfef95601890afd80709",
+                "size": 0,
+            }
+        ],
+    }
+  doc: "Test File and Directory object in listing"
+  tags: [ initial_work_dir, command_line_tool ]

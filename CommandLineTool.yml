@@ -971,8 +971,15 @@ $graph:
         - Expression
         - type: array
           items:
+            - "null"
             - Dirent
             - Expression
+            - File
+            - Directory
+            - type: array
+              items:
+                - File
+                - Directory
       jsonldPredicate:
         _id: "cwl:listing"
       doc: |
