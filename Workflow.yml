@@ -64,21 +64,28 @@ $graph:
           load a file greater than 64 KiB instead of silently truncating
           the data.
         * Note that only enum and record types can be typedef-ed
-        * Escaping in "string interpolation":#String_Interpolation has
+        * Escaping in [string interpolation[(#String_Interpolation) has
           been added to the specification along with conformance tests.
+        * Added discussion of [packed documents](#Packed_documents).
+        * Specify behavior when `source` is a single-item list and no
+          linkMerge is set.
+        * Added discussion about handling different document versions.
 
       See also the [CWL Command Line Tool Description, v1.2.0-dev4 changelog](CommandLineTool.html#Changelog).
 
       ## Purpose
 
-      The Common Workflow Language Command Line Tool Description express
-      workflows for data-intensive science, such as Bioinformatics, Chemistry,
-      Physics, and Astronomy.  This specification is intended to define a data
-      and execution model for Workflows that can be implemented on top of a
-      variety of computing platforms, ranging from an individual workstation to
-      cluster, grid, cloud, and high performance computing systems. Details related
-      to execution of these workflow not laid out in this specification are open to
-      interpretation by the computing platform implementing this specification.
+      The Common Workflow Language Command Line Tool Description
+      express workflows for data-intensive science, such as
+      bioinformatics, physics, astronomy, geoscience, and machine
+      learning.  This specification is intended to define a data and
+      execution model for Workflows that can be implemented on top of
+      a variety of computing platforms, ranging from an individual
+      workstation to cluster, grid, cloud, and high performance
+      computing systems. Details related to execution of these
+      workflow not laid out in this specification are open to
+      interpretation by the computing platform implementing this
+      specification.
 
     - {$include: concepts.md}
 

@@ -91,7 +91,19 @@ JSON or YAML syntax.  Upon loading, a CWL implementation must apply the
 preprocessing steps described in the
 [Semantic Annotations for Linked Avro Data (SALAD) Specification](SchemaSalad.html).
 An implementation may formally validate the structure of a CWL document using
-SALAD schemas located at https://github.com/common-workflow-language/cwl-v1.1/
+SALAD schemas located at https://github.com/common-workflow-language/cwl-v1.2/
+
+CWL documents commonly reference other CWL documents.  Each document
+must declare the `cwlVersion` of that document.  Implementations must
+validate against the document's declared version.  Implementations
+should allow workflows to reference documents of both newer and older
+CWL versions (up to the highest version of CWL supported by that
+implementation).  Where the runtime enviroment or runtime behavior has
+changed between versions, for that portion of the execution an
+implementation must provide runtime enviroment and behavior consistent
+with the document's declared version.  An implementation must not
+expose a newer feature when executing a document that specifies an
+older version that does not not include that feature.
 
 ### map
 
