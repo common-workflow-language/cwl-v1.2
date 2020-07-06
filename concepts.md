@@ -310,14 +310,51 @@ For the `$schema` field we recommend their RDF encoding: http://schema.org/versi
 Implementation extensions which modify execution semantics must be [listed in
 the `requirements` field](#Requirements_and_hints).
 
+## Packed documents
+
+A "packed" CWL document is one that contains multiple process objects.
+This makes it possible to store and transmit a Workflow together with
+the processes of each of its steps in a single file.
+
+There are two methods to create packed documents: embedding and $graph.
+These can be both appear in the same document.
+
+"Embedding" is where the entire process object is copied into the
+`run` field of a workflow step.  If the step process is a subworkflow,
+it can be processed recursively to embed the processes of the
+subworkflow steps, and so on.  Embedded process objects may optionally
+include `id` fields.
+
+A "$graph" document does not have a process object at the root.
+Instead there is a [`$graph`](SchemaSalad.html#Document_graph) field
+which consists of a list of process objects.  Each process object must
+have an `id` field.  Workflow `run` fields cross-reference other
+processes in the document `$graph` using the `id` of the process
+object.
+
+All process objects in a packed document must validate and execute as
+the `cwlVersion` appearing the top level.  A `cwlVersion` field
+appearing anywhere other than the top level must be ignored.
+
+When executing a packed document, the reference to the document may
+include a fragment identifier.  If present, the fragment identifier
+specifies the `id` of the process to execute.
+
+If the reference to the packed document does not include a fragment
+identifier, the runner must choose the top-level process object as the
+entry point.  If there is no top-level process object (as in the case
+of `$graph`) then the runner must choose the process object with an id
+of `#main`.  If there is no `#main` object, the runner must return an
+error.
+
 # Execution model
 
 ## Execution concepts
 
-A **parameter** is a named symbolic input or output of process, with an
-associated datatype or schema.  During execution, values are assigned to
-parameters to make the input object or output object used for concrete
-process invocation.
+A **parameter** is a named symbolic input or output of process, with
+an associated datatype or schema.  During execution, values are
+assigned to parameters to make the input object or output object used
+for concrete process invocation.
 
 A **CommandLineTool** is a process characterized by the execution of a
 standalone, non-interactive program which is invoked on some input,
