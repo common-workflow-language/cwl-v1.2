@@ -68,8 +68,15 @@ $graph:
       * Note that only enum and record types can be typedef-ed
       * Added conformance tests for order of operations evaluating `secondaryFiles` on input
         and ensure that input and output secondaryFiles expressions can return a File object.
-      * Escaping in "string interpolation":#String_Interpolation has
+      * Escaping in [string interpolation](#String_Interpolation) has
         been added to the specification along with conformance tests.
+      * It is now possible to have an absolute path in the `entryname`
+        field in
+        [InitialWorkDirRequirement](#InitialWorkDirRequirement) when
+        running in a container.  Together with
+        `DockerRequirement.dockerOutputDirectory` this it possible to
+        control the locations of both input and output files when
+        running in containers.
 
       See also the [CWL Workflow Description, v1.2.0-dev4 changelog](Workflow.html#Changelog).
 
@@ -883,24 +890,45 @@ $graph:
 - name: Dirent
   type: record
   doc: |
-    Define a file or subdirectory that must be placed in the designated output
-    directory prior to executing the command line tool.  May be the result of
-    executing an expression, such as building a configuration file from a
-    template.
+    Define a file or subdirectory that must be staged to a particular
+    place prior to executing the command line tool.  May be the result
+    of executing an expression, such as building a configuration file
+    from a template.
+
+    Usually files are staged within the designated output directory.
+    However, under certain circumstances, files may be staged at
+    arbitrary locations, see discussion for `entryname`.
+
   fields:
     - name: entryname
       type: ["null", string, Expression]
       jsonldPredicate:
         _id: cwl:entryname
       doc: |
-        The name of the file or subdirectory to create in the output
-        directory.  If `entry` is a File or Directory, the `entryname`
-        field overrides the value of `basename` of the File or
-        Directory object.
+        The "target" name of the file or subdirectory.  If `entry` is
+        a File or Directory, the `entryname` field overrides the value
+        of `basename` of the File or Directory object.
 
         * Required when `entry` evaluates to file contents only
         * Optional when `entry` evaluates to a File or Directory object with a `basename`
         * Invalid when `entry` evaluates to an array of File or Directory objects.
+
+        If `entryname` is a relative path, it specifies a name within
+        the designated output directory.  A relative path starting
+        with `../` is an error.
+
+        If `entryname` is an absolute path (starts with a slash `/`)
+        it is an error unless the following conditions are met:
+
+          * `DockerRequirement` is present in `requirements`
+          * The program is will run inside a container or other
+          virtualized environment where, from the perspective of
+          the program, the root filesystem is not shared with any
+          other user or running program.
+
+        In this case, and the above conditions are met, then
+        `entryname` may specify the absolute path within the container
+        where the file or directory must be placed.
 
     - name: entry
       type: [string, Expression]
@@ -956,9 +984,16 @@ $graph:
   type: record
   extends: ProcessRequirement
   doc:
-    Define a list of files and subdirectories that must be created by the
-    workflow platform in the designated output directory prior to executing the
-    command line tool.
+    Define a list of files and subdirectories that must be staged by
+    the workflow platform prior to executing the command line tool.
+
+    Normally files are staged within the designated output directory.
+    However, when running inside containers, files may be staged at
+    arbitrary locations, see discussion for `Dirent.entryname`.
+    Together with `DockerRequirement.dockerOutputDirectory` this it
+    possible to control the locations of both input and output files
+    when running in containers.
+
   fields:
     - name: class
       type: string
@@ -983,8 +1018,8 @@ $graph:
       jsonldPredicate:
         _id: "cwl:listing"
       doc: |
-        The list of files or subdirectories that must be placed in the
-        designated output directory prior to executing the command line tool.
+        The list of files or subdirectories that must be staged prior
+        to executing the command line tool.
 
         Return type of each expression must validate as `["null",
         File, Directory, Dirent, {type: array, items: [File,
@@ -1000,12 +1035,13 @@ $graph:
 
         Expressions may return null, in which case they have no effect.
 
-        Files or Directories which are listed in the input parameters and
-        appear in the `InitialWorkDirRequirement` listing must have their
-        `path` set to their staged location in the designated output directory.
-        If the same File or Directory appears more than once in the
-        `InitialWorkDirRequirement` listing, the implementation must choose
-        exactly one value for `path`; how this value is chosen is undefined.
+        Files or Directories which are listed in the input parameters
+        and appear in the `InitialWorkDirRequirement` listing must
+        have their `path` set to their staged location.  If the same
+        File or Directory appears more than once in the
+        `InitialWorkDirRequirement` listing, the implementation must
+        choose exactly one value for `path`; how this value is chosen
+        is undefined.
 
 
 - name: EnvVarRequirement
