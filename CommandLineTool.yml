@@ -915,7 +915,7 @@ $graph:
 
         If `entryname` is a relative path, it specifies a name within
         the designated output directory.  A relative path starting
-        with `../` is an error.
+        with `../` or that resolves to location above the designated output directory is an error.
 
         If `entryname` is an absolute path (starts with a slash `/`)
         it is an error unless the following conditions are met:
