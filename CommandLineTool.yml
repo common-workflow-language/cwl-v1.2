@@ -73,7 +73,7 @@ $graph:
       * It is now possible to have an absolute path in the `entryname`
         field in
         [InitialWorkDirRequirement](#InitialWorkDirRequirement) when
-        running in a container.  Together with
+        running in a mandatory container.  Together with
         `DockerRequirement.dockerOutputDirectory` this it possible to
         control the locations of both input and output files when
         running in containers.
