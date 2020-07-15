@@ -895,7 +895,7 @@ $graph:
     of executing an expression, such as building a configuration file
     from a template.
 
-    Usually files are staged within the designated output directory.
+    Usually files are staged within the [designated output directory](#Runtime_environment).
     However, under certain circumstances, files may be staged at
     arbitrary locations, see discussion for `entryname`.
 
