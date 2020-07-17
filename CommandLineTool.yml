@@ -921,10 +921,10 @@ $graph:
         it is an error unless the following conditions are met:
 
           * `DockerRequirement` is present in `requirements`
-          * The program is will run inside a container or other
-          virtualized environment where, from the perspective of
-          the program, the root filesystem is not shared with any
-          other user or running program.
+          * The program is will run inside a software container
+          where, from the perspective of the program, the root
+          filesystem is not shared with any other user or
+          running program.
 
         In this case, and the above conditions are met, then
         `entryname` may specify the absolute path within the container
