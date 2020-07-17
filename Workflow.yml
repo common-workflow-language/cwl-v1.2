@@ -64,7 +64,7 @@ $graph:
           load a file greater than 64 KiB instead of silently truncating
           the data.
         * Note that only enum and record types can be typedef-ed
-        * Escaping in [string interpolation[(#String_Interpolation) has
+        * Escaping in [string interpolation](#String_Interpolation) has
           been added to the specification along with conformance tests.
         * Added discussion of [packed documents](#Packed_documents).
         * Specify behavior when `source` is a single-item list and no
