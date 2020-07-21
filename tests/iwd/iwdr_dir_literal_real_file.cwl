@@ -21,3 +21,5 @@ outputs:
    type: File
    outputBinding:
      glob: subdir/$(inputs.filelist.basename)
+
+baseCommand: echo
