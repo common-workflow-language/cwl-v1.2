@@ -1,0 +1,6 @@
+forward_reads:
+  class: File
+  location: ../example_human_Illumina.pe_1.fastq
+reverse_reads:
+  class: File
+  location: ../example_human_Illumina.pe_2.fastq
