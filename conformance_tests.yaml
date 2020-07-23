@@ -3340,7 +3340,22 @@
         "checksum": "sha1$7448d8798a4380162d4b56f9b452e2f6f9e24e7a"
      }
   tags: [ resource, command_line_tool ]
-  id: 254
+  id: 255
+
+- job: tests/empty.json
+  tool: tests/storage_float.cwl
+  label: storage_float
+  doc: Test float value for ram/tmpdir/outdir Min(Max) is rounded up
+  output:
+     output: {
+        "location": "values.txt",
+        "basename": "values.txt",
+        "class": "File",
+        "checksum": "sha1$c73f68407c144c5336a6c14e7ec79ee470231bd7",
+        "size": 12
+     }
+  tags: [ resource, command_line_tool ]
+  id: 256
 
 - $import: tests/string-interpolation/test-index.yaml
 
