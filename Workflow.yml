@@ -72,6 +72,8 @@ $graph:
         * Added discussion about handling different document versions.
 
       See also the [CWL Command Line Tool Description, v1.2.0-dev4 changelog](CommandLineTool.html#Changelog).
+      For other changes since CWL v1.0, see the
+      [CWL Workflow Description, v1.1 changelog](https://www.commonwl.org/v1.1/Workflow.html#Changelog)
 
       ## Purpose
 
