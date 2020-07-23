@@ -8,7 +8,7 @@ $namespaces:
 
 $graph:
 
-- name: "Common Workflow Language, v1.2.0-dev4"
+- name: "Common Workflow Language, v1.2.0-dev5"
   type: documentation
   doc: {$include: concepts.md}
 
@@ -43,7 +43,7 @@ $graph:
     - cwl:v1.2.0-dev1
     - cwl:v1.2.0-dev2
     - cwl:v1.2.0-dev3
-    - cwl:v1.2.0-dev4
+    - cwl:v1.2.0-dev5
 
 - name: CWLType
   type: enum

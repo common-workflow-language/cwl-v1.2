@@ -1,6 +1,6 @@
 #!/usr/bin/env cwl-runner
 class: Workflow
-cwlVersion: v1.2.0-dev4
+cwlVersion: v1.2.0-dev5
 
 inputs:
   file1:

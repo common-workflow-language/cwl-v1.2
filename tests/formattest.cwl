@@ -1,6 +1,6 @@
 $namespaces:
   edam: "http://edamontology.org/"
-cwlVersion: v1.2.0-dev4
+cwlVersion: v1.2.0-dev5
 class: CommandLineTool
 doc: "Reverse each line using the `rev` command"
 inputs:

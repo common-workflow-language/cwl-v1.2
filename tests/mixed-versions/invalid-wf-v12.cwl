@@ -1,4 +1,4 @@
-cwlVersion: v1.2.0-dev4
+cwlVersion: v1.2.0-dev5
 class: Workflow
 doc: |
   Workflow that includes tools that are marked as v1.0 and v1.1 that

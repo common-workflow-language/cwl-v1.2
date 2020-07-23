@@ -1,6 +1,6 @@
 #!/usr/bin/env cwl-runner
 class: CommandLineTool
-cwlVersion: v1.2.0-dev4
+cwlVersion: v1.2.0-dev5
 doc: |
   YAML | syntax adds a trailing newline, so in the listing entry
   below, it becomes a string interpolation -- it evaluates to a string
