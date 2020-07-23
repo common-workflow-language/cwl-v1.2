@@ -77,6 +77,7 @@ $graph:
         `DockerRequirement.dockerOutputDirectory` this it possible to
         control the locations of both input and output files when
         running in containers.
+      * Specify default success/fail interpretation of exit codes when not given.
 
       See also the [CWL Workflow Description, v1.2.0-dev4 changelog](Workflow.html#Changelog).
       For other changes since CWL v1.0, see the
@@ -702,6 +703,8 @@ $graph:
       doc: |
         Exit codes that indicate the process completed successfully.
 
+        If not specified, only exit code 0 is considered success.
+
     - name: temporaryFailCodes
       type: int[]?
       doc: |
@@ -709,12 +712,16 @@ $graph:
         temporary condition, where executing the process with the same
         runtime environment and inputs may produce different results.
 
+        If not specified, no exit codes are considered temporary failure.
+
     - name: permanentFailCodes
       type: int[]?
       doc:
         Exit codes that indicate the process failed due to a permanent logic
         error, where executing the process with the same runtime environment and
         same inputs is expected to always fail.
+
+        If not specified, all exit codes except 0 are considered permanent failure.
 
 
 - type: record

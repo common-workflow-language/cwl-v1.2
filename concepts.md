@@ -71,11 +71,13 @@ A **process** is a basic unit of computation which accepts input data,
 performs some computation, and produces output data. Examples include
 CommandLineTools, Workflows, and ExpressionTools.
 
-An **input object** is an object describing the inputs to an invocation of
-a process.
+An **input object** is an object describing the inputs to an
+invocation of a process.  The fields of the input object are referred
+to as "input parameters".
 
-An **output object** is an object describing the output resulting from an
-invocation of a process.
+An **output object** is an object describing the output resulting from
+an invocation of a process.  The fields of the output object are
+referred to as "output parameters".
 
 An **input schema** describes the valid format (required fields, data types)
 for an input object.
@@ -389,6 +391,12 @@ the document.  The responsibilities of the workflow platform may include
 scheduling process invocation, setting up the necessary runtime environment,
 making input data available, invoking the tool process, and collecting output.
 
+A **data link** is a connection from a "Source" parameter to a "Sink"
+parameter.  A data link expresses that when a value becomes available
+for the source parameter, that value should be copied to the "sink"
+parameter.  Reflecting the direction of data flow, a data link is
+described as "outgoing" from the source and "inbound" to the sink.
+
 A workflow platform may choose to only implement the Command Line Tool
 Description part of the CWL specification.
 
@@ -412,8 +420,10 @@ of [process requirements](#Requirements_and_hints).
 
 ## Generic execution process
 
-The generic execution sequence of a CWL process (including workflows and
-command line line tools) is as follows.
+The generic execution sequence of a CWL process (including workflows
+and command line line tools) is as follows.  Processes are
+modeled as functions that consume an input object and produce an
+output object.
 
 1. Load input object.
 1. Load, process and validate a CWL document, yielding one or more process objects.
