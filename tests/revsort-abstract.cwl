@@ -5,7 +5,7 @@
 #
 class: Workflow
 doc: "Reverse the lines in a document, then sort those lines."
-cwlVersion: v1.2.0-dev4
+cwlVersion: v1.2.0-dev5
 
 inputs:
   input:

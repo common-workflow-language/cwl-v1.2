@@ -1,4 +1,4 @@
-cwlVersion: v1.2.0-dev4
+cwlVersion: v1.2.0-dev5
 class: CommandLineTool
 doc: |
   When executing in a container, entryname can have an absolute path
