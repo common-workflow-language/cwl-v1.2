@@ -53,6 +53,8 @@ $graph:
 
       * `coresMin` and `coresMax` of
           [ResourceRequirement](#ResourceRequirement) may now request fractional CPUs.
+      * `ramMin`, `ramMax`, `tmpdirMin`, `tmpdirMax`, `outdirMin`, and `outdirMax` of
+          [ResourceRequirement](#ResourceRequirement) now accept floating point values.
       * (CommandLineTool)[#CommandLineTool] can now express `intent`
         with an identifier for the type of computational operation.
       * Added conformance tests for order of operations evaluating `secondaryFiles` on input
@@ -1100,15 +1102,20 @@ $graph:
   doc: |
     Specify basic hardware resource requirements.
 
-    "min" is the minimum amount of a resource that must be reserved to schedule
-    a job. If "min" cannot be satisfied, the job should not be run.
+    "min" is the minimum amount of a resource that must be reserved to
+    schedule a job. If "min" cannot be satisfied, the job should not
+    be run.
 
-    "max" is the maximum amount of a resource that the job shall be permitted
-    to use. If a node has sufficient resources, multiple jobs may be scheduled
-    on a single node provided each job's "max" resource requirements are
-    met. If a job attempts to exceed its "max" resource allocation, an
-    implementation may deny additional resources, which may result in job
-    failure.
+    "max" is the maximum amount of a resource that the job shall be
+    allocated. If a node has sufficient resources, multiple jobs may
+    be scheduled on a single node provided each job's "max" resource
+    requirements are met. If a job attempts to exceed its resource
+    allocation, an implementation may deny additional resources, which
+    may result in job failure.
+
+    If both "min" and "max" are specified, an implementation may
+    choose to allocate any amount between "min" and "max", with the
+    actual allocation provided in the `runtime` object.
 
     If "min" is specified but "max" is not, then "max" == "min"
     If "max" is specified by "min" is not, then "min" == "max".
@@ -1163,28 +1170,58 @@ $graph:
         See `coresMin` for discussion about fractional CPU requests.
 
     - name: ramMin
-      type: ["null", long, Expression]
-      doc: Minimum reserved RAM in mebibytes (2**20) (default is 256)
+      type: ["null", long, float, Expression]
+      doc: |
+        Minimum reserved RAM in mebibytes (2**20) (default is 256)
+
+        May be a fractional value.  If so, the actual RAM request must
+        be rounded up to the next whole number.  The reported amount of
+        RAM reserved for the process, which is available to
+        expressions on the CommandLineTool as `runtime.ram`, must be a
+        non-zero integer.
 
     - name: ramMax
-      type: ["null", long, Expression]
-      doc: Maximum reserved RAM in mebibytes (2**20)
+      type: ["null", long, float, Expression]
+      doc: |
+        Maximum reserved RAM in mebibytes (2**20)
+
+        See `ramMin` for discussion about fractional RAM requests.
 
     - name: tmpdirMin
-      type: ["null", long, Expression]
-      doc: Minimum reserved filesystem based storage for the designated temporary directory, in mebibytes (2**20) (default is 1024)
+      type: ["null", long, float, Expression]
+      doc: |
+        Minimum reserved filesystem based storage for the designated temporary directory, in mebibytes (2**20) (default is 1024)
+
+        May be a fractional value.  If so, the actual storage request
+        must be rounded up to the next whole number.  The reported
+        amount of storage reserved for the process, which is available
+        to expressions on the CommandLineTool as `runtime.tmpdirSize`,
+        must be a non-zero integer.
 
     - name: tmpdirMax
-      type: ["null", long, Expression]
-      doc: Maximum reserved filesystem based storage for the designated temporary directory, in mebibytes (2**20)
+      type: ["null", long, float, Expression]
+      doc: |
+        Maximum reserved filesystem based storage for the designated temporary directory, in mebibytes (2**20)
+
+        See `tmpdirMin` for discussion about fractional storage requests.
 
     - name: outdirMin
-      type: ["null", long, Expression]
-      doc: Minimum reserved filesystem based storage for the designated output directory, in mebibytes (2**20) (default is 1024)
+      type: ["null", long, float, Expression]
+      doc: |
+        Minimum reserved filesystem based storage for the designated output directory, in mebibytes (2**20) (default is 1024)
+
+        May be a fractional value.  If so, the actual storage request
+        must be rounded up to the next whole number.  The reported
+        amount of storage reserved for the process, which is available
+        to expressions on the CommandLineTool as `runtime.outdirSize`,
+        must be a non-zero integer.
 
     - name: outdirMax
-      type: ["null", long, Expression]
-      doc: Maximum reserved filesystem based storage for the designated output directory, in mebibytes (2**20)
+      type: ["null", long, float, Expression]
+      doc: |
+        Maximum reserved filesystem based storage for the designated output directory, in mebibytes (2**20)
+
+        See `outdirMin` for discussion about fractional storage requests.
 
 
 - type: record
