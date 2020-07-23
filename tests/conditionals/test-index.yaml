@@ -82,7 +82,7 @@
   output:
     out1: "Direct"
   tags: [ conditional, inline_javascript, multiple_input ]
- 
+
 - id: cond-8
   label: pass_through_required_fail
   doc: "pickValue: the_only_non_null will fail due to multiple non nulls"
@@ -90,7 +90,7 @@
   job: val.3.job.yaml
   should_fail: True
   tags: [ conditional, inline_javascript, multiple_input ]
- 
+
 - id: cond-9
   label: all_non_null_multi_with_non_array_output
   doc: "pickValue: all_non_null will fail validation"
@@ -176,9 +176,9 @@
   tool: cond-wf-011.cwl
   job: cond18.job.yaml
   output:
-    out1: 
+    out1:
       [
-        [ 
+        [
           [ null, "112", null, "114" ],
           [ null, "122", null, "124" ],
           [ null, "132", null, "134" ]
@@ -206,7 +206,7 @@
   job: cond20.job.yaml
   output:
     out1: [
-      "foo 2", "foo 4", "foo 6", 
+      "foo 2", "foo 4", "foo 6",
       "bar 1", "bar 3", "bar 5"]
   tags: [ conditional, inline_javascript, scatter, multiple ]
 
@@ -289,7 +289,7 @@
   output:
     out1: "Direct"
   tags: [ conditional, multiple_input ]
- 
+
 - id: cond-8_nojs
   label: pass_through_required_fail
   doc: "pickValue: the_only_non_null will fail due to multiple non nulls; no javascript"
@@ -383,9 +383,9 @@
   tool: cond-wf-011_nojs.cwl
   job: ../empty.json
   output:
-    out1: 
+    out1:
       [
-        [ 
+        [
           [ null, "1123", null, "1123" ],
           [ null, "1223", null, "1223" ],
           [ null, "1323", null, "1323" ]
@@ -413,6 +413,46 @@
   job: ../empty.json
   output:
     out1: [
-      "foo 2", "foo 4", "foo 6", 
+      "foo 2", "foo 4", "foo 6",
       "bar 1", "bar 3", "bar 5"]
+  tags: [ conditional, scatter, multiple ]
+
+
+- id: cond-with-defaults-1
+  doc: "Default inputs, choose step to run based on what was provided, first case"
+  tool: cond-with-defaults.cwl
+  job: cond-job.yaml
+  output:
+    "out_file": [
+        {
+            "location": "filename_paired1",
+            "basename": "filename_paired1",
+            "class": "File",
+            "checksum": "sha1$668326847b11f0fcaf4a0fba94d79ccf8b9f9213",
+            "size": 34
+        },
+        {
+            "location": "filename_paired2",
+            "basename": "filename_paired2",
+            "class": "File",
+            "checksum": "sha1$da959696a42552d21c03f5f1df5d1949a856845e",
+            "size": 34
+        }
+    ]
+  tags: [ conditional, scatter, multiple ]
+
+- id: cond-with-defaults-2
+  doc: "Default inputs, choose step to run based on what was provided, second case"
+  tool: cond-with-defaults.cwl
+  job: cond-job2.yaml
+  output:
+    "out_file": [
+        {
+            "location": "filename_single",
+            "basename": "filename_single",
+            "class": "File",
+            "checksum": "sha1$648695b8ae770ae22b24ff7fe798801c9c370dc1",
+            "size": 12
+        }
+    ]
   tags: [ conditional, scatter, multiple ]
