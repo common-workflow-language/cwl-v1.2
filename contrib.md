@@ -8,7 +8,7 @@ Contributors to v1.2:
 
 * John Chilton <jmchilton@gmail.com>, Galaxy Project, Pennsylvania State University; https://orcid.org/0000-0002-6794-0756
 * Michael Franklin <michael.franklin@petermac.org>, Peter MacCallum Cancer Centre and University of Melbourne; https://orcid.org/0000-0001-9292-1533
-* Bogdan Gavrilovic <bogdan.gavrilovic@sbgenomics.com>, Seven Bridges Genomics
+* Bogdan Gavrilovic <bogdan.gavrilovic@sbgenomics.com>, Seven Bridges Genomics; https://orcid.org/0000-0003-1550-1716
 * Stian Soiland-Reyes, University of Manchester; https://orcid.org/0000-0001-9842-9718
 
 Incorporates the work of past authors and contributors to [CWL v1.0](https://www.commonwl.org/v1.0/Workflow.html) and [CWL v1.1](https://www.commonwl.org/v1.1/Workflow.html).
