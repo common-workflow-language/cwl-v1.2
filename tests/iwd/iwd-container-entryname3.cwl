@@ -1,4 +1,4 @@
-cwlVersion: v1.2.0-dev5
+cwlVersion: v1.2
 class: CommandLineTool
 doc: |
   Must fail if entryname is an absolute path and DockerRequirement is

@@ -1,6 +1,6 @@
 #!/usr/bin/env cwl-runner
 class: CommandLineTool
-cwlVersion: v1.2.0-dev5
+cwlVersion: v1.2
 doc: Can have a file declared directly in InitialWorkDir
 requirements:
   InitialWorkDirRequirement:
