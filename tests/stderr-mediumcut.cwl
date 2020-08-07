@@ -1,6 +1,6 @@
 #!/usr/bin/env cwl-runner
 class: CommandLineTool
-cwlVersion: v1.2.0-dev5
+cwlVersion: v1.2
 doc: "Test of capturing stderr output in a docker container."
 requirements:
   ShellCommandRequirement: {}

@@ -1,5 +1,5 @@
 {
-    "cwlVersion": "v1.2.0-dev5",
+    "cwlVersion": "v1.2",
     "$graph": [
         {
             "inputs": [

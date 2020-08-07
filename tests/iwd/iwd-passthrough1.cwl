@@ -1,6 +1,6 @@
 #!/usr/bin/env cwl-runner
 class: CommandLineTool
-cwlVersion: v1.2.0-dev5
+cwlVersion: v1.2
 doc: |
   YAML |- syntax does not add trailing newline so in the listing entry
   below there is no whitespace surrounding the value
