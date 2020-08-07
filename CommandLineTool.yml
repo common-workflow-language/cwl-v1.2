@@ -55,7 +55,7 @@ $graph:
           [ResourceRequirement](#ResourceRequirement) may now request fractional CPUs.
       * `ramMin`, `ramMax`, `tmpdirMin`, `tmpdirMax`, `outdirMin`, and `outdirMax` of
           [ResourceRequirement](#ResourceRequirement) now accept floating point values.
-      * (CommandLineTool)[#CommandLineTool] can now express `intent`
+      * [CommandLineTool](#CommandLineTool) can now express `intent`
         with an identifier for the type of computational operation.
       * Added conformance tests for order of operations evaluating `secondaryFiles` on input
         and ensure that input and output secondaryFiles expressions can return a File object.
