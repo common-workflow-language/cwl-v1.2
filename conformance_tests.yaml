@@ -879,7 +879,7 @@
   label: metadata
   id: 63
   doc: Test metadata
-  tags: [ required ]
+  tags: [ required, command_line_tool ]
 
 - job: tests/formattest-job.json
   output:
@@ -1894,7 +1894,7 @@
        checksum: "sha1$7d5ca8c0c03e883c56c4eb1ef6f6bb9bccad4d86"
        size: 8
   tool: tests/envvar3.cwl
-  label: env_home_tmpdir_docker
+  label: env_home_tmpdir_docker_no_return_code
   id: 134
   doc: Test $HOME and $TMPDIR are set correctly in Docker without using return code
   tags: [ shell_command, command_line_tool ]
@@ -2894,7 +2894,7 @@
   tool: tests/networkaccess2.cwl
   label: networkaccess_disabled
   doc: Test networkaccess is disabled by default
-  tags: [ networkaccess ]
+  tags: [ networkaccess, command_line_tool ]
   id: 224
 
 - job: tests/stage-array-job.json
@@ -2987,7 +2987,7 @@
       "size": 12010
   tool: tests/initialworkdir-glob-fullpath.cwl
   doc: Test output of InitialWorkDir
-  tags: [ initial_work_dir ]
+  tags: [ initial_work_dir, command_line_tool ]
   id: 230
 
 - job: tests/initialworkdirrequirement-docker-out-job.json
@@ -3025,6 +3025,7 @@
       "baesname": "symlink.txt"
       "checksum": "sha1$cd28ec34f3f9425aca544b6332453708e8aaa82a"
   should_fail: true
+  tags: [ command_line_tool ]
   id: 233
 
 - job: tests/empty.json
@@ -3037,11 +3038,12 @@
       "basename": "symlink.txt"
       "checksum": "sha1$cd28ec34f3f9425aca544b6332453708e8aaa82a"
   id: 234
+  tags: [ command_line_tool ]
 
 - job: tests/empty.json
   tool: tests/inp_update_wf.cwl
   doc: inplace update has side effect on file content
-  tags: [ inplace_update ]
+  tags: [ inplace_update, workflow ]
   output:
     a: 4
     b: 4
@@ -3050,7 +3052,7 @@
 - job: tests/empty.json
   tool: tests/inpdir_update_wf.cwl
   doc: inplace update has side effect on directory content
-  tags: [ inplace_update ]
+  tags: [ inplace_update, workflow ]
   output: {
     a: [
             {
