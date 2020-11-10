@@ -327,7 +327,7 @@
   output:
     count_output: 16
   tool: tests/count-lines19-wf.cwl
-  label: wf_wc_nomultiple
+  label: wf_wc_nomultiple_merge_nested
   id: count-lines19-wf
   doc: >-
     Test when step source is a single-item list and linkMerge is
@@ -2986,10 +2986,13 @@
       "class": "File"
       "size": 12010
   tool: tests/initialworkdir-glob-fullpath.cwl
-  doc: Test output of InitialWorkDir
+  label: initial_workdir_output_glob
+  doc: Test full path glob output of InitialWorkDir
   tags: [ initial_work_dir, command_line_tool ]
   id: 230
 
+# same test as above but keeping it for preserve ids maybe? I don't know -
+# there is a reason I added labels before these ids were here :)
 - job: tests/initialworkdirrequirement-docker-out-job.json
   output:
     OUTPUT:
@@ -3004,15 +3007,17 @@
       "class": "File"
       "size": 12010
   tool: tests/initialworkdir-glob-fullpath.cwl
-  doc: Test if full paths are allowed in glob
-  tags: [ initial_work_dir ]
+  label: initial_workdir_output_glob_duplicate
+  doc: Test full path glob output of InitialWorkDir (duplicate)
+  tags: [ initial_work_dir, command_line_tool ]
   id: 231
 
 - job: tests/empty.json
   should_fail: true
   tool: tests/glob-path-error.cwl
+  label: glob_outside_outputs_fails
   doc: Test fail trying to glob outside output directory
-  tags: [ required ]
+  tags: [ required, command_line_tool, docker ]
   id: 232
 
 - job: tests/empty.json
@@ -3160,7 +3165,7 @@
   id: 239
 
 - doc: Test that if array of input files are staged to directory with basename and entryname, entryname overrides
-  label: stage_file_array
+  label: stage_file_array_entryname_overrides
   tool: tests/stage_file_array_basename_and_entryname.cwl
   job: tests/stage_file_array.job.json
   output:
