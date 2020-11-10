@@ -33,4 +33,4 @@ steps:
         o:
           type: string?
           outputBinding:
-            outputEval: $(runtime.outdir)
+            outputEval: $("time passed")
