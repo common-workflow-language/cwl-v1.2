@@ -3130,7 +3130,7 @@
   id: 238
 
 - doc: Test that array of input files can be staged to directory with basename
-  label: stage_file_array
+  label: stage_file_array_basename
   tool: tests/stage_file_array_basename.cwl
   job: tests/stage_file_array.job.json
   output:

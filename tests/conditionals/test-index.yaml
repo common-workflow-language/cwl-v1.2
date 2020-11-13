@@ -10,7 +10,7 @@
   job: val.1.job.yaml
   output:
     out1: null
-  tags: [ conditional, inline_javascript ]
+  tags: [ conditional, inline_javascript, workflow ]
 
 - id: cond-2
   label: direct_optional_nonnull_result
@@ -19,7 +19,7 @@
   job: val.3.job.yaml
   output:
     out1: "foo 3"
-  tags: [ conditional, inline_javascript ]
+  tags: [ conditional, inline_javascript, workflow ]
 
 - id: cond-3
   label: direct_required
@@ -28,7 +28,7 @@
   job: val.1.job.yaml
   output:
     out1: null
-  tags: [ conditional, inline_javascript ]
+  tags: [ conditional, inline_javascript, workflow ]
 
 - id: cond-4
   label: pass_through_required_false_when
@@ -37,7 +37,7 @@
   job: val.1.job.yaml
   output:
     out1: "Direct"
-  tags: [ conditional, inline_javascript, multiple_input ]
+  tags: [ conditional, inline_javascript, multiple_input, workflow ]
 
 - id: cond-5
   label: pass_through_required_true_when
@@ -46,7 +46,7 @@
   job: val.3.job.yaml
   output:
     out1: "foo 3"
-  tags: [ conditional, inline_javascript, multiple_input ]
+  tags: [ conditional, inline_javascript, multiple_input, workflow ]
 
 - id: cond-6.0
   label: first_non_null_first_non_null
@@ -55,7 +55,7 @@
   job: val.0.job.yaml
   output:
     out1: "foo 0"
-  tags: [ conditional, inline_javascript, multiple_input ]
+  tags: [ conditional, inline_javascript, multiple_input, workflow ]
 
 - id: cond-6.1
   label: first_non_null_all_null
@@ -63,7 +63,7 @@
   tool: cond-wf-003.1.cwl
   job: val.1.job.yaml
   should_fail: True
-  tags: [ conditional, inline_javascript, multiple_input ]
+  tags: [ conditional, inline_javascript, multiple_input, workflow ]
 
 - id: cond-6.2
   label: first_non_null_second_non_null
@@ -72,7 +72,7 @@
   job: val.3.job.yaml
   output:
     out1: "foo 3"
-  tags: [ conditional, inline_javascript, multiple_input ]
+  tags: [ conditional, inline_javascript, multiple_input, workflow ]
 
 - id: cond-7
   label: pass_through_required_the_only_non_null
@@ -81,7 +81,7 @@
   job: val.1.job.yaml
   output:
     out1: "Direct"
-  tags: [ conditional, inline_javascript, multiple_input ]
+  tags: [ conditional, inline_javascript, multiple_input, workflow ]
 
 - id: cond-8
   label: pass_through_required_fail
@@ -89,7 +89,7 @@
   tool: cond-wf-004.cwl
   job: val.3.job.yaml
   should_fail: True
-  tags: [ conditional, inline_javascript, multiple_input ]
+  tags: [ conditional, inline_javascript, multiple_input, workflow ]
 
 - id: cond-9
   label: all_non_null_multi_with_non_array_output
@@ -97,7 +97,7 @@
   tool: cond-wf-005.cwl
   job: val.3.job.yaml
   should_fail: True
-  tags: [ conditional, inline_javascript, multiple_input ]
+  tags: [ conditional, inline_javascript, multiple_input, workflow ]
 
 - id: cond-10
   label: the_only_non_null_single_true
@@ -106,7 +106,7 @@
   job: val.1.job.yaml
   output:
     out1: "bar 1"
-  tags: [ conditional, inline_javascript, multiple_input ]
+  tags: [ conditional, inline_javascript, multiple_input, workflow ]
 
 - id: cond-11
   label: the_only_non_null_multi_true
@@ -114,7 +114,7 @@
   tool: cond-wf-006.cwl
   job: val.3.job.yaml
   should_fail: True
-  tags: [ conditional, inline_javascript, multiple_input ]
+  tags: [ conditional, inline_javascript, multiple_input, workflow ]
 
 - id: cond-12
   label: all_non_null_all_null
@@ -123,7 +123,7 @@
   job: val.0.job.yaml
   output:
     out1: []
-  tags: [ conditional, inline_javascript, multiple_input ]
+  tags: [ conditional, inline_javascript, multiple_input, workflow ]
 
 - id: cond-13
   label: all_non_null_one_non_null
@@ -132,7 +132,7 @@
   job: val.1.job.yaml
   output:
     out1: ["bar 1"]
-  tags: [ conditional, inline_javascript, multiple_input ]
+  tags: [ conditional, inline_javascript, multiple_input, workflow ]
 
 - id: cond-14
   label: all_non_null_multi_non_null
@@ -141,7 +141,7 @@
   job: val.3.job.yaml
   output:
     out1: ["foo 3", "bar 3"]
-  tags: [ conditional, inline_javascript, multiple_input ]
+  tags: [ conditional, inline_javascript, multiple_input, workflow ]
 
 - id: cond-15
   label: condifional_scatter_on_nonscattered_false
@@ -150,7 +150,7 @@
   job: cond15.job.yaml
   output:
     out1: []
-  tags: [ conditional, inline_javascript, scatter ]
+  tags: [ conditional, inline_javascript, scatter, workflow ]
 
 - id: cond-16
   label: condifional_scatter_on_nonscattered_true
@@ -159,7 +159,7 @@
   job: cond16.job.yaml
   output:
     out1: ["foo 1", "foo 2", "foo 3", "foo 4", "foo 5", "foo 6"]
-  tags: [ conditional, inline_javascript, scatter ]
+  tags: [ conditional, inline_javascript, scatter, workflow ]
 
 - id: cond-17
   label: scatter_on_scattered_conditional
@@ -168,7 +168,7 @@
   job: val.6.list.job.yaml
   output:
     out1: ["foo 4", "foo 5", "foo 6"]
-  tags: [ conditional, inline_javascript, scatter ]
+  tags: [ conditional, inline_javascript, scatter, workflow ]
 
 - id: cond-18
   label: conditionals_nested_cross_scatter
@@ -189,7 +189,7 @@
           [ null, "232", null, "234" ]
         ]
       ]
-  tags: [ conditional, inline_javascript, scatter ]
+  tags: [ conditional, inline_javascript, scatter, workflow ]
 
 - id: cond-19
   label: conditionals_non_boolean_fail
@@ -197,7 +197,7 @@
   tool: cond-wf-012.cwl
   job: val.1.job.yaml
   should_fail: True
-  tags: [ conditional, inline_javascript ]
+  tags: [ conditional, inline_javascript, workflow ]
 
 - id: cond-20
   label: conditionals_multi_scatter
@@ -208,7 +208,7 @@
     out1: [
       "foo 2", "foo 4", "foo 6",
       "bar 1", "bar 3", "bar 5"]
-  tags: [ conditional, inline_javascript, scatter, multiple ]
+  tags: [ conditional, inline_javascript, scatter, multiple, workflow ]
 
 - id: cond-1_njs
   label: direct_optional_null_result_nojs
@@ -217,7 +217,7 @@
   job: test-true.yml
   output:
     out1: "foo 23"
-  tags: [ conditional ]
+  tags: [ conditional, workflow ]
 
 - id: cond-2_njs
   label: direct_optional_nonnull_result_nojs
@@ -226,7 +226,7 @@
   job: test-false.yml
   output:
     out1: null
-  tags: [ conditional ]
+  tags: [ conditional, workflow ]
 
 - id: cond-3_nojs
   label: direct_required_nojs
@@ -235,7 +235,7 @@
   job: val.1.job.yaml
   output:
     out1: null
-  tags: [ conditional ]
+  tags: [ conditional, workflow ]
 
 - id: cond-4_nojs
   label: pass_through_required_false_when_nojs
@@ -244,7 +244,7 @@
   job: test-false.yml
   output:
     out1: "Direct"
-  tags: [ conditional, multiple_input ]
+  tags: [ conditional, multiple_input, workflow ]
 
 - id: cond-5_nojs
   label: pass_through_required_true_when_nojs
@@ -253,7 +253,7 @@
   job: test-true.yml
   output:
     out1: "foo 23"
-  tags: [ conditional, multiple_input ]
+  tags: [ conditional, multiple_input, workflow ]
 
 - id: cond-6.0_nojs
   label: first_non_null_first_non_null_nojs
@@ -262,7 +262,7 @@
   job: first-true.yml
   output:
     out1: "foo 23"
-  tags: [ conditional, multiple_input ]
+  tags: [ conditional, multiple_input, workflow ]
 
 - id: cond-6.1_nojs
   label: first_non_null_all_null_nojs
@@ -270,7 +270,7 @@
   tool: cond-wf-003.1_nojs.cwl
   job: both-false.yml
   should_fail: True
-  tags: [ conditional, multiple_input ]
+  tags: [ conditional, multiple_input, workflow ]
 
 - id: cond-6.2_nojs
   label: first_non_null_second_non_null_nojs
@@ -279,7 +279,7 @@
   job: second-true.yml
   output:
     out1: "foo 23"
-  tags: [ conditional, multiple_input ]
+  tags: [ conditional, multiple_input, workflow ]
 
 - id: cond-7_nojs
   label: pass_through_required_the_only_non_null
@@ -288,7 +288,7 @@
   job: test-false.yml
   output:
     out1: "Direct"
-  tags: [ conditional, multiple_input ]
+  tags: [ conditional, multiple_input, workflow ]
 
 - id: cond-8_nojs
   label: pass_through_required_fail
@@ -296,7 +296,7 @@
   tool: cond-wf-004_nojs.cwl
   job: test-true.yml
   should_fail: True
-  tags: [ conditional, multiple_input ]
+  tags: [ conditional, multiple_input, workflow ]
 
 - id: cond-9_nojs
   label: all_non_null_multi_with_non_array_output_nojs
@@ -304,7 +304,7 @@
   tool: cond-wf-005_nojs.cwl
   job: test-true.yml
   should_fail: True
-  tags: [ conditional, multiple_input ]
+  tags: [ conditional, multiple_input, workflow ]
 
 - id: cond-10_nojs
   label: the_only_non_null_single_true_nojs
@@ -313,7 +313,7 @@
   job: second-true.yml
   output:
     out1: "bar 23"
-  tags: [ conditional, multiple_input ]
+  tags: [ conditional, multiple_input, workflow ]
 
 - id: cond-11_nojs
   label: the_only_non_null_multi_true_nojs
@@ -321,7 +321,7 @@
   tool: cond-wf-006_nojs.cwl
   job: both-true.yml
   should_fail: True
-  tags: [ conditional, multiple_input ]
+  tags: [ conditional, multiple_input, workflow ]
 
 - id: cond-12_nojs
   label: all_non_null_all_null_nojs
@@ -330,7 +330,7 @@
   job: both-false.yml
   output:
     out1: []
-  tags: [ conditional, multiple_input ]
+  tags: [ conditional, multiple_input, workflow ]
 
 - id: cond-13_nojs
   label: all_non_null_one_non_null_nojs
@@ -339,7 +339,7 @@
   job: second-true.yml
   output:
     out1: ["bar 23"]
-  tags: [ conditional, multiple_input ]
+  tags: [ conditional, multiple_input, workflow ]
 
 - id: cond-14_nojs
   label: all_non_null_multi_non_null_nojs
@@ -348,7 +348,7 @@
   job: both-true.yml
   output:
     out1: ["foo 23", "bar 23"]
-  tags: [ conditional, multiple_input ]
+  tags: [ conditional, multiple_input, workflow ]
 
 - id: cond-15_nojs
   label: condifional_scatter_on_nonscattered_false_nojs
@@ -357,7 +357,7 @@
   job: test-false.yml
   output:
     out1: []
-  tags: [ conditional, scatter ]
+  tags: [ conditional, scatter, workflow ]
 
 - id: cond-16_nojs
   label: condifional_scatter_on_nonscattered_true_nojs
@@ -366,7 +366,7 @@
   job: test-true.yml
   output:
     out1: ["foo 1", "foo 2", "foo 3", "foo 4", "foo 5", "foo 6"]
-  tags: [ conditional, scatter ]
+  tags: [ conditional, scatter, workflow ]
 
 - id: cond-17_nojs
   label: scatter_on_scattered_conditional_nojs
@@ -375,7 +375,7 @@
   job: ../empty.json
   output:
     out1: ["foo 4", "foo 5", "foo 6"]
-  tags: [ conditional, scatter ]
+  tags: [ conditional, scatter, workflow ]
 
 - id: cond-18_nojs
   label: conditionals_nested_cross_scatter_nojs
@@ -396,7 +396,7 @@
           [ null, "2323", null, "2323" ]
         ]
       ]
-  tags: [ conditional, scatter ]
+  tags: [ conditional, scatter, workflow ]
 
 - id: cond-19_nojs
   label: conditionals_non_boolean_fail_nojs
@@ -404,7 +404,7 @@
   tool: cond-wf-012_nojs.cwl
   job: ../empty.json
   should_fail: True
-  tags: [ conditional ]
+  tags: [ conditional, workflow ]
 
 - id: cond-20_nojs
   label: conditionals_multi_scatter_nojs
@@ -415,7 +415,7 @@
     out1: [
       "foo 2", "foo 4", "foo 6",
       "bar 1", "bar 3", "bar 5"]
-  tags: [ conditional, scatter, multiple ]
+  tags: [ conditional, scatter, multiple, workflow ]
 
 
 - id: cond-with-defaults-1
@@ -439,7 +439,7 @@
             "size": 34
         }
     ]
-  tags: [ conditional, scatter, multiple ]
+  tags: [ conditional, scatter, multiple, workflow ]
 
 - id: cond-with-defaults-2
   doc: "Default inputs, choose step to run based on what was provided, second case"
@@ -455,4 +455,4 @@
             "size": 12
         }
     ]
-  tags: [ conditional, scatter, multiple ]
+  tags: [ conditional, scatter, multiple, workflow ]
