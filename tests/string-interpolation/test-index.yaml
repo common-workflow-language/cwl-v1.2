@@ -24,7 +24,7 @@
         "location": "out.txt",
         "size": 48
     }
-  tags: [ inline_javascript ]
+  tags: [ inline_javascript, command_line_tool ]
 
 - id: iwdr-3
   label: quoting_multiple_backslashes
@@ -37,7 +37,7 @@
         "location": "out.txt",
         "size": 246
     }
-  tags: [ inline_javascript ]
+  tags: [ inline_javascript, command_line_tool ]
 
 - id: iwdr-4
   label: escaping_expression_no_extra_quotes
@@ -50,4 +50,4 @@
         "location": "file.txt",
         "size": 14
     }
-  tags: [ inline_javascript ]
+  tags: [ inline_javascript, command_line_tool ]
