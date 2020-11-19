@@ -887,7 +887,11 @@ $graph:
     interpolatation.
   fields:
     - name: class
-      type: string
+      type:
+        type: enum
+        name: InlineJavascriptRequirement_class
+        symbols:
+          - cwl:InlineJavascriptRequirement
       doc: "Always 'InlineJavascriptRequirement'"
       jsonldPredicate:
         "_id": "@type"
@@ -923,7 +927,11 @@ $graph:
 
   fields:
     - name: class
-      type: string
+      type:
+        type: enum
+        name: SchemaDefRequirement_class
+        symbols:
+          - cwl:SchemaDefRequirement
       doc: "Always 'SchemaDefRequirement'"
       jsonldPredicate:
         "_id": "@type"
@@ -1021,7 +1029,11 @@ $graph:
     a Directory object for use by expressions.
   fields:
     class:
-      type: string
+      type:
+        type: enum
+        name: LoadListingRequirement_class
+        symbols:
+          - cwl:LoadListingRequirement
       doc: "Always 'LoadListingRequirement'"
       jsonldPredicate:
         "_id": "@type"
