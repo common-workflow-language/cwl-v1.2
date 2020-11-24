@@ -3399,3 +3399,16 @@
 - $import: tests/mixed-versions/test-index.yaml
 - $import: tests/loadContents/test-index.yaml
 - $import: tests/iwd/test-index.yaml
+
+- job: tests/empty.json
+  tool: tests/params_broken_null.cwl
+  label: params_broken_null
+  doc: Test parameter reference that refers to null.something
+  should_fail: true
+  tags: [ command_line_tool ]
+
+- job: tests/empty.json
+  tool: tests/params_broken_length_of_non_list.cwl
+  doc: Test paramer reference that refers to length of non-array input
+  should_fail: true
+  tags: [ command_line_tool ]
