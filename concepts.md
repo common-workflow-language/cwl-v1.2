@@ -524,7 +524,7 @@ Use the following algorithm to resolve a parameter reference:
          of the parameter reference is the length of the array.
      4. It is an error if the key does not match the required type, or the key is not found or out
         of range.
-  8. Repeat steps 3-6
+  8. Repeat steps 3-8
 
 The root namespace is the parameter context.  The following parameters must
 be provided:
