@@ -520,8 +520,10 @@ Use the following algorithm to resolve a parameter reference:
   7. Look up the key in current value and assign as new current value.
      1. If the key is a symbol or string, the current value must be an object.
      2. If the key is an index, the current value must be an array or string.
-     3. If the last key is the special value 'length' the current value must be an array and the value
-         of the parameter reference is the length of the array.
+     3. If the next key is the last key and it has the special value 'length' and
+         the current value is an array, the value of the parameter reference is the
+         length of the array. If the value 'length' is encountered in other contexts, normal
+         evaluation rules apply.
      4. It is an error if the key does not match the required type, or the key is not found or out
         of range.
   8. Repeat steps 3-8

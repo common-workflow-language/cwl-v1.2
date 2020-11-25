@@ -3412,3 +3412,12 @@
   doc: Test paramer reference that refers to length of non-array input
   should_fail: true
   tags: [ command_line_tool ]
+
+- job: tests/length_non_array_input.yml
+  tool: tests/params_input_length_non_array.cwl
+  doc: Test 'length' in parameter reference where it does not refer to length of an array input
+  tags: [ command_line_tool ]
+  output:
+    output1: 1
+    output2: 2
+    output3: 3
