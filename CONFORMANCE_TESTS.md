@@ -53,19 +53,18 @@ Each test in the [conformance_tests.yaml] should be tagged with one or more tags
 2. If the test does not test any optional features, the tag `required`
 3. The name of any features that are being tested:
     1. `docker` for DockerRequirement
-    2. `env_var` for EnvVarRequirement
-    3. `format_checking` for checking format requirement annotation on File inputs
-    4. `initial_work_dir` for InitialWorkDirRequirements
-    5. `inline_javascript` for InlineJavascriptRequirement
-    6. `inplace_update` for InplaceUpdateRequirement
-    7. `input_object_requirements` for tests that use cwl:requirements in the input object
-    8. `multiple_input` for MultipleInputFeatureRequirement
-    9. `networkaccess` for NetworkAccess
-    10. `resource` for ResourceRequirement
-    11. `scatter` for ScatterFeatureRequirement
-    12. `schema_def` for SchemaDefRequirement
-    13. `shell_command` for ShellCommandRequirement
-    14. `step_input` for StepInputExpressionRequirement
-    15. `step_input_expression` synonym for `step_input`
-    16. `subworkflow` for SubworkflowRequirement
-    17. `timelimit` for ToolTimeLimit
+    1. `env_var` for EnvVarRequirement
+    1. `format_checking` for checking format requirement annotation on File inputs
+    1. `initial_work_dir` for InitialWorkDirRequirements
+    1. `inline_javascript` for InlineJavascriptRequirement
+    1. `inplace_update` for InplaceUpdateRequirement
+    1. `input_object_requirements` for tests that use cwl:requirements in the input object
+    1. `multiple_input` for MultipleInputFeatureRequirement
+    1. `networkaccess` for NetworkAccess
+    1. `resource` for ResourceRequirement
+    1. `scatter` for ScatterFeatureRequirement
+    1. `schema_def` for SchemaDefRequirement
+    1. `shell_command` for ShellCommandRequirement
+    1. `step_input` for StepInputExpressionRequirement
+    1. `subworkflow` for SubworkflowRequirement
+    1. `timelimit` for ToolTimeLimit
