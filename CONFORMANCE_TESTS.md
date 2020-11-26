@@ -46,7 +46,7 @@ system some needed GNU-like tools like `greadlink`.
 
 ## Tags for conformance tests
 
-Each test in the [conformance_tests.yaml] should be tagged with one or more tags.
+Each test in the [conformance_tests.yaml](conformance_tests.yaml) should be tagged with one or more tags.
 
 1. A `command_line_tool`, `expression_tool` or `workflow` tag to identify whether a CommandLineTool, ExpressionTool
    or Workflow is being tested
