@@ -1138,6 +1138,10 @@ $graph:
         "_type": "@vocab"
     - name: coresMin
       type: ["null", long, float, Expression]
+      # default: 1
+      # Don't set the default here, we need to be able to distinguish between
+      # a value not provided and the textual default to be able to implement
+      # the rules written in the ResourceRequirement doc above
       doc: |
         Minimum reserved number of CPU cores (default is 1).
 
@@ -1174,6 +1178,12 @@ $graph:
 
     - name: ramMin
       type: ["null", long, float, Expression]
+      # default: 256
+      # Don't set the default here, we need to be able to distinguish between
+      # a value not provided and the textual default to be able to implement
+      # the rules written in the ResourceRequirement doc above.
+      # Consumers of ResourceRequirement must apply the default value algorithm
+      # themselves and not rely on schema-salad rules
       doc: |
         Minimum reserved RAM in mebibytes (2**20) (default is 256)
 
@@ -1192,6 +1202,12 @@ $graph:
 
     - name: tmpdirMin
       type: ["null", long, float, Expression]
+      # default: 1024
+      # Don't set the default here, we need to be able to distinguish between
+      # a value not provided and the textual default to be able to implement
+      # the rules written in the ResourceRequirement doc above
+      # Consumers of ResourceRequirement must apply the default value algorithm
+      # themselves and not rely on schema-salad rules
       doc: |
         Minimum reserved filesystem based storage for the designated temporary directory, in mebibytes (2**20) (default is 1024)
 
@@ -1210,6 +1226,12 @@ $graph:
 
     - name: outdirMin
       type: ["null", long, float, Expression]
+      # default: 1024
+      # Don't set the default here, we need to be able to distinguish between
+      # a value not provided and the textual default to be able to implement
+      # the rules written in the ResourceRequirement doc above
+      # Consumers of ResourceRequirement must apply the default value algorithm
+      # themselves and not rely on schema-salad rules
       doc: |
         Minimum reserved filesystem based storage for the designated output directory, in mebibytes (2**20) (default is 1024)
 
