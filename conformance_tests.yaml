@@ -3226,7 +3226,7 @@
   output:
     out: true
   doc: Test that 'listing' is not present when LoadListingRequirement is 'no_listing'
-  tags: [ command_line_tool ]
+  tags: [ command_line_tool, load_listing ]
   id: 243
 
 - job: tests/listing-job.yml
@@ -3247,7 +3247,7 @@
     Test that 'listing' is present in top directory object but not
     subdirectory object when LoadListingRequirement is
     'shallow_listing'
-  tags: [ command_line_tool ]
+  tags: [ command_line_tool, load_listing ]
   id: 245
 
 - job: tests/listing-job.yml
@@ -3271,7 +3271,7 @@
     Test that 'listing' is present in top directory object and in
     subdirectory objects when LoadListingRequirement is
     'deep_listing'
-  tags: [ command_line_tool ]
+  tags: [ command_line_tool, load_listing ]
   id: 247
 
 - job: tests/listing-job.yml
