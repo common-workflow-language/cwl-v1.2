@@ -7,7 +7,7 @@ func <<EOF
 $(basename "$0"): Run common workflow tool description language conformance tests.
 
 Syntax:
-        $(basename "$0") [RUNNER=/path/to/cwl-runner] [DRAFT=cwl-draft-version]
+        $(basename "$0") [RUNNER=/path/to/cwl-runner]
                        [EXTRA=--optional-arguments-to-cwl-runner]
 
 Options:
