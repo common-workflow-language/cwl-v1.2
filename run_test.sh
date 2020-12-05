@@ -132,8 +132,8 @@ runtest() {
 
     runs=$((runs+1))
     (COMMAND="cwltest --tool $1 \
-	     --test=conformance_tests.yaml ${CLASS} ${TEST_N} \
-	     ${VERBOSE} ${TEST_L} ${TEST_J} ${ONLY_TOOLS} ${JUNIT_XML} \
+         --test=conformance_tests.yaml ${CLASS} ${TEST_N} \
+         ${VERBOSE} ${TEST_L} ${TEST_J} ${ONLY_TOOLS} ${JUNIT_XML} \
          ${TIMEOUT} ${BADGE} ${TAGS} -- ${EXTRA}"
      if [ "$VERBOSE" = "--verbose" ]; then echo "${COMMAND}"; fi
      ${COMMAND}
