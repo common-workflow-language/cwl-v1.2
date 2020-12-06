@@ -102,10 +102,14 @@ if [ -n "${SELF}" ]; then
     # This is how CWL should be written.
     DEFINITION=./CommonWorkflowLanguage.yml
     # Let's test each files
-    for target in $(find tests -type f -name "*.cwl"); do
-        schema-salad-tool ${DEFINITION} "${target}" --quiet
-        if [[ $? -ne 0 ]]; then echo "[INVALID] ${target}" && exit 1; fi
-    done
+    find tests -type f -name "*.cwl" | \
+        while read -r target;
+        do
+            schema-salad-tool ${DEFINITION} "${target}" --quiet || {
+                echo "[INVALID] ${target}"
+                exit 1
+            }
+        done
     exit 0
 fi
 
@@ -119,12 +123,6 @@ fi
 runs=0
 failures=0
 
-checkexit() {
-    if [ "$?" != "0" ]; then
-        failures=$((failures+1))
-    fi
-}
-
 runtest() {
     echo "--- Running CWL Conformance Tests $CWL_VER on $1 ---"
 
@@ -137,8 +135,7 @@ runtest() {
          ${TIMEOUT} ${BADGE} ${TAGS} -- ${EXTRA}"
      if [ "$VERBOSE" = "--verbose" ]; then echo "${COMMAND}"; fi
      ${COMMAND}
-    )
-    checkexit
+    ) || failures=$((failures+1))
 }
 
 if [ "$PLATFORM" = "Linux" ]; then
