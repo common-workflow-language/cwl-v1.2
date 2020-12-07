@@ -3263,6 +3263,21 @@
   id: 246
 
 - job: tests/listing-job.yml
+  tool: tests/listing_shallow3.cwl
+  label: listing_outputBinding_loadListing
+  output:
+    out: {
+        "basename": "file2",
+        "checksum": "sha1$da39a3ee5e6b4b0d3255bfef95601890afd80709",
+        "class": "File",
+        "location": "file2",
+        "size": 0
+    }
+  doc: >
+    Test that loadListing works when used on outputBinding.
+  tags: [ command_line_tool ]
+
+- job: tests/listing-job.yml
   tool: tests/listing_deep1.cwl
   label: listing_requirement_deep
   output:
