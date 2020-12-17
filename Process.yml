@@ -558,6 +558,7 @@ $graph:
 
     streamable:
       type: boolean?
+      default: false
       doc: |
         Only valid when `type: File` or is an array of `items: File`.
 
