@@ -3379,6 +3379,21 @@
   tags: [ resource, command_line_tool ]
   id: 256
 
+- job: tests/synth-file-job.yml
+  tool: tests/synth-file.cwl
+  label: cat_synthetic_file
+  doc: Test the generation of a synthetic file with inline contents.
+  output:
+    sequence: {
+      "basename": "684051cefdffc63ea1be04442fe133c803d86cbe",
+      "nameext": "",
+      "class": "File",
+      "checksum": "sha1$5d64b71392b1e00a3ad893db02d381d58262c2d6",
+      "size": 7
+    }
+  tags: [ required ]
+  id: 257
+
 - $import: tests/string-interpolation/test-index.yaml
 
 - $import: tests/conditionals/test-index.yaml
