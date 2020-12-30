@@ -11,7 +11,7 @@
         "location": "out.txt",
         "size": 48
     }
-  tags: [ inline_javascript ]
+  tags: [ inline_javascript, command_line_tool ]
 
 - id: iwdr-2
   label: continuation_expression

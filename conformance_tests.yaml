@@ -3389,7 +3389,7 @@
       "checksum": "sha1$5d64b71392b1e00a3ad893db02d381d58262c2d6",
       "size": 7
     }
-  tags: [ required ]
+  tags: [ required, command_line_tool ]
   id: 257
 
 - $import: tests/string-interpolation/test-index.yaml
