@@ -1,16 +1,18 @@
 - job: rename-inputs.yml
   tool: rename-inputs.cwl
   doc: Confirm CommandInputParameter expression can receive a File object
+  label: command_input_file_expression
   output:
     output_file:
       class: File
       checksum: sha1$901c3d387a263c57eaed6f24a82517c1fb0e198d
       size: 54
       location: result
-  tags: [ inline_javascript, secondary_files ]
+  tags: [ inline_javascript, secondary_files, command_line_tool ]
 
 - tool: rename-outputs.cwl
   doc: Confirm CommandOutputParameter expression can receive a File object
+  label: command_output_file_expression
   output:
     output_file:
       class: File
@@ -22,4 +24,4 @@
         checksum: sha1$da39a3ee5e6b4b0d3255bfef95601890afd80709
         location: secondary_file_test.txt.accessory
         size: 0
-  tags: [ inline_javascript, secondary_files ]
+  tags: [ inline_javascript, secondary_files, command_line_tool ]

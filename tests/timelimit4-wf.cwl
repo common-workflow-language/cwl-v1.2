@@ -33,4 +33,4 @@ steps:
         o:
           type: string?
           outputBinding:
-            outputEval: "time passed"
+            outputEval: $("time passed")

@@ -6,42 +6,58 @@
 
 - job: null
   tool: wf-v10.cwl
+  label: mixed_version_v10_wf
   output: {}
   doc: test v1.0 workflow document that runs other versions
+  tags: [ workflow ]
 
 - job: null
   tool: wf-v11.cwl
+  label: mixed_version_v11_wf
   output: {}
   doc: test v1.1 workflow document that runs other versions
+  tags: [ workflow ]
 
 - job: null
   tool: wf-v12.cwl
+  label: mixed_version_v12_wf
   output: {}
   doc: test v1.2 workflow document that runs other versions
+  tags: [ workflow ]
 
 - job: null
   tool: invalid-tool-v10.cwl
+  label: invalid_syntax_v10_uses_v12_tool
   doc: test tool with v1.2 syntax marked as v1.0 (should fail)
   should_fail: true
+  tags: [ command_line_tool ]
 
 - job: null
   tool: invalid-tool-v11.cwl
   doc: test tool with v1.2 syntax marked as v1.1 (should fail)
+  label: invalid_syntax_v11_uses_v12_tool
   should_fail: true
+  tags: [ command_line_tool ]
 
 - job: null
   tool: invalid-wf-v10.cwl
+  label: invalid_syntax_v10_uses_v12_workflow
   doc: test wf with v1.2 syntax marked as v1.0 (should fail)
   should_fail: true
+  tags: [ workflow ]
 
 - job: null
   tool: invalid-wf-v11.cwl
+  label: invalid_syntax_v11_uses_v12_workflow
   doc: test wf with v1.2 syntax marked as v1.1 (should fail)
   should_fail: true
+  tags: [ workflow ]
 
 - job: null
   tool: invalid-wf-v12.cwl
+  label: invalid_syntax_mixed_v12_workflow
   doc: |
     test 1.2 wf that includes tools that are marked as v1.0 and v1.1 that
     contain v1.2 features (should fail)
   should_fail: true
+  tags: [ workflow ]
