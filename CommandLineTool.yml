@@ -631,7 +631,11 @@ $graph:
       jsonldPredicate:
         "_id": "@type"
         "_type": "@vocab"
-      type: string
+      type:
+        type: enum
+        name: CommandLineTool_class
+        symbols:
+          - cwl:CommandLineTool
     - name: baseCommand
       doc: |
         Specifies the program to execute.  If an array, the first element of
