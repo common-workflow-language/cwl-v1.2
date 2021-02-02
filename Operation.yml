@@ -87,4 +87,8 @@ $graph:
       jsonldPredicate:
         "_id": "@type"
         "_type": "@vocab"
-      type: string
+      type:
+        type: enum
+        name: Operation_class
+        symbols:
+          - cwl:Operation
