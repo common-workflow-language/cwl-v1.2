@@ -1,0 +1,5 @@
+my_person:
+  name:
+    first: Foo
+    last: Bar
+  age: 42
