@@ -46,8 +46,9 @@ baseCommand: cwl-runner
 
 outputs:
   log: stderr
-  output_object_document: stdout  # in the CWL Output Object Document format
-  format: iana:application/json
+  output_object_document:
+    type: stdout  # in the CWL Output Object Document format
+    format: iana:application/json
 
 successCodes:
  - 0  # success
