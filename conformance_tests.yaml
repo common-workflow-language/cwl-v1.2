@@ -2811,7 +2811,7 @@
   tool: tests/timelimit.cwl
   label: timelimit_basic
   doc: Test that job fails when exceeding time limit
-  tags: [ command_line_tool, timelimit ]
+  tags: [ command_line_tool, timelimit, work_reuse ]
   id: 214
 
 - job: tests/empty.json
@@ -2827,7 +2827,7 @@
   tool: tests/timelimit3.cwl
   label: timelimit_zero_unlimited
   doc: Test zero timelimit means no limit
-  tags: [ command_line_tool, timelimit ]
+  tags: [ command_line_tool, timelimit, work_reuse ]
   id: 216
 
 - job: tests/empty.json
@@ -2835,7 +2835,7 @@
   tool: tests/timelimit4.cwl
   label: timelimit_from_expression
   doc: Test expression in time limit
-  tags: [ command_line_tool, timelimit, inline_javascript ]
+  tags: [ command_line_tool, timelimit, inline_javascript, work_reuse ]
   id: 217
 
 - job: tests/empty.json
@@ -2870,7 +2870,7 @@
   tool: tests/timelimit3-wf.cwl
   label: timelimit_zero_unlimited_wf
   doc: Test zero timelimit means no limit in workflow
-  tags: [ workflow, timelimit, inline_javascript ]
+  tags: [ workflow, timelimit, inline_javascript, work_reuse ]
   id: 221
 
 - job: tests/empty.json
@@ -2878,7 +2878,7 @@
   tool: tests/timelimit4-wf.cwl
   label: timelimit_from_expression_wf
   doc: Test expression in time limit in workflow
-  tags: [ workflow, timelimit, inline_javascript ]
+  tags: [ workflow, timelimit, inline_javascript, work_reuse ]
   id: 222
 
 - job: tests/empty.json
@@ -3378,6 +3378,19 @@
      }
   tags: [ resource, command_line_tool ]
   id: 256
+
+- job: tests/synth-file-job.yml
+  tool: tests/synth-file.cwl
+  label: cat_synthetic_file
+  doc: Test the generation of a synthetic file with inline contents.
+  output:
+    sequence: {
+      "class": "File",
+      "checksum": "sha1$5d64b71392b1e00a3ad893db02d381d58262c2d6",
+      "size": 7
+    }
+  tags: [ required, command_line_tool ]
+  id: 257
 
 - $import: tests/string-interpolation/test-index.yaml
 

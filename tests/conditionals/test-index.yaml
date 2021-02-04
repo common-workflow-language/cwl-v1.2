@@ -282,7 +282,7 @@
   tags: [ conditional, multiple_input, workflow ]
 
 - id: cond-7_nojs
-  label: pass_through_required_the_only_non_null
+  label: pass_through_required_the_only_non_null_nojs
   doc: "pickvalue: the_only_non_null will pass, only for false condition; no javascript"
   tool: cond-wf-004_nojs.cwl
   job: test-false.yml
@@ -291,7 +291,7 @@
   tags: [ conditional, multiple_input, workflow ]
 
 - id: cond-8_nojs
-  label: pass_through_required_fail
+  label: pass_through_required_fail_nojs
   doc: "pickValue: the_only_non_null will fail due to multiple non nulls; no javascript"
   tool: cond-wf-004_nojs.cwl
   job: test-true.yml

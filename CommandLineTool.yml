@@ -979,6 +979,9 @@ $graph:
         implemented by making a copy of the original file or
         directory.
 
+        Disruptive changes to the referenced file or directory must not
+        be allowed unless `InplaceUpdateRequirement.inplaceUpdate` is true.
+
         Default false (files and directories read-only by default).
 
         A directory marked as `writable: true` implies that all files and
