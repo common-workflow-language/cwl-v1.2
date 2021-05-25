@@ -156,6 +156,8 @@ runtest() {
 
 if [ "$PLATFORM" = "Linux" ]; then
     runtest "$(readlink -f "$runner")"
+elif [ "$PLATFORM" = "Darwin" ]; then
+	runtest $runner
 else
     runtest "$(greadlink -f "$runner")"
 fi
