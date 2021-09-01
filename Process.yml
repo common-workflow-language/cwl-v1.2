@@ -966,7 +966,7 @@ $graph:
 
         The expression must return either: a filename string relative
         to the path to the primary File, a File or Directory object
-        (`class: File` or 'class: Directory`) with either `location`
+        (`class: File` or `class: Directory`) with either `location`
         (for inputs) or `path` (for outputs) and `basename` fields
         set, or an array consisting of strings or File or Directory
         objects as previously described.
