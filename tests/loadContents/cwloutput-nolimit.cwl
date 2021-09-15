@@ -10,4 +10,5 @@ inputs:
     default: {class: File, location: mkfilelist.py}
 outputs:
   filelist: string[]
+  bigstring: string
 arguments: [python, $(inputs.script)]
