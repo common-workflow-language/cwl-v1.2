@@ -132,12 +132,16 @@ We will use this single entry to explain the format
      args: [cat, hello.txt]
    tags: [ required, command_line_tool ]
 ```
-- `doc`: A sentence that explain what is being tested. Will be printed at test execution time. Should be unique.
+- `doc`: A unique, single-line sentence that explain what is being tested.
+     Will be printed at test execution time, so please don't make it too long!
+     Additional documentation can go as comments in the CWL document itself.
 - `label`: a short list of  underscore (`_`) separated words that succinctly identifies and explains the test.
 - `tool` the path to the CWL document to run
 - `job`: the CWL input object in YAML/JSON format. If there are no inputs then use `tests/empty.json`.
 - `output` [the CWL output object expected.](#output-matching)
 - `tags`: a yaml list of tag names, see [the list of canonical tags below](#tags-for-conformance-tests).
+     Must include one or more of the following tags: `command_line_tool`, `expression_tool` or `workflow`.
+     If the test does not test any optional features, the tag `required` is required.
 
 Because `conformance_tests.yaml` is a `schema-salad` processed document, [`$import`](https://www.commonwl.org/v1.2/SchemaSalad.html#Import)
 can be used to organize the tests into separate files.
