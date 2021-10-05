@@ -24,7 +24,6 @@ inputs:
     touch secondary_file_test.txt.accessory
     ```
   secondaryFiles:
-    - .accessory
     - |
       ${
         function resolveSecondary(base, secPattern) {
@@ -37,10 +36,13 @@ inputs:
         }
         return [{
             "class": "File",
-            "location": self.secondaryFiles[0].location,
+            "location": inputs.accessory.location,
             "basename": resolveSecondary(self.basename, '^.accessory')
         }];
       }
+- id: accessory
+  type: File
+
 
 arguments:
 - valueFrom: "|"
