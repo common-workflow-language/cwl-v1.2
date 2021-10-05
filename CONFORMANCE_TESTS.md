@@ -151,6 +151,10 @@ Example: [`- $import: tests/string-interpolation/test-index.yaml`](https://githu
 adds all the entries in [`tests/string-interpolation/test-index.yaml`](https://github.com/common-workflow-language/cwl-v1.2/blob/main/tests/string-interpolation/test-index.yaml)
 as entries in the main conformance test file.
 
+You may also see references to an `id` field. Don't add them for new tests,
+[we are migrating off of the `id` field](common-workflow-language/cwltest#110) to
+rely only on the `label`s.
+
 ## Output matching
 
 In each test entry there is an `output` field that contains a mapping of the expected outputs names and their values.
