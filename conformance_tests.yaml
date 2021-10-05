@@ -3400,11 +3400,7 @@
 - $import: tests/loadContents/test-index.yaml
 - $import: tests/iwd/test-index.yaml
 
-- doc: >-
-    Test that nested directories, InitialWorkDirRequirement,
-    containers work correctly together. This is based on a reported
-    bug
-    https://github.com/common-workflow-language/common-workflow-language/issues/749
+- doc: Nested directories, InitialWorkDirRequirement, and containers work together
   label: nested_dirs_iwdr_container
   tool: tests/nested-dirs-iwdr/test.cwl
   job: tests/empty.json
@@ -3419,4 +3415,4 @@
         location: Any
         size: 0
         checksum: sha1$da39a3ee5e6b4b0d3255bfef95601890afd80709
-  tags: [ initial_work_dir, subworkflow ]
+  tags: [ workflow, initial_work_dir, subworkflow ]

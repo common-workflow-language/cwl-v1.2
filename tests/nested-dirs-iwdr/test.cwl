@@ -2,6 +2,10 @@
 cwlVersion: v1.2
 class: Workflow
 
+# Test that nested directories, InitialWorkDirRequirement, containers
+# work correctly together. This is based on a reported problem, see
+# https://github.com/common-workflow-language/common-workflow-language/issues/749
+
 requirements:
   - class: SubworkflowFeatureRequirement
 
