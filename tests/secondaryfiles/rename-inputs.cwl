@@ -1,7 +1,5 @@
 #!/usr/bin/env cwl-runner
 id: InputSecondaryFileConformanceTest
-baseCommand:
-- ls
 class: CommandLineTool
 cwlVersion: v1.2
 doc: |
@@ -45,13 +43,12 @@ inputs:
 
 
 arguments:
+- "ls"
+- $(inputs.inputWithSecondary.dirname)
 - valueFrom: "|"
   shellQuote: false
-  position: 0
-- valueFrom: "grep"
-  position: 1
-- valueFrom: "secondary"
-  position: 2
+- "grep"
+- "secondary"
 
 outputs:
 - id: output_file
@@ -60,6 +57,3 @@ stdout: result
 requirements:
   InlineJavascriptRequirement: {}
   ShellCommandRequirement: {}
-  InitialWorkDirRequirement:
-    listing:
-    - $(inputs.inputWithSecondary)
