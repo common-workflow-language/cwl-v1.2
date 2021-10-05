@@ -3,6 +3,18 @@
 The conformance tests are intended to test feature coverage of a CWL
 implementation.  It uses the module cwltest from https://github.com/common-workflow-language/cwltest/.
 
+## Pre-requisites
+
+You will need both the `cwltest` Python package  and the CWL runner you would like to test installed.
+
+Installing the `cwltest` Python package using a virtualenv:
+
+```
+$ python3 -m venv cwltest_env
+$ source cwltest_env/bin/activate
+$ pip install cwltest
+```
+
 ## Usage
 
 ```bash
