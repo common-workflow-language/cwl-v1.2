@@ -174,6 +174,8 @@ If you are editing those old tests, you may be interested in some special proces
 any `location` value specified will succeed if there is either an exact match to the real output, or it matches the end of the real output.
 Additionally, for `class: Directory` the location reported by the actual execution will have any trailing forward slash (`/`) trimmed off before comparison.
 
+Likewise, please do not test the `path` for `class: File` and `class: Directory`.
+
 ## Writing a new conformance test
 
 To add a new conformance test:
