@@ -15,6 +15,12 @@ $ source cwltest_env/bin/activate
 $ pip install cwltest
 ```
 
+or via `bioconda`
+
+```
+$ conda install -c bioconda cwltest
+```
+
 ## Usage
 
 ```bash
