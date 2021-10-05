@@ -163,7 +163,7 @@ Likewise, if you don't want to test some aspect of a `class: File` or `class: Di
 
 [According to the CWL standards](https://www.commonwl.org/v1.2/CommandLineTool.html#File), the format of the `location` field in 
 `class: File` and `class: Directory` is implementation specific and we should not be testing them.
-Please remember to use `location: any` for them.
+Please remember to use `location: Any` for them.
 
 Currently, we do [test the contents of the location field in some older tests, but we should stop](https://github.com/common-workflow-language/common-workflow-language/issues/930)
 If you are editing those old tests, you may be interested in some special processing for  `class: File` and `class: Directory` output objects:
