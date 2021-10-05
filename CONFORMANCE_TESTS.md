@@ -105,7 +105,7 @@ system some needed GNU-like tools like `greadlink`.
 
 ## Format of the conformance test file
 
-Conformance tests consist of input CWL descriptions plus an input CWL object
+A single conformance test consist of the path to an input CWL document plus an input CWL object
 and the expected outputs (or `should_fail: true` if the test is deliberately broken)
 
 They are stored in [`conformance_tests.yaml`](https://github.com/common-workflow-language/cwl-v1.2/blob/main/conformance_tests.yaml)
@@ -128,12 +128,13 @@ We will use this single entry to explain the format
 ```
 - `doc`: A sentence that explain what is being tested. Will be printed at test execution time. Should be unique.
 - `label`: a short list of  underscore (`_`) separated words that succinctly identifies and explains the test.
-- `tool` the path to the CWL description to run
+- `tool` the path to the CWL document to run
 - `job`: the CWL input object in YAML/JSON format. If there are no inputs then use `tests/empty.json`.
 - `output` [the CWL output object expected.](#output-matching)
 - `tags`: a yaml list of tag names, see [the list of canonical tags below](#tags-for-conformance-tests).
 
-Because this is a `schema-salad` processed document, `$import` can be used to organize the tests into separate files.
+Because `conformance_tests.yaml` is a `schema-salad` processed document, [`$import`](https://www.commonwl.org/v1.2/SchemaSalad.html#Import)
+can be used to organize the tests into separate files.
 
 Currently, the main file is too big (over 3400 lines); we are slowly re-organizing it.
 
@@ -151,7 +152,7 @@ In each test entry there is an `output` field that contains a mapping of the exp
 If a particular value could vary and it doesn't matter to the proper functioning of the test, then it can be represented by the special token `Any`.
 
 At any level, if there is an extra field, then that will be considered an error.
-An exception to this is `class: File` and `class: Directory` objects, the `cwl-runner` under test can add additional fields here.
+An exception to this is `class: File` and `class: Directory` objects, the `cwl-runner` under test can add additional fields here without causing a test to fail.
 Likewise, if you don't want to test some aspect of a `class: File` or `class: Directory` object (like `nameext`) you can just omit it.
 
 [According to the CWL standards](https://www.commonwl.org/v1.2/CommandLineTool.html#File), the format of the `location` field in 
@@ -166,10 +167,10 @@ Additionally, for `class: Directory` the location reported by the actual executi
 ## Writing a new conformance test
 
 To add a new conformance test:
-1. Ensure the CWL description you have tests the desired feature or aspect.
+1. Ensure the CWL document you have tests the desired feature or aspect.
 2. Run your test using the CWL reference runner (`cwltool`) or another CWL runner
      that shows the correct behavior to collect the output, or confirm that validation/execution fails as expected
-3. Add the CWL description and output object to the subdirectory `tests` in this repository.
+3. Add the CWL document and output object to the subdirectory `tests` in this repository.
 4. Fill out a new entry in [conformance_tests.yaml](conformance_tests.yaml) following the [format of the conformance test file](#format-of-the-conformance-test-file)
 5. Send a pull request to [current staging branch for the next revision of the CWL standards](https://github.com/common-workflow-language/cwl-v1.2/tree/1.2.1_proposed) 
      with your changes
