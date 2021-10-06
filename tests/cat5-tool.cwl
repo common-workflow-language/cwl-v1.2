@@ -6,7 +6,7 @@ class: CommandLineTool
 doc: "Print the contents of a file to stdout using 'cat' running in a docker container."
 hints:
   DockerRequirement:
-    dockerPull: "debian:stretch-slim"
+    dockerPull: docker.io/debian:stable-slim
   ex:BlibberBlubberFakeRequirement:
     fakeField: fraggleFroogle
 inputs:

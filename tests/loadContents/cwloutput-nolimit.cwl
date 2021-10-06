@@ -3,7 +3,7 @@ class: CommandLineTool
 cwlVersion: v1.2
 requirements:
   DockerRequirement:
-    dockerPull: "python:3-slim"
+    dockerPull: docker.io/python:3-slim
 inputs:
   script:
     type: File

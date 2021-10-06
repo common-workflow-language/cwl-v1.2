@@ -4,7 +4,7 @@ cwlVersion: v1.2
 doc: "CommandLineTool without outputs."
 hints:
   DockerRequirement:
-    dockerPull: debian:stretch-slim
+    dockerPull: docker.io/debian:stable-slim
 inputs:
   file1:
     type: File
