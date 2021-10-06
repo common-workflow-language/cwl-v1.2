@@ -8,7 +8,7 @@
       checksum: sha1$901c3d387a263c57eaed6f24a82517c1fb0e198d
       size: 54
       location: result
-  tags: [ inline_javascript, secondary_files, command_line_tool ]
+  tags: [ inline_javascript, secondary_files, command_line_tool, shell_command ]
 
 - tool: rename-outputs.cwl
   doc: Confirm CommandOutputParameter expression can receive a File object
