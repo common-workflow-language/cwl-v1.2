@@ -12,7 +12,7 @@ outputs:
       glob: head.txt
 hints:
   DockerRequirement:
-    dockerPull: "debian:10"
+    dockerPull: docker.io/debian:stable-slim
     dockerOutputDirectory: /output
 requirements:
   InitialWorkDirRequirement:
