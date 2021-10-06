@@ -468,18 +468,18 @@ only the `InlineJavascriptRequirement`, `SchemaDefRequirement`, `DockerRequireme
 *As good practice, it is best to have process requirements be self-contained,
 such that each process can run successfully by itself.*
 
-If the same process requirement appears at different levels of the
-workflow, the most specific instance of the requirement is used, that is,
-an entry in `requirements` on a process implementation such as
-CommandLineTool will take precedence over an entry in `requirements`
-specified in a workflow step, and an entry in `requirements` on a workflow
-step takes precedence over the workflow.  Entries in `hints` are resolved
-the same way.
+If a process requirement of the same type appears at different levels
+of the workflow, the most specific instance of the requirement is
+used, that is, an entry in `requirements` on a process implementation
+such as CommandLineTool will wholly replace an entry in `requirements`
+specified in a workflow step, and an entry in `requirements` on a
+workflow step takes precedence over the workflow.  Entries in `hints`
+are resolved the same way.
 
 Requirements override hints.  If a process implementation provides a
 process requirement in `hints` which is also provided in `requirements` by
-an enclosing workflow or workflow step, the enclosing `requirements` takes
-precedence.
+an enclosing workflow or workflow step, the enclosing `requirements`
+wholly replaces the hint.
 
 ## Parameter references
 
