@@ -2,7 +2,7 @@ class: CommandLineTool
 cwlVersion: v1.2
 requirements:
   DockerRequirement:
-    dockerPull: bash:4.4.12
+    dockerPull: docker.io/bash:4.4
 inputs: []
 outputs:
   cow:

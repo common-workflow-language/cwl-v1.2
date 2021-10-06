@@ -14,7 +14,7 @@ $graph:
     - class: InlineJavascriptRequirement
   hints:
     - class: DockerRequirement
-      dockerPull: python:2-slim
+      dockerPull: docker.io/python:3-slim
 
   inputs:
     file:  File
@@ -48,7 +48,7 @@ $graph:
     - class: InlineJavascriptRequirement
   hints:
     - class: DockerRequirement
-      dockerPull: python:2-slim
+      dockerPull: docker.io/python:3-slim
   inputs:
     file:
       type: File
