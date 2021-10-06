@@ -4,7 +4,7 @@ cwlVersion: v1.2
 doc: "Create a file under adir/, symlink it to working directory (./) and glob symlink. The executor should resolve this symlink"
 hints:
   DockerRequirement:
-    dockerPull: alpine
+    dockerPull: docker.io/alpine:latest
 inputs: []
 outputs:
   output_file:

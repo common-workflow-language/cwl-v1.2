@@ -180,10 +180,12 @@ $graph:
   fields:
     - name: position
       type: [ "null", int, Expression ]
+      default: 0
       doc: |
-        The sorting key.  Default position is 0. If the inputBinding is
-        associated with an input parameter, then the value of `self` in the
-        expression will be the value of the input parameter.  Input parameter
+        The sorting key.  Default position is 0. If a [CWL Parameter Reference](#Parameter_references)
+        or [CWL Expression](#Expressions_(Optional)) is used and if the
+        inputBinding is associated with an input parameter, then the value of
+        `self` will be the value of the input parameter.  Input parameter
         defaults (as specified by the `InputParameter.default` field) must be
         applied before evaluating the expression. Expressions must return a
         single value of type int or a null.
@@ -631,7 +633,11 @@ $graph:
       jsonldPredicate:
         "_id": "@type"
         "_type": "@vocab"
-      type: string
+      type:
+        type: enum
+        name: CommandLineTool_class
+        symbols:
+          - cwl:CommandLineTool
     - name: baseCommand
       doc: |
         Specifies the program to execute.  If an array, the first element of
@@ -784,7 +790,11 @@ $graph:
 
   fields:
     - name: class
-      type: string
+      type:
+        type: enum
+        name: DockerRequirement_class
+        symbols:
+          - cwl:DockerRequirement
       doc: "Always 'DockerRequirement'"
       jsonldPredicate:
         "_id": "@type"
@@ -826,7 +836,11 @@ $graph:
     the defined process.
   fields:
     - name: class
-      type: string
+      type:
+        type: enum
+        name: SoftwareRequirement_class
+        symbols:
+          - cwl:SoftwareRequirement
       doc: "Always 'SoftwareRequirement'"
       jsonldPredicate:
         "_id": "@type"
@@ -1007,10 +1021,13 @@ $graph:
     Together with `DockerRequirement.dockerOutputDirectory` this it
     possible to control the locations of both input and output files
     when running in containers.
-
   fields:
     - name: class
-      type: string
+      type:
+        type: enum
+        name: InitialWorkDirRequirement_class
+        symbols:
+          - cwl:InitialWorkDirRequirement
       doc: InitialWorkDirRequirement
       jsonldPredicate:
         "_id": "@type"
@@ -1066,7 +1083,11 @@ $graph:
     execution environment of the tool.  See `EnvironmentDef` for details.
   fields:
     - name: class
-      type: string
+      type:
+        type: enum
+        name: EnvVarRequirement_class
+        symbols:
+          - cwl:EnvVarRequirement
       doc: "Always 'EnvVarRequirement'"
       jsonldPredicate:
         "_id": "@type"
@@ -1092,7 +1113,11 @@ $graph:
     the use of shell metacharacters such as `|` for pipes.
   fields:
     - name: class
-      type: string
+      type:
+        type: enum
+        name: ShellCommandRequirement_class
+        symbols:
+          - cwl:ShellCommandRequirement
       doc: "Always 'ShellCommandRequirement'"
       jsonldPredicate:
         "_id": "@type"
@@ -1131,13 +1156,21 @@ $graph:
 
   fields:
     - name: class
-      type: string
+      type:
+        type: enum
+        name: ResourceRequirement_class
+        symbols:
+          - cwl:ResourceRequirement
       doc: "Always 'ResourceRequirement'"
       jsonldPredicate:
         "_id": "@type"
         "_type": "@vocab"
     - name: coresMin
-      type: ["null", long, float, Expression]
+      type: ["null", int, long, float, Expression]
+      # default: 1
+      # Don't set the default here, we need to be able to distinguish between
+      # a value not provided and the textual default to be able to implement
+      # the rules written in the ResourceRequirement doc above
       doc: |
         Minimum reserved number of CPU cores (default is 1).
 
@@ -1166,14 +1199,20 @@ $graph:
         next whole number.
 
     - name: coresMax
-      type: ["null", long, float, Expression]
+      type: ["null", int, long, float, Expression]
       doc:  |
         Maximum reserved number of CPU cores.
 
         See `coresMin` for discussion about fractional CPU requests.
 
     - name: ramMin
-      type: ["null", long, float, Expression]
+      type: ["null", int, long, float, Expression]
+      # default: 256
+      # Don't set the default here, we need to be able to distinguish between
+      # a value not provided and the textual default to be able to implement
+      # the rules written in the ResourceRequirement doc above.
+      # Consumers of ResourceRequirement must apply the default value algorithm
+      # themselves and not rely on schema-salad rules
       doc: |
         Minimum reserved RAM in mebibytes (2**20) (default is 256)
 
@@ -1184,14 +1223,20 @@ $graph:
         non-zero integer.
 
     - name: ramMax
-      type: ["null", long, float, Expression]
+      type: ["null", int, long, float, Expression]
       doc: |
         Maximum reserved RAM in mebibytes (2**20)
 
         See `ramMin` for discussion about fractional RAM requests.
 
     - name: tmpdirMin
-      type: ["null", long, float, Expression]
+      type: ["null", int, long, float, Expression]
+      # default: 1024
+      # Don't set the default here, we need to be able to distinguish between
+      # a value not provided and the textual default to be able to implement
+      # the rules written in the ResourceRequirement doc above
+      # Consumers of ResourceRequirement must apply the default value algorithm
+      # themselves and not rely on schema-salad rules
       doc: |
         Minimum reserved filesystem based storage for the designated temporary directory, in mebibytes (2**20) (default is 1024)
 
@@ -1202,14 +1247,20 @@ $graph:
         must be a non-zero integer.
 
     - name: tmpdirMax
-      type: ["null", long, float, Expression]
+      type: ["null", int, long, float, Expression]
       doc: |
         Maximum reserved filesystem based storage for the designated temporary directory, in mebibytes (2**20)
 
         See `tmpdirMin` for discussion about fractional storage requests.
 
     - name: outdirMin
-      type: ["null", long, float, Expression]
+      type: ["null", int, long, float, Expression]
+      # default: 1024
+      # Don't set the default here, we need to be able to distinguish between
+      # a value not provided and the textual default to be able to implement
+      # the rules written in the ResourceRequirement doc above
+      # Consumers of ResourceRequirement must apply the default value algorithm
+      # themselves and not rely on schema-salad rules
       doc: |
         Minimum reserved filesystem based storage for the designated output directory, in mebibytes (2**20) (default is 1024)
 
@@ -1220,7 +1271,7 @@ $graph:
         must be a non-zero integer.
 
     - name: outdirMax
-      type: ["null", long, float, Expression]
+      type: ["null", int, long, float, Expression]
       doc: |
         Maximum reserved filesystem based storage for the designated output directory, in mebibytes (2**20)
 
@@ -1242,7 +1293,11 @@ $graph:
     is enabled by default.
   fields:
     - name: class
-      type: string
+      type:
+        type: enum
+        name: WorkReuse_class
+        symbols:
+          - cwl:WorkReuse
       doc: "Always 'WorkReuse'"
       jsonldPredicate:
         "_id": "@type"
@@ -1274,7 +1329,11 @@ $graph:
 
   fields:
     - name: class
-      type: string
+      type:
+        type: enum
+        name: NetworkAccess_class
+        symbols:
+          - cwl:NetworkAccess
       doc: "Always 'NetworkAccess'"
       jsonldPredicate:
         "_id": "@type"
@@ -1319,7 +1378,11 @@ $graph:
 
   fields:
     class:
-      type: string
+      type:
+        type: enum
+        name: InplaceUpdateRequirement_class
+        symbols:
+          - cwl:InplaceUpdateRequirement
       doc: "Always 'InplaceUpdateRequirement'"
       jsonldPredicate:
         "_id": "@type"
@@ -1340,13 +1403,17 @@ $graph:
     wall-time for the execution of the command line itself.
   fields:
     - name: class
-      type: string
+      type:
+        type: enum
+        name: ToolTimeLimit_class
+        symbols:
+          - cwl:ToolTimeLimit
       doc: "Always 'ToolTimeLimit'"
       jsonldPredicate:
         "_id": "@type"
         "_type": "@vocab"
     - name: timelimit
-      type: [long, Expression]
+      type: [int, long, Expression]
       doc: |
         The time limit, in seconds.  A time limit of zero means no
         time limit.  Negative time limits are an error.

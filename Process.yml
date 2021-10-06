@@ -238,7 +238,10 @@ $graph:
         Optional hash code for validating file integrity.  Currently must be in the form
         "sha1$ + hexadecimal string" using the SHA-1 algorithm.
     - name: size
-      type: long?
+      type:
+        - "null"
+        - int
+        - long
       doc: Optional file size
     - name: "secondaryFiles"
       type:
@@ -558,6 +561,7 @@ $graph:
 
     streamable:
       type: boolean?
+      default: false
       doc: |
         Only valid when `type: File` or is an array of `items: File`.
 
@@ -887,7 +891,11 @@ $graph:
     interpolatation.
   fields:
     - name: class
-      type: string
+      type:
+        type: enum
+        name: InlineJavascriptRequirement_class
+        symbols:
+          - cwl:InlineJavascriptRequirement
       doc: "Always 'InlineJavascriptRequirement'"
       jsonldPredicate:
         "_id": "@type"
@@ -923,7 +931,11 @@ $graph:
 
   fields:
     - name: class
-      type: string
+      type:
+        type: enum
+        name: SchemaDefRequirement_class
+        symbols:
+          - cwl:SchemaDefRequirement
       doc: "Always 'SchemaDefRequirement'"
       jsonldPredicate:
         "_id": "@type"
@@ -957,7 +969,7 @@ $graph:
 
         The expression must return either: a filename string relative
         to the path to the primary File, a File or Directory object
-        (`class: File` or 'class: Directory`) with either `location`
+        (`class: File` or `class: Directory`) with either `location`
         (for inputs) or `path` (for outputs) and `basename` fields
         set, or an array consisting of strings or File or Directory
         objects as previously described.
@@ -1021,7 +1033,11 @@ $graph:
     a Directory object for use by expressions.
   fields:
     class:
-      type: string
+      type:
+        type: enum
+        name: LoadListingRequirement_class
+        symbols:
+          - cwl:LoadListingRequirement
       doc: "Always 'LoadListingRequirement'"
       jsonldPredicate:
         "_id": "@type"
