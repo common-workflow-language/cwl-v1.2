@@ -5,6 +5,9 @@ class: Workflow
 # Test that nested directories, InitialWorkDirRequirement, containers
 # work correctly together. This is based on a reported problem, see
 # https://github.com/common-workflow-language/common-workflow-language/issues/749
+hints:
+  DockerRequirement:
+    dockerPull: docker.io/bash:4.4
 
 requirements:
   - class: SubworkflowFeatureRequirement
