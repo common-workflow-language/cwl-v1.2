@@ -2,7 +2,7 @@ cwlVersion: v1.2
 class: CommandLineTool
 hints:
   - class: DockerRequirement
-    dockerPull: python:2-slim
+    dockerPull: docker.io/python:3-slim
 inputs:
   - id: infile
     type: File?
