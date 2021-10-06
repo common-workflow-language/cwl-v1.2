@@ -4,7 +4,7 @@ name: test_with_cwltool
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
   push:
-    branches: [ main, 1.2.1_proposed ]
+    branches: [ main ]
   pull_request:
     branches: [ main, 1.2.1_proposed ]
 
