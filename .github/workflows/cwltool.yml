@@ -1,0 +1,29 @@
+name: test_with_cwltool
+
+# Controls when the action will run.
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  test_with_cwltool:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.9.x'
+      
+      - name: Setup prerequirements
+        run: pip install cwltest cwltool
+      
+      - name: Run tests against the reference runner
+        run: ./run_test.sh RUNNER=cwltool EXTRA=--parallel -j$(nproc)
