@@ -184,7 +184,13 @@ Likewise, please do not test the `path` for `class: File` and `class: Directory`
 
 To add a new conformance test:
 1. Ensure the CWL document you have tests the desired feature or aspect.
-2. Run your test using the CWL reference runner (`cwltool`) or another CWL runner
+2. All `CommandLineTool`s need a software container (via `DockerRequirement`), preferrably under `hints`.
+     Please limit your container usage to the following: 
+     - `dockerPull: docker.io/alpine:latest`
+     - `dockerPull: docker.io/bash:4.4`
+     - `dockerPull: docker.io/debian:stable-slim`
+     - `dockerPull: docker.io/python:3-slim`
+4. Run your test using the CWL reference runner (`cwltool`) or another CWL runner
      that shows the correct behavior to collect the output, or confirm that validation/execution fails as expected
 3. Add the CWL document and output object to the subdirectory `tests` in this repository.
 4. Fill out a new entry in [conformance_tests.yaml](conformance_tests.yaml) following the [format of the conformance test file](#format-of-the-conformance-test-file)
