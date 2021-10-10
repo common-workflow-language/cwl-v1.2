@@ -44,17 +44,6 @@ The CWL implementation to be tested.
 A comma separated list of [tags](#tags-for-conformance-tests); only tests with these tags will be tested.
 `--tags shell_command` will run all tests with `shell_command` in their `tags` list.
 
-`-n{test_range}`
-
-Run only the specific test numbers. `{test_range}` is a comma separated list of
-single test numbers and/or numeric ranges.
-`-n5-7,15` == only runs the 5th, 6th, 7th, and 15th tests.
-
-`-N{test_range}`
-
-Like the lowercase `-n` option, except that the specified tests will not be run.
-Can be mixed with the other test selectors: `-n5-7,15 -N6` == only runs the 5th, 7th, and 15th tests, skipping the 6th test.
-
 `-s{test_names}`
 
 Run the specific tests according to their `label`s. `{test_names}` is a comma separated list of

@@ -11,7 +11,6 @@
       example_human_Illumina.pe_1.fastq,
       example_human_Illumina.pe_2.fastq]
   label: cl_basic_generation
-  id: 1
   doc: General test of command line generation
   tags: [ required, command_line_tool ]
 
@@ -23,7 +22,6 @@
   job: tests/bwa-mem-job.json
   tool: tests/binding-test.cwl
   label: nested_prefixes_arrays
-  id: 2
   doc: Test nested prefixes with arrays
   tags: [ required, command_line_tool ]
 
@@ -34,7 +32,6 @@
   job: tests/tmap-job.json
   tool: tests/tmap-tool.cwl
   label: nested_cl_bindings
-  id: 3
   doc: Test nested command line bindings
   tags: [ schema_def, command_line_tool ]
 
@@ -43,7 +40,6 @@
   job: tests/cat-job.json
   tool: tests/cat1-testcli.cwl
   label: cl_optional_inputs_missing
-  id: 4
   doc: Test command line with optional input (missing)
   tags: [ required, command_line_tool ]
 
@@ -52,7 +48,6 @@
   job: tests/cat-n-job.json
   tool: tests/cat1-testcli.cwl
   label: cl_optional_bindings_provided
-  id: 5
   doc: Test command line with optional input (provided)
   tags: [ required, command_line_tool ]
 
@@ -66,7 +61,6 @@
   job: tests/cat-job.json
   tool: tests/template-tool.cwl
   label: initworkdir_expreng_requirements
-  id: 6
   doc: Test InitialWorkDirRequirement ExpressionEngineRequirement.engineConfig feature
   tags: [ initial_work_dir, inline_javascript, command_line_tool ]
 
@@ -79,7 +73,6 @@
       size: 13
   tool: tests/cat3-tool.cwl
   label: stdout_redirect_docker
-  id: 7
   doc: Test command execution in Docker with stdout redirection
   tags: [ docker, command_line_tool ]
 
@@ -92,7 +85,6 @@
       location: Any
       size: 13
   label: stdout_redirect_shortcut_docker
-  id: 8
   doc: Test command execution in Docker with shortcut stdout redirection
   tags: [ docker, command_line_tool ]
 
@@ -105,14 +97,12 @@
       size: 13
   tool: tests/cat3-tool-mediumcut.cwl
   label: stdout_redirect_mediumcut_docker
-  id: 9
   doc: Test command execution in Docker with mediumcut stdout redirection
   tags: [ docker, command_line_tool ]
 
 - job: tests/empty.json
   tool: tests/stderr.cwl
   label: stderr_redirect
-  id: 10
   doc: Test command line with stderr redirection
   output:
     output_file:
@@ -125,7 +115,6 @@
 - job: tests/empty.json
   tool: tests/stderr-shortcut.cwl
   label: stderr_redirect_shortcut
-  id: 11
   doc: Test command line with stderr redirection, brief syntax
   output:
     output_file:
@@ -144,7 +133,6 @@
   job: tests/empty.json
   tool: tests/stderr-mediumcut.cwl
   label: stderr_redirect_mediumcut
-  id: 12
   doc: Test command line with stderr redirection, named brief syntax
   tags: [ shell_command, command_line_tool ]
 
@@ -157,7 +145,6 @@
       size: 13
   tool: tests/cat4-tool.cwl
   label: stdinout_redirect_docker
-  id: 13
   doc: Test command execution in Docker with stdin and stdout redirection
   tags: [ required, command_line_tool ]
 
@@ -166,7 +153,6 @@
   output:
     output: 1
   label: expression_any
-  id: 14
   doc: Test default usage of Any in expressions.
   tags: [ inline_javascript, expression_tool ]
 
@@ -175,7 +161,6 @@
   output:
     output: 1
   label: expression_any_null
-  id: 15
   doc: Test explicitly passing null to Any type inputs with default values.
   tags: [ inline_javascript, expression_tool ]
 
@@ -184,7 +169,6 @@
   output:
     output: 2
   label: expression_any_string
-  id: 16
   doc: Testing the string 'null' does not trip up an Any with a default value.
   tags: [ inline_javascript, expression_tool ]
 
@@ -192,7 +176,6 @@
   tool: tests/null-expression2-tool.cwl
   should_fail: true
   label: expression_any_nodefaultany
-  id: 17
   doc: Test Any without defaults cannot be unspecified.
   tags: [ inline_javascript, expression_tool ]
 
@@ -200,7 +183,6 @@
   tool: tests/null-expression2-tool.cwl
   should_fail: true
   label: expression_any_null_nodefaultany
-  id: 18
   doc: Test explicitly passing null to Any type without a default value.
   tags: [ inline_javascript, expression_tool ]
 
@@ -209,7 +191,6 @@
   output:
     output: 2
   label: expression_any_nullstring_nodefaultany
-  id: 19
   doc: Testing the string 'null' does not trip up an Any without a default value.
   tags: [ inline_javascript, expression_tool ]
 
@@ -220,7 +201,6 @@
     output2: ["foo", "bar"]
     output3: hello
   label: any_outputSource_compatibility
-  id: 20
   doc: Testing Any type compatibility in outputSource
   tags: [ required, workflow ]
 
@@ -233,7 +213,6 @@
       size: 13
   tool: tests/cat-tool.cwl
   label: stdinout_redirect
-  id: 21
   doc: Test command execution in with stdin and stdout redirection
   tags: [ required, command_line_tool ]
 
@@ -241,7 +220,6 @@
   output: {output: 42}
   tool: tests/parseInt-tool.cwl
   label: expression_parseint
-  id: 22
   doc: Test ExpressionTool with Javascript engine
   tags: [ inline_javascript, expression_tool ]
 
@@ -249,7 +227,6 @@
   output: {output: 16}
   tool: tests/wc2-tool.cwl
   label: expression_outputEval
-  id: 23
   doc: Test outputEval to transform output
   tags: [ inline_javascript, command_line_tool ]
 
@@ -257,7 +234,6 @@
   output: {count_output: 16}
   tool: tests/count-lines1-wf.cwl
   label: wf_wc_parseInt
-  id: 24
   doc: Test two step workflow with imported tools
   tags: [ inline_javascript, workflow ]
 
@@ -265,7 +241,6 @@
   output: {count_output: 16}
   tool: tests/count-lines2-wf.cwl
   label: wf_wc_expressiontool
-  id: 25
   doc: Test two step workflow with inline tools
   tags: [ inline_javascript, workflow ]
 
@@ -274,7 +249,6 @@
     count_output: [16, 1]
   tool: tests/count-lines3-wf.cwl
   label: wf_wc_scatter
-  id: 26
   doc: Test single step workflow with Scatter step
   tags: [ scatter, inline_javascript, workflow ]
 
@@ -283,7 +257,6 @@
     count_output: [16, 1]
   tool: tests/count-lines4-wf.cwl
   label: wf_wc_scatter_multiple_merge
-  id: 27
   doc: >-
     Test single step workflow with Scatter step and two data links connected to
     same input, default merge behavior
@@ -294,7 +267,6 @@
     count_output: [32, 2]
   tool: tests/count-lines6-wf.cwl
   label: wf_wc_scatter_multiple_nested
-  id: 28
   doc: >-
     Test single step workflow with Scatter step and two data links connected to
     same input, nested merge behavior
@@ -305,7 +277,6 @@
     count_output: 34
   tool: tests/count-lines7-wf.cwl
   label: wf_wc_scatter_multiple_flattened
-  id: 29
   doc: >-
     Test single step workflow with Scatter step and two data links connected to
     same input, flattened merge behavior
@@ -316,7 +287,6 @@
     count_output: 16
   tool: tests/count-lines13-wf.cwl
   label: wf_wc_nomultiple
-  id: 30
   doc: >-
     Test when step source is a single-item list and there is no
     linkMerge, then it not wrapped in a list, and that
@@ -328,7 +298,6 @@
     count_output: 16
   tool: tests/count-lines19-wf.cwl
   label: wf_wc_nomultiple_merge_nested
-  id: count-lines19-wf
   doc: >-
     Test when step source is a single-item list and linkMerge is
     listed, then it is wrapped in a list.
@@ -338,7 +307,6 @@
   output: {count_output: 1}
   tool: tests/count-lines5-wf.cwl
   label: wf_input_default_missing
-  id: 31
   doc: Test workflow with default value for input parameter (missing)
   tags: [ inline_javascript, workflow ]
 
@@ -346,7 +314,6 @@
   output: {count_output: 16}
   tool: tests/count-lines5-wf.cwl
   label: wf_input_default_provided
-  id: 32
   doc: Test workflow with default value for input parameter (provided)
   tags: [ inline_javascript, workflow ]
 
@@ -354,7 +321,6 @@
   output: {default_output: workflow_default}
   tool: tests/echo-wf-default.cwl
   label: wf_default_tool_default
-  id: 33
   doc: Test that workflow defaults override tool defaults
   tags: [ required, workflow ]
 
@@ -367,7 +333,6 @@
       size: 15
   tool: tests/env-tool1.cwl
   label: envvar_req
-  id: 34
   doc: Test EnvVarRequirement
   tags: [ env_var, command_line_tool ]
 
@@ -376,7 +341,6 @@
     out: ["foo one", "foo two", "foo three", "foo four"]
   tool: tests/scatter-wf1.cwl
   label: wf_scatter_single_param
-  id: 35
   doc: Test workflow scatter with single scatter parameter
   tags: [ scatter, workflow ]
 
@@ -385,7 +349,6 @@
     out: [["foo one three", "foo one four"], ["foo two three", "foo two four"]]
   tool: tests/scatter-wf2.cwl
   label: wf_scatter_two_nested_crossproduct
-  id: 36
   doc: Test workflow scatter with two scatter parameters and nested_crossproduct join method
   tags: [ scatter, workflow ]
 
@@ -394,7 +357,6 @@
     out: ["foo one three", "foo one four", "foo two three", "foo two four"]
   tool: "tests/scatter-wf3.cwl#main"
   label: wf_scatter_two_flat_crossproduct
-  id: 37
   doc: Test workflow scatter with two scatter parameters and flat_crossproduct join method
   tags: [ scatter, workflow ]
 
@@ -403,7 +365,6 @@
     out: ["foo one three", "foo two four"]
   tool: "tests/scatter-wf4.cwl#main"
   label: wf_scatter_two_dotproduct
-  id: 38
   doc: Test workflow scatter with two scatter parameters and dotproduct join method
   tags: [ scatter, workflow ]
 
@@ -412,7 +373,6 @@
     out: []
   tool: tests/scatter-wf1.cwl
   label: wf_scatter_emptylist
-  id: 39
   doc: Test workflow scatter with single empty list parameter
   tags: [ scatter, workflow ]
 
@@ -421,7 +381,6 @@
     out: [[], []]
   tool: tests/scatter-wf2.cwl
   label: wf_scatter_nested_crossproduct_secondempty
-  id: 40
   doc: Test workflow scatter with two scatter parameters and nested_crossproduct join method with second list empty
   tags: [ scatter, workflow ]
 
@@ -430,7 +389,6 @@
     out: []
   tool: "tests/scatter-wf3.cwl#main"
   label: wf_scatter_nested_crossproduct_firstempty
-  id: 41
   doc: Test workflow scatter with two scatter parameters and nested_crossproduct join method with first list empty
   tags: [ scatter, workflow ]
 
@@ -439,7 +397,6 @@
     out: []
   tool: "tests/scatter-wf3.cwl#main"
   label: wf_scatter_flat_crossproduct_oneempty
-  id: 42
   doc: Test workflow scatter with two scatter parameters, one of which is empty and flat_crossproduct join method
   tags: [ scatter, workflow ]
 
@@ -448,7 +405,6 @@
     out: []
   tool: "tests/scatter-wf4.cwl#main"
   label: wf_scatter_dotproduct_twoempty
-  id: 43
   doc: Test workflow scatter with two empty scatter parameters and dotproduct join method
   tags: [ scatter, workflow ]
 
@@ -457,7 +413,6 @@
   output:
     {"out": "hello test env\n"}
   label: any_input_param
-  id: 44
   doc: Test Any type input parameter
   tags: [ required, command_line_tool ]
 
@@ -465,7 +420,6 @@
   output: {count_output: 16}
   tool: tests/count-lines8-wf.cwl
   label: nested_workflow
-  id: 45
   doc: Test nested workflow
   tags: [ subworkflow, workflow, inline_javascript ]
 
@@ -478,7 +432,6 @@
       size: 15
   tool: tests/env-wf1.cwl
   label: requirement_priority
-  id: 46
   doc: Test requirement priority
   tags: [ env_var, workflow ]
 
@@ -491,7 +444,6 @@
       size: 9
   tool: tests/env-wf2.cwl
   label: requirement_override_hints
-  id: 47
   doc: Test requirements override hints
   tags: [ env_var, workflow ]
 
@@ -504,7 +456,6 @@
       size: 9
   tool: tests/env-wf3.cwl
   label: requirement_workflow_steps
-  id: 48
   doc: Test requirements on workflow steps
   tags: [ env_var, workflow ]
 
@@ -512,7 +463,6 @@
   output: {count_output: 16}
   tool: tests/count-lines9-wf.cwl
   label: step_input_default_value
-  id: 49
   doc: Test default value on step input parameter
   tags: [ inline_javascript, workflow ]
 
@@ -520,7 +470,6 @@
   output: {count_output: 16}
   tool: tests/count-lines11-wf.cwl
   label: step_input_default_value_nosource
-  id: 50
   doc: Test use default value on step input parameter with empty source
   tags: [ inline_javascript, workflow ]
 
@@ -528,7 +477,6 @@
   output: {count_output: 16}
   tool: tests/count-lines11-wf.cwl
   label: step_input_default_value_nullsource
-  id: 51
   doc: Test use default value on step input parameter with null source
   tags: [ inline_javascript, workflow ]
 
@@ -536,7 +484,6 @@
   output: {count_output: 1}
   tool: tests/count-lines11-wf.cwl
   label: step_input_default_value_overriden
-  id: 52
   doc: Test default value on step input parameter overridden by provided source
   tags: [ inline_javascript, workflow ]
 
@@ -549,7 +496,6 @@
       size: 1111
   tool: tests/revsort.cwl
   label: wf_simple
-  id: 53
   doc: Test simple workflow
   tags: [ required, workflow ]
 
@@ -562,7 +508,6 @@
       size: 13
   tool: tests/cat5-tool.cwl
   label: hints_unknown_ignored
-  id: 54
   doc: Test unknown hints are ignored.
   tags: [ required, command_line_tool ]
 
@@ -642,7 +587,6 @@
     }
   tool: "tests/search.cwl#main"
   label: initial_workdir_secondary_files_expr
-  id: 55
   doc: >-
     Test InitialWorkDirRequirement linking input files and capturing secondaryFiles
     on input and output. Also tests the use of a variety of parameter references
@@ -658,7 +602,6 @@
       size: 1111
   tool: tests/rename.cwl
   label: rename
-  id: 56
   doc: >-
     Test InitialWorkDirRequirement with expression in filename.
   tags: [ initial_work_dir, command_line_tool ]
@@ -672,7 +615,6 @@
         size: 16
   tool: tests/iwdr-entry.cwl
   label: initial_workdir_trailingnl
-  id: 57
   doc: Test if trailing newline is present in file entry in InitialWorkDir
   tags: [ initial_work_dir, command_line_tool ]
 
@@ -681,7 +623,6 @@
     output: 16
   tool: tests/wc4-tool.cwl
   label: inline_expressions
-  id: 58
   doc: >-
     Test inline expressions
   tags: [ inline_javascript, command_line_tool ]
@@ -695,7 +636,6 @@
         checksum: "sha1$f12e6cfe70f3253f70b0dbde17c692e7fb0f1e5e"
   tool: tests/schemadef-tool.cwl
   label: schemadef_req_tool_param
-  id: 59
   doc: >-
     Test SchemaDefRequirement definition used in tool parameter
   tags: [ schema_def, command_line_tool ]
@@ -709,7 +649,6 @@
         checksum: "sha1$f12e6cfe70f3253f70b0dbde17c692e7fb0f1e5e"
   tool: tests/schemadef-wf.cwl
   label: schemadef_req_wf_param
-  id: 60
   doc: >-
     Test SchemaDefRequirement definition used in workflow parameter
   tags: [ schema_def, workflow ]
@@ -789,7 +728,6 @@
     }
   tool: tests/params.cwl
   label: param_evaluation_noexpr
-  id: 61
   doc: Test parameter evaluation, no support for JS expressions
   tags: [ required, command_line_tool ]
 
@@ -868,7 +806,6 @@
     }
   tool: tests/params2.cwl
   label: param_evaluation_expr
-  id: 62
   doc: >-
     Test parameter evaluation, with support for JS expressions
   tags: [ inline_javascript, command_line_tool ]
@@ -877,7 +814,6 @@
   job: tests/cat-job.json
   tool: tests/metadata.cwl
   label: metadata
-  id: 63
   doc: Test metadata
   tags: [ required, command_line_tool ]
 
@@ -891,7 +827,6 @@
         "checksum": "sha1$97fe1b50b4582cebc7d853796ebd62e3e163aa3f"
   tool: tests/formattest.cwl
   label: format_checking
-  id: 64
   doc: >-
     Test simple format checking.
   tags: [ required, command_line_tool ]
@@ -906,7 +841,6 @@
         "checksum": "sha1$971d88faeda85a796752ecf752b7e2e34f1337ce"
   tool: tests/formattest2.cwl
   label: format_checking_subclass
-  id: 65
   doc: >-
     Test format checking against ontology using subclassOf.
   tags: [ required, command_line_tool ]
@@ -921,7 +855,6 @@
         "checksum": "sha1$971d88faeda85a796752ecf752b7e2e34f1337ce"
   tool: tests/formattest3.cwl
   label: format_checking_equivalentclass
-  id: 66
   doc: >-
     Test format checking against ontology using equivalentClass.
   tags: [ required, command_line_tool ]
@@ -936,7 +869,6 @@
         class: "File"
         checksum: "sha1$47a013e660d408619d894b20806b1d5086aab03b"
   label: output_secondaryfile_optional
-  id: 67
   doc: >-
     Test optional output file and optional secondaryFile on output.
   tags: [ docker, command_line_tool ]
@@ -946,7 +878,6 @@
     out: "\n"
   tool: tests/vf-concat.cwl
   label: valuefrom_ignored_null
-  id: 68
   doc: Test that valueFrom is ignored when the parameter is null
   tags: [ inline_javascript, command_line_tool ]
 
@@ -955,7 +886,6 @@
     out: "a string\n"
   tool: tests/vf-concat.cwl
   label: valuefrom_secondexpr_ignored
-  id: 69
   doc: Test that second expression in concatenated valueFrom is not ignored
   tags: [ inline_javascript, command_line_tool ]
 
@@ -963,7 +893,6 @@
   output: {count_output: 16}
   tool: tests/step-valuefrom-wf.cwl
   label: valuefrom_wf_step
-  id: 70
   doc: Test valueFrom on workflow step.
   tags: [ step_input, inline_javascript, workflow ]
 
@@ -971,7 +900,6 @@
   output: {val: "3\n"}
   tool: tests/step-valuefrom2-wf.cwl
   label: valuefrom_wf_step_multiple
-  id: 71
   doc: Test valueFrom on workflow step with multiple sources
   tags: [ step_input, inline_javascript, multiple_input, workflow ]
 
@@ -979,7 +907,6 @@
   output: {val: "3\n"}
   tool: tests/step-valuefrom3-wf.cwl
   label: valuefrom_wf_step_other
-  id: 72
   doc: Test valueFrom on workflow step referencing other inputs
   tags: [ step_input, inline_javascript, workflow ]
 
@@ -1001,7 +928,6 @@
     }
   tool: tests/record-output.cwl
   label: record_output_binding
-  id: 73
   doc: Test record type output binding.
   tags: [ shell_command, command_line_tool ]
 
@@ -1016,7 +942,6 @@
   }
   tool: tests/test-cwl-out.cwl
   label: docker_json_output_path
-  id: 74
   doc: >-
     Test support for reading cwl.output.json when running in a Docker container
     and just 'path' is provided.
@@ -1033,7 +958,6 @@
   }
   tool: tests/test-cwl-out2.cwl
   label: docker_json_output_location
-  id: 75
   doc: >-
     Test support for reading cwl.output.json when running in a Docker container
     and just 'location' is provided.
@@ -1061,7 +985,6 @@
     }]
   tool: tests/glob-expr-list.cwl
   label: multiple_glob_expr_list
-  id: 76
   doc: Test support for returning multiple glob patterns from expression
   tags: [ required, command_line_tool ]
 
@@ -1070,7 +993,6 @@
     out: ["foo one one", "foo one two", "foo one three", "foo one four"]
   tool: tests/scatter-valuefrom-wf1.cwl
   label: wf_scatter_oneparam_valuefrom
-  id: 77
   doc: Test workflow scatter with single scatter parameter and two valueFrom on step input (first and current el)
   tags: [ scatter, step_input, workflow ]
 
@@ -1079,7 +1001,6 @@
     out: [["foo one one three", "foo one one four"], ["foo one two three", "foo one two four"]]
   tool: tests/scatter-valuefrom-wf2.cwl
   label: wf_scatter_twoparam_nested_crossproduct_valuefrom
-  id: 78
   doc: Test workflow scatter with two scatter parameters and nested_crossproduct join method and valueFrom on step input
   tags: [ scatter, step_input, workflow ]
 
@@ -1088,7 +1009,6 @@
     out: ["foo one one three", "foo one one four", "foo one two three", "foo one two four"]
   tool: "tests/scatter-valuefrom-wf3.cwl#main"
   label: wf_scatter_twoparam_flat_crossproduct_valuefrom
-  id: 79
   doc: Test workflow scatter with two scatter parameters and flat_crossproduct join method and valueFrom on step input
   tags: [ scatter, step_input, workflow ]
 
@@ -1097,7 +1017,6 @@
     out: ["foo one one three", "foo one two four"]
   tool: "tests/scatter-valuefrom-wf4.cwl#main"
   label: wf_scatter_twoparam_dotproduct_valuefrom
-  id: 80
   doc: Test workflow scatter with two scatter parameters and dotproduct join method and valueFrom on step input
   tags: [ scatter, step_input, workflow ]
 
@@ -1106,14 +1025,12 @@
     out: ["foo one one", "foo two two", "foo three three", "foo four four"]
   tool: tests/scatter-valuefrom-wf5.cwl
   label: wf_scatter_oneparam_valuefrom_twice_current_el
-  id: 81
   doc: Test workflow scatter with single scatter parameter and two valueFrom on step input (current el twice)
   tags: [ scatter, step_input, workflow ]
 
 - job: tests/scatter-valuefrom-job3.json
   tool: tests/scatter-valuefrom-wf6.cwl
   label: wf_scatter_oneparam_valueFrom
-  id: 82
   doc: Test valueFrom eval on scattered input parameter
   output:
     out_message: [
@@ -1143,7 +1060,6 @@
   }
   tool: "tests/conflict-wf.cwl#collision"
   label: wf_two_inputfiles_namecollision
-  id: 83
   doc: Test workflow two input files with same name.
   tags: [ required, workflow ]
 
@@ -1157,7 +1073,6 @@
     }
   tool: tests/dir.cwl
   label: directory_input_param_ref
-  id: 84
   doc: Test directory input with parameter reference
   tags: [ shell_command, command_line_tool ]
 
@@ -1171,7 +1086,6 @@
     }
   tool: tests/dir2.cwl
   label: directory_input_docker
-  id: 85
   doc: Test directory input in Docker
   tags: [ required, command_line_tool, shell_command ]
 
@@ -1196,7 +1110,6 @@
     }
   tool: tests/dir3.cwl
   label: directory_output
-  id: 86
   doc: Test directory output
   tags: [ required, command_line_tool ]
 
@@ -1211,7 +1124,6 @@
   }
   tool: tests/dir4.cwl
   label: directory_secondaryfiles
-  id: 87
   doc: Test directories in secondaryFiles
   tags: [ shell_command, command_line_tool ]
 
@@ -1226,7 +1138,6 @@
   }
   tool: tests/dir5.cwl
   label: dynamic_initial_workdir
-  id: 88
   doc: Test dynamic initial work dir
   tags: [ shell_command, initial_work_dir, command_line_tool ]
 
@@ -1241,7 +1152,6 @@
   }
   tool: tests/stagefile.cwl
   label: writable_stagedfiles
-  id: 89
   doc: Test writable staged files.
   tags: [ initial_work_dir, command_line_tool ]
 
@@ -1254,7 +1164,6 @@
       size: 18
   tool: tests/cat3-tool.cwl
   label: input_file_literal
-  id: 90
   doc: Test file literal as input
   tags: [ required, command_line_tool ]
 
@@ -1267,7 +1176,6 @@
         size: 0
   tool: tests/linkfile.cwl
   label: initial_workdir_expr
-  id: 91
   doc: Test expression in InitialWorkDir listing
   tags: [ initial_work_dir, command_line_tool ]
 
@@ -1280,7 +1188,6 @@
         size: 21
   tool: tests/nameroot.cwl
   label: nameroot_nameext_stdout_expr
-  id: 92
   doc: Test nameroot/nameext expression in arguments, stdout
   tags: [ required, command_line_tool ]
 
@@ -1294,7 +1201,6 @@
     }
   tool: tests/dir6.cwl
   label: input_dir_inputbinding
-  id: 93
   doc: Test directory input with inputBinding
   tags: [ shell_command, command_line_tool ]
 
@@ -1307,7 +1213,6 @@
         size: 2
   tool: tests/nested-array.cwl
   label: cl_gen_arrayofarrays
-  id: 94
   doc: Test command line generation of array-of-arrays
   tags: [ required, command_line_tool ]
 
@@ -1315,7 +1220,6 @@
   output: {}
   tool: tests/envvar.cwl
   label: env_home_tmpdir
-  id: 95
   doc: Test $HOME and $TMPDIR are set correctly
   tags: [ shell_command, command_line_tool ]
 
@@ -1323,7 +1227,6 @@
   output: {}
   tool: tests/envvar2.cwl
   label: env_home_tmpdir_docker
-  id: 96
   doc: Test $HOME and $TMPDIR are set correctly in Docker
   tags: [ shell_command, command_line_tool ]
 
@@ -1337,7 +1240,6 @@
     }
   tool: "tests/js-expr-req-wf.cwl#wf"
   label: expressionlib_tool_wf_override
-  id: 97
   doc: Test that expressionLib requirement of individual tool step overrides expressionLib of workflow.
   tags: [ inline_javascript, workflow ]
 
@@ -1356,7 +1258,6 @@
       "size": 12010
   tool: tests/initialworkdirrequirement-docker-out.cwl
   label: initial_workdir_output
-  id: 98
   doc: Test output of InitialWorkDir
   tags: [ docker, initial_work_dir, command_line_tool ]
 
@@ -1364,7 +1265,6 @@
   output: {count_output: 16}
   tool: tests/count-lines10-wf.cwl
   label: embedded_subworkflow
-  id: 99
   doc: Test embedded subworkflow
   tags: [ subworkflow, workflow ]
 
@@ -1379,7 +1279,6 @@
   }
   tool: tests/docker-array-secondaryfiles.cwl
   label: filesarray_secondaryfiles
-  id: 100
   doc: Test required, optional and null secondaryFiles on array of files.
   tags: [ docker, inline_javascript, shell_command, command_line_tool ]
 
@@ -1387,7 +1286,6 @@
   should_fail: true
   tool: tests/docker-array-secondaryfiles.cwl
   label: filesarray_secondaryfiles2
-  id: 101
   doc: Test required, optional and null secondaryFiles on array of files.
   tags: [ docker, inline_javascript, shell_command, command_line_tool ]
 
@@ -1414,7 +1312,6 @@
   }
   tool: tests/dir7.cwl
   label: exprtool_directory_literal
-  id: 102
   doc: Test directory literal output created by ExpressionTool
   tags: [ inline_javascript, expression_tool ]
 
@@ -1427,7 +1324,6 @@
       size: 19
   tool: tests/file-literal-ex.cwl
   label: exprtool_file_literal
-  id: 103
   doc: Test file literal output created by ExpressionTool
   tags: [ inline_javascript, expression_tool ]
 
@@ -1441,7 +1337,6 @@
     }
   tool: tests/docker-output-dir.cwl
   label: dockeroutputdir
-  id: 104
   doc: Test dockerOutputDirectory
   tags: [ docker, command_line_tool ]
 
@@ -1454,7 +1349,6 @@
       size: 15
   tool: tests/imported-hint.cwl
   label: hints_import
-  id: 105
   doc: Test hints with $import
   tags: [ required, command_line_tool ]
 
@@ -1462,7 +1356,6 @@
   job: tests/default_path_job.yml
   tool: tests/default_path.cwl
   label: default_path_notfound_warning
-  id: 106
   doc: Test warning instead of error when default path is not found
   tags: [ required, command_line_tool ]
 
@@ -1471,7 +1364,6 @@
   job: tests/empty.json
   tool: tests/inline-js.cwl
   label: inlinejs_req_expressions
-  id: 107
   doc: Test InlineJavascriptRequirement with multiple expressions in the same tool
   tags: [ inline_javascript, command_line_tool ]
 
@@ -1527,7 +1419,6 @@
       }
   tool: tests/recursive-input-directory.cwl
   label: input_dir_recurs_copy_writable
-  id: 108
   doc: Test if a writable input directory is recursively copied and writable
   tags: [ initial_work_dir, shell_command, command_line_tool ]
 
@@ -1536,7 +1427,6 @@
   job: tests/empty.json
   tool: tests/null-defined.cwl
   label: null_missing_params
-  id: 109
   doc: Test that missing parameters are null (not undefined) in expression
   tags: [ inline_javascript, command_line_tool ]
 
@@ -1545,7 +1435,6 @@
   job: tests/cat-job.json
   tool: tests/null-defined.cwl
   label: param_notnull_expr
-  id: 110
   doc: Test that provided parameter is not null in expression
   tags: [ inline_javascript, command_line_tool ]
 
@@ -1558,7 +1447,6 @@
       size: 1111
   tool: tests/revsort-packed.cwl#main
   label: wf_compound_doc
-  id: 111
   doc: Test compound workflow document
   tags: [ required, workflow ]
 
@@ -1578,7 +1466,6 @@
       path: Any
   tool: tests/basename-fields-test.cwl
   label: nameroot_nameext_generated
-  id: 112
   doc: Test that nameroot and nameext are generated from basename at execution time by the runner
   tags: [ step_input, workflow ]
 
@@ -1586,7 +1473,6 @@
   output: {}
   tool: tests/initialwork-path.cwl
   label: initialworkpath_output
-  id: 113
   doc: Test that file path in $(inputs) for initialworkdir is in $(outdir).
   tags: [ initial_work_dir, command_line_tool ]
 
@@ -1595,7 +1481,6 @@
     count_output: 34
   tool: tests/count-lines12-wf.cwl
   label: wf_scatter_twopar_oneinput_flattenedmerge
-  id: 114
   doc: >-
     Test single step workflow with Scatter step and two data links connected to
     same input, flattened merge behavior. Workflow inputs are set as list
@@ -1606,7 +1491,6 @@
     result: 12
   tool: tests/sum-wf.cwl
   label: wf_multiplesources_multipletypes
-  id: 115
   doc: Test step input with multiple sources with multiple types
   tags: [ step_input, inline_javascript, multiple_input, workflow ]
 
@@ -1627,7 +1511,6 @@
   }
   tool: tests/shellchar.cwl
   label: shelldir_notinterpreted
-  id: 116
   doc: "Test that shell directives are not interpreted."
   tags: [ required, command_line_tool ]
 
@@ -1648,7 +1531,6 @@
   }
   tool: tests/shellchar2.cwl
   label: shelldir_quoted
-  id: 117
   doc: "Test that shell directives are quoted."
   tags: [ shell_command, command_line_tool ]
 
@@ -1670,7 +1552,6 @@
     }
   tool: tests/writable-dir.cwl
   label: initial_workdir_empty_writable
-  id: 118
   doc: Test empty writable dir with InitialWorkDirRequirement
   tags: [ inline_javascript, initial_work_dir, command_line_tool ]
 
@@ -1692,14 +1573,12 @@
     }
   tool: tests/writable-dir-docker.cwl
   label: initial_workdir_empty_writable_docker
-  id: 119
   doc: Test empty writable dir with InitialWorkDirRequirement inside Docker
   tags: [ inline_javascript, initial_work_dir, command_line_tool ]
 
 - job: tests/dynresreq-job.yaml
   tool: tests/dynresreq.cwl
   label: dynamic_resreq_inputs
-  id: 120
   doc: Test dynamic resource reqs referencing inputs
   output:
      output: {
@@ -1719,12 +1598,10 @@
       size: 18
   tool: tests/cat3-nodocker.cwl
   label: fileliteral_input_docker
-  id: 121
   doc: Test file literal as input without Docker
   tags: [ required, command_line_tool ]
 
 - doc: Test that OutputBinding.glob is sorted as specified by POSIX
-  id: 122
   job: tests/empty.json
   label: outputbinding_glob_sorted
   tool: tests/glob_test.cwl
@@ -1761,7 +1638,6 @@
   tags: [ required, command_line_tool ]
 
 - doc: Test InitialWorkDirRequirement with a nested directory structure from another step
-  id: 123
   job: tests/empty.json
   output:
     ya_empty:
@@ -1780,7 +1656,6 @@
   }
   tool: tests/bool-empty-inputbinding.cwl
   label: booleanflags_cl_noinputbinding
-  id: 124
   doc: "Test that boolean flags do not appear on command line if inputBinding is empty and not null"
   tags: [ required, command_line_tool ]
 
@@ -1790,21 +1665,18 @@
   }
   tool: tests/stage-unprovided-file.cwl
   label: expr_reference_self_noinput
-  id: 125
   doc: Test that expression engine does not fail to evaluate reference to self
        with unprovided input
   tags: [ required, command_line_tool ]
 
 - tool: tests/exit-success.cwl
   label: success_codes
-  id: 126
   doc: Test successCodes
   job: tests/empty.json
   output: {}
   tags: [ required, command_line_tool ]
 
 - job: tests/dynresreq-job.yaml
-  id: 127
   doc: Test simple workflow with a dynamic resource requirement
   tool: tests/dynresreq-workflow.cwl
   label: dynamic_resreq_wf
@@ -1823,14 +1695,12 @@
   }
   tool: tests/empty-array-input.cwl
   label: cl_empty_array_input
-  id: 128
   doc: "Test that empty array input does not add anything to command line"
   tags: [ required, command_line_tool ]
 
 - job: tests/empty.json
   tool: tests/steplevel-resreq.cwl
   label: resreq_step_overrides_wf
-  id: 129
   doc: Test that ResourceRequirement on a step level redefines requirement on the workflow level
   output:
      out: {
@@ -1847,14 +1717,12 @@
   }
   tool: tests/valueFrom-constant.cwl
   label: valuefrom_constant_overrides_inputs
-  id: 130
   doc: Test valueFrom with constant value overriding provided array inputs
   tags: [ required, command_line_tool ]
 
 - job: tests/dynresreq-dir-job.yaml
   tool: tests/dynresreq-dir.cwl
   label: dynamic_resreq_filesizes
-  id: 131
   doc: Test dynamic resource reqs referencing the size of Files inside a Directory
   output:
      output: {
@@ -1868,7 +1736,6 @@
 - job: tests/empty.json
   tool: tests/pass-unconnected.cwl
   label: wf_step_connect_undeclared_param
-  id: 132
   doc: >-
     Test that it is not an error to connect a parameter to a workflow
     step, even if the parameter doesn't appear in the `run` process
@@ -1879,7 +1746,6 @@
 - job: tests/empty.json
   tool: tests/fail-unconnected.cwl
   label: wf_step_access_undeclared_param
-  id: 133
   doc: >-
     Test that parameters that don't appear in the `run` process
     inputs are not present in the input object used to run the tool.
@@ -1895,7 +1761,6 @@
        size: 8
   tool: tests/envvar3.cwl
   label: env_home_tmpdir_docker_no_return_code
-  id: 134
   doc: Test $HOME and $TMPDIR are set correctly in Docker without using return code
   tags: [ shell_command, command_line_tool ]
 
@@ -1904,7 +1769,6 @@
     out: ["foo one one", "foo one two", "foo one three", "foo one four"]
   tool: tests/scatter-valuefrom-inputs-wf1.cwl
   label: wf_scatter_oneparam_valuefrom_inputs
-  id: 135
   doc: Test workflow scatter with single scatter parameter and two valueFrom using $inputs (first and current el)
   tags: [ scatter, step_input, workflow ]
 
@@ -1917,7 +1781,6 @@
       size: 0
   tool: tests/import_schema-def_packed.cwl
   label: packed_import_schema
-  id: 136
   doc: SchemaDefRequirement with $import, and packed
   tags: [ schema_def, workflow ]
 
@@ -1931,7 +1794,6 @@
     }
   }
   tool: tests/dir4.cwl
-  id: 137
   label: job_input_secondary_subdirs
   doc: Test specifying secondaryFiles in subdirectories of the job input document.
   tags: [ shell_command, command_line_tool ]
@@ -1946,7 +1808,6 @@
     }
   }
   tool: tests/dir4.cwl
-  id: 138
   label: job_input_subdir_primary_and_secondary_subdirs
   doc: Test specifying secondaryFiles in same subdirectory of the job input as the primary input file.
   tags: [ shell_command, command_line_tool ]
@@ -1955,7 +1816,6 @@
   output:
     count_output: [16, 1]
   tool: tests/count-lines18-wf.cwl
-  id: 139
   label: scatter_embedded_subworkflow
   doc: Test simple scatter over an embedded subworkflow
   tags: [ workflow, inline_javascript ]
@@ -1964,7 +1824,6 @@
   output:
     count_output: [16, 1]
   tool: tests/count-lines14-wf.cwl
-  id: 140
   label: scatter_multi_input_embedded_subworkflow
   doc: Test simple multiple input scatter over an embedded subworkflow
   tags: [ workflow, scatter, subworkflow, multiple_input, inline_javascript ]
@@ -1972,7 +1831,6 @@
 - job: tests/wc-job.json
   output: {count_output: 16}
   tool: tests/count-lines15-wf.cwl
-  id: 141
   doc: Test twice nested subworkflow
   label: workflow_embedded_subworkflow_embedded_subsubworkflow
   tags: [ workflow, subworkflow, inline_javascript ]
@@ -1980,7 +1838,6 @@
 - job: tests/wc-job.json
   output: {count_output: 16}
   tool: tests/count-lines16-wf.cwl
-  id: 142
   label: workflow_embedded_subworkflow_with_tool_and_subsubworkflow
   doc: Test subworkflow of mixed depth with tool first
   tags: [ workflow, subworkflow, inline_javascript ]
@@ -1988,7 +1845,6 @@
 - job: tests/wc-job.json
   output: {count_output: 16}
   tool: tests/count-lines17-wf.cwl
-  id: 143
   label: workflow_embedded_subworkflow_with_subsubworkflow_and_tool
   doc: Test subworkflow of mixed depth with tool after
   tags: [ workflow, subworkflow, inline_javascript ]
@@ -2010,7 +1866,6 @@
         }
     }
   tool: tests/record-output-wf.cwl
-  id: 144
   label: workflow_records_inputs_and_outputs
   doc: Test record type inputs to and outputs from workflows.
   tags: [ workflow, shell_command ]
@@ -2018,7 +1873,6 @@
 - job: tests/io-int.json
   output: {"o": 10}
   tool: tests/io-int-wf.cwl
-  id: 145
   label: workflow_integer_input
   doc: Test integer workflow input and outputs
   tags: [ workflow, inline_javascript, expression_tool ]
@@ -2026,7 +1880,6 @@
 - job: tests/io-int.json
   output: {"o": 10}
   tool: tests/io-int-optional-wf.cwl
-  id: 146
   label: workflow_integer_input_optional_specified
   doc: Test optional integer workflow inputs (specified)
   tags: [ workflow, inline_javascript, expression_tool ]
@@ -2034,7 +1887,6 @@
 - job: tests/empty.json
   output: {"o": 4}
   tool: tests/io-int-optional-wf.cwl
-  id: 147
   label: workflow_integer_input_optional_unspecified
   doc: Test optional integer workflow inputs (unspecified)
   tags: [ workflow, inline_javascript, expression_tool ]
@@ -2042,7 +1894,6 @@
 - job: tests/io-int.json
   output: {"o": 10}
   tool: tests/io-int-default-wf.cwl
-  id: 148
   label: workflow_integer_input_default_specified
   doc: Test default integer workflow inputs (specified)
   tags: [ workflow, inline_javascript, expression_tool ]
@@ -2050,7 +1901,6 @@
 - job: tests/empty.json
   output: {"o": 8}
   tool: tests/io-int-default-wf.cwl
-  id: 149
   label: workflow_integer_input_default_unspecified
   doc: Test default integer workflow inputs (unspecified)
   tags: [ workflow, inline_javascript, expression_tool ]
@@ -2058,7 +1908,6 @@
 - job: tests/empty.json
   output: {"o": 13}
   tool: tests/io-int-default-tool-and-wf.cwl
-  id: 150
   label: workflow_integer_input_default_and_tool_integer_input_default
   doc: Test default integer tool and workflow inputs (unspecified)
   tags: [ workflow, inline_javascript, expression_tool ]
@@ -2072,7 +1921,6 @@
             "checksum": "sha1$327fc7aedf4f6b69a42a7c8b808dc5a7aff61376"
   }}
   tool: tests/io-file-default-wf.cwl
-  id: 151
   label: workflow_file_input_default_unspecified
   doc: Test File input with default unspecified to workflow
   tags: [ workflow ]
@@ -2086,7 +1934,6 @@
                 "size": 13
   }}
   tool: tests/io-file-default-wf.cwl
-  id: 152
   label: workflow_file_input_default_specified
   doc: Test File input with default specified to workflow
   tags: [ workflow ]
@@ -2101,7 +1948,6 @@
         "size": 0
   }}
   tool: tests/io-file-or-files.cwl
-  id: 153
   label: clt_optional_union_input_file_or_files_with_array_of_one_file_provided
   doc: Test input union type or File or File array to a tool with one file in array specified.
   tags: [ command_line_tool, inline_javascript ]
@@ -2116,7 +1962,6 @@
         "size": 1114
   }}
   tool: tests/io-file-or-files.cwl
-  id: 154
   label: clt_optional_union_input_file_or_files_with_many_files_provided
   doc: Test input union type or File or File array to a tool with a few files in array specified.
   tags: [ command_line_tool, inline_javascript ]
@@ -2131,7 +1976,6 @@
         "size": 1111
   }}
   tool: tests/io-file-or-files.cwl
-  id: 155
   label: clt_optional_union_input_file_or_files_with_single_file_provided
   doc: Test input union type or File or File array to a tool with one file specified.
   tags: [ command_line_tool, inline_javascript ]
@@ -2146,7 +1990,6 @@
         "size": 10
   }}
   tool: tests/io-file-or-files.cwl
-  id: 156
   label: clt_optional_union_input_file_or_files_with_nothing_provided
   doc: Test input union type or File or File array to a tool with null specified.
   tags: [ command_line_tool, inline_javascript ]
@@ -2154,7 +1997,6 @@
 - job: tests/io-any-int.json
   output: {"t1": 7}
   tool: tests/io-any-1.cwl
-  id: 157
   label: clt_any_input_with_integer_provided
   doc: Test Any parameter with integer input to a tool
   tags: [ command_line_tool, inline_javascript ]
@@ -2162,7 +2004,6 @@
 - job: tests/io-any-string.json
   output: {"t1": "7"}
   tool: tests/io-any-1.cwl
-  id: 158
   label: clt_any_input_with_string_provided
   doc: Test Any parameter with string input to a tool
   tags: [ command_line_tool, inline_javascript ]
@@ -2170,7 +2011,6 @@
 - job: tests/io-any-file.json
   output: {"t1": "File"}
   tool: tests/io-any-1.cwl
-  id: 159
   label: clt_any_input_with_file_provided
   doc: Test Any parameter with file input to a tool
   tags: [ command_line_tool, inline_javascript ]
@@ -2178,7 +2018,6 @@
 - job: tests/io-any-array.json
   output: {"t1": [1, "moocow"]}
   tool: tests/io-any-1.cwl
-  id: 160
   label: clt_any_input_with_mixed_array_provided
   doc: Test Any parameter with array input to a tool
   tags: [ command_line_tool, inline_javascript ]
@@ -2186,7 +2025,6 @@
 - job: tests/io-any-record.json
   output: {"t1": {"moo": 1, "cow": 5}}
   tool: tests/io-any-1.cwl
-  id: 161
   label: clt_any_input_with_record_provided
   doc: Test Any parameter with record input to a tool
   tags: [ command_line_tool, inline_javascript ]
@@ -2194,7 +2032,6 @@
 - job: tests/io-any-int.json
   output: {"t1": 7}
   tool: tests/io-any-wf-1.cwl
-  id: 162
   label: workflow_any_input_with_integer_provided
   doc: Test Any parameter with integer input to a workflow
   tags: [ workflow, inline_javascript ]
@@ -2202,7 +2039,6 @@
 - job: tests/io-any-string.json
   output: {"t1": "7"}
   tool: tests/io-any-wf-1.cwl
-  id: 163
   label: workflow_any_input_with_string_provided
   doc: Test Any parameter with string input to a workflow
   tags: [ workflow, inline_javascript ]
@@ -2210,7 +2046,6 @@
 - job: tests/io-any-file.json
   output: {"t1": "File"}
   tool: tests/io-any-wf-1.cwl
-  id: 164
   label: workflow_any_input_with_file_provided
   doc: Test Any parameter with file input to a workflow
   tags: [ workflow, inline_javascript ]
@@ -2218,7 +2053,6 @@
 - job: tests/io-any-array.json
   output: {"t1": [1, "moocow"]}
   tool: tests/io-any-wf-1.cwl
-  id: 165
   label: workflow_any_input_with_mixed_array_provided
   doc: Test Any parameter with array input to a workflow
   tags: [ workflow, inline_javascript ]
@@ -2226,7 +2060,6 @@
 - job: tests/io-any-record.json
   output: {"t1": {"moo": 1, "cow": 5}}
   tool: tests/io-any-wf-1.cwl
-  id: 166
   label: workflow_any_input_with_record_provided
   doc: Test Any parameter with record input to a tool
   tags: [ workflow, inline_javascript ]
@@ -2234,7 +2067,6 @@
 - job: tests/empty.json
   output: {"o": "the default value"}
   tool: tests/io-union-input-default-wf.cwl
-  id: 167
   label: workflow_union_default_input_unspecified
   doc: Test union type input to workflow with default unspecified
   tags: [ workflow, inline_javascript, expression_tool ]
@@ -2242,7 +2074,6 @@
 - job: tests/io-any-file.json
   output: {"o": "File"}
   tool: tests/io-union-input-default-wf.cwl
-  id: 168
   label: workflow_union_default_input_with_file_provided
   doc: Test union type input to workflow with default specified as file
   tags: [ workflow, inline_javascript, expression_tool ]
@@ -2250,7 +2081,6 @@
 - job: tests/empty.json
   output: {"val": "moocow\n"}
   tool: tests/step-valuefrom4-wf.cwl
-  id: 169
   label: workflowstep_valuefrom_string
   doc: Test valueFrom on workflow step from literal (string).
   tags: [ workflow, step_input ]
@@ -2258,7 +2088,6 @@
 - job: tests/wc-job.json
   output: {"val1": "whale.txt\n", "val2": "step1_out\n"}
   tool: tests/step-valuefrom5-wf.cwl
-  id: 170
   label: workflowstep_valuefrom_file_basename
   doc: Test valueFrom on workflow step using basename.
   tags: [ workflow, step_input ]
@@ -2266,7 +2095,6 @@
 - job: tests/output-arrays-int-job.json
   output: {"o": [0, 1, 2]}
   tool: tests/output-arrays-int.cwl
-  id: 171
   label: expression_tool_int_array_output
   doc: Test output arrays in a tool (with ints).
   tags: [ expression_tool, inline_javascript ]
@@ -2274,7 +2102,6 @@
 - job: tests/output-arrays-int-job.json
   output: {"o": 12}
   tool: tests/output-arrays-int-wf.cwl
-  id: 172
   label: workflowstep_int_array_input_output
   doc: Test output arrays in a workflow (with ints).
   tags: [ workflow, expression_tool, inline_javascript ]
@@ -2297,7 +2124,6 @@
     }
   ]}
   tool: tests/output-arrays-file-wf.cwl
-  id: 173
   label: workflow_file_array_output
   doc: Test output arrays in a workflow (with Files).
   tags: [ workflow, expression_tool, inline_javascript ]
@@ -2312,7 +2138,6 @@
         "location": Any
   }}
   tool: "tests/docker-run-cmd.cwl"
-  id: 174
   label: docker_entrypoint
   doc: Test Docker ENTRYPOINT usage
   tags: [ command_line_tool, docker ]
@@ -2327,7 +2152,6 @@
         "size": 11
   }}
   tool: "tests/size-expression-tool.cwl"
-  id: 175
   label: clt_file_size_property_with_empty_file
   doc: Test use of size in expressions for an empty file
   tags: [ command_line_tool, inline_javascript ]
@@ -2342,7 +2166,6 @@
         "size": 31
   }}
   tool: "tests/size-expression-tool.cwl"
-  id: 176
   label: clt_file_size_property_with_multi_file
   doc: Test use of size in expressions for a few files
   tags: [ command_line_tool, inline_javascript ]
@@ -2350,7 +2173,6 @@
 - job: tests/null-expression-echo-job.json
   tool: tests/echo-tool.cwl
   should_fail: true
-  id: 177
   label: any_without_defaults_unspecified_fails
   doc: Test Any without defaults, unspecified, should fail.
   tags: [ command_line_tool, required ]
@@ -2358,7 +2180,6 @@
 - job: tests/null-expression1-job.json
   tool: tests/echo-tool.cwl
   should_fail: true
-  id: 178
   label: any_without_defaults_specified_fails
   doc: Test Any without defaults, specified, should fail.
   tags: [ command_line_tool, required ]
@@ -2370,7 +2191,6 @@
         checksum: sha1$3596ea087bfdaf52380eae441077572ed289d657
         size: 3
   tool: tests/count-lines9-wf-noET.cwl
-  id: 179
   label: step_input_default_value_noexp
   doc: Test default value on step input parameter, no ExpressionTool
   tags: [ workflow, required ]
@@ -2382,7 +2202,6 @@
         checksum: sha1$e5fa44f2b31c1fb553b6021e7360d07d5d91ff5e
         size: 2
   tool: tests/count-lines11-wf-noET.cwl
-  id: 180
   label: step_input_default_value_overriden_noexp
   doc: Test default value on step input parameter overridden by provided source, no ExpressionTool
   tags: [ workflow, required ]
@@ -2393,7 +2212,6 @@
         class: File
         checksum: sha1$3596ea087bfdaf52380eae441077572ed289d657
         size: 3
-  id: 181
   label: nested_workflow_noexp
   tool: tests/count-lines8-wf-noET.cwl
   doc: Test nested workflow, without ExpressionTool
@@ -2405,7 +2223,6 @@
         class: File
         checksum: sha1$ad552e6dc057d1d825bf49df79d6b98eba846ebe
         size: 3
-  id: 182
   label: wf_multiplesources_multipletypes_noexp
   tool: tests/sum-wf-noET.cwl
   doc: Test step input with multiple sources with multiple types, without ExpressionTool
@@ -2419,7 +2236,6 @@
         size: 2
         class: File
         checksum: sha1$7448d8798a4380162d4b56f9b452e2f6f9e24e7a
-  id: 183
   label: dynamic_resreq_wf_optional_file_default
   doc: >-
     Within a workflow, test accessing the size attribute of an optional input
@@ -2436,7 +2252,6 @@
         size: 2
         class: File
         checksum: sha1$7448d8798a4380162d4b56f9b452e2f6f9e24e7a
-  id: 184
   label: dynamic_resreq_wf_optional_file_step_default
   doc: >-
     Within a workflow, test accessing the size attribute of an optional input
@@ -2447,7 +2262,6 @@
 
 - tool: tests/dynresreq-workflow-inputdefault.cwl
   job: tests/empty.json
-  id: 185
   label: dynamic_resreq_wf_optional_file_wf_default
   output:
     cores:
@@ -2463,7 +2277,6 @@
 
 - job: tests/cat-job.json
   output: {count_output: 1}
-  id: 186
   label: step_input_default_value_overriden_2nd_step
   tool: tests/count-lines11-extra-step-wf.cwl
   doc: >-
@@ -2477,7 +2290,6 @@
         class: File
         checksum: sha1$e5fa44f2b31c1fb553b6021e7360d07d5d91ff5e
         size: 2
-  id: 187
   label: step_input_default_value_overriden_2nd_step_noexp
   tool: tests/count-lines11-extra-step-wf-noET.cwl
   doc: >-
@@ -2487,7 +2299,6 @@
 
 - job: tests/empty.json
   output: {count_output: 16}
-  id: 188
   label: step_input_default_value_overriden_2nd_step_null
   tool: tests/count-lines11-null-step-wf.cwl
   doc: >-
@@ -2501,7 +2312,6 @@
         class: File
         checksum: sha1$3596ea087bfdaf52380eae441077572ed289d657
         size: 3
-  id: 189
   label: step_input_default_value_overriden_2nd_step_null_noexp
   tool: tests/count-lines11-null-step-wf-noET.cwl
   doc: >-
@@ -2516,7 +2326,6 @@
       checksum: sha1$47a013e660d408619d894b20806b1d5086aab03b
       class: File
       size: 13
-  id: 190
   label: stdin_from_directory_literal_with_local_file
   doc: Pipe to stdin from user provided local File via a Directory literal
   tags: [ command_line_tool, required ]
@@ -2528,7 +2337,6 @@
       checksum: sha1$ef88e689559565999700d6fea7cf7ba306d04360
       class: File
       size: 26
-  id: 191
   label: stdin_from_directory_literal_with_literal_file
   doc: Pipe to stdin from literal File via a Directory literal
   tags: [ command_line_tool, required ]
@@ -2540,7 +2348,6 @@
       checksum: sha1$ef88e689559565999700d6fea7cf7ba306d04360
       class: File
       size: 26
-  id: 192
   label: directory_literal_with_literal_file_nostdin
   doc: Test non-stdin reference to literal File via a Directory literal
   tags: [ command_line_tool, required ]
@@ -2552,7 +2359,6 @@
       location: output
       class: File
       size: 4
-  id: 193
   label: no_inputs_commandlinetool
   doc: Test CommandLineTool without inputs
   tags: [ command_line_tool, required ]
@@ -2560,7 +2366,6 @@
 - tool: tests/no-outputs-tool.cwl
   job: tests/cat-job.json
   output: {}
-  id: 194
   label: no_outputs_commandlinetool
   doc: Test CommandLineTool without outputs
   tags: [ command_line_tool, required ]
@@ -2572,7 +2377,6 @@
       location: output
       class: File
       size: 4
-  id: 195
   label: no_inputs_workflow
   doc: Test Workflow without inputs
   tags: [ workflow, required ]
@@ -2580,7 +2384,6 @@
 - tool: tests/no-outputs-wf.cwl
   job: tests/cat-job.json
   output: {}
-  id: 196
   label: no_outputs_workflow
   doc: Test Workflow without outputs
   tags: [ workflow, required ]
@@ -2592,7 +2395,6 @@
       class: File
       checksum: "sha1$2132943d72c39423e0b9425cbc40dfd5bf3e9cb2"
       size: 39
-  id: 197
   label: anonymous_enum_in_array
   doc: Test an anonymous enum inside an array inside a record
   tags: [command_line_tool, required]
@@ -2604,7 +2406,6 @@
       class: File
       checksum: "sha1$f17c7d81f66e1520fca25b96b90eeeae5bbf08b0"
       size: 39
-  id: 198
   label: schema-def_anonymous_enum_in_array
   doc: Test an anonymous enum inside an array inside a record, SchemaDefRequirement
   tags: [command_line_tool, schema_def]
@@ -2620,7 +2421,6 @@
   label: stdin_shorcut
   doc: Test command execution in with stdin and stdout redirection using stdin shortcut
   tags: [ command_line_tool, docker ]
-  id: 199
 
 - job: tests/record-secondaryFiles-job.yml
   output: {}
@@ -2628,7 +2428,6 @@
   label: secondary_files_in_unnamed_records
   doc: Test secondaryFiles on anonymous record fields
   tags: [ command_line_tool, required ]
-  id: 200
 
 - job: tests/record-secondaryFiles-job.yml
   output: {}
@@ -2636,7 +2435,6 @@
   label: secondary_files_in_named_records
   doc: Test secondaryFiles on SchemaDefRequirement record fields
   tags: [ command_line_tool, schema_def ]
-  id: 201
 
 - job: tests/empty.json
   output: {
@@ -2691,7 +2489,6 @@
   label: secondary_files_in_output_records
   doc: Test secondaryFiles on output record fields
   tags: [ command_line_tool, required ]
-  id: 202
 
 - job: tests/record-secondaryFiles-job.yml
   output: {}
@@ -2699,7 +2496,6 @@
   label: secondary_files_workflow_propagation
   doc: Test secondaryFiles propagation through workflow
   tags: [ workflow, required ]
-  id: 203
 
 - job: tests/record-secondaryFiles-job.yml
   should_fail: true
@@ -2707,7 +2503,6 @@
   label: secondary_files_missing
   doc: Test checking when secondaryFiles are missing
   tags: [ workflow, required ]
-  id: 204
 
 - job: tests/record-format-job.yml
   output: {}
@@ -2715,7 +2510,6 @@
   label: input_records_file_entry_with_format
   doc: Test format on anonymous record fields
   tags: [ command_line_tool, required ]
-  id: 205
 
 - job: tests/record-format-job2.yml
   should_fail: true
@@ -2723,7 +2517,6 @@
   label: input_records_file_entry_with_format_and_bad_regular_input_file_format
   doc: Test file format checking on parameter
   tags: [ command_line_tool, format_checking ]
-  id: 206
 
 - job: tests/record-format-job3.yml
   should_fail: true
@@ -2731,7 +2524,6 @@
   doc: Test file format checking on record field
   label: input_records_file_entry_with_format_and_bad_entry_file_format
   tags: [ command_line_tool, format_checking ]
-  id: 207
 
 - job: tests/record-format-job4.yml
   should_fail: true
@@ -2739,7 +2531,6 @@
   doc: Test file format checking on array item
   label: input_records_file_entry_with_format_and_bad_entry_array_file_format
   tags: [ command_line_tool, format_checking ]
-  id: 208
 
 - job: tests/record-secondaryFiles-job.yml
   output: {
@@ -2764,7 +2555,6 @@
   label: record_output_file_entry_format
   doc: Test format on output record fields
   tags: [ command_line_tool, format_checking ]
-  id: 209
 
 - job: tests/wf-loadContents-job.yml
   output: {
@@ -2774,7 +2564,6 @@
   label: workflow_input_inputBinding_loadContents
   doc: Test WorkflowInputParameter.inputBinding.loadContents
   tags: [ workflow, step_input, inline_javascript, expression_tool ]
-  id: 210
 
 - job: tests/wf-loadContents-job.yml
   output: {
@@ -2784,7 +2573,6 @@
   doc: Test WorkflowInputParameter.loadContents
   label: workflow_input_loadContents_without_inputBinding
   tags: [ workflow, step_input, inline_javascript, expression_tool ]
-  id: 211
 
 - job: tests/wf-loadContents-job.yml
   output: {
@@ -2794,7 +2582,6 @@
   label: expression_tool_input_loadContents
   doc: Test loadContents on InputParameter.loadContents (expression)
   tags: [ workflow, step_input, inline_javascript, expression_tool ]
-  id: 212
 
 - job: tests/wf-loadContents-job.yml
   output: {
@@ -2804,7 +2591,6 @@
   label: workflow_step_in_loadContents
   doc: Test WorkflowStepInput.loadContents
   tags: [ workflow, step_input, inline_javascript, expression_tool ]
-  id: 213
 
 - job: tests/empty.json
   should_fail: true
@@ -2812,7 +2598,6 @@
   label: timelimit_basic
   doc: Test that job fails when exceeding time limit
   tags: [ command_line_tool, timelimit, work_reuse ]
-  id: 214
 
 - job: tests/empty.json
   should_fail: true
@@ -2820,7 +2605,6 @@
   label: timelimit_invalid
   doc: Test invalid time limit value
   tags: [ command_line_tool, timelimit ]
-  id: 215
 
 - job: tests/empty.json
   output: {}
@@ -2828,7 +2612,6 @@
   label: timelimit_zero_unlimited
   doc: Test zero timelimit means no limit
   tags: [ command_line_tool, timelimit, work_reuse ]
-  id: 216
 
 - job: tests/empty.json
   should_fail: true
@@ -2836,7 +2619,6 @@
   label: timelimit_from_expression
   doc: Test expression in time limit
   tags: [ command_line_tool, timelimit, inline_javascript, work_reuse ]
-  id: 217
 
 - job: tests/empty.json
   output:
@@ -2845,7 +2627,6 @@
   label: timelimit_expressiontool
   doc: Test timelimit in expressiontool is ignored
   tags: [ expression_tool, timelimit, inline_javascript ]
-  id: 218
 
 - job: tests/empty.json
   should_fail: true
@@ -2853,7 +2634,6 @@
   label: timelimit_basic_wf
   doc: Test that tool in workflow fails when exceeding time limit
   tags: [ workflow, timelimit ]
-  id: 219
 
 - job: tests/empty.json
   output:
@@ -2862,7 +2642,6 @@
   label: timelimit_invalid_wf
   doc: Test that workflow level time limit is not applied to workflow execution time
   tags: [ workflow, timelimit, inline_javascript ]
-  id: 220
 
 - job: tests/empty.json
   output:
@@ -2871,7 +2650,6 @@
   label: timelimit_zero_unlimited_wf
   doc: Test zero timelimit means no limit in workflow
   tags: [ workflow, timelimit, inline_javascript, work_reuse ]
-  id: 221
 
 - job: tests/empty.json
   should_fail: true
@@ -2879,7 +2657,6 @@
   label: timelimit_from_expression_wf
   doc: Test expression in time limit in workflow
   tags: [ workflow, timelimit, inline_javascript, work_reuse ]
-  id: 222
 
 - job: tests/empty.json
   output: {}
@@ -2887,7 +2664,6 @@
   doc: Test networkaccess enabled
   label: networkaccess
   tags: [ command_line_tool, networkaccess ]
-  id: 223
 
 - job: tests/empty.json
   should_fail: true
@@ -2895,7 +2671,6 @@
   label: networkaccess_disabled
   doc: Test networkaccess is disabled by default
   tags: [ networkaccess, command_line_tool ]
-  id: 224
 
 - job: tests/stage-array-job.json
   tool: tests/stage-array.cwl
@@ -2909,7 +2684,6 @@
         "size": 32
       }
   tags: [ resource, command_line_tool, initial_work_dir ]
-  id: 225
 
 - job: tests/stage-array-dirs-job.yml
   tool: tests/stage-array-dirs.cwl
@@ -2931,7 +2705,6 @@
         ]
     }
   tags: [ resource, command_line_tool, initial_work_dir ]
-  id: 226
 
 - job: tests/env-job3.yaml
   output:
@@ -2944,7 +2717,6 @@
   label: cwl_requirements_addition
   doc: Test requirements in input document via EnvVarRequirement
   tags: [ command_line_tool, input_object_requirements ]
-  id: 227
 
 - job: tests/env-job3.yaml
   output:
@@ -2957,7 +2729,6 @@
   label: cwl_requirements_override_expression
   doc: Test conflicting requirements in input document via EnvVarRequirement and expression
   tags: [ command_line_tool, input_object_requirements ]
-  id: 228
 
 - job: tests/env-job4.yaml
   output:
@@ -2970,7 +2741,6 @@
   tool: tests/env-tool3.cwl
   doc: Test conflicting requirements in input document via EnvVarRequirement
   tags: [ command_line_tool, input_object_requirements ]
-  id: 229
 
 - job: tests/initialworkdirrequirement-docker-out-job.json
   output:
@@ -2989,7 +2759,6 @@
   label: initial_workdir_output_glob
   doc: Test full path glob output of InitialWorkDir
   tags: [ initial_work_dir, command_line_tool ]
-  id: 230
 
 # same test as above but keeping it for preserve ids maybe? I don't know -
 # there is a reason I added labels before these ids were here :)
@@ -3010,7 +2779,6 @@
   label: initial_workdir_output_glob_duplicate
   doc: Test full path glob output of InitialWorkDir (duplicate)
   tags: [ initial_work_dir, command_line_tool ]
-  id: 231
 
 - job: tests/empty.json
   should_fail: true
@@ -3018,7 +2786,6 @@
   label: glob_outside_outputs_fails
   doc: Test fail trying to glob outside output directory
   tags: [ required, command_line_tool, docker ]
-  id: 232
 
 - job: tests/empty.json
   tool: tests/symlink-illegal.cwl
@@ -3031,7 +2798,6 @@
       "checksum": "sha1$cd28ec34f3f9425aca544b6332453708e8aaa82a"
   should_fail: true
   tags: [ command_line_tool ]
-  id: 233
 
 - job: tests/empty.json
   tool: tests/symlink-legal.cwl
@@ -3042,7 +2808,6 @@
       "size": 27
       "basename": "symlink.txt"
       "checksum": "sha1$cd28ec34f3f9425aca544b6332453708e8aaa82a"
-  id: 234
   tags: [ command_line_tool ]
 
 - job: tests/empty.json
@@ -3052,7 +2817,6 @@
   output:
     a: 4
     b: 4
-  id: 235
 
 - job: tests/empty.json
   tool: tests/inpdir_update_wf.cwl
@@ -3074,7 +2838,6 @@
             }
         ]
 }
-  id: 236
 
 - doc: Test that OutputBinding.glob accepts Directories
   job: tests/empty.json
@@ -3092,7 +2855,6 @@
           class: "Directory"
           listing: []
   tags: [ required, command_line_tool ]
-  id: 237
 
 - doc: Test that array of input files can be staged to directory with entryname
   label: stage_file_array
@@ -3127,7 +2889,6 @@
         }
       ]
   tags: [ required, command_line_tool, initial_work_dir ]
-  id: 238
 
 - doc: Test that array of input files can be staged to directory with basename
   label: stage_file_array_basename
@@ -3162,7 +2923,6 @@
         }
       ]
   tags: [ required, command_line_tool, initial_work_dir ]
-  id: 239
 
 - doc: Test that if array of input files are staged to directory with basename and entryname, entryname overrides
   label: stage_file_array_entryname_overrides
@@ -3197,7 +2957,6 @@
         }
       ]
   tags: [ required, command_line_tool, initial_work_dir ]
-  id: 240
 
 - job: tests/empty.json
   output:
@@ -3209,7 +2968,6 @@
   label: tmpdir_is_not_outdir
   doc: Test that runtime.tmpdir is not runtime.outdir
   tags: [ command_line_tool ]
-  id: 241
 
 - job: tests/listing-job.yml
   tool: tests/listing_none1.cwl
@@ -3218,7 +2976,6 @@
     out: true
   doc: Test that default behavior is 'no_listing' if not specified
   tags: [ command_line_tool ]
-  id: 242
 
 - job: tests/listing-job.yml
   tool: tests/listing_none2.cwl
@@ -3227,7 +2984,6 @@
     out: true
   doc: Test that 'listing' is not present when LoadListingRequirement is 'no_listing'
   tags: [ command_line_tool, load_listing ]
-  id: 243
 
 - job: tests/listing-job.yml
   tool: tests/listing_none3.cwl
@@ -3236,7 +2992,6 @@
     out: true
   doc: Test that 'listing' is not present when loadListing on input parameter is 'no_listing'
   tags: [ command_line_tool ]
-  id: 244
 
 - job: tests/listing-job.yml
   tool: tests/listing_shallow1.cwl
@@ -3248,7 +3003,6 @@
     subdirectory object when LoadListingRequirement is
     'shallow_listing'
   tags: [ command_line_tool, load_listing ]
-  id: 245
 
 - job: tests/listing-job.yml
   tool: tests/listing_shallow2.cwl
@@ -3260,7 +3014,6 @@
     subdirectory object when loadListing on input parameter loadListing is
     'shallow_listing'
   tags: [ command_line_tool ]
-  id: 246
 
 - job: tests/listing-job.yml
   tool: tests/listing_shallow3.cwl
@@ -3287,7 +3040,6 @@
     subdirectory objects when LoadListingRequirement is
     'deep_listing'
   tags: [ command_line_tool, load_listing ]
-  id: 247
 
 - job: tests/listing-job.yml
   tool: tests/listing_deep2.cwl
@@ -3299,7 +3051,6 @@
     subdirectory objects when input parameter loadListing is
     'deep_listing'
   tags: [ command_line_tool ]
-  id: 248
 
 - job: tests/echo-position-expr-job.yml
   tool: tests/echo-position-expr.cwl
@@ -3309,7 +3060,6 @@
   doc: >
     Test for expression in the InputBinding.position field; also test using emoji in CWL document and tool output
   tags: [ command_line_tool, required ]
-  id: 249
 
 - job: tests/empty.json
   tool: tests/exitcode.cwl
@@ -3318,7 +3068,6 @@
     code: 7
   doc: Can access exit code in outputEval
   tags: [ command_line_tool, required ]
-  id: 250
 
 - tool: tests/echo-tool-packed.cwl
   job: tests/env-job.json
@@ -3327,7 +3076,6 @@
   label: any_input_param_graph_no_default
   doc: Test use of $graph without specifying which process to run
   tags: [ required, command_line_tool ]
-  id: 251
 
 - tool: tests/echo-tool-packed2.cwl
   job: tests/env-job.json
@@ -3338,7 +3086,6 @@
     Test use of $graph without specifying which process to run,
     hash-prefixed "main"
   tags: [ required, command_line_tool ]
-  id: 252
 
 - tool: tests/optional-numerical-output-0.cwl
   job: tests/empty.json
@@ -3348,7 +3095,6 @@
   doc: |
     Test that optional number output is returned as 0, not null
   tags: [ required, inline_javascript, command_line_tool ]
-  id: 253
 
 - job: tests/empty.json
   tool: tests/cores_float.cwl
@@ -3362,7 +3108,6 @@
         "checksum": "sha1$7448d8798a4380162d4b56f9b452e2f6f9e24e7a"
      }
   tags: [ resource, command_line_tool ]
-  id: 255
 
 - job: tests/empty.json
   tool: tests/storage_float.cwl
@@ -3377,7 +3122,6 @@
         "size": 12
      }
   tags: [ resource, command_line_tool ]
-  id: 256
 
 - job: tests/synth-file-job.yml
   tool: tests/synth-file.cwl
@@ -3390,7 +3134,6 @@
       "size": 7
     }
   tags: [ required, command_line_tool ]
-  id: 257
 
 - $import: tests/string-interpolation/test-index.yaml
 
