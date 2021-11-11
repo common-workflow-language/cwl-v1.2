@@ -729,7 +729,10 @@ $graph:
     the `run` field of [WorkflowStep](#WorkflowStep).
   fields:
     - name: "class"
-      type: "string"
+      type:
+        type: enum
+        symbols:
+          - cwl:SubworkflowFeatureRequirement
       doc: "Always 'SubworkflowFeatureRequirement'"
       jsonldPredicate:
         "_id": "@type"
@@ -743,7 +746,10 @@ $graph:
     `scatterMethod` fields of [WorkflowStep](#WorkflowStep).
   fields:
     - name: "class"
-      type: "string"
+      type:
+        type: enum
+        symbols:
+          - cwl:ScatterFeatureRequirement
       doc: "Always 'ScatterFeatureRequirement'"
       jsonldPredicate:
         "_id": "@type"
@@ -757,7 +763,10 @@ $graph:
     listed in the `source` field of [WorkflowStepInput](#WorkflowStepInput).
   fields:
     - name: "class"
-      type: "string"
+      type:
+        type: enum
+        symbols:
+          - cwl:MultipleInputFeatureRequirement
       doc: "Always 'MultipleInputFeatureRequirement'"
       jsonldPredicate:
         "_id": "@type"
@@ -771,7 +780,10 @@ $graph:
     of [WorkflowStepInput](#WorkflowStepInput).
   fields:
     - name: "class"
-      type: "string"
+      type:
+        type: enum
+        symbols:
+          - cwl:StepInputExpressionRequirement
       doc: "Always 'StepInputExpressionRequirement'"
       jsonldPredicate:
         "_id": "@type"

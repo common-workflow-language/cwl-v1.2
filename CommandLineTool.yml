@@ -784,7 +784,10 @@ $graph:
 
   fields:
     - name: class
-      type: string
+      type:
+        type: enum
+        symbols:
+          - cwl:DockerRequirement
       doc: "Always 'DockerRequirement'"
       jsonldPredicate:
         "_id": "@type"
@@ -826,7 +829,10 @@ $graph:
     the defined process.
   fields:
     - name: class
-      type: string
+      type:
+        type: enum
+        symbols:
+          - cwl:SoftwareRequirement
       doc: "Always 'SoftwareRequirement'"
       jsonldPredicate:
         "_id": "@type"
@@ -1007,7 +1013,10 @@ $graph:
 
   fields:
     - name: class
-      type: string
+      type:
+        type: enum
+        symbols:
+          - cwl:InitialWorkDirRequirement 
       doc: InitialWorkDirRequirement
       jsonldPredicate:
         "_id": "@type"
@@ -1063,7 +1072,10 @@ $graph:
     execution environment of the tool.  See `EnvironmentDef` for details.
   fields:
     - name: class
-      type: string
+      type:
+        type: enum
+        symbols:
+          - cwl:EnvVarRequirement
       doc: "Always 'EnvVarRequirement'"
       jsonldPredicate:
         "_id": "@type"
@@ -1089,7 +1101,10 @@ $graph:
     the use of shell metacharacters such as `|` for pipes.
   fields:
     - name: class
-      type: string
+      type:
+        type: enum
+        symbols:
+          - cwl:ShellCommandRequirement
       doc: "Always 'ShellCommandRequirement'"
       jsonldPredicate:
         "_id": "@type"
@@ -1128,7 +1143,10 @@ $graph:
 
   fields:
     - name: class
-      type: string
+      type:
+        type: enum
+        symbols:
+          - cwl:ResourceRequirement
       doc: "Always 'ResourceRequirement'"
       jsonldPredicate:
         "_id": "@type"
@@ -1239,7 +1257,10 @@ $graph:
     is enabled by default.
   fields:
     - name: class
-      type: string
+      type:
+        type: enum
+        symbols:
+          - cwl:WorkReuse
       doc: "Always 'WorkReuse'"
       jsonldPredicate:
         "_id": "@type"
@@ -1271,7 +1292,10 @@ $graph:
 
   fields:
     - name: class
-      type: string
+      type:
+        type: enum
+        symbols:
+          - cwl:NetworkAccess
       doc: "Always 'NetworkAccess'"
       jsonldPredicate:
         "_id": "@type"
@@ -1316,7 +1340,10 @@ $graph:
 
   fields:
     class:
-      type: string
+      type:
+        type: enum
+        symbols:
+          - cwl:InplaceUpdateRequirement
       doc: "Always 'InplaceUpdateRequirement'"
       jsonldPredicate:
         "_id": "@type"
@@ -1337,7 +1364,10 @@ $graph:
     wall-time for the execution of the command line itself.
   fields:
     - name: class
-      type: string
+      type:
+        type: enum
+        symbols:
+          - cwl:ToolTimeLimit
       doc: "Always 'ToolTimeLimit'"
       jsonldPredicate:
         "_id": "@type"
