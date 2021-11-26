@@ -510,17 +510,23 @@ or more repeats, and all other characters are literal values.
 Use the following algorithm to resolve a parameter reference:
 
   1. Match the leading symbol as the key
-  2. Look up the key in the parameter context (described below) to get the current value.
+  2. If the key is the special value 'null' then the
+     value of the parameter reference is 'null'. If the key is 'null' it must be the only symbol in the parameter reference.
+  3. Look up the key in the parameter context (described below) to get the current value.
      It is an error if the key is not found in the parameter context.
-  3. If there are no subsequent segments, terminate and return current value
-  4. Else, match the next segment
-  5. Extract the symbol, string, or index from the segment as the key
-  6. Look up the key in current value and assign as new current value.  If
-     the key is a symbol or string, the current value must be an object.
-     If the key is an index, the current value must be an array or string.
-     It is an error if the key does not match the required type, or the key is not found or out
-     of range.
-  7. Repeat steps 3-6
+  4. If there are no subsequent segments, terminate and return current value
+  5. Else, match the next segment
+  6. Extract the symbol, string, or index from the segment as the key
+  7. Look up the key in current value and assign as new current value.
+     1. If the key is a symbol or string, the current value must be an object.
+     2. If the key is an index, the current value must be an array or string.
+     3. If the next key is the last key and it has the special value 'length' and
+         the current value is an array, the value of the parameter reference is the
+         length of the array. If the value 'length' is encountered in other contexts, normal
+         evaluation rules apply.
+     4. It is an error if the key does not match the required type, or the key is not found or out
+        of range.
+  8. Repeat steps 3-8
 
 The root namespace is the parameter context.  The following parameters must
 be provided:

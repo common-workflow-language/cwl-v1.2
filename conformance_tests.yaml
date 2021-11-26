@@ -3399,3 +3399,25 @@
 - $import: tests/mixed-versions/test-index.yaml
 - $import: tests/loadContents/test-index.yaml
 - $import: tests/iwd/test-index.yaml
+
+- job: tests/empty.json
+  tool: tests/params_broken_null.cwl
+  label: params_broken_null
+  doc: Test parameter reference that refers to null.something
+  should_fail: true
+  tags: [ required, command_line_tool ]
+
+- job: tests/empty.json
+  tool: tests/params_broken_length_of_non_list.cwl
+  doc: Test paramer reference that refers to length of non-array input
+  should_fail: true
+  tags: [ required, command_line_tool ]
+
+- job: tests/length_non_array_input.yml
+  tool: tests/params_input_length_non_array.cwl
+  doc: Test 'length' in parameter reference where it does not refer to length of an array input
+  tags: [ required, command_line_tool ]
+  output:
+    output1: 1
+    output2: 2
+    output3: 3
