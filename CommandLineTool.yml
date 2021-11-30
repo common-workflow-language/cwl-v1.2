@@ -886,7 +886,7 @@ $graph:
         Using [RRID](https://www.identifiers.org/rrid/) as an example:
         https://identifiers.org/rrid/RRID:SCR_005476
         could be fulfilled using the above mentioned Debian or bioconda
-        package, a local installation managed by [Environement Modules](http://modules.sourceforge.net/),
+        package, a local installation managed by [Environment Modules](http://modules.sourceforge.net/),
         or any other mechanism the platform chooses. IRIs can also be from
         identifer sources that are discipline specific yet still system
         independent. As an example, the equivalent [ELIXIR Tools and Data
@@ -897,7 +897,7 @@ $graph:
         links to packaging systems.
 
         A site specific IRI can be listed as well. For example, an academic
-        computing cluster using Environement Modules could list the IRI
+        computing cluster using Environment Modules could list the IRI
         `https://hpc.example.edu/modules/bowtie-tbb/1.22` to indicate that
         `module load bowtie-tbb/1.1.2` should be executed to make available
         `bowtie` version 1.1.2 compiled with the TBB library prior to running
