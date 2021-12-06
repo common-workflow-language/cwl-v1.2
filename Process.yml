@@ -242,7 +242,7 @@ $graph:
         - "null"
         - int
         - long
-      doc: Optional file size
+      doc: Optional file size (in bytes)
     - name: "secondaryFiles"
       type:
         - "null"
