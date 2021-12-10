@@ -3421,3 +3421,14 @@
     output1: 1
     output2: 2
     output3: 3
+
+- tool: tests/cat4-from-dir.cwl
+  job: tests/cat-from-dir-with-literal-file-in-subdir.yaml
+  output:
+    output_file:
+      checksum: sha1$ef88e689559565999700d6fea7cf7ba306d04360
+      class: File
+      size: 26
+  label: directory_literal_with_literal_file_in_subdir_nostdin
+  doc: Test non-stdin reference to literal File via a nested Directory literal
+  tags: [ command_line_tool, required ]
