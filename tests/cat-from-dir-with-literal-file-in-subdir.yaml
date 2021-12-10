@@ -1,0 +1,10 @@
+dir1:
+  class: Directory
+  basename: cwl
+  listing:
+   - class: Directory
+     basename: subdir
+     listing:
+       - class: File
+         basename: literal.txt
+         contents: "I'm a File literal; howdy!"
