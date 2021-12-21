@@ -59,7 +59,7 @@ Output files produced by tool execution must be written to the
 directory when executing the tool must be the designated output
 directory.  The designated output directory should be empty, except
 for files or directories specified using
-[InitialWorkDirRequirement](InitialWorkDirRequirement).
+[InitialWorkDirRequirement](#InitialWorkDirRequirement).
 
 Files may also be written to the **designated temporary directory**.  This
 directory must be isolated and not shared with other processes.  Any files
