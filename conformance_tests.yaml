@@ -3432,3 +3432,38 @@
   label: directory_literal_with_literal_file_in_subdir_nostdin
   doc: Test non-stdin reference to literal File via a nested Directory literal
   tags: [ command_line_tool, required ]
+
+- label: colon_in_paths
+  output:
+    log:
+      class: File
+      basename: re:sult
+      checksum: sha1$d7d6491030bfa0ce17bab3a648e603f2a55bf503
+      size: 14
+    result:
+      class: Directory
+      basename: A:Gln2Cys_result
+      listing:
+        - basename: A:Gln2Cys
+          checksum: sha1$2928c9c6fa02098aee8c31bf44099f3bf8c91013
+          class: File
+          size: 18
+  job: tests/colon:test:job.yaml
+  tool: tests/colon:test.cwl
+  doc: Confirm that colons are tolerated in input paths, string values, stdout shortcut, and output file & directory names
+  tags: [ required, command_line_tool ]
+
+- label: colon_in_output_path
+  output:
+    result:
+      class: Directory
+      basename: A:Gln2Cys_result
+      listing:
+        - basename: hello.txt
+          checksum: sha1$47a013e660d408619d894b20806b1d5086aab03b
+          class: File
+          size: 13
+  job: tests/colon_test_output_job.yaml
+  tool: tests/colon_test_output.cwl
+  doc: Confirm that colons are tolerated in output directory names
+  tags: [ required, command_line_tool ]
