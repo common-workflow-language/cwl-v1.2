@@ -18,5 +18,5 @@ steps:
 
 outputs:
   out1: 
-    type: string
+    type: string?
     outputSource: step1/out1
