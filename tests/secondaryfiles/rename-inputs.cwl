@@ -1,9 +1,7 @@
 #!/usr/bin/env cwl-runner
 id: InputSecondaryFileConformanceTest
-baseCommand:
-- ls
 class: CommandLineTool
-cwlVersion: v1.0
+cwlVersion: v1.2
 doc: |
   Simple test to confirm the implementation of expressions returning a File within a CommandInputParameter.secondaryFile field.
 
@@ -24,7 +22,6 @@ inputs:
     touch secondary_file_test.txt.accessory
     ```
   secondaryFiles:
-    - .accessory
     - |
       ${
         function resolveSecondary(base, secPattern) {
@@ -37,19 +34,21 @@ inputs:
         }
         return [{
             "class": "File",
-            "location": self.secondaryFiles[0].location,
+            "location": inputs.accessory.location,
             "basename": resolveSecondary(self.basename, '^.accessory')
         }];
       }
+- id: accessory
+  type: File
+
 
 arguments:
+- "ls"
+- $(inputs.inputWithSecondary.dirname)
 - valueFrom: "|"
   shellQuote: false
-  position: 0
-- valueFrom: "grep"
-  position: 1
-- valueFrom: "secondary"
-  position: 2
+- "grep"
+- "secondary"
 
 outputs:
 - id: output_file
@@ -58,6 +57,3 @@ stdout: result
 requirements:
   InlineJavascriptRequirement: {}
   ShellCommandRequirement: {}
-  InitialWorkDirRequirement:
-    listing:
-    - $(inputs.inputWithSecondary)

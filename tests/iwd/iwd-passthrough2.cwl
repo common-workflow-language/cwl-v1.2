@@ -9,7 +9,7 @@ doc: |
 
 requirements:
   DockerRequirement:
-    dockerPull: "python:3-slim"
+    dockerPull: docker.io/python:3-slim
   InitialWorkDirRequirement:
     listing:
       - entryname: "renamed-filelist.txt"

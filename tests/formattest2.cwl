@@ -7,7 +7,7 @@ cwlVersion: v1.2
 doc: "Reverse each line using the `rev` command"
 hints:
   DockerRequirement:
-    dockerPull: "debian:stretch-slim"
+    dockerPull: docker.io/debian:stable-slim
 
 inputs:
   input:

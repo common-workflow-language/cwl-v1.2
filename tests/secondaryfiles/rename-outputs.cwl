@@ -3,7 +3,7 @@ id: OutputSecondaryFileConformanceTest
 baseCommand:
 - ls
 class: CommandLineTool
-cwlVersion: v1.0
+cwlVersion: v1.2
 doc: |
   Simple test to confirm the implementation of expressions returning a File within a CommandOutputParameter.secondaryFile field.
 
