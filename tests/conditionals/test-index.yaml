@@ -23,7 +23,6 @@
 
 - id: cond-3
   label: direct_required
-  doc: Should give validation warning because of required sink
   tool: cond-wf-002.cwl
   job: val.1.job.yaml
   output:
@@ -230,7 +229,6 @@
 
 - id: cond-3_nojs
   label: direct_required_nojs
-  doc: Should give validation warning because of required sink, no javascript
   tool: cond-wf-002_nojs.cwl
   job: val.1.job.yaml
   output:
