@@ -159,7 +159,7 @@ some_cwl_field:
   a_complex_type2:
     field2: foo2
     field3: bar2
-  a_complex_type3: {}  # we accept the defualt values for "field2" and "field3"
+  a_complex_type3: {}  # we accept the default values for "field2" and "field3"
 ```
 
 Option two specific example using [Workflow](Workflow.html#Workflow).[inputs](Workflow.html#WorkflowInputParameter):
