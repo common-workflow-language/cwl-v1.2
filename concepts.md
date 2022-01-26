@@ -319,7 +319,7 @@ prefix listed in the `$namespaces` section of the document as described in the
 [Schema Salad specification](SchemaSalad.html#Explicit_context).
 
 It is recommended that concepts from schema.org are used whenever possible.
-For the `$schemas` field we recommend their RDF encoding: http://schema.org/version/latest/schema.rdf
+For the `$schemas` field we recommend their RDF encoding: https://schema.org/version/latest/schemaorg-current-https.rdf
 
 Implementation extensions which modify execution semantics must be [listed in
 the `requirements` field](#Requirements_and_hints).
