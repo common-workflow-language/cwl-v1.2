@@ -148,7 +148,7 @@ $graph:
     - name: inputBinding
       type: InputBinding?
       doc: |
-        Deprecated.  Preserved for v1.0 backwards compatability.  Will be removed in
+        Deprecated.  Preserved for v1.0 backwards compatibility.  Will be removed in
         CWL v2.0.  Use `WorkflowInputParameter.loadContents` instead.
       jsonldPredicate: "cwl:inputBinding"
 

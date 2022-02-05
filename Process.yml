@@ -266,7 +266,7 @@ $graph:
         represents the file format, preferrably defined within an ontology.
         If no ontology is available, file formats may be tested by exact match.
 
-        Reasoning about format compatability must be done by checking that an
+        Reasoning about format compatibility must be done by checking that an
         input file format is the same, `owl:equivalentClass` or
         `rdfs:subClassOf` the format required by the input parameter.
         `owl:equivalentClass` is transitive with `rdfs:subClassOf`, e.g. if
@@ -640,7 +640,7 @@ $graph:
       jsonldPredicate: "cwl:loadContents"
       doc: |
         Use of `loadContents` in `InputBinding` is deprecated.
-        Preserved for v1.0 backwards compatability.  Will be removed in
+        Preserved for v1.0 backwards compatibility.  Will be removed in
         CWL v2.0.  Use `InputParameter.loadContents` instead.
 
 - name: IOSchema
