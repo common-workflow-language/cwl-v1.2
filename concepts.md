@@ -159,7 +159,7 @@ some_cwl_field:
   a_complex_type2:
     field2: foo2
     field3: bar2
-  a_complex_type3: {}  # we accept the defualt values for "field2" and "field3"
+  a_complex_type3: {}  # we accept the default values for "field2" and "field3"
 ```
 
 Option two specific example using [Workflow](Workflow.html#Workflow).[inputs](Workflow.html#WorkflowInputParameter):
@@ -319,7 +319,7 @@ prefix listed in the `$namespaces` section of the document as described in the
 [Schema Salad specification](SchemaSalad.html#Explicit_context).
 
 It is recommended that concepts from schema.org are used whenever possible.
-For the `$schema` field we recommend their RDF encoding: https://schema.org/version/latest/schemaorg-current-https.rdf
+For the `$schemas` field we recommend their RDF encoding: https://schema.org/version/latest/schemaorg-current-https.rdf
 
 Implementation extensions which modify execution semantics must be [listed in
 the `requirements` field](#Requirements_and_hints).
@@ -510,17 +510,23 @@ or more repeats, and all other characters are literal values.
 Use the following algorithm to resolve a parameter reference:
 
   1. Match the leading symbol as the key
-  2. Look up the key in the parameter context (described below) to get the current value.
+  2. If the key is the special value 'null' then the
+     value of the parameter reference is 'null'. If the key is 'null' it must be the only symbol in the parameter reference.
+  3. Look up the key in the parameter context (described below) to get the current value.
      It is an error if the key is not found in the parameter context.
-  3. If there are no subsequent segments, terminate and return current value
-  4. Else, match the next segment
-  5. Extract the symbol, string, or index from the segment as the key
-  6. Look up the key in current value and assign as new current value.  If
-     the key is a symbol or string, the current value must be an object.
-     If the key is an index, the current value must be an array or string.
-     It is an error if the key does not match the required type, or the key is not found or out
-     of range.
-  7. Repeat steps 3-6
+  4. If there are no subsequent segments, terminate and return current value
+  5. Else, match the next segment
+  6. Extract the symbol, string, or index from the segment as the key
+  7. Look up the key in current value and assign as new current value.
+     1. If the key is a symbol or string, the current value must be an object.
+     2. If the key is an index, the current value must be an array or string.
+     3. If the next key is the last key and it has the special value 'length' and
+         the current value is an array, the value of the parameter reference is the
+         length of the array. If the value 'length' is encountered in other contexts, normal
+         evaluation rules apply.
+     4. It is an error if the key does not match the required type, or the key is not found or out
+        of range.
+  8. Repeat steps 3-8
 
 The root namespace is the parameter context.  The following parameters must
 be provided:
@@ -602,17 +608,21 @@ requirement `InlineJavascriptRequirement`.  Expressions may be used in any
 field permitting the pseudo-type `Expression`, as specified by this
 document.
 
-Expressions are denoted by the syntax `$(...)` or `${...}`.  A code
-fragment wrapped in the `$(...)` syntax must be evaluated as a
-[ECMAScript expression](http://www.ecma-international.org/ecma-262/5.1/#sec-11).  A
-code fragment wrapped in the `${...}` syntax must be evaluated as a
+Expressions are denoted by the syntax `$(...)` or `${...}`.
+
+A code fragment wrapped in the `$(...)` syntax must be evaluated as a
+[ECMAScript expression](http://www.ecma-international.org/ecma-262/5.1/#sec-11).
+
+A code fragment wrapped in the `${...}` syntax must be evaluated as a
 [ECMAScript function body](http://www.ecma-international.org/ecma-262/5.1/#sec-13)
-for an anonymous, zero-argument function.  Expressions must return a valid JSON
-data type: one of null, string, number, boolean, array, object. Other return
-values must result in a `permanentFailure`. Implementations must permit any
-syntactically valid Javascript and account for nesting of parenthesis or braces
-and that strings that may contain parenthesis or braces when scanning for
-expressions.
+for an anonymous, zero-argument function.  This means the code will be
+evaluated as `(function() { ... })()`.
+
+Expressions must return a valid JSON data type: one of null, string, number,
+boolean, array, object. Other return values must result in a
+`permanentFailure`.  Implementations must permit any syntactically valid
+Javascript and account for nesting of parenthesis or braces and that strings
+that may contain parenthesis or braces when scanning for expressions.
 
 The runtime must include any code defined in the ["expressionLib" field of
 InlineJavascriptRequirement](#InlineJavascriptRequirement) prior to

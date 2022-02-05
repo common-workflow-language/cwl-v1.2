@@ -3,7 +3,7 @@ cwlVersion: v1.2
 
 requirements:
   DockerRequirement:
-      dockerPull: debian:stable-slim
+      dockerPull: docker.io/debian:stable-slim
   InlineJavascriptRequirement: {}
   InitialWorkDirRequirement:
     listing: |

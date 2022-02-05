@@ -3399,3 +3399,71 @@
 - $import: tests/mixed-versions/test-index.yaml
 - $import: tests/loadContents/test-index.yaml
 - $import: tests/iwd/test-index.yaml
+
+- job: tests/empty.json
+  tool: tests/params_broken_null.cwl
+  label: params_broken_null
+  doc: Test parameter reference that refers to null.something
+  should_fail: true
+  tags: [ required, command_line_tool ]
+
+- job: tests/empty.json
+  tool: tests/params_broken_length_of_non_list.cwl
+  doc: Test paramer reference that refers to length of non-array input
+  should_fail: true
+  tags: [ required, command_line_tool ]
+
+- job: tests/length_non_array_input.yml
+  tool: tests/params_input_length_non_array.cwl
+  doc: Test 'length' in parameter reference where it does not refer to length of an array input
+  tags: [ required, command_line_tool ]
+  output:
+    output1: 1
+    output2: 2
+    output3: 3
+
+- tool: tests/cat4-from-dir.cwl
+  job: tests/cat-from-dir-with-literal-file-in-subdir.yaml
+  output:
+    output_file:
+      checksum: sha1$ef88e689559565999700d6fea7cf7ba306d04360
+      class: File
+      size: 26
+  label: directory_literal_with_literal_file_in_subdir_nostdin
+  doc: Test non-stdin reference to literal File via a nested Directory literal
+  tags: [ command_line_tool, required ]
+
+- label: colon_in_paths
+  output:
+    log:
+      class: File
+      basename: re:sult
+      checksum: sha1$d7d6491030bfa0ce17bab3a648e603f2a55bf503
+      size: 14
+    result:
+      class: Directory
+      basename: A:Gln2Cys_result
+      listing:
+        - basename: A:Gln2Cys
+          checksum: sha1$2928c9c6fa02098aee8c31bf44099f3bf8c91013
+          class: File
+          size: 18
+  job: tests/colon:test:job.yaml
+  tool: tests/colon:test.cwl
+  doc: Confirm that colons are tolerated in input paths, string values, stdout shortcut, and output file & directory names
+  tags: [ required, command_line_tool ]
+
+- label: colon_in_output_path
+  output:
+    result:
+      class: Directory
+      basename: A:Gln2Cys_result
+      listing:
+        - basename: hello.txt
+          checksum: sha1$47a013e660d408619d894b20806b1d5086aab03b
+          class: File
+          size: 13
+  job: tests/colon_test_output_job.yaml
+  tool: tests/colon_test_output.cwl
+  doc: Confirm that colons are tolerated in output directory names
+  tags: [ required, command_line_tool ]

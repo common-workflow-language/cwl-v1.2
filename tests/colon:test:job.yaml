@@ -1,0 +1,6 @@
+input_file:
+ class: File
+ location: A%3AGln2Cys  # location is a URI, even if it is relative,
+                        # so it needs URI encoding
+                        # (also known as percent escaping)
+outdir_name: A:Gln2Cys_result

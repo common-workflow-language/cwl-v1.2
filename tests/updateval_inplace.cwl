@@ -10,7 +10,7 @@ requirements:
     inplaceUpdate: true
 hints:
   DockerRequirement:
-    dockerPull: "python:2.7.15-alpine3.7"
+    dockerPull: docker.io/python:3-slim
 inputs:
   r: File
   script:
