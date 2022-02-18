@@ -3467,3 +3467,20 @@
   tool: tests/colon_test_output.cwl
   doc: Confirm that colons are tolerated in output directory names
   tags: [ required, command_line_tool ]
+
+- label: record_with_default
+  output: 
+    same_record:
+        first: y
+        second: 23
+        third: 2.3
+        fourth: 4242424242
+        fifth: 4200000000000000000000000000000000000000000
+        sixth:
+           class: File
+           basename: whale.txt
+           size: 1111
+           checksum: sha1$327fc7aedf4f6b69a42a7c8b808dc5a7aff61376
+  tool: tests/paramref_arguments_roundtrip.cwl
+  doc: Confirm that records with defaults are accepted
+  tags: [ required, command_line_tool ]
