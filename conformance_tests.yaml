@@ -3484,3 +3484,33 @@
   tool: tests/paramref_arguments_roundtrip.cwl
   doc: Confirm that records with defaults are accepted
   tags: [ required, command_line_tool ]
+
+- label: record_outputeval
+  output:
+    references:
+      genome_fa:
+        class: File
+        basename: GRCm38.primary_assembly.genome.fa
+        checksum: sha1$da39a3ee5e6b4b0d3255bfef95601890afd80709
+        size: 0
+      annotation_gtf:
+        class: File
+        basename: gencode.vM21.primary_assembly.annotation.gtf
+        checksum: sha1$da39a3ee5e6b4b0d3255bfef95601890afd80709
+        size: 0
+  tool: tests/record_outputeval.cwl
+  doc: Use of outputEval on a record itself, not the fields of the record
+  tags: [ inline_javascript, command_line_tool ]
+
+- label: record_outputeval_nojs
+  output:
+    references:
+      annotation_gtf: gencode.vM21.primary_assembly.annotation.gtf
+      genome_fa: GRCm38.primary_assembly.genome.fa
+    summary:
+      class: File
+      checksum: sha1$c0bf6c4db73d4fc08ee24c7288825c09f9cb3cea
+      size: 79
+  tool: tests/record_outputeval_nojs.cwl
+  doc: Use of outputEval on a record itself, not the fields of the record (without javascript)
+  tags: [ required, command_line_tool ]
