@@ -3399,6 +3399,7 @@
 - $import: tests/mixed-versions/test-index.yaml
 - $import: tests/loadContents/test-index.yaml
 - $import: tests/iwd/test-index.yaml
+- $import: tests/scatter/test-index.yaml
 
 - job: tests/empty.json
   tool: tests/params_broken_null.cwl
