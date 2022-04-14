@@ -3469,7 +3469,7 @@
   tags: [ required, command_line_tool ]
 
 - label: record_with_default
-  output: 
+  output:
     same_record:
         first: y
         second: 23
@@ -3513,4 +3513,19 @@
       size: 79
   tool: tests/record_outputeval_nojs.cwl
   doc: Use of outputEval on a record itself, not the fields of the record (without javascript)
+  tags: [ required, command_line_tool ]
+
+- label: filename_with_hash_mark
+  tool: tests/cat-tool.cwl
+  job: tests/octo.yml
+  doc: Test for correct handling of URL-quoting in filename to refer to filename containing a hash mark
+  output: {
+    "output": {
+        "basename": "output",
+        "checksum": "sha1$06b0c59808c236447d065db8f7d2a60de0a805bf",
+        "class": "File",
+        "location": "output",
+        "size": 8
+    }
+  }
   tags: [ required, command_line_tool ]
