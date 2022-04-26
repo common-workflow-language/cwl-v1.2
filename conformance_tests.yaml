@@ -3469,7 +3469,7 @@
   tags: [ required, command_line_tool ]
 
 - label: record_with_default
-  output: 
+  output:
     same_record:
         first: y
         second: 23
@@ -3514,3 +3514,11 @@
   tool: tests/record_outputeval_nojs.cwl
   doc: Use of outputEval on a record itself, not the fields of the record (without javascript)
   tags: [ required, command_line_tool ]
+
+- label: staging-basename
+  output: {}
+  tool: tests/staging-basename/wf_ren.cwl
+  doc: |
+    Use of expression tool to change basename of file, then correctly staging
+    the file using the new name.
+  tags: [ required, command_line_tool, inline_javascript, expression_tool ]
