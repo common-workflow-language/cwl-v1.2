@@ -61,7 +61,7 @@ the CWL specification.
 ## Data concepts
 
 An **object** is a data structure equivalent to the "object" type in JSON,
-consisting of a unordered set of name/value pairs (referred to here as
+consisting of an unordered set of name/value pairs (referred to here as
 **fields**) and where the name is a string and the value is a string, number,
 boolean, array, or object.
 
@@ -105,7 +105,7 @@ changed between versions, for that portion of the execution an
 implementation must provide runtime enviroment and behavior consistent
 with the document's declared version.  An implementation must not
 expose a newer feature when executing a document that specifies an
-older version that does not not include that feature.
+older version that does not include that feature.
 
 ### map
 
@@ -115,7 +115,7 @@ Note: This section is non-normative.
 
 The above syntax in the CWL specifications means there are two or more ways to write the given value.
 
-Option one is a array and is the most verbose option.
+Option one is an array and is the most verbose option.
 
 Option one generic example:
 ```
@@ -421,7 +421,7 @@ of [process requirements](#Requirements_and_hints).
 ## Generic execution process
 
 The generic execution sequence of a CWL process (including workflows
-and command line line tools) is as follows.  Processes are
+and command line tools) is as follows.  Processes are
 modeled as functions that consume an input object and produce an
 output object.
 

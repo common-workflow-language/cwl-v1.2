@@ -3,7 +3,7 @@
 To accommodate the enormous variety in syntax and semantics for input, runtime
 environment, invocation, and output of arbitrary programs, a CommandLineTool
 defines an "input binding" that describes how to translate abstract input
-parameters to an concrete program invocation, and an "output binding" that
+parameters to a concrete program invocation, and an "output binding" that
 describes how to generate output parameters from program output.
 
 ## Input binding
