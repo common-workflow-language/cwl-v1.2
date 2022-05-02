@@ -2991,27 +2991,6 @@
   tags: [ initial_work_dir, command_line_tool ]
   id: 230
 
-# same test as above but keeping it for preserve ids maybe? I don't know -
-# there is a reason I added labels before these ids were here :)
-- job: tests/initialworkdirrequirement-docker-out-job.json
-  output:
-    OUTPUT:
-      "checksum": "sha1$aeb3d11bdf536511649129f4077d5cda6a324118"
-      "location": "ref.fasta"
-      "secondaryFiles": [{
-        "checksum": "sha1$da39a3ee5e6b4b0d3255bfef95601890afd80709",
-        "location": "ref.fasta.fai",
-          "class": "File",
-          "size": 0
-      }]
-      "class": "File"
-      "size": 12010
-  tool: tests/initialworkdir-glob-fullpath.cwl
-  label: initial_workdir_output_glob_duplicate
-  doc: Test full path glob output of InitialWorkDir (duplicate)
-  tags: [ initial_work_dir, command_line_tool ]
-  id: 231
-
 - job: tests/empty.json
   should_fail: true
   tool: tests/glob-path-error.cwl
