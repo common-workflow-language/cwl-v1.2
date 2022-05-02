@@ -173,7 +173,7 @@ enable or disable the behavior described.
 ## Data concepts
 
 An **object** is a data structure equivalent to the "object" type in JSON,
-consisting of a unordered set of name/value pairs (referred to here as
+consisting of an unordered set of name/value pairs (referred to here as
 **fields**) and where the name is a string and the value is a string, number,
 boolean, array, or object.
 
