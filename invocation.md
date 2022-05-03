@@ -104,8 +104,8 @@ the ability to accept inbound connections.
 The `runtime` section available in [parameter references](#Parameter_references)
 and [expressions](#Expressions) contains the following fields.  As noted
 earlier, an implementation may perform deferred resolution of runtime fields by providing
-opaque strings for any or all of the following fields; parameter references
-and expressions may only use the literal string value of the field and must
+[opaque strings](#opaque-strings) for any or all of the following fields; parameter
+references and expressions may only use the literal string value of the field and must
 not perform computation on the contents.
 
   * `runtime.outdir`: an absolute path to the designated output directory
