@@ -3501,3 +3501,34 @@
     Use of expression tool to change basename of file, then correctly staging
     the file using the new name.
   tags: [ required, command_line_tool, inline_javascript, expression_tool ]
+
+- label: runtime-outdir
+  output: {
+    "stuff": {
+      "class": "Directory",
+      "listing": [
+        {
+          "basename": "baz.txt",
+          "checksum": "sha1$da39a3ee5e6b4b0d3255bfef95601890afd80709",
+          "class": "File",
+          "size": 0
+        },
+        {
+          "basename": "foo",
+          "class": "Directory",
+          "listing": [
+            {
+              "basename": "bar.txt",
+              "checksum": "sha1$da39a3ee5e6b4b0d3255bfef95601890afd80709",
+              "class": "File",
+              "size": 0
+            }
+          ]
+        }
+      ]
+    }
+  }
+  tool: tests/runtime-outdir.cwl
+  doc: |
+    Use of $(runtime.outdir) for outputBinding glob.
+  tags: [ required, command_line_tool ]
