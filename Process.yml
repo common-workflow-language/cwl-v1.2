@@ -799,6 +799,14 @@ $graph:
     directly executed.
 
   fields:
+    - name: id
+      type: string?
+      jsonldPredicate: "@id"
+      doc: |
+        The unique identifier for this object.
+
+        Only useful for `$graph` at `Process` level. Should not be exposed
+        to users in graphical or terminal user interfaces.
     - name: inputs
       type:
         type: array
