@@ -3562,3 +3562,14 @@
     and capture the output correctly.
   tags: [ shell_command, command_line_tool ]
   
+- label: multiple-input-feature-requirement
+  output: {
+    "hello_world_in_two_lines": [
+      "hello\n",
+      "world\n"
+    ]
+  }
+  tool: tests/multiple_input_feature_requirement.cwl
+  doc: |
+    MultipleInputFeatureRequirement on workflow outputs.
+  tags: [ workflow, multiple_input ]
