@@ -3562,3 +3562,14 @@
     and capture the output correctly.
   tags: [ shell_command, command_line_tool ]
   
+- tool: tests/schemadef_types_with_import-wf.cwl
+  job: tests/schemadef_types_with_import-job.json
+  output: {
+    "out": "1970-01-01T00:00:00Z\n"
+  }
+  label: schemadef_types_with_import
+  doc: >-
+    Test SchemaDefRequirement with a workflow, with the `$import` under types.
+    It is similar to schemadef-wf, but the `$import` is different.
+  tags: [ workflow, schema_def ]
+
