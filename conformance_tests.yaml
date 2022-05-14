@@ -1173,7 +1173,7 @@
   label: directory_input_docker
   id: 85
   doc: Test directory input in Docker
-  tags: [ required, command_line_tool, shell_command ]
+  tags: [ command_line_tool, shell_command ]
 
 - job: tests/dir3-job.yml
   output:
@@ -2996,7 +2996,7 @@
   tool: tests/glob-path-error.cwl
   label: glob_outside_outputs_fails
   doc: Test fail trying to glob outside output directory
-  tags: [ required, command_line_tool, docker ]
+  tags: [ command_line_tool, docker ]
   id: 232
 
 - job: tests/empty.json
@@ -3105,7 +3105,7 @@
           "size": 59
         }
       ]
-  tags: [ required, command_line_tool, initial_work_dir ]
+  tags: [ command_line_tool, initial_work_dir, inline_javascript ]
   id: 238
 
 - doc: Test that array of input files can be staged to directory with basename
@@ -3140,7 +3140,7 @@
           "size": 59
         }
       ]
-  tags: [ required, command_line_tool, initial_work_dir ]
+  tags: [ command_line_tool, initial_work_dir, inline_javascript ]
   id: 239
 
 - doc: Test that if array of input files are staged to directory with basename and entryname, entryname overrides
@@ -3175,7 +3175,7 @@
           "size": 59
         }
       ]
-  tags: [ required, command_line_tool, initial_work_dir ]
+  tags: [ command_line_tool, initial_work_dir, inline_javascript ]
   id: 240
 
 - job: tests/empty.json
@@ -3326,7 +3326,7 @@
   label: optional_numerical_output_returns_0_not_null
   doc: |
     Test that optional number output is returned as 0, not null
-  tags: [ required, inline_javascript, command_line_tool ]
+  tags: [ inline_javascript, command_line_tool ]
   id: 253
 
 - job: tests/empty.json
@@ -3500,7 +3500,7 @@
   doc: |
     Use of expression tool to change basename of file, then correctly staging
     the file using the new name.
-  tags: [ required, command_line_tool, inline_javascript, expression_tool ]
+  tags: [ command_line_tool, inline_javascript, expression_tool ]
 
 - label: runtime-outdir
   output: {
