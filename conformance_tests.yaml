@@ -3532,3 +3532,11 @@
   doc: |
     Use of $(runtime.outdir) for outputBinding glob.
   tags: [ required, command_line_tool ]
+
+- tool: tests/record-order.cwl
+  job: tests/record-order-job.json
+  output:
+    args: [-a, -b, '1', -c, '3', -d, -e, '2', -f, '4']
+  label: record-order-with-input-bindings
+  doc: Test sorting arguments at each level (inputBinding for all levels)
+  tags: [ command_line, required ]
