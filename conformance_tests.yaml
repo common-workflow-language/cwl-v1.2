@@ -3540,3 +3540,11 @@
   doc: |
     Use of $(runtime.outdir) for outputBinding glob.
   tags: [ required, command_line_tool ]
+- label: output_reference_workflow_input
+  output: {
+    "last": "me"
+  }
+  tool: tests/output_reference_workflow_input.cwl
+  doc: |
+    Direct use of Workflow level input fields in the outputs.
+  tags: [ required, workflow ]
