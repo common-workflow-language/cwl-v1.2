@@ -647,7 +647,7 @@
     Test InitialWorkDirRequirement linking input files and capturing secondaryFiles
     on input and output. Also tests the use of a variety of parameter references
     and expressions in the secondaryFiles field.
-  tags: [ initial_work_dir, inline_javascript, command_line_tool ]
+  tags: [ initial_work_dir, inline_javascript, workflow ]
 
 - job: tests/rename-job.json
   output:
@@ -3500,7 +3500,7 @@
   doc: |
     Use of expression tool to change basename of file, then correctly staging
     the file using the new name.
-  tags: [ command_line_tool, inline_javascript, expression_tool ]
+  tags: [ workflow, inline_javascript, expression_tool ]
 
 - label: runtime-outdir
   output: {
