@@ -2910,6 +2910,7 @@
       }
   tags: [ resource, command_line_tool, initial_work_dir ]
   id: 225
+  label: initial_work_dir_for_null_and_arrays
 
 - job: tests/stage-array-dirs-job.yml
   tool: tests/stage-array-dirs.cwl
@@ -2932,6 +2933,7 @@
     }
   tags: [ resource, command_line_tool, initial_work_dir ]
   id: 226
+  label: initial_work_dir_for_array_dirs
 
 - job: tests/env-job3.yaml
   output:
@@ -3011,6 +3013,7 @@
   should_fail: true
   tags: [ command_line_tool ]
   id: 233
+  label: illegal_symlink
 
 - job: tests/empty.json
   tool: tests/symlink-legal.cwl
@@ -3023,6 +3026,7 @@
       "checksum": "sha1$cd28ec34f3f9425aca544b6332453708e8aaa82a"
   id: 234
   tags: [ command_line_tool ]
+  label: legal_symlink
 
 - job: tests/empty.json
   tool: tests/inp_update_wf.cwl
@@ -3032,6 +3036,7 @@
     a: 4
     b: 4
   id: 235
+  label: modify_file_content
 
 - job: tests/empty.json
   tool: tests/inpdir_update_wf.cwl
@@ -3054,6 +3059,7 @@
         ]
 }
   id: 236
+  label: modify_directory_content
 
 - doc: Test that OutputBinding.glob accepts Directories
   job: tests/empty.json
@@ -3391,6 +3397,7 @@
   doc: Test paramer reference that refers to length of non-array input
   should_fail: true
   tags: [ required, command_line_tool ]
+  label: length_for_non_array
 
 - job: tests/length_non_array_input.yml
   tool: tests/params_input_length_non_array.cwl
@@ -3400,6 +3407,7 @@
     output1: 1
     output2: 2
     output3: 3
+  label: user_defined_length_in_parameter_reference
 
 - tool: tests/cat4-from-dir.cwl
   job: tests/cat-from-dir-with-literal-file-in-subdir.yaml
