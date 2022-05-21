@@ -13,6 +13,13 @@ on:
 
 jobs:
   test_with_cwltool:
+    strategy:
+      fail-fast: false
+      matrix:
+        docker:
+          - ""  # default, fails if we use docker
+          - udocker
+
     runs-on: ubuntu-latest
 
     steps:
@@ -23,7 +30,7 @@ jobs:
           python-version: '3.9.x'
       
       - name: Setup prerequirements
-        run: pip install cwltest cwltool
+        run: pip install cwltest cwltool udocker
       
       - name: Run tests against the reference runner
-        run: ./run_test.sh RUNNER=cwltool "EXTRA=--parallel --relax-path-checks" -j$(nproc)
+        run: ./run_test.sh RUNNER=cwltool EXTRA="--parallel --user-space-docker-cmd=${{ matrix.docker }}" -j$(nproc)
