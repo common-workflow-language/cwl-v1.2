@@ -30,7 +30,7 @@ jobs:
           python-version: '3.9.x'
       
       - name: Setup prerequirements
-        run: pip install cwltest cwltool udocker
+        run: pip install cwltest cwltool udocker && udocker install
       
       - name: Run tests against the reference runner
         run: ./run_test.sh RUNNER=cwltool EXTRA="--parallel --user-space-docker-cmd=${{ matrix.docker }}" -j$(nproc)
