@@ -33,4 +33,4 @@ jobs:
         run: pip install cwltest cwltool udocker && udocker install
       
       - name: Run tests against the reference runner
-        run: ./run_test.sh RUNNER=cwltool EXTRA="--parallel --user-space-docker-cmd=${{ matrix.docker }}" -j$(nproc)
+        run: cwltest --junit-verbose --verbose --tool cwltool --test=conformance_tests.yaml -j$(nproc) -- "--parallel --user-space-docker-cmd=${{ matrix.docker }} --debug"
