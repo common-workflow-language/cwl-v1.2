@@ -297,8 +297,8 @@ which the `id` field is explicitly listed in this specification.
 ## Document preprocessing
 
 An implementation must resolve [$import](SchemaSalad.html#Import) and
-[$include](SchemaSalad.html#Import) directives as described in the
-[Schema Salad specification](SchemaSalad.html).
+[$include](SchemaSalad.html#Include) directives as described in the
+[Schema Salad specification](SchemaSalad.html#Document_preprocessing).
 
 Another transformation defined in Schema salad is simplification of data type definitions.
 Type `<T>` ending with `?` should be transformed to `[<T>, "null"]`.
