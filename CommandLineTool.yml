@@ -1017,8 +1017,8 @@ $graph:
 
     Normally files are staged within the designated output directory.
     However, when running inside containers, files may be staged at
-    arbitrary locations, see discussion for `Dirent.entryname`.
-    Together with `DockerRequirement.dockerOutputDirectory` this it
+    arbitrary locations, see discussion for [`Dirent.entryname`](#Dirent).
+    Together with `DockerRequirement.dockerOutputDirectory` it is
     possible to control the locations of both input and output files
     when running in containers.
   fields:
