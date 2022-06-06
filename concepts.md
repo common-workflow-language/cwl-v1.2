@@ -191,7 +191,7 @@ hints:
         version: [ "1.0" ]
       python: {}
 ```
-`
+
 Sometimes we have a third and even more compact option denoted like this:
 > type: array&lt;ComplexType&gt; |
 > map&lt;`key_field`, `field2` | ComplexType&gt;
