@@ -567,6 +567,10 @@ $graph:
     stdout: random_stdout_filenameABCDEFG
     ```
 
+    If the `CommandLineTool` contains logically chained commands
+    (e.g. `echo a && echo b`) `stdout` must include the output of
+    every command.
+
 
 - name: stderr
   type: enum
@@ -699,6 +703,10 @@ $graph:
       doc: |
         Capture the command's standard output stream to a file written to
         the designated output directory.
+
+        If the `CommandLineTool` contains logically chained commands
+        (e.g. `echo a && echo b`) `stdout` must include the output of
+        every command.
 
         If `stdout` is a string, it specifies the file name to use.
 
@@ -1105,8 +1113,8 @@ $graph:
   extends: ProcessRequirement
   doc: |
     Modify the behavior of CommandLineTool to generate a single string
-    containing a shell command line.  Each item in the argument list must be
-    joined into a string separated by single spaces and quoted to prevent
+    containing a shell command line.  Each item in the `arguments` list must
+    be joined into a string separated by single spaces and quoted to prevent
     intepretation by the shell, unless `CommandLineBinding` for that argument
     contains `shellQuote: false`.  If `shellQuote: false` is specified, the
     argument is joined into the command string without quoting, which allows
