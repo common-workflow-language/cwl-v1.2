@@ -43,7 +43,7 @@ except as necessary to protect vulnerable people from intentional abuse.
  - Publication of non-harassing private communication.
 
 The CWL Project prioritizes marginalized people’s safety over privileged
-people’s comfort. The CWL Leadeship Team will not act on complaints regarding:
+people’s comfort. The CWL Leadership Team will not act on complaints regarding:
 
  - ‘Reverse’ -isms, including ‘reverse racism,’ ‘reverse sexism,’ and ‘cisphobia’
  - Reasonable communication of boundaries, such as “leave me alone,” “go away,” or

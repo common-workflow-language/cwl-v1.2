@@ -3,7 +3,7 @@
 To accommodate the enormous variety in syntax and semantics for input, runtime
 environment, invocation, and output of arbitrary programs, a CommandLineTool
 defines an "input binding" that describes how to translate abstract input
-parameters to an concrete program invocation, and an "output binding" that
+parameters to a concrete program invocation, and an "output binding" that
 describes how to generate output parameters from program output.
 
 ## Input binding
@@ -132,7 +132,11 @@ Once the command line is built and the runtime environment is created, the
 actual tool is executed.
 
 The standard error stream and standard output stream may be captured by
-platform logging facilities for storage and reporting.
+platform logging facilities for storage and reporting.  If there are multiple
+commands logically chained (e.g. `echo a && echo b`) implementations must
+capture the output of all the commands, and not only the output of the last
+command (i.e. the following is incorrect `echo a && echo b > captured`,
+as the output of `echo a` is not included in `captured`).
 
 Tools may be multithreaded or spawn child processes; however, when the
 parent process exits, the tool is considered finished regardless of whether

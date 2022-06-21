@@ -45,7 +45,7 @@ $graph:
       should be trivially updatable by changing `cwlVersion`, however
       CWL documents that relied on previously undefined or
       underspecified behavior may have slightly different behavior in
-      v1.2.
+      v1.2.  See note about `cwl-upgrader` in the changelog.
 
       ## Changelog
 
@@ -74,7 +74,10 @@ $graph:
 
       See also the [CWL Command Line Tool Description, v1.2 changelog](CommandLineTool.html#Changelog).
       For other changes since CWL v1.0, see the
-      [CWL Workflow Description, v1.1 changelog](https://www.commonwl.org/v1.1/Workflow.html#Changelog)
+      [CWL Workflow Description, v1.1 changelog](https://www.commonwl.org/v1.1/Workflow.html#Changelog).
+
+      [`cwl-upgrader`](https://github.com/common-workflow-language/cwl-upgrader) can
+      be used for upgrading CWL documents from version `draft-3`, `v1.0`, and `v1.1` to `v1.2`.
 
       ## Purpose
 
@@ -616,7 +619,8 @@ $graph:
         _type: "@id"
         subscope: run
       doc: |
-        Specifies the process to run.
+        Specifies the process to run.  If `run` is a string, it must be an absolute IRI
+        or a relative path from the primary document.
     - name: when
       type:
         - "null"
