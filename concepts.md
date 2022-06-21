@@ -191,7 +191,7 @@ hints:
         version: [ "1.0" ]
       python: {}
 ```
-`
+
 Sometimes we have a third and even more compact option denoted like this:
 > type: array&lt;ComplexType&gt; |
 > map&lt;`key_field`, `field2` | ComplexType&gt;
@@ -297,8 +297,8 @@ which the `id` field is explicitly listed in this specification.
 ## Document preprocessing
 
 An implementation must resolve [$import](SchemaSalad.html#Import) and
-[$include](SchemaSalad.html#Import) directives as described in the
-[Schema Salad specification](SchemaSalad.html).
+[$include](SchemaSalad.html#Include) directives as described in the
+[Schema Salad specification](SchemaSalad.html#Document_preprocessing).
 
 Another transformation defined in Schema salad is simplification of data type definitions.
 Type `<T>` ending with `?` should be transformed to `[<T>, "null"]`.

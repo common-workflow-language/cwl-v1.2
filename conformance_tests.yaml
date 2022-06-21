@@ -3540,6 +3540,7 @@
   doc: |
     Use of $(runtime.outdir) for outputBinding glob.
   tags: [ required, command_line_tool ]
+
 - label: output_reference_workflow_input
   output: {
     "last": "me"
@@ -3548,3 +3549,16 @@
   doc: |
     Direct use of Workflow level input fields in the outputs.
   tags: [ required, workflow ]
+
+- label: stdout_chained_commands
+  output: {
+    "out": "a\nb\n"
+  }
+  tool: tests/stdout_chained_commands.cwl
+  doc: |
+    Test that chaining two echo calls causes the workflow tool to emit the output to stdout.
+    This is to confirm that the workflow tool will **not** create an expression such as
+    `echo a && echo b > out.txt`, but instead will produce the correct `echo a && echo b`,
+    and capture the output correctly.
+  tags: [ shell_command, command_line_tool ]
+  
