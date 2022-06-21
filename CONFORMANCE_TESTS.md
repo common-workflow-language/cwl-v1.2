@@ -184,7 +184,7 @@ Likewise, please do not test the `path` for `class: File` and `class: Directory`
 
 To add a new conformance test:
 1. Ensure the CWL document you have tests the desired feature or aspect.
-2. All `CommandLineTool`s need a software container (via `DockerRequirement`) for better reproducibility, preferrably under `hints`.
+2. All `CommandLineTool`s need a software container (via `DockerRequirement`) for better reproducibility, preferably under `hints`.
      Please limit your container usage to the following: 
      - `dockerPull: docker.io/alpine:latest`
      - `dockerPull: docker.io/bash:4.4`

@@ -1,0 +1,21 @@
+name: Spellcheck Action
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main, 1.2.1_proposed ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    # https://github.com/marketplace/actions/github-spellcheck-action
+    # To run locally, `pip install pyspelling`, followed by
+    # `pyspelling -c .github/config/spellcheck.yml`.
+    name: Spellcheck
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - uses: rojopolis/spellcheck-github-actions@0.23.0
+        name: Spellcheck
+        with:
+          config_path: .github/config/spellcheck.yml

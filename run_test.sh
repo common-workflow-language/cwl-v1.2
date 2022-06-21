@@ -128,7 +128,9 @@ if [ -n "${SELF}" ]; then
     exit 0
 fi
 
-if ! runner="$(command -v $RUNNER)" ; then
+if [ -n "${TEST_L}" ]; then
+    runner=$RUNNER    
+elif ! runner="$(command -v $RUNNER)" ; then
     echo >&2 "$helpmessage"
     echo >&2
     echo >&2 "runner '$RUNNER' not found"
@@ -139,9 +141,12 @@ runs=0
 failures=0
 
 runtest() {
-    echo "--- Running CWL Conformance Tests $CWL_VER on $1 ---"
 
-    "$1" --version
+    if [ -z "${TEST_L}" ]; then
+        echo "--- Running CWL Conformance Tests $CWL_VER on $1 ---"
+
+        "$1" --version
+    fi
 
     runs=$((runs+1))
     (COMMAND="cwltest --tool $1 \

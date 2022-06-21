@@ -647,7 +647,7 @@
     Test InitialWorkDirRequirement linking input files and capturing secondaryFiles
     on input and output. Also tests the use of a variety of parameter references
     and expressions in the secondaryFiles field.
-  tags: [ initial_work_dir, inline_javascript, command_line_tool ]
+  tags: [ initial_work_dir, inline_javascript, workflow ]
 
 - job: tests/rename-job.json
   output:
@@ -1173,7 +1173,7 @@
   label: directory_input_docker
   id: 85
   doc: Test directory input in Docker
-  tags: [ required, command_line_tool, shell_command ]
+  tags: [ command_line_tool, shell_command ]
 
 - job: tests/dir3-job.yml
   output:
@@ -2910,6 +2910,7 @@
       }
   tags: [ resource, command_line_tool, initial_work_dir ]
   id: 225
+  label: initial_work_dir_for_null_and_arrays
 
 - job: tests/stage-array-dirs-job.yml
   tool: tests/stage-array-dirs.cwl
@@ -2932,6 +2933,7 @@
     }
   tags: [ resource, command_line_tool, initial_work_dir ]
   id: 226
+  label: initial_work_dir_for_array_dirs
 
 - job: tests/env-job3.yaml
   output:
@@ -2991,33 +2993,12 @@
   tags: [ initial_work_dir, command_line_tool ]
   id: 230
 
-# same test as above but keeping it for preserve ids maybe? I don't know -
-# there is a reason I added labels before these ids were here :)
-- job: tests/initialworkdirrequirement-docker-out-job.json
-  output:
-    OUTPUT:
-      "checksum": "sha1$aeb3d11bdf536511649129f4077d5cda6a324118"
-      "location": "ref.fasta"
-      "secondaryFiles": [{
-        "checksum": "sha1$da39a3ee5e6b4b0d3255bfef95601890afd80709",
-        "location": "ref.fasta.fai",
-          "class": "File",
-          "size": 0
-      }]
-      "class": "File"
-      "size": 12010
-  tool: tests/initialworkdir-glob-fullpath.cwl
-  label: initial_workdir_output_glob_duplicate
-  doc: Test full path glob output of InitialWorkDir (duplicate)
-  tags: [ initial_work_dir, command_line_tool ]
-  id: 231
-
 - job: tests/empty.json
   should_fail: true
   tool: tests/glob-path-error.cwl
   label: glob_outside_outputs_fails
   doc: Test fail trying to glob outside output directory
-  tags: [ required, command_line_tool, docker ]
+  tags: [ command_line_tool, docker ]
   id: 232
 
 - job: tests/empty.json
@@ -3032,6 +3013,7 @@
   should_fail: true
   tags: [ command_line_tool ]
   id: 233
+  label: illegal_symlink
 
 - job: tests/empty.json
   tool: tests/symlink-legal.cwl
@@ -3044,6 +3026,7 @@
       "checksum": "sha1$cd28ec34f3f9425aca544b6332453708e8aaa82a"
   id: 234
   tags: [ command_line_tool ]
+  label: legal_symlink
 
 - job: tests/empty.json
   tool: tests/inp_update_wf.cwl
@@ -3053,6 +3036,7 @@
     a: 4
     b: 4
   id: 235
+  label: modify_file_content
 
 - job: tests/empty.json
   tool: tests/inpdir_update_wf.cwl
@@ -3075,6 +3059,7 @@
         ]
 }
   id: 236
+  label: modify_directory_content
 
 - doc: Test that OutputBinding.glob accepts Directories
   job: tests/empty.json
@@ -3126,7 +3111,7 @@
           "size": 59
         }
       ]
-  tags: [ required, command_line_tool, initial_work_dir ]
+  tags: [ command_line_tool, initial_work_dir, inline_javascript ]
   id: 238
 
 - doc: Test that array of input files can be staged to directory with basename
@@ -3161,7 +3146,7 @@
           "size": 59
         }
       ]
-  tags: [ required, command_line_tool, initial_work_dir ]
+  tags: [ command_line_tool, initial_work_dir, inline_javascript ]
   id: 239
 
 - doc: Test that if array of input files are staged to directory with basename and entryname, entryname overrides
@@ -3196,7 +3181,7 @@
           "size": 59
         }
       ]
-  tags: [ required, command_line_tool, initial_work_dir ]
+  tags: [ command_line_tool, initial_work_dir, inline_javascript ]
   id: 240
 
 - job: tests/empty.json
@@ -3347,7 +3332,7 @@
   label: optional_numerical_output_returns_0_not_null
   doc: |
     Test that optional number output is returned as 0, not null
-  tags: [ required, inline_javascript, command_line_tool ]
+  tags: [ inline_javascript, command_line_tool ]
   id: 253
 
 - job: tests/empty.json
@@ -3413,6 +3398,7 @@
   doc: Test paramer reference that refers to length of non-array input
   should_fail: true
   tags: [ required, command_line_tool ]
+  label: length_for_non_array
 
 - job: tests/length_non_array_input.yml
   tool: tests/params_input_length_non_array.cwl
@@ -3422,6 +3408,7 @@
     output1: 1
     output2: 2
     output3: 3
+  label: user_defined_length_in_parameter_reference
 
 - tool: tests/cat4-from-dir.cwl
   job: tests/cat-from-dir-with-literal-file-in-subdir.yaml
@@ -3470,7 +3457,7 @@
   tags: [ required, command_line_tool ]
 
 - label: record_with_default
-  output: 
+  output:
     same_record:
         first: y
         second: 23
@@ -3515,3 +3502,55 @@
   tool: tests/record_outputeval_nojs.cwl
   doc: Use of outputEval on a record itself, not the fields of the record (without javascript)
   tags: [ required, command_line_tool ]
+
+- label: staging-basename
+  output: {}
+  tool: tests/staging-basename/wf_ren.cwl
+  doc: |
+    Use of expression tool to change basename of file, then correctly staging
+    the file using the new name.
+  tags: [ workflow, inline_javascript, expression_tool ]
+
+- label: runtime-outdir
+  output: {
+    "stuff": {
+      "class": "Directory",
+      "listing": [
+        {
+          "basename": "baz.txt",
+          "checksum": "sha1$da39a3ee5e6b4b0d3255bfef95601890afd80709",
+          "class": "File",
+          "size": 0
+        },
+        {
+          "basename": "foo",
+          "class": "Directory",
+          "listing": [
+            {
+              "basename": "bar.txt",
+              "checksum": "sha1$da39a3ee5e6b4b0d3255bfef95601890afd80709",
+              "class": "File",
+              "size": 0
+            }
+          ]
+        }
+      ]
+    }
+  }
+  tool: tests/runtime-outdir.cwl
+  doc: |
+    Use of $(runtime.outdir) for outputBinding glob.
+  tags: [ required, command_line_tool ]
+
+- label: stdout_chained_commands
+  output: {
+    "out": "a\nb\n"
+  }
+  tool: tests/stdout_chained_commands.cwl
+  doc: |
+    Test that chaining two echo calls causes the workflow tool to emit the output to stdout.
+    This is to confirm that the workflow tool will **not** create an expression such as
+    `echo a && echo b > out.txt`, but instead will produce the correct `echo a && echo b`,
+    and capture the output correctly.
+  tags: [ shell_command, command_line_tool ]
+

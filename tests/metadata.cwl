@@ -8,7 +8,7 @@ $schemas:
 
 cwlVersion: v1.2
 class: CommandLineTool
-doc: "Print the contents of a file to stdout using 'cat' running in a docker container."
+doc: "Test that a command line document with metadata is executed successfully."
 
 dct:creator:
   id: "http://orcid.org/0000-0003-3566-7705"
@@ -19,14 +19,6 @@ dct:creator:
 hints:
   DockerRequirement:
     dockerPull: docker.io/debian:stable-slim
-inputs:
-  file1:
-    type: File
-    inputBinding: {position: 1}
-  numbering:
-    type: boolean?
-    inputBinding:
-      position: 0
-      prefix: -n
+inputs: []
 outputs: []
-baseCommand: cat
+baseCommand: "true"

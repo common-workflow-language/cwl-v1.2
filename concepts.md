@@ -61,7 +61,7 @@ the CWL specification.
 ## Data concepts
 
 An **object** is a data structure equivalent to the "object" type in JSON,
-consisting of a unordered set of name/value pairs (referred to here as
+consisting of an unordered set of name/value pairs (referred to here as
 **fields**) and where the name is a string and the value is a string, number,
 boolean, array, or object.
 
@@ -100,12 +100,12 @@ must declare the `cwlVersion` of that document.  Implementations must
 validate against the document's declared version.  Implementations
 should allow workflows to reference documents of both newer and older
 CWL versions (up to the highest version of CWL supported by that
-implementation).  Where the runtime enviroment or runtime behavior has
+implementation).  Where the runtime environment or runtime behavior has
 changed between versions, for that portion of the execution an
-implementation must provide runtime enviroment and behavior consistent
+implementation must provide runtime environment and behavior consistent
 with the document's declared version.  An implementation must not
 expose a newer feature when executing a document that specifies an
-older version that does not not include that feature.
+older version that does not include that feature.
 
 ### map
 
@@ -115,7 +115,7 @@ Note: This section is non-normative.
 
 The above syntax in the CWL specifications means there are two or more ways to write the given value.
 
-Option one is a array and is the most verbose option.
+Option one is an array and is the most verbose option.
 
 Option one generic example:
 ```
@@ -191,7 +191,7 @@ hints:
         version: [ "1.0" ]
       python: {}
 ```
-`
+
 Sometimes we have a third and even more compact option denoted like this:
 > type: array&lt;ComplexType&gt; |
 > map&lt;`key_field`, `field2` | ComplexType&gt;
@@ -297,8 +297,8 @@ which the `id` field is explicitly listed in this specification.
 ## Document preprocessing
 
 An implementation must resolve [$import](SchemaSalad.html#Import) and
-[$include](SchemaSalad.html#Import) directives as described in the
-[Schema Salad specification](SchemaSalad.html).
+[$include](SchemaSalad.html#Include) directives as described in the
+[Schema Salad specification](SchemaSalad.html#Document_preprocessing).
 
 Another transformation defined in Schema salad is simplification of data type definitions.
 Type `<T>` ending with `?` should be transformed to `[<T>, "null"]`.
@@ -376,7 +376,7 @@ produces output, and then terminates.
 
 A **workflow** is a process characterized by multiple subprocess steps,
 where step outputs are connected to the inputs of downstream steps to
-form a directed acylic graph, and independent steps may run concurrently.
+form a directed acyclic graph, and independent steps may run concurrently.
 
 A **runtime environment** is the actual hardware and software environment when
 executing a command line tool.  It includes, but is not limited to, the
@@ -421,7 +421,7 @@ of [process requirements](#Requirements_and_hints).
 ## Generic execution process
 
 The generic execution sequence of a CWL process (including workflows
-and command line line tools) is as follows.  Processes are
+and command line tools) is as follows.  Processes are
 modeled as functions that consume an input object and produce an
 output object.
 
