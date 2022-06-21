@@ -3541,6 +3541,15 @@
     Use of $(runtime.outdir) for outputBinding glob.
   tags: [ required, command_line_tool ]
 
+- label: output_reference_workflow_input
+  output: {
+    "last": "me"
+  }
+  tool: tests/output_reference_workflow_input.cwl
+  doc: |
+    Direct use of Workflow level input fields in the outputs.
+  tags: [ required, workflow ]
+
 - label: stdout_chained_commands
   output: {
     "out": "a\nb\n"
@@ -3552,4 +3561,4 @@
     `echo a && echo b > out.txt`, but instead will produce the correct `echo a && echo b`,
     and capture the output correctly.
   tags: [ shell_command, command_line_tool ]
-
+  
