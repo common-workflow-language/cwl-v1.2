@@ -3,8 +3,7 @@
 # or
 # cwltest --test test-index.yaml --tool toil-cwl-runner -- --enable-dev
 
-- id: cond-1
-  label: direct_optional_null_result
+- id: direct_optional_null_result
   doc: Simplest conditional pattern (False)
   tool: cond-wf-001.cwl
   job: val.1.job.yaml
@@ -12,8 +11,7 @@
     out1: null
   tags: [ conditional, inline_javascript, workflow ]
 
-- id: cond-2
-  label: direct_optional_nonnull_result
+- id: direct_optional_nonnull_result
   doc: Simplest conditional pattern (True)
   tool: cond-wf-001.cwl
   job: val.3.job.yaml
@@ -21,16 +19,14 @@
     out1: "foo 3"
   tags: [ conditional, inline_javascript, workflow ]
 
-- id: cond-3
-  label: direct_required
+- id: direct_required
   tool: cond-wf-002.cwl
   job: val.1.job.yaml
   output:
     out1: null
   tags: [ conditional, inline_javascript, workflow ]
 
-- id: cond-4
-  label: pass_through_required_false_when
+- id: pass_through_required_false_when
   doc: "Pass through pattern with pickValue: first_non_null; 'when' is false"
   tool: cond-wf-003.cwl
   job: val.1.job.yaml
@@ -38,8 +34,7 @@
     out1: "Direct"
   tags: [ conditional, inline_javascript, multiple_input, workflow ]
 
-- id: cond-5
-  label: pass_through_required_true_when
+- id: pass_through_required_true_when
   doc: "pass through pattern with pickvalue: first_non_null; 'when' is true"
   tool: cond-wf-003.cwl
   job: val.3.job.yaml
@@ -47,8 +42,7 @@
     out1: "foo 3"
   tags: [ conditional, inline_javascript, multiple_input, workflow ]
 
-- id: cond-6.0
-  label: first_non_null_first_non_null
+- id: first_non_null_first_non_null
   doc: "pickValue: first_non_null first item is non null"
   tool: cond-wf-003.1.cwl
   job: val.0.job.yaml
@@ -56,16 +50,14 @@
     out1: "foo 0"
   tags: [ conditional, inline_javascript, multiple_input, workflow ]
 
-- id: cond-6.1
-  label: first_non_null_all_null
+- id: first_non_null_all_null
   doc: "pickValue: first_non_null needs at least one non null"
   tool: cond-wf-003.1.cwl
   job: val.1.job.yaml
   should_fail: True
   tags: [ conditional, inline_javascript, multiple_input, workflow ]
 
-- id: cond-6.2
-  label: first_non_null_second_non_null
+- id: first_non_null_second_non_null
   doc: "pickValue: first_non_null second item is non null"
   tool: cond-wf-003.1.cwl
   job: val.3.job.yaml
@@ -73,8 +65,7 @@
     out1: "foo 3"
   tags: [ conditional, inline_javascript, multiple_input, workflow ]
 
-- id: cond-7
-  label: pass_through_required_the_only_non_null
+- id: pass_through_required_the_only_non_null
   doc: "pickvalue: the_only_non_null will pass, only for false condition"
   tool: cond-wf-004.cwl
   job: val.1.job.yaml
@@ -82,24 +73,21 @@
     out1: "Direct"
   tags: [ conditional, inline_javascript, multiple_input, workflow ]
 
-- id: cond-8
-  label: pass_through_required_fail
+- id: pass_through_required_fail
   doc: "pickValue: the_only_non_null will fail due to multiple non nulls"
   tool: cond-wf-004.cwl
   job: val.3.job.yaml
   should_fail: True
   tags: [ conditional, inline_javascript, multiple_input, workflow ]
 
-- id: cond-9
-  label: all_non_null_multi_with_non_array_output
+- id: all_non_null_multi_with_non_array_output
   doc: "pickValue: all_non_null will fail validation"
   tool: cond-wf-005.cwl
   job: val.3.job.yaml
   should_fail: True
   tags: [ conditional, inline_javascript, multiple_input, workflow ]
 
-- id: cond-10
-  label: the_only_non_null_single_true
+- id: the_only_non_null_single_true
   doc: "pickValue: the_only_non_null will pass for only one active node"
   tool: cond-wf-006.cwl
   job: val.1.job.yaml
@@ -107,16 +95,14 @@
     out1: "bar 1"
   tags: [ conditional, inline_javascript, multiple_input, workflow ]
 
-- id: cond-11
-  label: the_only_non_null_multi_true
+- id: the_only_non_null_multi_true
   doc: "pickValue: the_only_non_null will fail with two active nodes"
   tool: cond-wf-006.cwl
   job: val.3.job.yaml
   should_fail: True
   tags: [ conditional, inline_javascript, multiple_input, workflow ]
 
-- id: cond-12
-  label: all_non_null_all_null
+- id: all_non_null_all_null
   doc: "pickValue: all_non_null will produce a list, even if empty"
   tool: cond-wf-007.cwl
   job: val.0.job.yaml
@@ -124,8 +110,7 @@
     out1: []
   tags: [ conditional, inline_javascript, multiple_input, workflow ]
 
-- id: cond-13
-  label: all_non_null_one_non_null
+- id: all_non_null_one_non_null
   doc: "pickValue: all_non_null will produce a list; even if single item list"
   tool: cond-wf-007.cwl
   job: val.1.job.yaml
@@ -133,8 +118,7 @@
     out1: ["bar 1"]
   tags: [ conditional, inline_javascript, multiple_input, workflow ]
 
-- id: cond-14
-  label: all_non_null_multi_non_null
+- id: all_non_null_multi_non_null
   doc: "pickValue: all_non_null will produce a list"
   tool: cond-wf-007.cwl
   job: val.3.job.yaml
@@ -142,8 +126,7 @@
     out1: ["foo 3", "bar 3"]
   tags: [ conditional, inline_javascript, multiple_input, workflow ]
 
-- id: cond-15
-  label: condifional_scatter_on_nonscattered_false
+- id: condifional_scatter_on_nonscattered_false
   doc: "Simple scatter: conditional on a non scattered variable (False)"
   tool: cond-wf-009.cwl
   job: cond15.job.yaml
@@ -151,8 +134,7 @@
     out1: []
   tags: [ conditional, inline_javascript, scatter, workflow ]
 
-- id: cond-16
-  label: condifional_scatter_on_nonscattered_true
+- id: condifional_scatter_on_nonscattered_true
   doc: "Simple scatter: conditional on a non scattered variable (True)"
   tool: cond-wf-009.cwl
   job: cond16.job.yaml
@@ -160,8 +142,7 @@
     out1: ["foo 1", "foo 2", "foo 3", "foo 4", "foo 5", "foo 6"]
   tags: [ conditional, inline_javascript, scatter, workflow ]
 
-- id: cond-17
-  label: scatter_on_scattered_conditional
+- id: scatter_on_scattered_conditional
   doc: "Simple scatter: Add conditional variable to scatter"
   tool: cond-wf-010.cwl
   job: val.6.list.job.yaml
@@ -169,8 +150,7 @@
     out1: ["foo 4", "foo 5", "foo 6"]
   tags: [ conditional, inline_javascript, scatter, workflow ]
 
-- id: cond-18
-  label: conditionals_nested_cross_scatter
+- id: conditionals_nested_cross_scatter
   doc: "nested cross product scatter with condition on one dimension"
   tool: cond-wf-011.cwl
   job: cond18.job.yaml
@@ -190,16 +170,14 @@
       ]
   tags: [ conditional, inline_javascript, scatter, workflow ]
 
-- id: cond-19
-  label: conditionals_non_boolean_fail
+- id: conditionals_non_boolean_fail
   doc: Non-boolean values from "when" should fail
   tool: cond-wf-012.cwl
   job: val.1.job.yaml
   should_fail: True
   tags: [ conditional, inline_javascript, workflow ]
 
-- id: cond-20
-  label: conditionals_multi_scatter
+- id: conditionals_multi_scatter
   doc: "Scatter two steps, flatten result + pickValue"
   tool: cond-wf-013.cwl
   job: cond20.job.yaml
@@ -209,8 +187,7 @@
       "bar 1", "bar 3", "bar 5"]
   tags: [ conditional, inline_javascript, scatter, multiple, workflow ]
 
-- id: cond-1_njs
-  label: direct_optional_null_result_nojs
+- id: direct_optional_null_result_nojs
   doc: simplest conditional pattern (true), no javascript
   tool: cond-wf-001_nojs.cwl
   job: test-true.yml
@@ -218,8 +195,7 @@
     out1: "foo 23"
   tags: [ conditional, workflow ]
 
-- id: cond-2_njs
-  label: direct_optional_nonnull_result_nojs
+- id: direct_optional_nonnull_result_nojs
   doc: simplest conditional pattern (false), no javascript
   tool: cond-wf-001_nojs.cwl
   job: test-false.yml
@@ -227,16 +203,14 @@
     out1: null
   tags: [ conditional, workflow ]
 
-- id: cond-3_nojs
-  label: direct_required_nojs
+- id: direct_required_nojs
   tool: cond-wf-002_nojs.cwl
   job: val.1.job.yaml
   output:
     out1: null
   tags: [ conditional, workflow ]
 
-- id: cond-4_nojs
-  label: pass_through_required_false_when_nojs
+- id: pass_through_required_false_when_nojs
   doc: "Pass through pattern with pickValue: first_non_null; 'when' is false'; no javascript"
   tool: cond-wf-003_nojs.cwl
   job: test-false.yml
@@ -244,8 +218,7 @@
     out1: "Direct"
   tags: [ conditional, multiple_input, workflow ]
 
-- id: cond-5_nojs
-  label: pass_through_required_true_when_nojs
+- id: pass_through_required_true_when_nojs
   doc: "pass through pattern with pickvalue: first_non_null; 'when' is true'; no javascript"
   tool: cond-wf-003_nojs.cwl
   job: test-true.yml
@@ -253,8 +226,7 @@
     out1: "foo 23"
   tags: [ conditional, multiple_input, workflow ]
 
-- id: cond-6.0_nojs
-  label: first_non_null_first_non_null_nojs
+- id: first_non_null_first_non_null_nojs
   doc: "pickValue: first_non_null first item is non null; no javascript"
   tool: cond-wf-003.1_nojs.cwl
   job: first-true.yml
@@ -262,16 +234,14 @@
     out1: "foo 23"
   tags: [ conditional, multiple_input, workflow ]
 
-- id: cond-6.1_nojs
-  label: first_non_null_all_null_nojs
+- id: first_non_null_all_null_nojs
   doc: "pickValue: first_non_null needs at least one non null; no javascript"
   tool: cond-wf-003.1_nojs.cwl
   job: both-false.yml
   should_fail: True
   tags: [ conditional, multiple_input, workflow ]
 
-- id: cond-6.2_nojs
-  label: first_non_null_second_non_null_nojs
+- id: first_non_null_second_non_null_nojs
   doc: "pickValue: first_non_null second item is non null; no javascript"
   tool: cond-wf-003.1_nojs.cwl
   job: second-true.yml
@@ -279,8 +249,7 @@
     out1: "foo 23"
   tags: [ conditional, multiple_input, workflow ]
 
-- id: cond-7_nojs
-  label: pass_through_required_the_only_non_null_nojs
+- id: pass_through_required_the_only_non_null_nojs
   doc: "pickvalue: the_only_non_null will pass, only for false condition; no javascript"
   tool: cond-wf-004_nojs.cwl
   job: test-false.yml
@@ -288,24 +257,21 @@
     out1: "Direct"
   tags: [ conditional, multiple_input, workflow ]
 
-- id: cond-8_nojs
-  label: pass_through_required_fail_nojs
+- id: pass_through_required_fail_nojs
   doc: "pickValue: the_only_non_null will fail due to multiple non nulls; no javascript"
   tool: cond-wf-004_nojs.cwl
   job: test-true.yml
   should_fail: True
   tags: [ conditional, multiple_input, workflow ]
 
-- id: cond-9_nojs
-  label: all_non_null_multi_with_non_array_output_nojs
+- id: all_non_null_multi_with_non_array_output_nojs
   doc: "pickValue: all_non_null will fail validation; no javascript"
   tool: cond-wf-005_nojs.cwl
   job: test-true.yml
   should_fail: True
   tags: [ conditional, multiple_input, workflow ]
 
-- id: cond-10_nojs
-  label: the_only_non_null_single_true_nojs
+- id: the_only_non_null_single_true_nojs
   doc: "pickValue: the_only_non_null will pass for only one active node; no javascript"
   tool: cond-wf-006_nojs.cwl
   job: second-true.yml
@@ -313,16 +279,14 @@
     out1: "bar 23"
   tags: [ conditional, multiple_input, workflow ]
 
-- id: cond-11_nojs
-  label: the_only_non_null_multi_true_nojs
+- id: the_only_non_null_multi_true_nojs
   doc: "pickValue: the_only_non_null will fail with two active nodes; no javascript"
   tool: cond-wf-006_nojs.cwl
   job: both-true.yml
   should_fail: True
   tags: [ conditional, multiple_input, workflow ]
 
-- id: cond-12_nojs
-  label: all_non_null_all_null_nojs
+- id: all_non_null_all_null_nojs
   doc: "pickValue: all_non_null will produce a list, even if empty; no javascript"
   tool: cond-wf-007_nojs.cwl
   job: both-false.yml
@@ -330,8 +294,7 @@
     out1: []
   tags: [ conditional, multiple_input, workflow ]
 
-- id: cond-13_nojs
-  label: all_non_null_one_non_null_nojs
+- id: all_non_null_one_non_null_nojs
   doc: "pickValue: all_non_null will produce a list; even if single item list; no javascript"
   tool: cond-wf-007_nojs.cwl
   job: second-true.yml
@@ -339,8 +302,7 @@
     out1: ["bar 23"]
   tags: [ conditional, multiple_input, workflow ]
 
-- id: cond-14_nojs
-  label: all_non_null_multi_non_null_nojs
+- id: all_non_null_multi_non_null_nojs
   doc: "pickValue: all_non_null will produce a list; no javascript"
   tool: cond-wf-007_nojs.cwl
   job: both-true.yml
@@ -348,8 +310,7 @@
     out1: ["foo 23", "bar 23"]
   tags: [ conditional, multiple_input, workflow ]
 
-- id: cond-15_nojs
-  label: condifional_scatter_on_nonscattered_false_nojs
+- id: condifional_scatter_on_nonscattered_false_nojs
   doc: "Simple scatter: conditional on a non scattered variable (False); no javascript"
   tool: cond-wf-009_nojs.cwl
   job: test-false.yml
@@ -357,8 +318,7 @@
     out1: []
   tags: [ conditional, scatter, workflow ]
 
-- id: cond-16_nojs
-  label: condifional_scatter_on_nonscattered_true_nojs
+- id: condifional_scatter_on_nonscattered_true_nojs
   doc: "Simple scatter: conditional on a non scattered variable (True); no javascript"
   tool: cond-wf-009_nojs.cwl
   job: test-true.yml
@@ -366,8 +326,7 @@
     out1: ["foo 1", "foo 2", "foo 3", "foo 4", "foo 5", "foo 6"]
   tags: [ conditional, scatter, workflow ]
 
-- id: cond-17_nojs
-  label: scatter_on_scattered_conditional_nojs
+- id: scatter_on_scattered_conditional_nojs
   doc: "Simple scatter: Add conditional variable to scatter; no javascript"
   tool: cond-wf-010_nojs.cwl
   job: ../empty.json
@@ -375,8 +334,7 @@
     out1: ["foo 4", "foo 5", "foo 6"]
   tags: [ conditional, scatter, workflow ]
 
-- id: cond-18_nojs
-  label: conditionals_nested_cross_scatter_nojs
+- id: conditionals_nested_cross_scatter_nojs
   doc: "nested cross product scatter with condition on one dimension; no javascript"
   tool: cond-wf-011_nojs.cwl
   job: ../empty.json
@@ -396,16 +354,14 @@
       ]
   tags: [ conditional, scatter, workflow ]
 
-- id: cond-19_nojs
-  label: conditionals_non_boolean_fail_nojs
+- id: conditionals_non_boolean_fail_nojs
   doc: Non-boolean values from "when" should fail; no javascript
   tool: cond-wf-012_nojs.cwl
   job: ../empty.json
   should_fail: True
   tags: [ conditional, workflow ]
 
-- id: cond-20_nojs
-  label: conditionals_multi_scatter_nojs
+- id: conditionals_multi_scatter_nojs
   doc: "Scatter two steps, flatten result + pickValue; no javascript"
   tool: cond-wf-013_nojs.cwl
   job: ../empty.json

@@ -1,7 +1,7 @@
 - job: rename-inputs.yml
   tool: rename-inputs.cwl
   doc: Confirm CommandInputParameter expression can receive a File object
-  label: command_input_file_expression
+  id: command_input_file_expression
   output:
     output_file:
       class: File
@@ -12,7 +12,7 @@
 
 - tool: rename-outputs.cwl
   doc: Confirm CommandOutputParameter expression can receive a File object
-  label: command_output_file_expression
+  id: command_output_file_expression
   output:
     output_file:
       class: File
