@@ -3570,6 +3570,17 @@
     and capture the output correctly.
   tags: [ shell_command, command_line_tool ]
   
+- label: js-input-record
+  # The output does not have the last \n due to the -n passed to echo
+  output: {
+    "out": "JS\nwith\nrecord"
+  }
+  tool: tests/js-input-record.cwl
+  job: tests/js-input-record.json
+  doc: |
+    A test case for JS with an input record.
+  tags: [ inline_javascript, command_line_tool ]
+
 - tool: tests/schemadef_types_with_import-wf.cwl
   job: tests/schemadef_types_with_import-job.json
   output: {
