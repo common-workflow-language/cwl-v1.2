@@ -3284,3 +3284,66 @@
   doc: |
     Use of $(runtime.outdir) for outputBinding glob.
   tags: [ required, command_line_tool ]
+
+- tool: tests/record-order.cwl
+  job: tests/record-order-job.json
+  output:
+    args: [-a, -b, '1', -c, '3', -d, -e, '2', -f, '4']
+  label: record-order-with-input-bindings
+  doc: Test sorting arguments at each level (inputBinding for all levels)
+  tags: [ command_line, required ]
+
+- label: output_reference_workflow_input
+  output: {
+    "last": "me"
+  }
+  tool: tests/output_reference_workflow_input.cwl
+  doc: |
+    Direct use of Workflow level input fields in the outputs.
+  tags: [ required, workflow ]
+
+- label: stdout_chained_commands
+  output: {
+    "out": "a\nb\n"
+  }
+  tool: tests/stdout_chained_commands.cwl
+  doc: |
+    Test that chaining two echo calls causes the workflow tool to emit the output to stdout.
+    This is to confirm that the workflow tool will **not** create an expression such as
+    `echo a && echo b > out.txt`, but instead will produce the correct `echo a && echo b`,
+    and capture the output correctly.
+  tags: [ shell_command, command_line_tool ]
+  
+- label: multiple-input-feature-requirement
+  output: {
+    "hello_world_in_two_lines": [
+      "hello\n",
+      "world\n"
+    ]
+  }
+  tool: tests/multiple_input_feature_requirement.cwl
+  doc: |
+    MultipleInputFeatureRequirement on workflow outputs.
+  tags: [ workflow, multiple_input ]
+
+- label: js-input-record
+  # The output does not have the last \n due to the -n passed to echo
+  output: {
+    "out": "JS\nwith\nrecord"
+  }
+  tool: tests/js-input-record.cwl
+  job: tests/js-input-record.json
+  doc: |
+    A test case for JS with an input record.
+  tags: [ inline_javascript, command_line_tool ]
+
+- tool: tests/schemadef_types_with_import-wf.cwl
+  job: tests/schemadef_types_with_import-job.json
+  output: {
+    "out": "1970-01-01T00:00:00Z\n"
+  }
+  label: schemadef_types_with_import
+  doc: >-
+    Test SchemaDefRequirement with a workflow, with the `$import` under types.
+    It is similar to schemadef-wf, but the `$import` is different.
+  tags: [ workflow, schema_def ]
