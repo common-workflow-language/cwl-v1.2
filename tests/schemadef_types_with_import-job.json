@@ -1,0 +1,22 @@
+{
+    "readgroups_bam":
+    {
+        "bam": {
+            "class": "File",
+            "format": "edam:format_2572",
+            "location": "schemadef_types_with_import-test.bam"
+        },
+        "readgroup_meta_list":
+        [
+            {
+                "CN": "UNKNOWN",
+                "DT": "1970-01-01T00:00:00Z",
+                "ID": "SRR622461",
+                "LB": "Illumina NA12878",
+                "PI": "250",
+                "PL": "ILLUMINA",
+                "SM": "NA12878"
+            }
+        ]
+    }
+}

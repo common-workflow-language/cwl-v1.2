@@ -1,0 +1,27 @@
+- name: readgroup_meta
+  type: record
+  fields:
+    - name: CN
+      type: string
+    - name: DT
+      type: string
+    - name: ID
+      type: string
+    - name: LB
+      type: string
+    - name: PI
+      type: string
+    - name: PL
+      type: string
+    - name: SM
+      type: string
+
+- name: readgroups_bam_file
+  type: record
+  fields:
+    - name: bam
+      type: File
+    - name: readgroup_meta_list
+      type:
+        type: array
+        items: readgroup_meta

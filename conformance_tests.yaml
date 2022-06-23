@@ -647,7 +647,7 @@
     Test InitialWorkDirRequirement linking input files and capturing secondaryFiles
     on input and output. Also tests the use of a variety of parameter references
     and expressions in the secondaryFiles field.
-  tags: [ initial_work_dir, inline_javascript, command_line_tool ]
+  tags: [ initial_work_dir, inline_javascript, workflow ]
 
 - job: tests/rename-job.json
   output:
@@ -2910,6 +2910,7 @@
       }
   tags: [ resource, command_line_tool, initial_work_dir ]
   id: 225
+  label: initial_work_dir_for_null_and_arrays
 
 - job: tests/stage-array-dirs-job.yml
   tool: tests/stage-array-dirs.cwl
@@ -2932,6 +2933,7 @@
     }
   tags: [ resource, command_line_tool, initial_work_dir ]
   id: 226
+  label: initial_work_dir_for_array_dirs
 
 - job: tests/env-job3.yaml
   output:
@@ -3011,6 +3013,7 @@
   should_fail: true
   tags: [ command_line_tool ]
   id: 233
+  label: illegal_symlink
 
 - job: tests/empty.json
   tool: tests/symlink-legal.cwl
@@ -3023,6 +3026,7 @@
       "checksum": "sha1$cd28ec34f3f9425aca544b6332453708e8aaa82a"
   id: 234
   tags: [ command_line_tool ]
+  label: legal_symlink
 
 - job: tests/empty.json
   tool: tests/inp_update_wf.cwl
@@ -3032,6 +3036,7 @@
     a: 4
     b: 4
   id: 235
+  label: modify_file_content
 
 - job: tests/empty.json
   tool: tests/inpdir_update_wf.cwl
@@ -3054,6 +3059,7 @@
         ]
 }
   id: 236
+  label: modify_directory_content
 
 - doc: Test that OutputBinding.glob accepts Directories
   job: tests/empty.json
@@ -3391,6 +3397,7 @@
   doc: Test paramer reference that refers to length of non-array input
   should_fail: true
   tags: [ required, command_line_tool ]
+  label: length_for_non_array
 
 - job: tests/length_non_array_input.yml
   tool: tests/params_input_length_non_array.cwl
@@ -3400,6 +3407,7 @@
     output1: 1
     output2: 2
     output3: 3
+  label: user_defined_length_in_parameter_reference
 
 - tool: tests/cat4-from-dir.cwl
   job: tests/cat-from-dir-with-literal-file-in-subdir.yaml
@@ -3500,7 +3508,7 @@
   doc: |
     Use of expression tool to change basename of file, then correctly staging
     the file using the new name.
-  tags: [ command_line_tool, inline_javascript, expression_tool ]
+  tags: [ workflow, inline_javascript, expression_tool ]
 
 - label: runtime-outdir
   output: {
@@ -3540,3 +3548,35 @@
   label: record-order-with-input-bindings
   doc: Test sorting arguments at each level (inputBinding for all levels)
   tags: [ command_line, required ]
+
+- label: output_reference_workflow_input
+  output: {
+    "last": "me"
+  }
+  tool: tests/output_reference_workflow_input.cwl
+  doc: |
+    Direct use of Workflow level input fields in the outputs.
+  tags: [ required, workflow ]
+
+- label: stdout_chained_commands
+  output: {
+    "out": "a\nb\n"
+  }
+  tool: tests/stdout_chained_commands.cwl
+  doc: |
+    Test that chaining two echo calls causes the workflow tool to emit the output to stdout.
+    This is to confirm that the workflow tool will **not** create an expression such as
+    `echo a && echo b > out.txt`, but instead will produce the correct `echo a && echo b`,
+    and capture the output correctly.
+  tags: [ shell_command, command_line_tool ]
+  
+- tool: tests/schemadef_types_with_import-wf.cwl
+  job: tests/schemadef_types_with_import-job.json
+  output: {
+    "out": "1970-01-01T00:00:00Z\n"
+  }
+  label: schemadef_types_with_import
+  doc: >-
+    Test SchemaDefRequirement with a workflow, with the `$import` under types.
+    It is similar to schemadef-wf, but the `$import` is different.
+  tags: [ workflow, schema_def ]
