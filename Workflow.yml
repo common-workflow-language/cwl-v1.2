@@ -45,7 +45,7 @@ $graph:
       should be trivially updatable by changing `cwlVersion`, however
       CWL documents that relied on previously undefined or
       underspecified behavior may have slightly different behavior in
-      v1.2.
+      v1.2.  See note about `cwl-upgrader` in the changelog.
 
       ## Changelog
 
@@ -74,7 +74,10 @@ $graph:
 
       See also the [CWL Command Line Tool Description, v1.2 changelog](CommandLineTool.html#Changelog).
       For other changes since CWL v1.0, see the
-      [CWL Workflow Description, v1.1 changelog](https://www.commonwl.org/v1.1/Workflow.html#Changelog)
+      [CWL Workflow Description, v1.1 changelog](https://www.commonwl.org/v1.1/Workflow.html#Changelog).
+
+      [`cwl-upgrader`](https://github.com/common-workflow-language/cwl-upgrader) can
+      be used for upgrading CWL documents from version `draft-3`, `v1.0`, and `v1.1` to `v1.2`.
 
       ## Purpose
 
@@ -148,7 +151,7 @@ $graph:
     - name: inputBinding
       type: InputBinding?
       doc: |
-        Deprecated.  Preserved for v1.0 backwards compatability.  Will be removed in
+        Deprecated.  Preserved for v1.0 backwards compatibility.  Will be removed in
         CWL v2.0.  Use `WorkflowInputParameter.loadContents` instead.
       jsonldPredicate: "cwl:inputBinding"
 
@@ -175,7 +178,11 @@ $graph:
       jsonldPredicate:
         "_id": "@type"
         "_type": "@vocab"
-      type: string
+      type:
+        type: enum
+        name: ExpressionTool_class
+        symbols:
+          - cwl:ExpressionTool
     - name: expression
       type: Expression
       doc: |
@@ -218,8 +225,11 @@ $graph:
   fields:
     - name: outputSource
       doc: |
-        Specifies one or more workflow parameters that supply the value of to
-        the output parameter.
+        Specifies one or more names of an output from a workflow step (in the form 
+        `step_name/output_name` with a `/` separator`), or a workflow input name,
+        that supply their value(s) to the output parameter.
+        the output parameter.  It is valid to reference workflow level inputs
+        here.
       jsonldPredicate:
         "_id": "cwl:outputSource"
         "_type": "@id"
@@ -612,7 +622,8 @@ $graph:
         _type: "@id"
         subscope: run
       doc: |
-        Specifies the process to run.
+        Specifies the process to run.  If `run` is a string, it must be an absolute IRI
+        or a relative path from the primary document.
     - name: when
       type:
         - "null"
@@ -707,7 +718,11 @@ $graph:
       jsonldPredicate:
         "_id": "@type"
         "_type": "@vocab"
-      type: string
+      type:
+        type: enum
+        name: Workflow_class
+        symbols:
+          - cwl:Workflow
     - name: steps
       doc: |
         The individual steps that make up the workflow.  Each step is executed when all of its
@@ -729,7 +744,11 @@ $graph:
     the `run` field of [WorkflowStep](#WorkflowStep).
   fields:
     - name: "class"
-      type: "string"
+      type:
+        type: enum
+        name: SubworkflowFeatureRequirement_class
+        symbols:
+          - cwl:SubworkflowFeatureRequirement
       doc: "Always 'SubworkflowFeatureRequirement'"
       jsonldPredicate:
         "_id": "@type"
@@ -743,7 +762,11 @@ $graph:
     `scatterMethod` fields of [WorkflowStep](#WorkflowStep).
   fields:
     - name: "class"
-      type: "string"
+      type:
+        type: enum
+        name: ScatterFeatureRequirement_class
+        symbols:
+          - cwl:ScatterFeatureRequirement
       doc: "Always 'ScatterFeatureRequirement'"
       jsonldPredicate:
         "_id": "@type"
@@ -757,7 +780,11 @@ $graph:
     listed in the `source` field of [WorkflowStepInput](#WorkflowStepInput).
   fields:
     - name: "class"
-      type: "string"
+      type:
+        type: enum
+        name: MultipleInputFeatureRequirement_class
+        symbols:
+          - cwl:MultipleInputFeatureRequirement
       doc: "Always 'MultipleInputFeatureRequirement'"
       jsonldPredicate:
         "_id": "@type"
@@ -771,7 +798,11 @@ $graph:
     of [WorkflowStepInput](#WorkflowStepInput).
   fields:
     - name: "class"
-      type: "string"
+      type:
+        type: enum
+        name: StepInputExpressionRequirement_class
+        symbols:
+          - cwl:StepInputExpressionRequirement
       doc: "Always 'StepInputExpressionRequirement'"
       jsonldPredicate:
         "_id": "@type"

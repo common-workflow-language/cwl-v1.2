@@ -12,7 +12,7 @@ requirements:
 
 hints:
   - class: DockerRequirement
-    dockerPull: alpine
+    dockerPull: docker.io/alpine:latest
 
 inputs: []
 outputs:

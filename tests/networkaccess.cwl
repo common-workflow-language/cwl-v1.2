@@ -2,7 +2,7 @@ class: CommandLineTool
 cwlVersion: v1.2
 requirements:
   DockerRequirement:
-    dockerPull: python:3
+    dockerPull: docker.io/python:3-slim
   NetworkAccess:
     networkAccess: true
 inputs: []

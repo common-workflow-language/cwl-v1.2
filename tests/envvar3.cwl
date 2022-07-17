@@ -10,7 +10,7 @@ requirements:
   ShellCommandRequirement: {}
 hints:
   DockerRequirement:
-    dockerPull: debian:stretch-slim
+    dockerPull: docker.io/debian:stable-slim
 arguments:
   - shellQuote: false
     valueFrom: |
