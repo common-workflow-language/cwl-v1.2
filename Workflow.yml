@@ -441,7 +441,7 @@ $graph:
         this input parameter.
 
         If `valueFrom` is a parameter reference or expression, it must be
-        evaluated to yield the actual value to be assiged to the input field.
+        evaluated to yield the actual value to be assigned to the input field.
 
         The `self` value in the parameter reference or expression must be
         1. `null` if there is no `source` field
