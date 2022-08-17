@@ -1,0 +1,145 @@
+# Run with cwltest --test test-index.yaml --tool cwltool
+
+# --- workflow
+# ----- using requirements
+# ------- with default values
+- job: empty-job.yml
+  tool: wf-reqs.cwl
+  label: eager_reqs_wf_reqs_default_threads
+  doc: Test a workflow with requirements using the default values
+  output:
+    {
+      "out": "4\n"
+    }
+  tags: [ resource, workflow ]
+  id: eager-eval-reqs-hints-1
+# ------- with provided inputs
+- job: 10-cpus-job.yml
+  tool: wf-reqs.cwl
+  label: eager_reqs_wf_reqs_10_threads
+  doc: Test a workflow with requirements using 10 threads
+  output:
+    {
+      "out": "10\n"
+    }
+  tags: [ resource, workflow ]
+  id: eager-eval-reqs-hints-2
+# ----- using hints
+# ------- with default values
+- job: empty-job.yml
+  tool: wf-hints.cwl
+  label: eager_reqs_wf_hints_default_threads
+  doc: Test a workflow with hints using the default values
+  output:
+    {
+      "out": "4\n"
+    }
+  tags: [ resource, workflow ]
+  id: eager-eval-reqs-hints-3
+# ------- with provided inputs
+- job: 10-cpus-job.yml
+  tool: wf-hints.cwl
+  label: eager_reqs_wf_hints_10_threads
+  doc: Test a workflow with hints using 10 threads
+  output:
+    {
+      "out": "10\n"
+    }
+  tags: [ resource, workflow ]
+  id: eager-eval-reqs-hints-4
+
+# --- command-line tool
+# ----- using requirements
+# ------- with default values
+- job: empty-job.yml
+  tool: cmdtool-reqs.cwl
+  label: eager_reqs_cmdtool_reqs_default_threads
+  doc: Test a cmdtool with requirements using the default values
+  output:
+    {
+      "out": "4\n"
+    }
+  tags: [ resource, command_line_tool ]
+  id: eager-eval-reqs-hints-5
+# ------- with provided inputs
+- job: 10-cpus-job.yml
+  tool: cmdtool-reqs.cwl
+  label: eager_reqs_cmdtool_reqs_10_threads
+  doc: Test a cmdtool with requirements using 10 threads
+  output:
+    {
+      "out": "10\n"
+    }
+  tags: [ resource, command_line_tool ]
+  id: eager-eval-reqs-hints-6
+# ----- using hints
+# ------- with default values
+- job: empty-job.yml
+  tool: cmdtool-hints.cwl
+  label: eager_reqs_cmdtool_hints_default_threads
+  doc: Test a cmdtool with hints using the default values
+  output:
+    {
+      "out": "4\n"
+    }
+  tags: [ resource, command_line_tool ]
+  id: eager-eval-reqs-hints-7
+# ------- with provided inputs
+- job: 10-cpus-job.yml
+  tool: cmdtool-hints.cwl
+  label: eager_reqs_cmdtool_hints_10_threads
+  doc: Test a cmdtool with hints using 10 threads
+  output:
+    {
+      "out": "10\n"
+    }
+  tags: [ resource, command_line_tool ]
+  id: eager-eval-reqs-hints-8
+
+# --- expression tool
+# ----- using requirements
+# ------- with default values
+- job: empty-job.yml
+  tool: expr-reqs.cwl
+  label: eager_reqs_expr_reqs_default_threads
+  doc: Test a expr with requirements using the default values
+  output:
+    {
+      "out": 4
+    }
+  tags: [ resource, expression_tool ]
+  id: eager-eval-reqs-hints-9
+# ------- with provided inputs
+- job: 10-cpus-job.yml
+  tool: expr-reqs.cwl
+  label: eager_reqs_expr_reqs_10_threads
+  doc: Test a expr with requirements using 10 threads
+  output:
+    {
+      "out": 10
+    }
+  tags: [ resource, expression_tool ]
+  id: eager-eval-reqs-hints-10
+# ----- using hints
+# ------- with default values
+- job: empty-job.yml
+  tool: expr-hints.cwl
+  label: eager_reqs_expr_hints_default_threads
+  doc: Test a expr with hints using the default values
+  output:
+    {
+      "out": 4
+    }
+  tags: [ resource, expression_tool ]
+  id: eager-eval-reqs-hints-11
+# ------- with provided inputs
+- job: 10-cpus-job.yml
+  tool: expr-hints.cwl
+  label: eager_reqs_expr_hints_10_threads
+  doc: Test a expr with hints using 10 threads
+  output:
+    {
+      "out": 10
+    }
+  tags: [ resource, expression_tool ]
+  id: eager-eval-reqs-hints-12
