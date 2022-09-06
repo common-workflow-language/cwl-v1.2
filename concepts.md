@@ -470,7 +470,8 @@ Requirements specified in a parent Workflow are inherited by step processes
 if they are valid for that step. If the substep is a CommandLineTool
 only the `InlineJavascriptRequirement`, `SchemaDefRequirement`, `DockerRequirement`,
 `SoftwareRequirement`, `InitialWorkDirRequirement`, `EnvVarRequirement`,
-`ShellCommandRequirement`, `ResourceRequirement` are valid.
+`ShellCommandRequirement`, `ResourceRequirement`, `LoadListingRequirement`,
+`WorkReuse`, `NetworkAccess`, `InplaceUpdateRequirement`, `ToolTimeLimit` are valid.
 
 *As good practice, it is best to have process requirements be self-contained,
 such that each process can run successfully by itself.*
