@@ -175,7 +175,7 @@ absolute URI with a scheme supported by the implementation, the
 implementation may choose to accept it.
 
 If both `path` and `location` are provided on a File or Directory in
-"cwl.output.json", `path` takes precidence.
+"cwl.output.json", `path` takes precedence.
 
 If there is no "cwl.output.json", the output object must be generated
 by walking the parameters listed in `outputs` and applying output
