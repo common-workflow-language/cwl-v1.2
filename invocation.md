@@ -158,7 +158,7 @@ The exit code of the process is available to expressions in
 
 If the output directory contains a file named "cwl.output.json", that
 file must be loaded and used as the output object.  In this case, the
-output object should still be typechecked against the `outputs`
+output object should still be type-checked against the `outputs`
 section, but `outputBinding` is ignored.
 
 For Files and Directories, if the value of `path` is a relative path
