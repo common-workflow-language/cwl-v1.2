@@ -3378,3 +3378,5 @@
     Test SchemaDefRequirement with a workflow, with the `$import` under types.
     It is similar to schemadef-wf, but the `$import` is different.
   tags: [ workflow, schema_def ]
+
+- $import: tests/eager-eval-reqs-hints/test-index.yaml
