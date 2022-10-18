@@ -599,6 +599,7 @@ $graph:
     - name: valueFrom
       type:
         - "null"
+        - string (deprecated)
         - Expression (required)
       jsonldPredicate: "cwl:valueFrom"
       doc: |
