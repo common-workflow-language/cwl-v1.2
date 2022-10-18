@@ -599,21 +599,21 @@ $graph:
     - name: valueFrom
       type:
         - "null"
-        - string
-        - Expression
+        - Expression (required)
       jsonldPredicate: "cwl:valueFrom"
       doc: |
-        To use valueFrom, [StepInputExpressionRequirement](#StepInputExpressionRequirement) must
-        be specified in the workflow or workflow step requirements.
+        valueFrom is an expression which is evaluated after initial value has been determined
+        (from either inputs passed in or default).
+        If the value of valueFrom is null, default will be used.
 
-        If `valueFrom` is a constant string value, use this as the value for
-        this input parameter.
+        To use valueFrom, [StepInputExpressionRequirement](#StepInputExpressionRequirement) must
+        be specified in the workflow or workflow step requirements. 
 
         If `valueFrom` is a parameter reference or expression, it must be
         evaluated to yield the actual value to be assigned to the input field.
 
         The `self` value in the parameter reference or expression must be
-        1. `null` if there is no `source` field
+        1. `null` if there is no `source` field.
         2. the value of the parameter(s) specified in the `source` field when this
         workflow input parameter **is not** specified in this workflow step's `scatter` field.
         3. an element of the parameter specified in the `source` field when this workflow input
