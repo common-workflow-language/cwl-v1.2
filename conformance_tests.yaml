@@ -1,7 +1,6 @@
-# every "id" must be unique
-# every "label" must be unique and have no spaces
+# every "id" must be unique and have no spaces
 # every "doc" must be unique
-# "label" and "doc" should be meaningful
+# "id" and "doc" should be meaningful
 
 - job: tests/bwa-mem-job.json
   tool: tests/bwa-mem-tool.cwl
@@ -3320,11 +3319,11 @@
   job: tests/record-order-job.json
   output:
     args: [-a, -b, '1', -c, '3', -d, -e, '2', -f, '4']
-  label: record-order-with-input-bindings
+  id: record_order_with_input_bindings
   doc: Test sorting arguments at each level (inputBinding for all levels)
   tags: [ command_line, required ]
 
-- label: output_reference_workflow_input
+- id: output_reference_workflow_input
   output: {
     "last": "me"
   }
@@ -3333,7 +3332,7 @@
     Direct use of Workflow level input fields in the outputs.
   tags: [ required, workflow ]
 
-- label: stdout_chained_commands
+- id: stdout_chained_commands
   output: {
     "out": "a\nb\n"
   }
@@ -3345,7 +3344,7 @@
     and capture the output correctly.
   tags: [ shell_command, command_line_tool ]
 
-- label: multiple-input-feature-requirement
+- id: multiple-input-feature-requirement
   output: {
     "hello_world_in_two_lines": [
       "hello\n",
@@ -3357,7 +3356,7 @@
     MultipleInputFeatureRequirement on workflow outputs.
   tags: [ workflow, multiple_input ]
 
-- label: js-input-record
+- id: js-input-record
   # The output does not have the last \n due to the -n passed to echo
   output: {
     "out": "JS\nwith\nrecord"
@@ -3373,8 +3372,23 @@
   output: {
     "out": "1970-01-01T00:00:00Z\n"
   }
-  label: schemadef_types_with_import
+  id: schemadef_types_with_import
   doc: >-
     Test SchemaDefRequirement with a workflow, with the `$import` under types.
     It is similar to schemadef-wf, but the `$import` is different.
   tags: [ workflow, schema_def ]
+
+- id: filename_with_hash_mark
+  tool: tests/cat-tool.cwl
+  job: tests/octo.yml
+  doc: Test for correct handling of URL-quoting in filename to refer to filename containing a hash mark
+  output: {
+    "output": {
+        "basename": "output",
+        "checksum": "sha1$06b0c59808c236447d065db8f7d2a60de0a805bf",
+        "class": "File",
+        "location": "output",
+        "size": 8
+    }
+  }
+  tags: [ required, command_line_tool ]
