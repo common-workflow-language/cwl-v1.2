@@ -16,9 +16,12 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        docker:
-          - ""  # default, fails if we use docker
-          - udocker
+        # These are options to be set in CWLTOOL_OPTIONS. Note that for
+        # the user-space Docker command, the default value is "docker",
+        # but that will fail on most CI envs already running on Docker.
+        options:
+          - --debug --parallel --user-space-docker-cmd=
+          - --debug --parallel --user-space-docker-cmd=udocker
 
     runs-on: ubuntu-latest
 
@@ -33,4 +36,6 @@ jobs:
         run: pip install cwltest cwltool udocker && udocker install
       
       - name: Run tests against the reference runner
-        run: cwltest --junit-verbose --verbose --tool cwltool --test=conformance_tests.yaml -j$(nproc) -- --parallel --user-space-docker-cmd=${{ matrix.docker }} --debug
+        env:
+          CWLTOOL_OPTIONS: ${{ matrix.options }}
+        run: cwltest --junit-verbose --verbose --tool cwltool --test=conformance_tests.yaml -j$(nproc)
