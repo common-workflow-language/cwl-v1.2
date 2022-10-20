@@ -341,7 +341,7 @@ $graph:
     the same Directory.
 
     When executing a CommandLineTool, Directories must be recursively staged
-    first and have local values of `path` assigend.
+    first and have local values of `path` assigned.
 
     Directory objects in CommandLineTool output must provide either a
     `location` URI or a `path` property in the context of the tool execution
@@ -759,7 +759,11 @@ $graph:
   extends: [Parameter, InputFormat, LoadContents]
   fields:
     - name: default
-      type: Any?
+      type:
+        - "null"
+        - File
+        - Directory
+        - Any
       jsonldPredicate:
         _id: sld:default
         noLinkCheck: true
@@ -799,6 +803,14 @@ $graph:
     directly executed.
 
   fields:
+    - name: id
+      type: string?
+      jsonldPredicate: "@id"
+      doc: |
+        The unique identifier for this object.
+
+        Only useful for `$graph` at `Process` level. Should not be exposed
+        to users in graphical or terminal user interfaces.
     - name: inputs
       type:
         type: array
@@ -844,7 +856,10 @@ $graph:
         error and the implementation must not attempt to run the process,
         unless overridden at user option.
     - name: hints
-      type: Any[]?
+      type:
+        - "null"
+        - type: array
+          items: [ProcessRequirement, Any]
       doc: |
         Declares hints applying to either the runtime environment or the
         workflow engine that may be helpful in executing this process.  It is
@@ -987,10 +1002,11 @@ $graph:
         secondary file from that expression.
 
         To work on non-filename-preserving storage systems, portable
-        tool descriptions should treat `location` as an opaque
-        identifier and avoid constructing new values from `location`,
-        but should construct relative references using `basename` or
-        `nameroot` instead, or propagate `location` from defined inputs.
+        tool descriptions should treat `location` as an
+        [opaque identifier](#opaque-strings) and avoid constructing new
+        values from `location`, but should construct relative references
+        using `basename` or `nameroot` instead, or propagate `location`
+        from defined inputs.
 
         If a value in `secondaryFiles` is a string that is not an expression,
         it specifies that the following pattern should be applied to the path

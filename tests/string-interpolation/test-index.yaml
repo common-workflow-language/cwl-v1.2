@@ -1,7 +1,6 @@
 # Run with cwltest --test test-index.yaml --tool toil-cwl-runner -- --enable-dev
 
-- id: iwdr-1
-  label: continuation
+- id: continuation
   doc: Line continuations in bash scripts should behave correctly
   tool: bash-line-continuation.cwl
   output:
@@ -13,8 +12,7 @@
     }
   tags: [ inline_javascript, command_line_tool ]
 
-- id: iwdr-2
-  label: continuation_expression
+- id: continuation_expression
   doc: Line continuations in bash scripts should always behave correctly
   tool: bash-line-continuation-with-expression.cwl
   output:
@@ -26,8 +24,7 @@
     }
   tags: [ inline_javascript, command_line_tool ]
 
-- id: iwdr-3
-  label: quoting_multiple_backslashes
+- id: quoting_multiple_backslashes
   doc: Test quoting multiple backslashes
   tool: bash-dollar-quote.cwl
   output:
@@ -39,8 +36,7 @@
     }
   tags: [ inline_javascript, command_line_tool ]
 
-- id: iwdr-4
-  label: escaping_expression_no_extra_quotes
+- id: escaping_expression_no_extra_quotes
   doc: Strings returned from JS expressions should not have extra quotes around them
   tool: js-quote.cwl
   output:

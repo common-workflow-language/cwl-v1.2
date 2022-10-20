@@ -56,6 +56,13 @@ compatibility.  Portable CWL documents should not rely on deprecated behavior.
 Behavior marked as deprecated may be removed entirely from future revisions of
 the CWL specification.
 
+## Glossary
+
+<a name="opaque-strings"></a>**Opaque strings**: Opaque strings
+(or opaque identifiers, opaque values) are nonsensical values that are
+swapped out with a real value later in the evaluation process. Workflow
+and tool expressions **should not** rely on it nor try to parse it.
+
 # Data model
 
 ## Data concepts
@@ -463,7 +470,8 @@ Requirements specified in a parent Workflow are inherited by step processes
 if they are valid for that step. If the substep is a CommandLineTool
 only the `InlineJavascriptRequirement`, `SchemaDefRequirement`, `DockerRequirement`,
 `SoftwareRequirement`, `InitialWorkDirRequirement`, `EnvVarRequirement`,
-`ShellCommandRequirement`, `ResourceRequirement` are valid.
+`ShellCommandRequirement`, `ResourceRequirement`, `LoadListingRequirement`,
+`WorkReuse`, `NetworkAccess`, `InplaceUpdateRequirement`, `ToolTimeLimit` are valid.
 
 *As good practice, it is best to have process requirements be self-contained,
 such that each process can run successfully by itself.*
@@ -538,11 +546,11 @@ be provided:
     must be 'null'.
   * `runtime`: An object containing configuration details.  Specific to the
     process type.  An implementation may provide
-    opaque strings for any or all fields of `runtime`.  These must be
-    filled in by the platform after processing the Tool but before actual
-    execution.  Parameter references and expressions may only use the
-    literal string value of the field and must not perform computation on
-    the contents, except where noted otherwise.
+    [opaque strings](#opaque-strings) for any or all fields of `runtime`.
+    These must be filled in by the platform after processing the Tool but
+    before actual execution.  Parameter references and expressions may only
+    use the literal string value of the field and must not perform computation
+    on the contents, except where noted otherwise.
 
 If the value of a field has no leading or trailing non-whitespace
 characters around a parameter reference, the effective value of the field

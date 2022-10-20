@@ -225,12 +225,15 @@ $graph:
   fields:
     - name: outputSource
       doc: |
-        Specifies one or more workflow parameters that supply the value of to
-        the output parameter.
+        Specifies one or more names of an output from a workflow step (in the form
+        `step_name/output_name` with a `/` separator`), or a workflow input name,
+        that supply their value(s) to the output parameter.
+        the output parameter.  It is valid to reference workflow level inputs
+        here.
       jsonldPredicate:
         "_id": "cwl:outputSource"
         "_type": "@id"
-        refScope: 0
+        refScope: 1
       type:
         - string?
         - string[]?
@@ -416,7 +419,7 @@ $graph:
 
   fields:
     - name: default
-      type: ["null", Any]
+      type: ["null", File, Directory, Any]
       doc: |
         The default value for this parameter to use if either there is no
         `source` field, or the value produced by the `source` is `null`.  The
@@ -438,7 +441,7 @@ $graph:
         this input parameter.
 
         If `valueFrom` is a parameter reference or expression, it must be
-        evaluated to yield the actual value to be assiged to the input field.
+        evaluated to yield the actual value to be assigned to the input field.
 
         The `self` value in the parameter reference or expression must be
         1. `null` if there is no `source` field
