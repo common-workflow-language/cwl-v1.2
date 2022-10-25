@@ -3378,3 +3378,9 @@
     Test SchemaDefRequirement with a workflow, with the `$import` under types.
     It is similar to schemadef-wf, but the `$import` is different.
   tags: [ workflow, schema_def ]
+
+- tool: tests/optional_record.cwl
+  job: tests/optional-record.yaml 
+  doc: Test where a record describes one of the inputs and the input itself(optional) but if it is present then all fields of the record must be provided.
+  tags: [ command_line_tool ]
+  
