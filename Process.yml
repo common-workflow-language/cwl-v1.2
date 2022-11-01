@@ -82,7 +82,7 @@ $graph:
     If no `location` or `path` is specified, a file object must specify
     `contents` with the UTF-8 text content of the file.  This is a "file
     literal".  File literals do not correspond to external resources, but are
-    created on disk with `contents` with when needed for a executing a tool.
+    created on disk with `contents` with when needed for an executing a tool.
     Where appropriate, expressions can return file literals to define new files
     on a runtime.  The maximum size of `contents` is 64 kilobytes.
 
@@ -168,7 +168,7 @@ $graph:
         executed.  This field must be set by the implementation.  The final
         path component must match the value of `basename`.  This field
         must not be used in any other context.  The command line tool being
-        executed must be able to to access the file at `path` using the POSIX
+        executed must be able to access the file at `path` using the POSIX
         `open(2)` syscall.
 
         As a special case, if the `path` field is provided but the `location`
@@ -216,7 +216,7 @@ $graph:
       doc: |
         The basename root such that `nameroot + nameext == basename`, and
         `nameext` is empty or begins with a period and contains at most one
-        period.  For the purposess of path splitting leading periods on the
+        period.  For the purposes of path splitting leading periods on the
         basename are ignored; a basename of `.cshrc` will have a nameroot of
         `.cshrc`.
 
@@ -235,7 +235,7 @@ $graph:
     - name: checksum
       type: string?
       doc: |
-        Optional hash code for validating file integrity.  Currently must be in the form
+        Optional hash code for validating file integrity.  Currently, must be in the form
         "sha1$ + hexadecimal string" using the SHA-1 algorithm.
     - name: size
       type: long?
@@ -263,7 +263,7 @@ $graph:
         identity: true
       doc: |
         The format of the file: this must be an IRI of a concept node that
-        represents the file format, preferrably defined within an ontology.
+        represents the file format, preferably defined within an ontology.
         If no ontology is available, file formats may be tested by exact match.
 
         Reasoning about format compatability must be done by checking that an
@@ -286,7 +286,7 @@ $graph:
         `location` field.  When the file is staged as input to CommandLineTool,
         the value of `contents` must be written to a file.
 
-        If `contents` is set as a result of an Javascript expression,
+        If `contents` is set as a result of a Javascript expression,
         an `entry` in `InitialWorkDirRequirement`, or read in from
         `cwl.output.json`, there is no specified upper limit on the
         size of `contents`.  Implementations may have practical limits
@@ -338,7 +338,7 @@ $graph:
     the same Directory.
 
     When executing a CommandLineTool, Directories must be recursively staged
-    first and have local values of `path` assigend.
+    first and have local values of `path` assigned.
 
     Directory objects in CommandLineTool output must provide either a
     `location` URI or a `path` property in the context of the tool execution
@@ -389,7 +389,7 @@ $graph:
         The local path where the Directory is made available prior to executing a
         CommandLineTool.  This must be set by the implementation.  This field
         must not be used in any other context.  The command line tool being
-        executed must be able to to access the directory at `path` using the POSIX
+        executed must be able to access the directory at `path` using the POSIX
         `opendir(2)` syscall.
 
         If the `path` contains [POSIX shell metacharacters](http://pubs.opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html#tag_18_02)
@@ -587,7 +587,7 @@ $graph:
 
         This must be one or more IRIs of concept nodes
         that represents file formats which are allowed as input to this
-        parameter, preferrably defined within an ontology.  If no ontology is
+        parameter, preferably defined within an ontology.  If no ontology is
         available, file formats may be tested by exact match.
 
 
@@ -869,7 +869,7 @@ $graph:
         CommandLineTool, Workflow, or ExpressionTool.
 
         If provided, then this must be an IRI of a concept node that
-        represents the type of operation, preferrably defined within an ontology.
+        represents the type of operation, preferably defined within an ontology.
 
         For example, in the domain of bioinformatics, one can use an IRI from
         the EDAM Ontology's [Operation concept nodes](http://edamontology.org/operation_0004),
@@ -884,7 +884,7 @@ $graph:
   doc: |
     Indicates that the workflow platform must support inline Javascript expressions.
     If this requirement is not present, the workflow platform must not perform expression
-    interpolatation.
+    interpolation.
   fields:
     - name: class
       type: string
