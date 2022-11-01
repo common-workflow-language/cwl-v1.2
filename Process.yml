@@ -70,8 +70,8 @@ $graph:
     a number of properties that provide metadata about the file.
 
     The `location` property of a File is a URI that uniquely identifies the
-    file.  Implementations must support the file:// URI scheme and may support
-    other schemes such as http://.  The value of `location` may also be a
+    file.  Implementations must support the `file://` URI scheme and may support
+    other schemes such as `http://` and `https://`.  The value of `location` may also be a
     relative reference, in which case it must be resolved relative to the URI
     of the document it appears in.  Alternately to `location`, implementations
     must also accept the `path` property on File, which must be a filesystem
@@ -238,8 +238,11 @@ $graph:
         Optional hash code for validating file integrity.  Currently, must be in the form
         "sha1$ + hexadecimal string" using the SHA-1 algorithm.
     - name: size
-      type: long?
-      doc: Optional file size
+      type:
+        - "null"
+        - int
+        - long
+      doc: Optional file size (in bytes)
     - name: "secondaryFiles"
       type:
         - "null"
@@ -266,15 +269,15 @@ $graph:
         represents the file format, preferably defined within an ontology.
         If no ontology is available, file formats may be tested by exact match.
 
-        Reasoning about format compatability must be done by checking that an
+        Reasoning about format compatibility must be done by checking that an
         input file format is the same, `owl:equivalentClass` or
         `rdfs:subClassOf` the format required by the input parameter.
         `owl:equivalentClass` is transitive with `rdfs:subClassOf`, e.g. if
         `<B> owl:equivalentClass <C>` and `<B> owl:subclassOf <A>` then infer
         `<C> owl:subclassOf <A>`.
 
-        File format ontologies may be provided in the "$schema" metadata at the
-        root of the document.  If no ontologies are specified in `$schema`, the
+        File format ontologies may be provided in the "$schemas" metadata at the
+        root of the document.  If no ontologies are specified in `$schemas`, the
         runtime may perform exact file format matches.
     - name: contents
       type: string?
@@ -558,6 +561,7 @@ $graph:
 
     streamable:
       type: boolean?
+      default: false
       doc: |
         Only valid when `type: File` or is an array of `items: File`.
 
@@ -640,7 +644,7 @@ $graph:
       jsonldPredicate: "cwl:loadContents"
       doc: |
         Use of `loadContents` in `InputBinding` is deprecated.
-        Preserved for v1.0 backwards compatability.  Will be removed in
+        Preserved for v1.0 backwards compatibility.  Will be removed in
         CWL v2.0.  Use `InputParameter.loadContents` instead.
 
 - name: IOSchema
@@ -755,7 +759,11 @@ $graph:
   extends: [Parameter, InputFormat, LoadContents]
   fields:
     - name: default
-      type: Any?
+      type:
+        - "null"
+        - File
+        - Directory
+        - Any
       jsonldPredicate:
         _id: sld:default
         noLinkCheck: true
@@ -795,6 +803,14 @@ $graph:
     directly executed.
 
   fields:
+    - name: id
+      type: string?
+      jsonldPredicate: "@id"
+      doc: |
+        The unique identifier for this object.
+
+        Only useful for `$graph` at `Process` level. Should not be exposed
+        to users in graphical or terminal user interfaces.
     - name: inputs
       type:
         type: array
@@ -840,7 +856,10 @@ $graph:
         error and the implementation must not attempt to run the process,
         unless overridden at user option.
     - name: hints
-      type: Any[]?
+      type:
+        - "null"
+        - type: array
+          items: [ProcessRequirement, Any]
       doc: |
         Declares hints applying to either the runtime environment or the
         workflow engine that may be helpful in executing this process.  It is
@@ -887,7 +906,11 @@ $graph:
     interpolation.
   fields:
     - name: class
-      type: string
+      type:
+        type: enum
+        name: InlineJavascriptRequirement_class
+        symbols:
+          - cwl:InlineJavascriptRequirement
       doc: "Always 'InlineJavascriptRequirement'"
       jsonldPredicate:
         "_id": "@type"
@@ -910,7 +933,7 @@ $graph:
   doc: |
     This field consists of an array of type definitions which must be used when
     interpreting the `inputs` and `outputs` fields.  When a `type` field
-    contain a IRI, the implementation must check if the type is defined in
+    contains a IRI, the implementation must check if the type is defined in
     `schemaDefs` and use that definition.  If the type is not found in
     `schemaDefs`, it is an error.  The entries in `schemaDefs` must be
     processed in the order listed such that later schema definitions may refer
@@ -923,7 +946,11 @@ $graph:
 
   fields:
     - name: class
-      type: string
+      type:
+        type: enum
+        name: SchemaDefRequirement_class
+        symbols:
+          - cwl:SchemaDefRequirement
       doc: "Always 'SchemaDefRequirement'"
       jsonldPredicate:
         "_id": "@type"
@@ -957,7 +984,7 @@ $graph:
 
         The expression must return either: a filename string relative
         to the path to the primary File, a File or Directory object
-        (`class: File` or 'class: Directory`) with either `location`
+        (`class: File` or `class: Directory`) with either `location`
         (for inputs) or `path` (for outputs) and `basename` fields
         set, or an array consisting of strings or File or Directory
         objects as previously described.
@@ -975,10 +1002,11 @@ $graph:
         secondary file from that expression.
 
         To work on non-filename-preserving storage systems, portable
-        tool descriptions should treat `location` as an opaque
-        identifier and avoid constructing new values from `location`,
-        but should construct relative references using `basename` or
-        `nameroot` instead, or propagate `location` from defined inputs.
+        tool descriptions should treat `location` as an
+        [opaque identifier](#opaque-strings) and avoid constructing new
+        values from `location`, but should construct relative references
+        using `basename` or `nameroot` instead, or propagate `location`
+        from defined inputs.
 
         If a value in `secondaryFiles` is a string that is not an expression,
         it specifies that the following pattern should be applied to the path
@@ -1021,7 +1049,11 @@ $graph:
     a Directory object for use by expressions.
   fields:
     class:
-      type: string
+      type:
+        type: enum
+        name: LoadListingRequirement_class
+        symbols:
+          - cwl:LoadListingRequirement
       doc: "Always 'LoadListingRequirement'"
       jsonldPredicate:
         "_id": "@type"
