@@ -82,7 +82,7 @@ $graph:
     If no `location` or `path` is specified, a file object must specify
     `contents` with the UTF-8 text content of the file.  This is a "file
     literal".  File literals do not correspond to external resources, but are
-    created on disk with `contents` with when needed for an executing a tool.
+    created on disk with `contents` with when needed for executing a tool.
     Where appropriate, expressions can return file literals to define new files
     on a runtime.  The maximum size of `contents` is 64 kilobytes.
 
