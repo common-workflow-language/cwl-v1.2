@@ -70,7 +70,7 @@ For compatibility, files may be written to the **system temporary directory**
 which must be located at `/tmp`.  Because the system temporary directory may be
 shared with other processes on the system, files placed in the system temporary
 directory are not guaranteed to be deleted automatically.  A tool
-must not use the system temporary directory as a backchannel communication with
+must not use the system temporary directory as a back-channel communication with
 other tools.  It is valid for the system temporary directory to be the same as
 the designated temporary directory.
 
@@ -98,7 +98,7 @@ systems.
 An implementation may forbid the tool from directly accessing network
 resources.  Correct tools must not assume any network access unless they have
 the 'networkAccess' field of a ['NetworkAccess'](#NetworkAccess) requirement set
-to `true` but even then this does not imply a publically routable IP address or
+to `true` but even then this does not imply a publicly routable IP address or
 the ability to accept inbound connections.
 
 The `runtime` section available in [parameter references](#Parameter_references)

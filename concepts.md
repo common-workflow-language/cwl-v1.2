@@ -347,7 +347,7 @@ subworkflow steps, and so on.  Embedded process objects may optionally
 include `id` fields.
 
 A "$graph" document does not have a process object at the root.
-Instead there is a [`$graph`](SchemaSalad.html#Document_graph) field
+Instead, there is a [`$graph`](SchemaSalad.html#Document_graph) field
 which consists of a list of process objects.  Each process object must
 have an `id` field.  Workflow `run` fields cross-reference other
 processes in the document `$graph` using the `id` of the process
