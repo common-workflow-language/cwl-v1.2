@@ -168,7 +168,7 @@ $graph:
         executed.  This field must be set by the implementation.  The final
         path component must match the value of `basename`.  This field
         must not be used in any other context.  The command line tool being
-        executed must be able to to access the file at `path` using the POSIX
+        executed must be able to access the file at `path` using the POSIX
         `open(2)` syscall.
 
         As a special case, if the `path` field is provided but the `location`
@@ -216,7 +216,7 @@ $graph:
       doc: |
         The basename root such that `nameroot + nameext == basename`, and
         `nameext` is empty or begins with a period and contains at most one
-        period.  For the purposess of path splitting leading periods on the
+        period.  For the purposes of path splitting leading periods on the
         basename are ignored; a basename of `.cshrc` will have a nameroot of
         `.cshrc`.
 
@@ -263,18 +263,18 @@ $graph:
         identity: true
       doc: |
         The format of the file: this must be an IRI of a concept node that
-        represents the file format, preferrably defined within an ontology.
+        represents the file format, preferably defined within an ontology.
         If no ontology is available, file formats may be tested by exact match.
 
-        Reasoning about format compatability must be done by checking that an
+        Reasoning about format compatibility must be done by checking that an
         input file format is the same, `owl:equivalentClass` or
         `rdfs:subClassOf` the format required by the input parameter.
         `owl:equivalentClass` is transitive with `rdfs:subClassOf`, e.g. if
         `<B> owl:equivalentClass <C>` and `<B> owl:subclassOf <A>` then infer
         `<C> owl:subclassOf <A>`.
 
-        File format ontologies may be provided in the "$schema" metadata at the
-        root of the document.  If no ontologies are specified in `$schema`, the
+        File format ontologies may be provided in the "$schemas" metadata at the
+        root of the document.  If no ontologies are specified in `$schemas`, the
         runtime may perform exact file format matches.
     - name: contents
       type: string?
@@ -338,7 +338,7 @@ $graph:
     the same Directory.
 
     When executing a CommandLineTool, Directories must be recursively staged
-    first and have local values of `path` assigend.
+    first and have local values of `path` assigned.
 
     Directory objects in CommandLineTool output must provide either a
     `location` URI or a `path` property in the context of the tool execution
@@ -389,7 +389,7 @@ $graph:
         The local path where the Directory is made available prior to executing a
         CommandLineTool.  This must be set by the implementation.  This field
         must not be used in any other context.  The command line tool being
-        executed must be able to to access the directory at `path` using the POSIX
+        executed must be able to access the directory at `path` using the POSIX
         `opendir(2)` syscall.
 
         If the `path` contains [POSIX shell metacharacters](http://pubs.opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html#tag_18_02)
@@ -587,7 +587,7 @@ $graph:
 
         This must be one or more IRIs of concept nodes
         that represents file formats which are allowed as input to this
-        parameter, preferrably defined within an ontology.  If no ontology is
+        parameter, preferably defined within an ontology.  If no ontology is
         available, file formats may be tested by exact match.
 
 
@@ -640,7 +640,7 @@ $graph:
       jsonldPredicate: "cwl:loadContents"
       doc: |
         Use of `loadContents` in `InputBinding` is deprecated.
-        Preserved for v1.0 backwards compatability.  Will be removed in
+        Preserved for v1.0 backwards compatibility.  Will be removed in
         CWL v2.0.  Use `InputParameter.loadContents` instead.
 
 - name: IOSchema
@@ -869,7 +869,7 @@ $graph:
         CommandLineTool, Workflow, or ExpressionTool.
 
         If provided, then this must be an IRI of a concept node that
-        represents the type of operation, preferrably defined within an ontology.
+        represents the type of operation, preferably defined within an ontology.
 
         For example, in the domain of bioinformatics, one can use an IRI from
         the EDAM Ontology's [Operation concept nodes](http://edamontology.org/operation_0004),
@@ -884,7 +884,7 @@ $graph:
   doc: |
     Indicates that the workflow platform must support inline Javascript expressions.
     If this requirement is not present, the workflow platform must not perform expression
-    interpolatation.
+    interpolation.
   fields:
     - name: class
       type: string

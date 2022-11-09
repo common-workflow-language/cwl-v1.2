@@ -13,7 +13,7 @@ Contributors to v1.2:
 
 Incorporates the work of past authors and contributors to [CWL v1.0](https://www.commonwl.org/v1.0/Workflow.html) and [CWL v1.1](https://www.commonwl.org/v1.1/Workflow.html).
 
-This specification was [approved on 2020-08-07](https://github.com/common-workflow-language/cwl-v1.2/pull/47) by the CWL leadership team consisting of:
+This standard was [approved on 2020-08-07](https://github.com/common-workflow-language/cwl-v1.2/pull/47) by the CWL leadership team consisting of:
 
 * Peter Amstutz, Curii Inc. / Arvados; https://orcid.org/0000-0003-3566-7705
 * John Chilton, Pennsylvania State University / Galaxy Project; https://orcid.org/0000-0002-6794-0756
@@ -22,3 +22,5 @@ This specification was [approved on 2020-08-07](https://github.com/common-workfl
 * Jeff Gentry, Foundation Medicine; https://orcid.org/0000-0001-5351-8442
 * Hervé Ménager, Institut Pasteur; https://orcid.org/0000-0002-7552-1009
 * Stian Soiland-Reyes, University of Manchester; https://orcid.org/0000-0001-9842-9718
+
+Publisher: [Common Workflow Language project](https://www.commonwl.org), a member project of [Software Freedom Conservancy](https://sfconservancy.org/)

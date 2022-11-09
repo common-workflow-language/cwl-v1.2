@@ -247,7 +247,7 @@ it creates an in-congruence with the existing `linkMerge` operator. Also, during
 a) the `linkMerge` operator would operate first and
 b) `pickValue` would not recurse into the lists
 
-This makes this proposed syntax mis-leading, since it suggests that `first_non_null` operates before
+This makes this proposed syntax misleading, since it suggests that `first_non_null` operates before
 `linkMerge`.
 
 For these reason it was decided to have the `pickValue` operator sit at the same level as `linkMerge`
@@ -317,7 +317,7 @@ workflow developer. On the other hand there may be applications where
 having to explicitly think about the condition for each case without having
 recourse to an automatic fallback can remove sources of bugs.
 
-In programing languages `if-else` constructs utilize the concept of a code block
+In programming languages `if-else` constructs utilize the concept of a code block
 and the two halves of the `if-else` or the clauses of a `switch` form a collection
 of function invocations or commands that are grouped together.
 
