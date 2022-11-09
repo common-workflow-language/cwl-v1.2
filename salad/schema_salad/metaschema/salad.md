@@ -72,7 +72,7 @@ documentation.
 
 ## Introduction to v1.1
 
-This is the third version of of the Schema Salad specification.  It is
+This is the third version of the Schema Salad specification.  It is
 developed concurrently with v1.1 of the Common Workflow Language for use in
 specifying the Common Workflow Language, however Schema Salad is intended to be
 useful to a broader audience.  Compared to the v1.0 schema salad
