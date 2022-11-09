@@ -16,12 +16,10 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        # These are options to be set in CWLTOOL_OPTIONS. Note that for
-        # the user-space Docker command, the default value is "docker",
-        # but that will fail on most CI envs already running on Docker.
+        # These are sets of options to be added via CWLTOOL_OPTIONS
         options:
-          - --debug --parallel --user-space-docker-cmd=
-          - --debug --parallel --user-space-docker-cmd=udocker
+          - ""
+          - --user-space-docker-cmd=udocker
 
     runs-on: ubuntu-latest
 
@@ -31,11 +29,22 @@ jobs:
       - uses: actions/setup-python@v2
         with:
           python-version: '3.9.x'
-      
+
+      - name: hash the container names
+        id: containers
+        run: |
+          echo  "::set-output name=hash::$(git grep dockerPull -- tests | awk '{ print $NF}' | sort -u | md5sum | awk '{print $1}')"
+        shell: bash
+
+      - uses: actions/cache@v3
+        with:
+          path: .udocker
+          key: ${{ steps.containers.outputs.hash }}
+
       - name: Setup prerequirements
         run: pip install cwltest cwltool udocker && udocker install
       
       - name: Run tests against the reference runner
         env:
           CWLTOOL_OPTIONS: ${{ matrix.options }}
-        run: cwltest --junit-verbose --verbose --tool cwltool --test=conformance_tests.yaml -j$(nproc)
+        run: cwltest --junit-verbose --verbose --tool cwltool --test=conformance_tests.yaml -j$(nproc) -- --debug --parallel --relax-path-checks
