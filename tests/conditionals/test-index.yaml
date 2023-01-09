@@ -418,7 +418,7 @@
   tags: [ conditional, scatter, multiple, workflow ]
 
 
-- id: cond-with-defaults-1
+- label: cond-with-defaults-1
   doc: "Default inputs, choose step to run based on what was provided, first case"
   tool: cond-with-defaults.cwl
   job: cond-job.yaml
@@ -441,7 +441,7 @@
     ]
   tags: [ conditional, scatter, multiple, workflow ]
 
-- id: cond-with-defaults-2
+- label: cond-with-defaults-2
   doc: "Default inputs, choose step to run based on what was provided, second case"
   tool: cond-with-defaults.cwl
   job: cond-job2.yaml
