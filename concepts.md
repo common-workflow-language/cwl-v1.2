@@ -347,7 +347,7 @@ subworkflow steps, and so on.  Embedded process objects may optionally
 include `id` fields.
 
 A "$graph" document does not have a process object at the root.
-Instead there is a [`$graph`](SchemaSalad.html#Document_graph) field
+Instead, there is a [`$graph`](SchemaSalad.html#Document_graph) field
 which consists of a list of process objects.  Each process object must
 have an `id` field.  Workflow `run` fields cross-reference other
 processes in the document `$graph` using the `id` of the process
@@ -499,21 +499,45 @@ references use the following subset of
 syntax, but they are designed to not require a Javascript engine for evaluation.
 
 In the following [BNF grammar](https://en.wikipedia.org/wiki/Backus%E2%80%93Naur_Form),
-character classes and grammar rules are denoted in '{}', '-' denotes
-exclusion from a character class, '(())' denotes grouping, '|' denotes
-alternates, trailing '*' denotes zero or more repeats, '+' denote one
+character classes and grammar rules are denoted in `{}`, `-` denotes
+exclusion from a character class, `(())` denotes grouping, `|` denotes
+alternates, trailing `*` denotes zero or more repeats, `+` denotes one
 or more repeats, and all other characters are literal values.
 
-<p>
+<div>
 <table class="table">
-<tr><td>symbol::             </td><td>{Unicode alphanumeric}+</td></tr>
-<tr><td>singleq::            </td><td>[' (( {character - { | \ ' \} } ))* ']</td></tr>
-<tr><td>doubleq::            </td><td>[" (( {character - { | \ " \} } ))* "]</td></tr>
-<tr><td>index::              </td><td>[ {decimal digit}+ ]</td></tr>
-<tr><td>segment::            </td><td>. {symbol} | {singleq} | {doubleq} | {index}</td></tr>
-<tr><td>parameter reference::</td><td>$( {symbol} {segment}*)</td></tr>
+<tr>
+    <td><code>symbol</code></td>
+    <td><code>::=</code></td>
+    <td><code>{Unicode alphanumeric}+</code></td>
+</tr>
+<tr>
+    <td><code>singleq</code></td>
+    <td><code>::=</code></td>
+    <td><code>[' (( {character - { | \ ' \} } ))* ']</code></td>
+</tr>
+<tr>
+    <td><code>doubleq</code></td>
+    <td><code>::=</code></td>
+    <td><code>[" (( {character - { | \ " \} } ))* "]</code></td>
+</tr>
+<tr>
+    <td><code>index</code></td>
+    <td><code>::=</code></td>
+    <td><code>[ {decimal digit}+ ]</code></td>
+</tr>
+<tr>
+    <td><code>segment</code></td>
+    <td><code>::=</code></td>
+    <td><code>. {symbol} | {singleq} | {doubleq} | {index}</code></td>
+</tr>
+<tr>
+    <td><code>parameter reference</code></td>
+    <td><code>::=</code></td>
+    <td><code>( {symbol} {segment}*)</code></td>
+</tr>
 </table>
-</p>
+</div>
 
 Use the following algorithm to resolve a parameter reference:
 

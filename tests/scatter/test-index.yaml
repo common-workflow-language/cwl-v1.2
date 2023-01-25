@@ -1,6 +1,5 @@
 - job: scatter-job.yml
-  id: scatter-1
-  label: simple-simple-scatter
+  id: simple_simple_scatter
   tool: simple-simple-scatter.cwl
   output:
     "result": [
@@ -13,8 +12,7 @@
   tags: [ workflow, subworkflow, scatter, inline_javascript, expression_tool ]
 
 - job: scatter2-job.yml
-  id: scatter-2
-  label: dotproduct-simple-scatter
+  id: dotproduct_simple_scatter
   tool: dotproduct-simple-scatter.cwl
   output:
     "result": [
@@ -27,8 +25,7 @@
   tags: [ workflow, subworkflow, scatter, inline_javascript, expression_tool ]
 
 - job: scatter3-job.yml
-  id: scatter-3
-  label: simple-dotproduct-scatter
+  id: simple_dotproduct_scatter
   tool: simple-dotproduct-scatter.cwl
   output:
     "result": [
@@ -41,8 +38,7 @@
   tags: [ workflow, subworkflow, scatter, inline_javascript, expression_tool ]
 
 - job: scatter4-job.yml
-  id: scatter-4
-  label: dotproduct-dotproduct-scatter
+  id: dotproduct_dotproduct_scatter
   tool: dotproduct-dotproduct-scatter.cwl
   output:
     "result": [
@@ -55,8 +51,7 @@
   tags: [ workflow, subworkflow, scatter, inline_javascript, expression_tool ]
 
 - job: scatter2-job.yml
-  id: scatter-5
-  label: flat-crossproduct-simple-scatter
+  id: flat_crossproduct_simple_scatter
   tool: flat-crossproduct-simple-scatter.cwl
   output:
     "result": [
@@ -81,8 +76,7 @@
   tags: [ workflow, subworkflow, scatter, inline_javascript, expression_tool ]
 
 - job: scatter3-job.yml
-  id: scatter-6
-  label: simple-flat-crossproduct-scatter
+  id: simple_flat_crossproduct_scatter
   tool: simple-flat-crossproduct-scatter.cwl
   output:
     "result": [
@@ -95,8 +89,7 @@
   tags: [ workflow, subworkflow, scatter, inline_javascript, expression_tool ]
 
 - job: scatter4-job.yml
-  id: scatter-7
-  label: flat-crossproduct-flat-crossproduct-scatter
+  id: flat_crossproduct_flat_crossproduct_scatter
   tool: flat-crossproduct-flat-crossproduct-scatter.cwl
   output:
     "result": [
@@ -121,8 +114,7 @@
   tags: [ workflow, subworkflow, scatter, inline_javascript, expression_tool ]
 
 - job: scatter2-job.yml
-  id: scatter-8
-  label: nested-crossproduct-simple-scatter
+  id: nested_crossproduct_simple_scatter
   tool: nested-crossproduct-simple-scatter.cwl
   output:
     "result": [
@@ -155,8 +147,7 @@
   tags: [ workflow, subworkflow, scatter, inline_javascript, expression_tool ]
 
 - job: scatter3-job.yml
-  id: scatter-9
-  label: simple-nested-crossproduct-scatter
+  id: simple_nested_crossproduct_scatter
   tool: simple-nested-crossproduct-scatter.cwl
   output:
     "result": [
@@ -189,8 +180,7 @@
   tags: [ workflow, subworkflow, scatter, inline_javascript, expression_tool ]
 
 - job: scatter4-job.yml
-  id: scatter-10
-  label: nested-crossproduct-nested-crossproduct-scatter
+  id: nested_crossproduct_nested_crossproduct_scatter
   tool: nested-crossproduct-nested-crossproduct-scatter.cwl
   output:
     "result": [

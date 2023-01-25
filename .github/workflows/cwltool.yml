@@ -26,4 +26,4 @@ jobs:
         run: pip install cwltest cwltool
       
       - name: Run tests against the reference runner
-        run: ./run_test.sh RUNNER=cwltool EXTRA=--parallel -j$(nproc)
+        run: ./run_test.sh RUNNER=cwltool "EXTRA=--parallel --relax-path-checks" -j$(nproc)
