@@ -372,7 +372,7 @@ $graph:
   extends: [Parameter, InputFormat, LoadContents]
   fields:
     - name: default
-      type: CWLObjectType
+      type: CWLObjectType?
       jsonldPredicate:
         _id: sld:default
         noLinkCheck: true
