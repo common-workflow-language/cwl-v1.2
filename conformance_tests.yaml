@@ -3392,3 +3392,51 @@
     }
   }
   tags: [ required, command_line_tool ]
+
+- id: capture_files
+  tool: tests/capture-files.cwl
+  job: tests/dir-job.yml
+  doc: Test that a type error is raised if directories are returned by glob evaluation when type is File
+  should_fail: true
+  tags: [ required, command_line_tool ]
+
+- id: capture_dirs
+  tool: tests/capture-dirs.cwl
+  job: tests/dir-job.yml
+  doc: Test that a type error is raised if files are returned by glob evaluation when type is Directory
+  should_fail: true
+  tags: [ required, command_line_tool ]
+
+- id: capture_files_and_dirs
+  tool: tests/capture-files-and-dirs.cwl
+  job: tests/dir-job.yml
+  doc: Test that both files and directories are captured by glob evaluation when type is [Directory, File]
+  output: {
+    "result": [
+      {
+        "basename": "a",
+        "checksum": "sha1$da39a3ee5e6b4b0d3255bfef95601890afd80709",
+        "class": "File",
+        "size": 0
+      },
+      {
+        "basename": "b",
+        "checksum": "sha1$da39a3ee5e6b4b0d3255bfef95601890afd80709",
+        "class": "File",
+        "size": 0
+      },
+      {
+        "basename": "c",
+        "class": "Directory",
+        "listing": [
+          {
+            "basename": "d",
+            "checksum": "sha1$da39a3ee5e6b4b0d3255bfef95601890afd80709",
+            "class": "File",
+            "size": 0
+          }
+        ]
+      }
+    ]
+  }
+  tags: [ required, command_line_tool ]
