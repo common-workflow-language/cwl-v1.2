@@ -586,7 +586,7 @@ $graph:
 
   fields:
     - name: default
-      type: CWLObjectType
+      type: CWLObjectType?
       doc: |
         The default value for this parameter to use if either there is no
         `source` field, or the value produced by the `source` is `null`.  The
@@ -981,8 +981,9 @@ $graph:
 - name: CWLInputFile
   type: map
   values:
+   - "null"
    - type: array
      items: ProcessRequirement
    - CWLObjectType
   doc: |
-    Type representing a valid CWL input file as a `map<string, CWLObjectType>`.
+    Type representing a valid CWL input file as a `map<string, union<array<ProcessRequirement>, CWLObjectType>>`.

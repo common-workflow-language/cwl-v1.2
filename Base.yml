@@ -399,7 +399,6 @@ $graph:
 - name: CWLObjectType
   type: union
   names:
-    - "null"
     - boolean
     - int
     - long
@@ -409,9 +408,14 @@ $graph:
     - File
     - Directory
     - type: array
-      items: CWLObjectType
+      items:
+        - "null"
+        - CWLObjectType
+      flatten: false
     - type: map
-      values: CWLObjectType
+      values:
+        - "null"
+        - CWLObjectType
   doc: |
     Generic type representing a valid CWL object. It is used to represent
     `default` values passed to CWL `InputParameter` and `WorkflowStepInput`
