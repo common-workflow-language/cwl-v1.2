@@ -14,7 +14,8 @@ on:
 jobs:
   test_with_cwltool:
     runs-on: ubuntu-latest
-
+    env:
+      CWLTOOL_OPTIONS: "--parallel --relax-path-checks"
     steps:
       - uses: actions/checkout@v3
 
@@ -23,7 +24,13 @@ jobs:
           python-version: '3.9.x'
       
       - name: Setup prerequirements
-        run: pip install cwltest cwltool
-      
+        run: pip install "cwltest>=2.3" pytest-xdist "cwltool>=3.1.20230213100550"
+
+      - name: Copy in cwltool-specific configuration for the cwltest pytest plugin
+        run: cp "$(python -c 'from cwltool.tests.util import get_data; print(get_data("tests/cwl-conformance/cwltool-conftest.py"))')" conftest.py
+
+      - name: Copy conformance test index to .cwltest.yaml
+        run: cp conformance_tests.yaml conformance_tests.cwltest.yaml
+
       - name: Run tests against the reference runner
-        run: ./run_test.sh RUNNER=cwltool "EXTRA=--parallel --relax-path-checks" -j$(nproc)
+        run: python -m pytest conformance_tests.cwltest.yaml -n auto -rs
