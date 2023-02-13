@@ -25,7 +25,7 @@ jobs:
           python-version: '3.8.x'
       
       - name: Setup prerequirements
-        run: pip install cwltest schema-salad[pycodegen]
+        run: pip install cwltest 'schema-salad[pycodegen]'
       
       - name: Download schema for conformance_tests.yaml
         run: curl -LO https://raw.githubusercontent.com/common-workflow-language/cwltest/main/cwltest/cwltest-schema.yml
