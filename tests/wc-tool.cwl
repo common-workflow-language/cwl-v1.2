@@ -11,7 +11,7 @@ outputs:
     type: File
     outputBinding: { glob: output }
 
-baseCommand: [wc, -l]
+baseCommand: [sed, -n, $=]
 
 stdin: $(inputs.file1.path)
 stdout: output
