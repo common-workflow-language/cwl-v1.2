@@ -445,7 +445,7 @@ a [`cwl:tool`](#Executing_CWL_documents_as_scripts) entry) or by any other means
 1. Perform any further setup required by the specific process type.
 1. Execute the process.
 1. Capture results of process execution into the output object.
-1. Validate the output object against the `outputs` schema for the process.
+1. Validate the output object against the `outputs` schema for the process (with the exception of ExpressionTool outputs, which are always considered valid).
 1. Report the output object to the process caller.
 
 ## Requirements and hints
