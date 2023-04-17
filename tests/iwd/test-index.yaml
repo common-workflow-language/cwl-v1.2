@@ -297,3 +297,24 @@
       "checksum": "sha1$57f77b36009332d236b52b4beca77301b503b27c"
       "size": 268866
   tags: [ initial_work_dir, command_line_tool ]
+
+- job: iwd-subdir-job.yml
+  id: iwd-subdir
+  tool: iwd-subdir-wf.cwl
+  doc: "Test emitting a subdirectory from initial workdir"
+  output:
+    "out": {
+        "location": "c",
+        "basename": "c",
+        "class": "Directory",
+        "listing": [
+            {
+                "location": "d",
+                "basename": "d",
+                "class": "File",
+                "checksum": "sha1$da39a3ee5e6b4b0d3255bfef95601890afd80709",
+                "size": 0
+            }
+        ]
+    }
+  tags: [ initial_work_dir, command_line_tool, workflow ]
