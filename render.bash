@@ -8,4 +8,4 @@ CURDIR=$PWD
 pushd $WORKSPACE/cwl-website ; ln -s $CURDIR v1.2 ; popd
 cp cwlsite-v1.2-only-job.yaml $WORKSPACE/cwl-website/site/
 mkdir -p render
-cwltool $@ --cache $WORKSPACE/cache --outdir $PWD/render --relax-path-checks $WORKSPACE/cwl-website/site/cwlsite.cwl $WORKSPACE/cwl-website/site/cwlsite-v1.2-only-job.yaml
+cwltool $@ --no-container --cache $WORKSPACE/cache --outdir $PWD/render --relax-path-checks $WORKSPACE/cwl-website/site/cwlsite.cwl $WORKSPACE/cwl-website/site/cwlsite-v1.2-only-job.yaml
