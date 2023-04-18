@@ -283,13 +283,13 @@ $graph:
 
 - name: InputRecordField
   type: record
-  extends: [sld:RecordField, FieldBase, InputFormat, LoadContents]
+  extends: [CWLRecordField, FieldBase, InputFormat, LoadContents]
   specialize:
-    - specializeFrom: "sld:RecordSchema"
+    - specializeFrom: CWLRecordSchema
       specializeTo: InputRecordSchema
     - specializeFrom: "sld:EnumSchema"
       specializeTo: InputEnumSchema
-    - specializeFrom: "sld:ArraySchema"
+    - specializeFrom: CWLArraySchema
       specializeTo: InputArraySchema
     - specializeFrom: "sld:PrimitiveType"
       specializeTo: CWLType
@@ -297,9 +297,9 @@ $graph:
 
 - name: InputRecordSchema
   type: record
-  extends: ["sld:RecordSchema", InputSchema]
+  extends: [CWLRecordSchema, InputSchema]
   specialize:
-    - specializeFrom: "sld:RecordField"
+    - specializeFrom: CWLRecordField
       specializeTo: InputRecordField
 
 
@@ -310,13 +310,13 @@ $graph:
 
 - name: InputArraySchema
   type: record
-  extends: ["sld:ArraySchema", InputSchema]
+  extends: [CWLArraySchema, InputSchema]
   specialize:
-    - specializeFrom: "sld:RecordSchema"
+    - specializeFrom: CWLRecordSchema
       specializeTo: InputRecordSchema
     - specializeFrom: "sld:EnumSchema"
       specializeTo: InputEnumSchema
-    - specializeFrom: "sld:ArraySchema"
+    - specializeFrom: CWLArraySchema
       specializeTo: InputArraySchema
     - specializeFrom: "sld:PrimitiveType"
       specializeTo: CWLType
@@ -324,13 +324,13 @@ $graph:
 
 - name: OutputRecordField
   type: record
-  extends: [sld:RecordField, FieldBase, OutputFormat]
+  extends: [CWLRecordField, FieldBase, OutputFormat]
   specialize:
-    - specializeFrom: "sld:RecordSchema"
+    - specializeFrom: CWLRecordSchema
       specializeTo: OutputRecordSchema
     - specializeFrom: "sld:EnumSchema"
       specializeTo: OutputEnumSchema
-    - specializeFrom: "sld:ArraySchema"
+    - specializeFrom: CWLArraySchema
       specializeTo: OutputArraySchema
     - specializeFrom: "sld:PrimitiveType"
       specializeTo: CWLType
@@ -338,10 +338,10 @@ $graph:
 
 - name: OutputRecordSchema
   type: record
-  extends: ["sld:RecordSchema", "#OutputSchema"]
+  extends: [CWLRecordSchema, "#OutputSchema"]
   docParent: "#OutputParameter"
   specialize:
-    - specializeFrom: "sld:RecordField"
+    - specializeFrom: CWLRecordField
       specializeTo: OutputRecordField
 
 
@@ -353,14 +353,14 @@ $graph:
 
 - name: OutputArraySchema
   type: record
-  extends: ["sld:ArraySchema", OutputSchema]
+  extends: [CWLArraySchema, OutputSchema]
   docParent: "#OutputParameter"
   specialize:
-    - specializeFrom: "sld:RecordSchema"
+    - specializeFrom: CWLRecordSchema
       specializeTo: OutputRecordSchema
     - specializeFrom: "sld:EnumSchema"
       specializeTo: OutputEnumSchema
-    - specializeFrom: "sld:ArraySchema"
+    - specializeFrom: CWLArraySchema
       specializeTo: OutputArraySchema
     - specializeFrom: "sld:PrimitiveType"
       specializeTo: CWLType
