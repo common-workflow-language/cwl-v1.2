@@ -54,6 +54,11 @@ cryptographic
 ctbrown
 curii
 cwl
+cwlarrayschema
+cwlinputfile
+cwlobjecttype
+cwlrecordfield
+cwlrecordschema
 cwltest
 cwltool
 cwltype
