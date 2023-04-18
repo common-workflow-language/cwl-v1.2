@@ -976,14 +976,3 @@ $graph:
         "_type": "@vocab"
 
 - {$import: Operation.yml}
-
-
-- name: CWLInputFile
-  type: map
-  values:
-   - "null"
-   - type: array
-     items: ProcessRequirement
-   - CWLObjectType
-  doc: |
-    Type representing a valid CWL input file as a `map<string, union<array<ProcessRequirement>, CWLObjectType>>`.
