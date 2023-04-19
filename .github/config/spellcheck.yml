@@ -17,5 +17,6 @@ matrix:
       ignores:
       - :matches(code, pre)
   sources:
-  - '**/*.md'
+  - '!env*/**|**/*.md'
+  - '!env*/**|!tests/**|*.yml'
   default_encoding: utf-8
