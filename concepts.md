@@ -8,8 +8,6 @@
 
 **Avro**: https://avro.apache.org/docs/1.8.1/spec.html
 
-**Uniform Resource Identifier (URI) Generic Syntax**: https://tools.ietf.org/html/rfc3986)
-
 **Internationalized Resource Identifiers (IRIs)**:
 https://tools.ietf.org/html/rfc3987
 
