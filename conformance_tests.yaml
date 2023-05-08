@@ -3168,7 +3168,7 @@
 
 - job: tests/empty.json
   tool: tests/params_broken_length_of_non_list.cwl
-  doc: Test paramer reference that refers to length of non-array input
+  doc: Test paramater reference that refers to length of non-array input
   should_fail: true
   tags: [ required, command_line_tool ]
   id: length_for_non_array
@@ -3438,5 +3438,26 @@
         ]
       }
     ]
+  }
+  tags: [ required, command_line_tool ]
+
+- id: very_big_and_very_floats
+  doc: Confirm that very big and very small numbers are represented using decimals, not scientific notation
+  tool: tests/floats_small_and_large.cwl
+  job: tests/empty.json
+  output: { "result": "0.00001 0.0000123 123000 1230000" }
+  tags: [ inline_javascript, command_line_tool ]
+
+- id: very_big_and_very_floats_nojs
+  doc: Confirm that very big and very small numbers are represented using decimals, not scientific notation
+  tool: tests/floats_small_and_large_nojs.cwl
+  job: tests/empty.json
+  output: {
+    "result": {
+        "basename": "dump",
+        "class": "File",
+        "checksum": "sha1$8a3913a553b8f29d47b99c1f4b0f6c2ee833cdc2",
+        "size": 32
+    }
   }
   tags: [ required, command_line_tool ]
