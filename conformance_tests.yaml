@@ -3168,7 +3168,7 @@
 
 - job: tests/empty.json
   tool: tests/params_broken_length_of_non_list.cwl
-  doc: Test paramater reference that refers to length of non-array input
+  doc: Test parameter reference that refers to length of non-array input
   should_fail: true
   tags: [ required, command_line_tool ]
   id: length_for_non_array

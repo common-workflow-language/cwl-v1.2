@@ -8,14 +8,18 @@ on:
 
 jobs:
   build:
-    # https://github.com/marketplace/actions/github-spellcheck-action
-    # To run locally, `pip install pyspelling`, followed by
-    # `pyspelling -c .github/config/spellcheck.yml`.
     name: Spellcheck
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - name: Codespell with annotations
+        uses: codespell-project/actions-codespell@v1.0
+        with:
+          skip: tests/EDAM.owl,tests/foaf.rdf,tests/underscore.js
       - uses: rojopolis/spellcheck-github-actions@0.30.0
         name: Spellcheck
+        # https://github.com/marketplace/actions/github-spellcheck-action
+        # To run locally, `pip install pyspelling`, followed by
+        # `pyspelling -c .github/config/spellcheck.yml`.
         with:
           config_path: .github/config/spellcheck.yml

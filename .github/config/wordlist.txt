@@ -196,7 +196,6 @@ preprocessing
 primitivetype
 processrequirement
 psu
-publically
 pvanheus
 rdf
 rdfs
