@@ -2,13 +2,14 @@
 
 Author:
 
-* Peter Amstutz <peter.amstutz@curii.com>, Arvados Project, Curii Corporation
+* Peter Amstutz <peter.amstutz@curii.com>, Curii Corporation
 
 Contributors:
 
 * The developers of Apache Avro
 * The developers of JSON-LD
 * Nebojša Tijanić <nebojsa.tijanic@sbgenomics.com>, Seven Bridges Genomics
+* Michael R. Crusoe, ELIXIR-DE
 
 # Abstract
 
@@ -72,7 +73,7 @@ documentation.
 
 ## Introduction to v1.1
 
-This is the third version of the Schema Salad specification.  It is
+This is the third version of of the Schema Salad specification.  It is
 developed concurrently with v1.1 of the Common Workflow Language for use in
 specifying the Common Workflow Language, however Schema Salad is intended to be
 useful to a broader audience.  Compared to the v1.0 schema salad
@@ -85,6 +86,13 @@ specification, the following changes have been made:
 * The `$mixin` feature has been removed from the specification, as it
   is poorly documented, not included in conformance testing,
   and not widely supported.
+
+## Introduction to v1.2
+
+This is the fourth version of the Schema Salad specification. It was created to
+ease the development of extensions to CWL v1.2. The only change is that
+inherited records can narrow the types of fields if those fields are re-specified
+with a matching jsonldPredicate.
 
 ## References to Other Specifications
 
@@ -113,7 +121,7 @@ the behavior of conforming implementations.
 
 The terminology used to describe Salad documents is defined in the Concepts
 section of the specification. The terms defined in the following list are
-used in building those definitions and in describing the actions of a
+used in building those definitions and in describing the actions of an
 Salad implementation:
 
 **may**: Conforming Salad documents and Salad implementations are permitted but
@@ -139,7 +147,7 @@ enable or disable the behavior described.
 ## Data concepts
 
 An **object** is a data structure equivalent to the "object" type in JSON,
-consisting of an unordered set of name/value pairs (referred to here as
+consisting of a unordered set of name/value pairs (referred to here as
 **fields**) and where the name is a string and the value is a string, number,
 boolean, array, or object.
 
@@ -248,8 +256,11 @@ rules:
   field.
 
   * If the value of `jsonldPredicate` is an object, and that
-  object contains the field `_type` with the value `@id`, the field is a
-  link field subject to [link validation](#Link_validation).
+  object contains the field `_type` with the value `@id`, the
+  field is a link field.  If the field `jsonldPredicate` also
+  has the field `identity` with the value `true`, the field is
+  resolved with [identifier resolution](#Identifier_resolution).
+  Otherwise it is resolved with [link resolution](#Link_resolution).
 
   * If the value of `jsonldPredicate` is an object which contains the
   field `_type` with the value `@vocab`, the field value is subject to
@@ -257,14 +268,14 @@ rules:
 
 ## Document traversal
 
-To perform document preprocessing, link validation and schema
+To perform document document preprocessing, link validation and schema
 validation, the document must be traversed starting from the fields or
 array items of the root object or array and recursively visiting each child
 item which contains an object or arrays.
 
 ## Short names
 
-The "short name" of a fully qualified identifier is the portion of
+The "short name" of an fully qualified identifier is the portion of
 the identifier following the final slash `/` of either the fragment
 identifier following `#` or the path portion, if there is no fragment.
 Some examples:
