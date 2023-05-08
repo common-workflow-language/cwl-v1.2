@@ -15,7 +15,7 @@ jobs:
       - name: Codespell with annotations
         uses: codespell-project/actions-codespell@v1.0
         with:
-          skip: tests/EDAM.owl,tests/foaf.rdf,tests/underscore.js
+          skip: EDAM.owl,foaf.rdf,underscore.js,CODE_OF_CONDUCT.md
       - uses: rojopolis/spellcheck-github-actions@0.30.0
         name: Spellcheck
         # https://github.com/marketplace/actions/github-spellcheck-action

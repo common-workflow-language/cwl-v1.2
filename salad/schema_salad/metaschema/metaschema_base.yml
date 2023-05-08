@@ -39,8 +39,9 @@ $graph:
     - "xsd:string"
   doc:
     - |
-      Salad data types are based on Avro schema declarations.  Refer to the
-      [Avro schema declaration documentation](https://avro.apache.org/docs/current/spec.html#schemas) for
+      Names of salad data types (based on Avro schema declarations).
+
+      Refer to the [Avro schema declaration documentation](https://avro.apache.org/docs/current/spec.html#schemas) for
       detailed information.
     - "null: no value"
     - "boolean: a binary value"
@@ -100,6 +101,7 @@ $graph:
       doc: "Must be `record`"
       type:
         type: enum
+        name: Record_name
         symbols:
           - "sld:record"
       jsonldPredicate:
@@ -125,6 +127,7 @@ $graph:
       doc: "Must be `enum`"
       type:
         type: enum
+        name: Enum_name
         symbols:
           - "sld:enum"
       jsonldPredicate:
@@ -132,6 +135,9 @@ $graph:
         _type: "@vocab"
         typeDSL: true
         refScope: 2
+    name:
+      type: string?
+      jsonldPredicate: "@id"
     symbols:
       type: string[]
       jsonldPredicate:
@@ -148,6 +154,7 @@ $graph:
       doc: "Must be `array`"
       type:
         type: enum
+        name: Array_name
         symbols:
           - "sld:array"
       jsonldPredicate:
@@ -173,5 +180,4 @@ $graph:
         _id: "sld:items"
         _type: "@vocab"
         refScope: 2
-        typeDSL: True
       doc: "Defines the type of the array elements."
