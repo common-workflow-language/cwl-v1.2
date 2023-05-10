@@ -517,7 +517,7 @@ $graph:
         type: File
         streamable: true
 
-    stdin: ${inputs.an_input_name.path}
+    stdin: $(inputs.an_input_name.path)
     ```
 
 - name: stdout
