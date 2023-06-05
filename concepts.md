@@ -8,8 +8,6 @@
 
 **Avro**: https://avro.apache.org/docs/1.8.1/spec.html
 
-**Uniform Resource Identifier (URI) Generic Syntax**: https://tools.ietf.org/html/rfc3986)
-
 **Internationalized Resource Identifiers (IRIs)**:
 https://tools.ietf.org/html/rfc3987
 
@@ -56,12 +54,19 @@ compatibility.  Portable CWL documents should not rely on deprecated behavior.
 Behavior marked as deprecated may be removed entirely from future revisions of
 the CWL specification.
 
+## Glossary
+
+<a name="opaque-strings"></a>**Opaque strings**: Opaque strings
+(or opaque identifiers, opaque values) are nonsensical values that are
+swapped out with a real value later in the evaluation process. Workflow
+and tool expressions **should not** rely on it nor try to parse it.
+
 # Data model
 
 ## Data concepts
 
 An **object** is a data structure equivalent to the "object" type in JSON,
-consisting of a unordered set of name/value pairs (referred to here as
+consisting of an unordered set of name/value pairs (referred to here as
 **fields**) and where the name is a string and the value is a string, number,
 boolean, array, or object.
 
@@ -95,17 +100,24 @@ preprocessing steps described in the
 An implementation may formally validate the structure of a CWL document using
 SALAD schemas located at https://github.com/common-workflow-language/cwl-v1.2/
 
+The official IANA media-type for CWL documents is [`application/cwl`](https://www.iana.org/assignments/media-types/application/cwl)
+for either JSON or YAML format. For JSON formatted CWL documents,
+[`application/cwl+json`](https://www.iana.org/assignments/media-types/application/cwl+json)
+can be used. For specifying a YAML formatted CWL document, one can use
+`application/cwl+yaml` but that is not an official IANA media-type yet; as of
+2023-04-19 the `+yaml` suffix has yet to be approved.
+
 CWL documents commonly reference other CWL documents.  Each document
 must declare the `cwlVersion` of that document.  Implementations must
 validate against the document's declared version.  Implementations
 should allow workflows to reference documents of both newer and older
 CWL versions (up to the highest version of CWL supported by that
-implementation).  Where the runtime enviroment or runtime behavior has
+implementation).  Where the runtime environment or runtime behavior has
 changed between versions, for that portion of the execution an
-implementation must provide runtime enviroment and behavior consistent
+implementation must provide runtime environment and behavior consistent
 with the document's declared version.  An implementation must not
 expose a newer feature when executing a document that specifies an
-older version that does not not include that feature.
+older version that does not include that feature.
 
 ### map
 
@@ -115,7 +127,7 @@ Note: This section is non-normative.
 
 The above syntax in the CWL specifications means there are two or more ways to write the given value.
 
-Option one is a array and is the most verbose option.
+Option one is an array and is the most verbose option.
 
 Option one generic example:
 ```
@@ -159,7 +171,7 @@ some_cwl_field:
   a_complex_type2:
     field2: foo2
     field3: bar2
-  a_complex_type3: {}  # we accept the defualt values for "field2" and "field3"
+  a_complex_type3: {}  # we accept the default values for "field2" and "field3"
 ```
 
 Option two specific example using [Workflow](Workflow.html#Workflow).[inputs](Workflow.html#WorkflowInputParameter):
@@ -191,7 +203,7 @@ hints:
         version: [ "1.0" ]
       python: {}
 ```
-`
+
 Sometimes we have a third and even more compact option denoted like this:
 > type: array&lt;ComplexType&gt; |
 > map&lt;`key_field`, `field2` | ComplexType&gt;
@@ -297,8 +309,8 @@ which the `id` field is explicitly listed in this specification.
 ## Document preprocessing
 
 An implementation must resolve [$import](SchemaSalad.html#Import) and
-[$include](SchemaSalad.html#Import) directives as described in the
-[Schema Salad specification](SchemaSalad.html).
+[$include](SchemaSalad.html#Include) directives as described in the
+[Schema Salad specification](SchemaSalad.html#Document_preprocessing).
 
 Another transformation defined in Schema salad is simplification of data type definitions.
 Type `<T>` ending with `?` should be transformed to `[<T>, "null"]`.
@@ -319,7 +331,7 @@ prefix listed in the `$namespaces` section of the document as described in the
 [Schema Salad specification](SchemaSalad.html#Explicit_context).
 
 It is recommended that concepts from schema.org are used whenever possible.
-For the `$schema` field we recommend their RDF encoding: http://schema.org/version/latest/schema.rdf
+For the `$schemas` field we recommend their RDF encoding: https://schema.org/version/latest/schemaorg-current-https.rdf
 
 Implementation extensions which modify execution semantics must be [listed in
 the `requirements` field](#Requirements_and_hints).
@@ -340,7 +352,7 @@ subworkflow steps, and so on.  Embedded process objects may optionally
 include `id` fields.
 
 A "$graph" document does not have a process object at the root.
-Instead there is a [`$graph`](SchemaSalad.html#Document_graph) field
+Instead, there is a [`$graph`](SchemaSalad.html#Document_graph) field
 which consists of a list of process objects.  Each process object must
 have an `id` field.  Workflow `run` fields cross-reference other
 processes in the document `$graph` using the `id` of the process
@@ -376,7 +388,7 @@ produces output, and then terminates.
 
 A **workflow** is a process characterized by multiple subprocess steps,
 where step outputs are connected to the inputs of downstream steps to
-form a directed acylic graph, and independent steps may run concurrently.
+form a directed acyclic graph, and independent steps may run concurrently.
 
 A **runtime environment** is the actual hardware and software environment when
 executing a command line tool.  It includes, but is not limited to, the
@@ -421,7 +433,7 @@ of [process requirements](#Requirements_and_hints).
 ## Generic execution process
 
 The generic execution sequence of a CWL process (including workflows
-and command line line tools) is as follows.  Processes are
+and command line tools) is as follows.  Processes are
 modeled as functions that consume an input object and produce an
 output object.
 
@@ -438,7 +450,7 @@ a [`cwl:tool`](#Executing_CWL_documents_as_scripts) entry) or by any other means
 1. Perform any further setup required by the specific process type.
 1. Execute the process.
 1. Capture results of process execution into the output object.
-1. Validate the output object against the `outputs` schema for the process.
+1. Validate the output object against the `outputs` schema for the process (with the exception of ExpressionTool outputs, which are always considered valid).
 1. Report the output object to the process caller.
 
 ## Requirements and hints
@@ -463,7 +475,8 @@ Requirements specified in a parent Workflow are inherited by step processes
 if they are valid for that step. If the substep is a CommandLineTool
 only the `InlineJavascriptRequirement`, `SchemaDefRequirement`, `DockerRequirement`,
 `SoftwareRequirement`, `InitialWorkDirRequirement`, `EnvVarRequirement`,
-`ShellCommandRequirement`, `ResourceRequirement` are valid.
+`ShellCommandRequirement`, `ResourceRequirement`, `LoadListingRequirement`,
+`WorkReuse`, `NetworkAccess`, `InplaceUpdateRequirement`, `ToolTimeLimit` are valid.
 
 *As good practice, it is best to have process requirements be self-contained,
 such that each process can run successfully by itself.*
@@ -491,36 +504,66 @@ references use the following subset of
 syntax, but they are designed to not require a Javascript engine for evaluation.
 
 In the following [BNF grammar](https://en.wikipedia.org/wiki/Backus%E2%80%93Naur_Form),
-character classes and grammar rules are denoted in '{}', '-' denotes
-exclusion from a character class, '(())' denotes grouping, '|' denotes
-alternates, trailing '*' denotes zero or more repeats, '+' denote one
+character classes and grammar rules are denoted in `{}`, `-` denotes
+exclusion from a character class, `(())` denotes grouping, `|` denotes
+alternates, trailing `*` denotes zero or more repeats, `+` denotes one
 or more repeats, and all other characters are literal values.
 
-<p>
+<div>
 <table class="table">
-<tr><td>symbol::             </td><td>{Unicode alphanumeric}+</td></tr>
-<tr><td>singleq::            </td><td>[' (( {character - { | \ ' \} } ))* ']</td></tr>
-<tr><td>doubleq::            </td><td>[" (( {character - { | \ " \} } ))* "]</td></tr>
-<tr><td>index::              </td><td>[ {decimal digit}+ ]</td></tr>
-<tr><td>segment::            </td><td>. {symbol} | {singleq} | {doubleq} | {index}</td></tr>
-<tr><td>parameter reference::</td><td>$( {symbol} {segment}*)</td></tr>
+<tr>
+    <td><code>symbol</code></td>
+    <td><code>::=</code></td>
+    <td><code>{Unicode alphanumeric}+</code></td>
+</tr>
+<tr>
+    <td><code>singleq</code></td>
+    <td><code>::=</code></td>
+    <td><code>[' (( {character - { | \ ' \} } ))* ']</code></td>
+</tr>
+<tr>
+    <td><code>doubleq</code></td>
+    <td><code>::=</code></td>
+    <td><code>[" (( {character - { | \ " \} } ))* "]</code></td>
+</tr>
+<tr>
+    <td><code>index</code></td>
+    <td><code>::=</code></td>
+    <td><code>[ {decimal digit}+ ]</code></td>
+</tr>
+<tr>
+    <td><code>segment</code></td>
+    <td><code>::=</code></td>
+    <td><code>. {symbol} | {singleq} | {doubleq} | {index}</code></td>
+</tr>
+<tr>
+    <td><code>parameter reference</code></td>
+    <td><code>::=</code></td>
+    <td><code>( {symbol} {segment}*)</code></td>
+</tr>
 </table>
-</p>
+</div>
 
 Use the following algorithm to resolve a parameter reference:
 
   1. Match the leading symbol as the key
-  2. Look up the key in the parameter context (described below) to get the current value.
+  2. If the key is the special value 'null' then the
+     value of the parameter reference is 'null'. If the key is 'null' it must be the only symbol in the parameter reference.
+  3. Look up the key in the parameter context (described below) to get the current value.
      It is an error if the key is not found in the parameter context.
-  3. If there are no subsequent segments, terminate and return current value
-  4. Else, match the next segment
-  5. Extract the symbol, string, or index from the segment as the key
-  6. Look up the key in current value and assign as new current value.  If
-     the key is a symbol or string, the current value must be an object.
-     If the key is an index, the current value must be an array or string.
-     It is an error if the key does not match the required type, or the key is not found or out
-     of range.
-  7. Repeat steps 3-6
+  4. If there are no subsequent segments, terminate and return current value
+  5. Else, match the next segment
+  6. Extract the symbol, string, or index from the segment as the key
+  7. Look up the key in current value and assign as new current value.
+     1. If the key is a symbol or string, the current value must be an object.
+     2. If the key is an index, the current value must be an array or string.
+     3. If the next key is the last key and it has the special value 'length' and
+         the current value is an array, the value of the parameter reference is the
+         length of the array. If the value 'length' is encountered in other contexts, normal
+         evaluation rules apply.
+     4. It is an error if the key does not match the required type, or the key is not found or out
+        of range.
+  8. Repeat steps 3-8
 
 The root namespace is the parameter context.  The following parameters must
 be provided:
@@ -532,11 +575,11 @@ be provided:
     must be 'null'.
   * `runtime`: An object containing configuration details.  Specific to the
     process type.  An implementation may provide
-    opaque strings for any or all fields of `runtime`.  These must be
-    filled in by the platform after processing the Tool but before actual
-    execution.  Parameter references and expressions may only use the
-    literal string value of the field and must not perform computation on
-    the contents, except where noted otherwise.
+    [opaque strings](#opaque-strings) for any or all fields of `runtime`.
+    These must be filled in by the platform after processing the Tool but
+    before actual execution.  Parameter references and expressions may only
+    use the literal string value of the field and must not perform computation
+    on the contents, except where noted otherwise.
 
 If the value of a field has no leading or trailing non-whitespace
 characters around a parameter reference, the effective value of the field

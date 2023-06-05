@@ -1,0 +1,8 @@
+#!/usr/bin/env cwl-runner
+cwl:tool: cwlsite.cwl
+jekyll-site: {class: Directory, location: ../content}
+rnaseq-training: {class: Directory, location: ../rnaseq-training}
+render:
+- {$import: cwlsite-v1.2-job.yaml}
+schemas:
+- {$import: cwlsite-v1.2-schemas.yaml}
