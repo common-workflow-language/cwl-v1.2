@@ -3461,3 +3461,15 @@
     }
   }
   tags: [ required, command_line_tool ]
+
+- id: default_with_falsey_value
+  job: tests/empty.json
+  tool: tests/default_with_falsey_value.cwl
+  doc: Confirms that "false"-like (but not 'null') values override any default
+  output:
+    out:
+      class: File
+      basename: file.txt
+      size: 14
+      checksum: sha1$0074b1841ab5103cc0442f739d9fb41a33b602ee
+  tags: [ step_input, workflow ]
