@@ -30,14 +30,14 @@
   id: invalid_syntax_v10_uses_v12_tool
   doc: test tool with v1.2 syntax marked as v1.0 (should fail)
   should_fail: true
-  tags: [ command_line_tool ]
+  tags: [ command_line_tool, json_schema_invalid ]
 
 - job: null
   tool: invalid-tool-v11.cwl
   doc: test tool with v1.2 syntax marked as v1.1 (should fail)
   id: invalid_syntax_v11_uses_v12_tool
   should_fail: true
-  tags: [ command_line_tool ]
+  tags: [ command_line_tool, json_schema_invalid ]
 
 - job: null
   tool: invalid-wf-v10.cwl

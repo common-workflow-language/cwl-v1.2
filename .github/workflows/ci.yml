@@ -35,3 +35,8 @@ jobs:
       
       - name: Validate CWL documents
         run: ./run_test.sh --self
+
+      - name: Validate JSON schema document
+        run: |
+          pip install -r ./requirements-jsonschema-test.txt
+          pytest tests/json_schema

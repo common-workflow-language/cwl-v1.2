@@ -2633,7 +2633,7 @@
   tool: tests/timelimit2.cwl
   id: timelimit_invalid
   doc: Test invalid time limit value
-  tags: [ command_line_tool, timelimit ]
+  tags: [ command_line_tool, timelimit, json_schema_invalid ]
 
 - job: tests/empty.json
   output: {}
