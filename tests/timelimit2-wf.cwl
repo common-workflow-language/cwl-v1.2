@@ -9,7 +9,7 @@ doc: |
   limit should not cause the workflow to fail.
 
   The timing on this test was updated from shorter values to
-  accomodate the startup time of certain container runners, the
+  accommodate the startup time of certain container runners, the
   previous timelimit of 5 seconds was too short, which is why it is
   now 20 seconds.
 
