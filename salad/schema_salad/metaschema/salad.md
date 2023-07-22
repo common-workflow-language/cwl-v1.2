@@ -94,6 +94,23 @@ ease the development of extensions to CWL v1.2. The only change is that
 inherited records can narrow the types of fields if those fields are re-specified
 with a matching jsonldPredicate.
 
+### Changelog for v1.2.1
+
+There are no new features nor behavior changes in Schema Salad v1.2.1
+as compared to Schema-Salad v1.2. Schema Sald v1.2.1 only fixes typos and adds
+clarifications.
+
+* The `salad` directory's contents have been trimmed to the bare necessities.
+  The `salad/README.rst` has been refreshed from the [upstream repository](https://github.com/common-workflow-language/schema_salad/).
+* The [existing behviour of `$import`](#Import) has been clarified.
+  If the `$import` node is in an array and the import operation yields an
+  array, it is flattened to the parent array. Otherwise the `$import`
+  node is replaced in the document structure by the object or array yielded
+  from the import operation. An [example](#import_example)
+  has been added to illustrate this better.
+* A pair of missing brackets was added to the [Type DSL Example](#Type_DSL_example)'s
+  example input.
+
 ## References to Other Specifications
 
 **Javascript Object Notation (JSON)**: http://json.org
