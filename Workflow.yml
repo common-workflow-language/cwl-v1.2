@@ -34,6 +34,62 @@ $graph:
     - {$include: intro.md}
 
     - |
+      ## Introduction to the CWL Workflow draft standard v1.2.1
+
+      This specification represents the latest development draft from the
+      CWL project. There are no new features nor behavior changes in CWL v1.2.1
+      as compared to CWL v1.2. v1.2.1 fixes only typos, adds clarifications,
+      and adds additional conformance tests. Some changes to the schema defining
+      CWL have been changed to aid the auto-generation of libraries for the reading
+      and writing of CWL documents.
+
+      Do not write `cwlVersion: v1.2.1`, that is not a valid version of the CWL
+      syntax.
+
+      See also the [CommandLineTool v1.2.1 changelog](CommandLineTool.html#Changelog_for_v1.2.1)
+      and the [Schema-Salad v1.2.1 changelog](SchemaSalad.html#Changelog_for_v1.2.1).
+
+      ## Changelog for v1.2.1
+
+      * The `Workflow.run` field description now explicitly states that it can
+        be either a string referencing an external document or an embedded Process.
+        This was previously only stated indirectly.
+      * The `outputSource` field of [`WorkflowOutputParameter`](#WorkflowOutputParameter)
+        now explictly states that workflow inputs can be referenced. The
+        mandatory conformance test `output_reference_workflow_input` has been
+        added to confirm this.
+
+      ### New Mandatory Conformance tests for v1.2.1
+      * `output_reference_workflow_input`: Test direct use of `Workflow` level
+        input fields in the outputs.
+
+      ### New Optional Conformance Tests for v1.2.1
+
+      #### SchemaDefRequirement
+      * `schemadef_types_with_import`: Test `SchemaDefRequirement` with a
+         workflow, with the `$import` under types. It is similar to `schemadef-wf`,
+         but the `$import` is different.
+
+      #### ScatterFeatureRequirement
+      * `simple_simple_scatter`: Two level nested scatter.
+      * `dotproduct_simple_scatter`: Two level nested scatter: external
+        dotproduct and internal simple.
+      * `simple_dotproduct_scatter`: Two level nested scatter: external simple
+        and internal dotproduct.
+      * `dotproduct_dotproduct_scatter`: Two level nested scatter: external
+        dotproduct and internal dotproduct.
+      * `flat_crossproduct_simple_scatter`: Two level nested scatter: external
+        flat_crossproduct and internal simple.
+      * `simple_flat_crossproduct_scatter`: Two level nested scatter: external
+        simple and internal flat_crossproduct.
+      * `flat_crossproduct_flat_crossproduct_scatter`: Two level nested scatter:
+        external flat_crossproduct and internal flat_crossproduct.
+      * `nested_crossproduct_simple_scatter`: Two level nested scatter: external
+        nested_crossproduct and internal simple.
+      * `simple_nested_crossproduct_scatter`: Two level nested scatter: external
+        simple and internal nested_crossproduct.
+      * `nested_crossproduct_nested_crossproduct_scatter`: Two level nested scatter:
+        external nested_crossproduct and internal nested_crossproduct.
 
       ## Introduction to CWL Workflow standard v1.2
 
