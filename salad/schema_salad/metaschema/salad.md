@@ -97,19 +97,28 @@ with a matching jsonldPredicate.
 ### Changelog for v1.2.1
 
 There are no new features nor behavior changes in Schema Salad v1.2.1
-as compared to Schema-Salad v1.2. Schema Sald v1.2.1 only fixes typos and adds
+as compared to Schema-Salad v1.2. Schema Salad v1.2.1 only fixes typos and adds
 clarifications.
 
 * The `salad` directory's contents have been trimmed to the bare necessities.
   The `salad/README.rst` has been refreshed from the [upstream repository](https://github.com/common-workflow-language/schema_salad/).
-* The [existing behviour of `$import`](#Import) has been clarified.
+* The [existing behaviour of `$import`](#Import) has been clarified.
   If the `$import` node is in an array and the import operation yields an
   array, it is flattened to the parent array. Otherwise the `$import`
   node is replaced in the document structure by the object or array yielded
-  from the import operation. An [example](#import_example)
+  from the import operation. An [additional example](#import_example2)
   has been added to illustrate this better.
 * A pair of missing brackets was added to the [Type DSL Example](#Type_DSL_example)'s
   example input.
+* Missing newlines have been added to the [identifier map example](#Identifier_map_example)'s
+  example source and example result.
+* [Inherited fields in Salad types](#SaladRecordSchema) may be re-specified
+  to narrow their type and/or to override the `doc` field.
+* Clarify that fields with `jsonldPredicate: { _type: "@id" }` indicate that the
+  field is a [link fields](#SaladRecordSchema) and that if the `jsonldPredicate`
+  also has the field `identity` with the value `true`, then field is
+  resolved with [identifier resolution](#Identifier_resolution).
+  Otherwise the field is resolved with [link resolution](#Link_resolution).
 
 ## References to Other Specifications
 
