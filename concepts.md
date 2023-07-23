@@ -105,7 +105,7 @@ for either JSON or YAML format. For JSON formatted CWL documents,
 [`application/cwl+json`](https://www.iana.org/assignments/media-types/application/cwl+json)
 can be used. For specifying a YAML formatted CWL document, one can use
 `application/cwl+yaml` but that is not an official IANA media-type yet; as of
-2023-04-19 the `+yaml` suffix has yet to be approved.
+2023-07-23 the `+yaml` suffix has yet to be approved.
 
 CWL documents commonly reference other CWL documents.  Each document
 must declare the `cwlVersion` of that document.  Implementations must

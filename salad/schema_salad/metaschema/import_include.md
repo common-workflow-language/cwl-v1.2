@@ -27,7 +27,6 @@ replaced by only the object with the appropriate fragment identifier.
 It is a fatal error if an import directive refers to an external resource
 or resource fragment which does not exist or is not accessible.
 
-<a name="import_example" />
 ### Import example: replacing the `$import` node
 
 import.json:
@@ -62,6 +61,7 @@ This becomes:
 }
 ```
 
+<a name="import_example2" />
 ### Import example: flattening the `$import`ed array
 
 import.json:
