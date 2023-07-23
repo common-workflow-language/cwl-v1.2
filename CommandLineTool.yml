@@ -170,6 +170,8 @@ $graph:
         `echo a && echo b`, and capture the output correctly.
       * `record_order_with_input_bindings`: Test sorting arguments at each level
         (`inputBinding` for all levels).
+      * `json_output_path_relative`: Test support for reading cwl.output.json
+        where 'path' is relative path in output dir.
 
       ### New Optional Conformance Tests for v1.2.1
 

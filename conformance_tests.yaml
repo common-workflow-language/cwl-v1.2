@@ -975,7 +975,7 @@
   id: json_output_path_relative
   doc: >-
     Test support for reading cwl.output.json where 'path' is relative path in output dir.
-  tags: [ shell_command, command_line_tool ]
+  tags: [ required, command_line_tool ]
 
 - job: tests/empty.json
   output: {
@@ -990,7 +990,7 @@
   id: json_output_location_relative
   doc: >-
     Test support for reading cwl.output.json where 'location' is relative reference to output dir.
-  tags: [ shell_command, command_line_tool ]
+  tags: [ required, command_line_tool ]
 
 - job: tests/abc.json
   output:
