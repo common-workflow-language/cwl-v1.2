@@ -8,8 +8,6 @@
 
 **Avro**: https://avro.apache.org/docs/1.8.1/spec.html
 
-**Uniform Resource Identifier (URI) Generic Syntax**: https://tools.ietf.org/html/rfc3986)
-
 **Internationalized Resource Identifiers (IRIs)**:
 https://tools.ietf.org/html/rfc3987
 
@@ -101,6 +99,13 @@ preprocessing steps described in the
 [Semantic Annotations for Linked Avro Data (SALAD) Specification](SchemaSalad.html).
 An implementation may formally validate the structure of a CWL document using
 SALAD schemas located at https://github.com/common-workflow-language/cwl-v1.2/
+
+The official IANA media-type for CWL documents is [`application/cwl`](https://www.iana.org/assignments/media-types/application/cwl)
+for either JSON or YAML format. For JSON formatted CWL documents,
+[`application/cwl+json`](https://www.iana.org/assignments/media-types/application/cwl+json)
+can be used. For specifying a YAML formatted CWL document, one can use
+`application/cwl+yaml` but that is not an official IANA media-type yet; as of
+2023-07-23 the `+yaml` suffix has yet to be approved.
 
 CWL documents commonly reference other CWL documents.  Each document
 must declare the `cwlVersion` of that document.  Implementations must
@@ -445,7 +450,7 @@ a [`cwl:tool`](#Executing_CWL_documents_as_scripts) entry) or by any other means
 1. Perform any further setup required by the specific process type.
 1. Execute the process.
 1. Capture results of process execution into the output object.
-1. Validate the output object against the `outputs` schema for the process.
+1. Validate the output object against the `outputs` schema for the process (with the exception of ExpressionTool outputs, which are always considered valid).
 1. Report the output object to the process caller.
 
 ## Requirements and hints

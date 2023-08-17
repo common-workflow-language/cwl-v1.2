@@ -1,10 +1,10 @@
 class: CommandLineTool
 cwlVersion: v1.2
-requirements:
-  - class: ShellCommandRequirement
 hints:
   DockerRequirement:
     dockerPull: docker.io/debian:stable-slim
+
+baseCommand: sh
 
 inputs: []
 
@@ -12,7 +12,9 @@ outputs:
   - id: foo
     type: File
 
+stdout: cwl.output.json
+
 arguments:
-   - valueFrom: >
-       echo foo > foo && echo '{"foo": {"path": "foo", "class": "File"} }' > cwl.output.json
-     shellQuote: false
+   - -c
+   - |
+     echo foo > foo && echo '{"foo": {"path": "foo", "class": "File"} }'

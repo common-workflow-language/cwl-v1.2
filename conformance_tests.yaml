@@ -975,7 +975,7 @@
   id: json_output_path_relative
   doc: >-
     Test support for reading cwl.output.json where 'path' is relative path in output dir.
-  tags: [ shell_command, command_line_tool ]
+  tags: [ required, command_line_tool ]
 
 - job: tests/empty.json
   output: {
@@ -990,7 +990,7 @@
   id: json_output_location_relative
   doc: >-
     Test support for reading cwl.output.json where 'location' is relative reference to output dir.
-  tags: [ shell_command, command_line_tool ]
+  tags: [ required, command_line_tool ]
 
 - job: tests/abc.json
   output:
@@ -2633,7 +2633,7 @@
   tool: tests/timelimit2.cwl
   id: timelimit_invalid
   doc: Test invalid time limit value
-  tags: [ command_line_tool, timelimit ]
+  tags: [ command_line_tool, timelimit, json_schema_invalid ]
 
 - job: tests/empty.json
   output: {}
@@ -3168,7 +3168,7 @@
 
 - job: tests/empty.json
   tool: tests/params_broken_length_of_non_list.cwl
-  doc: Test paramer reference that refers to length of non-array input
+  doc: Test parameter reference that refers to length of non-array input
   should_fail: true
   tags: [ required, command_line_tool ]
   id: length_for_non_array
@@ -3392,3 +3392,84 @@
     }
   }
   tags: [ required, command_line_tool ]
+
+- id: capture_files
+  tool: tests/capture-files.cwl
+  job: tests/dir-job.yml
+  doc: Test that a type error is raised if directories are returned by glob evaluation when type is File
+  should_fail: true
+  tags: [ required, command_line_tool ]
+
+- id: capture_dirs
+  tool: tests/capture-dirs.cwl
+  job: tests/dir-job.yml
+  doc: Test that a type error is raised if files are returned by glob evaluation when type is Directory
+  should_fail: true
+  tags: [ required, command_line_tool ]
+
+- id: capture_files_and_dirs
+  tool: tests/capture-files-and-dirs.cwl
+  job: tests/dir-job.yml
+  doc: Test that both files and directories are captured by glob evaluation when type is [Directory, File]
+  output: {
+    "result": [
+      {
+        "basename": "a",
+        "checksum": "sha1$da39a3ee5e6b4b0d3255bfef95601890afd80709",
+        "class": "File",
+        "size": 0
+      },
+      {
+        "basename": "b",
+        "checksum": "sha1$da39a3ee5e6b4b0d3255bfef95601890afd80709",
+        "class": "File",
+        "size": 0
+      },
+      {
+        "basename": "c",
+        "class": "Directory",
+        "listing": [
+          {
+            "basename": "d",
+            "checksum": "sha1$da39a3ee5e6b4b0d3255bfef95601890afd80709",
+            "class": "File",
+            "size": 0
+          }
+        ]
+      }
+    ]
+  }
+  tags: [ required, command_line_tool ]
+
+- id: very_big_and_very_floats
+  doc: Confirm that very big and very small numbers are represented using decimals, not scientific notation
+  tool: tests/floats_small_and_large.cwl
+  job: tests/empty.json
+  output: { "result": "0.00001 0.0000123 123000 1230000" }
+  tags: [ inline_javascript, command_line_tool ]
+
+- id: very_big_and_very_floats_nojs
+  doc: Confirm that very big and very small numbers are represented using decimals, not scientific notation
+  tool: tests/floats_small_and_large_nojs.cwl
+  job: tests/empty.json
+  output: {
+    "result": {
+        "basename": "dump",
+        "class": "File",
+        "checksum": "sha1$8a3913a553b8f29d47b99c1f4b0f6c2ee833cdc2",
+        "size": 32
+    }
+  }
+  tags: [ required, command_line_tool ]
+
+- id: default_with_falsey_value
+  job: tests/empty.json
+  tool: tests/default_with_falsey_value.cwl
+  doc: Confirms that "false"-like (but not 'null') values override any default
+  output:
+    out:
+      class: File
+      basename: file.txt
+      size: 14
+      checksum: sha1$0074b1841ab5103cc0442f739d9fb41a33b602ee
+  tags: [ step_input, workflow ]

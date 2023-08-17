@@ -2,9 +2,20 @@
 class: Workflow
 cwlVersion: v1.2
 
+doc: |
+  The entire test should take ~24 seconds.  Test that the 20 second
+  time limit applies to each step individually (so 1st step has 20
+  seconds and the 2nd step has 20 seconds).  So this 20 second time
+  limit should not cause the workflow to fail.
+
+  The timing on this test was updated from shorter values to
+  accommodate the startup time of certain container runners, the
+  previous timelimit of 5 seconds was too short, which is why it is
+  now 20 seconds.
+
 requirements:
   ToolTimeLimit:
-    timelimit: 5
+    timelimit: 20
   InlineJavascriptRequirement: {}
 
 inputs:
@@ -23,7 +34,7 @@ steps:
     out: [o]
     run:
       class: CommandLineTool
-      baseCommand: ["sleep", "3"]
+      baseCommand: ["sleep", "12"]
       inputs:
         i:
           type: string?
@@ -38,7 +49,7 @@ steps:
     out: [o]
     run:
       class: CommandLineTool
-      baseCommand: ["sleep", "3"]
+      baseCommand: ["sleep", "12"]
       inputs:
         i:
           type: string?

@@ -37,10 +37,227 @@ $graph:
     - {$include: intro.md}
 
     - |
+      ## Introduction to the CWL Command Line Tool draft standard v1.2.1
+
+      This specification represents the latest development draft from the
+      CWL project. There are no new features nor behavior changes in CWL v1.2.1
+      as compared to CWL v1.2. v1.2.1 fixes only typos, adds clarifications,
+      and adds additional conformance tests. Some changes to the schema defining
+      CWL have been changed to aid the auto-generation of libraries for the reading
+      and writing of CWL documents.
+
+      Do not write `cwlVersion: v1.2.1`, nor `cwlVersion: v1.2.0`. The syntax
+      meaning of all terms in CWL `1.2.x is the same. However, when reporting
+      results from running the CWL conformance tests, please do report all
+      three components; for example "99% of CWL v1.2.0 required tests" or
+      "100% of CWL v1.2.1 required tests".
+
+      See also the [Schema-Salad v1.2.1 changelog](SchemaSalad.html#Changelog_for_v1.2.1)
+
+      ## Changelog for v1.2.1
+      * CWL has been assigned an official IANA Media Type of [`application/cwl`](https://www.iana.org/assignments/media-types/application/cwl)
+        for either JSON or YAML format. For JSON formatted CWL documents, [`application/cwl+json`](https://www.iana.org/assignments/media-types/application/cwl+json)
+        has also been assigned and can be used. For specifying a YAML formatted
+        CWL document, one can use `application/cwl+yaml` but that is not an official
+        IANA media-type yet; as of 2023-07-23 the `+yaml` suffix has yet to be approved.
+        The above has been documented in the [Syntax](#Syntax) section.
+      * There is now an unofficial [JSON Schema for CWL documents](https://github.com/common-workflow-language/cwl-v1.2/blob/1.2.1_proposed/json-schema/cwl.yaml),
+        donated by Francis Charette-Migneault. This schema captures much, but not
+        all, of the potential complexity of CWL documents. It was created for
+        the [draft](https://docs.ogc.org/DRAFTS/20-044.html)
+        [OGC API - Processes - Part 2: Deploy, Replace, Undeploy](http://www.opengis.net/doc/IS/ogcapi-processes-2/1.0)
+        standard.
+        To support the testing of this unofficial JSON Schema for CWL, some of
+        the `should_fail: true` tests have had the label `json_schema_invalid`
+        added.
+      * For consistency, all references to `URI`s have been replaced with `IRI`s
+        (Internationalized Resource Identifiers).
+      * The [difference between `$()` and `${}`](#Expressions_(Optional)) were
+        clarified. We now make more explicit that `${...}` evaluates to
+        `(function() { ... })()`.
+      * The publisher of this document is now explicitly named; it is the
+        [Common Workflow Language project](https://www.commonwl.org), a member
+        project of [Software Freedom Conservancy](https://sfconservancy.org/).
+      * The [Parameter References](#Parameter_references) section has been updated
+        to clarify ambiguity on `null` and array `.length`. Three conformance tests to
+        verify this were added as well (`params_broken_null`, `length_for_non_array`,
+        `user_defined_length_in_parameter_reference`).
+      * It is now explicit in the description of the `size` field of a
+        [`File`](#File) object that `size` is measured in bytes, as was already
+        stated in the introduction to the `File` object description.
+      * The concept of "opaque identifier(s)"/"opaque strings" as mentioned in the
+        [`SecondaryFileSchema`](#SecondaryFileSchema), [Parameter References](#Parameter_references),
+        and [Runtime Environment](#Runtime_environment) sections is now defined
+        in the newly added [glossary](#Glossary): they are nonsensical values
+        that are swapped out with a real value later in the evaluation process.
+        Workflow and tool expressions **should not** rely on it nor try to parse it.
+      * The purpose and valid circumstances for using `CommandLineTool.id` has
+        been made more explicit: It is a unique identifier for that CommandLineTool;
+        Only useful for `CommandLineTool`s in a `$graph`. This `id` value should
+        not be exposed to users in graphical or terminal user interfaces.
+      * How `cwl.output.json` is used to perform [output binding](#Output_binding)
+        has been clarified, especially with regard to any `path` and `location`
+        fields for `File` and `Directory` objects referenced within. Two new
+        conformance tests (`json_output_path_relative`, `json_output_location_relative`)
+        have been added to verify these clarifications.
+      * The [BNF grammar description of CWL Parameter References](#Parameter_references)
+        has been reformatted so that symbols get `code formatting`. `::` is
+        replaced with `::=` (meaning that the symbol on the left must be
+        replaced with the expression on the right).
+      * The example expansion of the [`stdin` shortcut](#stdin) erroneously used
+        `${ }` instead of `$( )`; this has been corrected.
+
+      ### Clarifications to the schema in CWL v1.2.1 to aid autogenerated libraries
+      Many different CWL parsers are autogenerated from the official CWL schema
+      by using [`schema-salad --codegen`](https://schema-salad.readthedocs.io/en/latest/#codegen-examples).
+
+      In CWL v1.2.1 we made many clarifications to the schema to enable faster
+      parsing; or to produce better results for end users. These changes do not change
+      the CWL syntax or its meaning; we are just now modeling it better.
+
+      * The schema for `Requirement`s has changed to enable faster parsing by
+        autogenerated libraries. The `class` field is now a static enum with a
+        single permissible value instead of a generic string (for example:
+        `class: DockerRequirement` for a `DockerRequirement` hint or requirement.)
+        This allows for autogenerated CWL parsers to recognize any requirement
+        immediately instead of having to check for matching field names and
+        valid values, as was done previously.
+      * Likewise, the schema for `CommandLineTool`; the `class` field is now a
+        static enum with a single permissible value (`class: CommandLineTool`)
+        instead of a generic string.
+      * The schema for the `CommandLineBinding.position` field now has an explicit
+        default value of `0`. Previously this was only expression textually in
+        the description of that field.
+      * The schema for the `File.streamable` field now has an explicit default
+        value of `false` to match the textual description.
+
+        Note: Other fields like `ResourceRequirement.coresMin`, `.coresMax`,
+        `.ramMin`, `.ramMax`, `.tmpdirMin`, `.tmpdirMax` have not had defaults
+        set in the schema so that parsers can discriminate easily between a
+        value not provided and the default value (`0`).
+      * Everywhere the schema allows a value of type `long` we also explicitly
+        allow a value of type `int`: [`File.size`](#File), [`ResourceRequirement`](#ResourceRequirement)`.coresMin`,
+        `ResourceRequirement.coresMax`, `ResourceRequirement.ramMin`, `ResourceRequirement.ramMax`,
+        `ResourceRequirement.tmpdirMin`, `ResourceRequirement.tmpdirMax`, `ResourceRequirement.outdirMin`,
+        `ResourceRequirement.outdirMax`, and [`ToolTimeLimit.timelimt`](#ToolTimeLimit).
+
+        By JSON rules this is implicit, but by making it explicit we aid
+        autogenerated CWL libraries especially in languages such as Java.
+      * The schema for the `default` field of [CommandInputParameter](#CommandInputParameter)
+        has been expanded from `Any?` to `["null", File, Directory, Any]`
+        so that autogenerated CWL libraries will deserialize any 'File' or 'Directory'
+        objects automatically for the user.
+      * The schema for the `hints` field of `CommandLineTool` has been expanded
+        from: `Any[]?` to `["null", { type: array, items: [ ProcessRequirement, Any] } ]`.
+        This allows autogenerated CWL parsers to deserialize any of the standard
+        CWL hints instead of forcing the users of those parsers to convert the
+        unserialized hints to normal objects themselves.
+
+      ### Updated Conformance Tests for v1.2.1
+      * Conformance tests are now referred to by their textual identifiers (`id`).
+        Previously this was the `label` field. Tests without a `label`/`id`
+        have been given one.
+      * `tests/loadContents/cwloutput-nolimit.cwl`: Made explicit that
+        `bigstring` is an additional output as generated by the existing
+        `mkfilelist.py` script's use of [`cwl.output.json`](#Output_binding).
+      * The number of different software containers used in the conformance tests
+        has been reduced to four. See [the list in the CONFORMANCE_TESTS.md instructions](https://github.com/common-workflow-language/cwl-v1.2/blob/1.2.1_proposed/CONFORMANCE_TESTS.md#writing-a-new-conformance-test).
+      * `tests/secondaryfiles/rename-inputs.cwl` has been simplified by changing
+        it to reference another input parameter instead of using `self`. The
+        behavior of processing secondary files patterns in order and being able
+        to reference earlier ones later is not part of CWL v1.2.
+ 
+        This doesn't exactly replicate the previous behavior, because it introduces
+        a new input parameter, however it does demonstrate the ability to rename
+        a file and have it staged as a secondary file without having to use
+        `InitialWorkDirRequirement`.
+      * `directory_input_docker` was incorrectly marked as required, it is optional
+        unless the feature `ShellCommandRequirement` is stated as being supported.
+      * `glob_outside_outputs_fails` was incorrectly marked as required, it is
+        optional unless the feature `DockerRequirement` is stated as being supported.
+      * `stage_file_array` was incorrectly marked as required, it is optional
+        unless both the features `InlineJavascriptRequirement` and `DockerRequirement`
+        are stated as being supported.
+      * `stage_file_array_basename` and `stage_file_array_entryname_overrides` were
+        both incorrectly marked as required, they are optional unless the feature
+        `InitialWorkDirRequirement` and `InlineJavascriptRequirement` are both
+        stated as being supported.
+      * `optional_numerical_output_returns_0_not_null` was incorrectly marked as
+        required, it is optional unless `InlineJavascriptRequirement` is stated
+        as being supported.
+      * `cwloutput_nolimit` and `loadcontents_limit` were incorrectly marked as
+        optional; this has been corrected as both are required.
+      * Made it explicit that if a `CommandLineTool` contains logically chained
+        commands (e.g. `echo a && echo b`) then the `stdout` File/object must
+        include the output of every command. The `stdout_chained_commands` mandatory
+        conformance test was added to verify this.
+      * `metadata`: The description and content of this test has been updated to
+        be more focused on the metadata present in the CWL file.
+
+      ### New Mandatory Conformance Tests for v1.2.1
+      * `params_broken_null`: Test parameter reference that refers to
+        `null.something`.
+      * `length_for_non_array`: Test parameter reference that refers to length
+        of non-array input.
+      * `user_defined_length_in_parameter_reference`: Test 'length' in a parameter
+        reference where it does not refer to length of an array input.
+      * `directory_literal_with_literal_file_in_subdir_nostdin`: Test non-`stdin`
+        reference to literal `File` via a nested `Directory` literal.
+      * `colon_in_paths`: Confirm that colons are tolerated in input paths,
+        string values, stdout shortcut, and output file & directory names.
+      * `colon_in_output_path`: Confirm that colons are tolerated in output
+        directory names.
+      * `record_with_default`: Confirm that records with defaults are accepted.
+      * `record_outputeval_nojs`: Use of `outputEval` on a record itself, not
+        the fields of the record (without javascript). An equivalent test with
+       `InlineJavascriptRequirement` was added as well: `record_outputeval`.
+      * `runtime-outdir`: Test use of `$(runtime.outdir)` for `outputBinding.glob`.
+      * `stdout_chained_commands`: Test that chaining two `echo` calls causes
+        the workflow runner to emit the combined output to `stdout`. This is to
+        confirm that the workflow runner will **not** create an expression such as
+        `echo a && echo b > out.txt`, but instead will produce the correct
+        `echo a && echo b`, and capture the output correctly.
+      * `record_order_with_input_bindings`: Test sorting arguments at each level
+        (`inputBinding` for all levels).
+      * `json_output_path_relative`: Test support for reading cwl.output.json
+        where 'path' is relative path in output dir.
+      * `json_output_location_relative`: Test support for reading cwl.output.json
+        where 'location' is relative reference to output dir.
+      * `filename_with_hash_mark`: Test for correct handling of URL-quoting in
+        a filename to refer to filename containing a hash mark.
+      * `capture_files`: Test that a type error is raised if directories are
+        returned by `glob` evaluation when type is `File`.
+      * `capture_dirs`: Test that a type error is raised if files are returned
+        by `glob` evaluation when type is `Directory`.
+      * `capture_files_and_dirs`: Test that both files and directories are
+        captured by `glob` evaluation when type is `[Directory, File]`.
+      * `very_big_and_very_floats_nojs`: Confirm that very big and very small
+        numbers are represented on the command line using decimals, not
+        scientific notation.
+
+      ### New Optional Conformance Tests for v1.2.1
+
+      #### `InlineJavaScriptRequirement`
+      * `record_outputeval`: Use of `outputEval` on a record itself, not
+        the fields of the record.
+      * `staging-basename`: Use of an `ExpressionTool` to change `basename` of
+        file, then correctly staging the file using the new name.
+      * `js-input-record`:  A test case for JavaScript with an input record.
+      * `very_big_and_very_floats`: Confirm that very big and very small
+        numbers are represented on the command line using decimals, not
+        scientific notation.
+
+      #### `MultipleInputFeatureRequirement`
+      * `multiple-input-feature-requirement`: `MultipleInputFeatureRequirement` on
+        workflow outputs.
+
+      #### `InitialWorkDirRequirement`
+      * `iwd-subdir`: Test emitting a subdirectory from the initial working
+        directory.
+
       ## Introduction to the CWL Command Line Tool standard v1.2
 
-      This specification represents the latest development release from the
-      CWL group.  Since the v1.1 release, v1.2 introduces the
+      Since the v1.1 release, v1.2 introduces the
       following updates to the CWL Command Line Tool standard.
       Documents should use `cwlVersion: v1.2` to make use of new
       syntax and features introduced in v1.2.  Existing v1.1 documents
@@ -517,7 +734,7 @@ $graph:
         type: File
         streamable: true
 
-    stdin: ${inputs.an_input_name.path}
+    stdin: $(inputs.an_input_name.path)
     ```
 
 - name: stdout
@@ -1115,7 +1332,7 @@ $graph:
     Modify the behavior of CommandLineTool to generate a single string
     containing a shell command line.  Each item in the `arguments` list must
     be joined into a string separated by single spaces and quoted to prevent
-    intepretation by the shell, unless `CommandLineBinding` for that argument
+    interpretation by the shell, unless `CommandLineBinding` for that argument
     contains `shellQuote: false`.  If `shellQuote: false` is specified, the
     argument is joined into the command string without quoting, which allows
     the use of shell metacharacters such as `|` for pipes.
@@ -1193,7 +1410,7 @@ $graph:
         do not exceed the capacity of the node.
 
         Processes sharing a core must have the same level of isolation
-        (typically a container or VM) that they would normally.
+        (typically a container or VM) that they would normally have.
 
         The reported number of CPU cores reserved for the process,
         which is available to expressions on the CommandLineTool as

@@ -18,14 +18,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
-      - uses: actions/setup-python@v2
+      - uses: actions/setup-python@v4
         with:
           python-version: '3.8.x'
       
       - name: Setup prerequirements
-        run: pip install cwltest schema-salad[pycodegen]
+        run: pip install cwltest 'schema-salad[pycodegen]'
       
       - name: Download schema for conformance_tests.yaml
         run: curl -LO https://raw.githubusercontent.com/common-workflow-language/cwltest/main/cwltest/cwltest-schema.yml
@@ -35,3 +35,8 @@ jobs:
       
       - name: Validate CWL documents
         run: ./run_test.sh --self
+
+      - name: Validate JSON schema document
+        run: |
+          pip install -r ./requirements-jsonschema-test.txt
+          pytest tests/json_schema

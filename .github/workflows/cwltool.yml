@@ -18,15 +18,14 @@ jobs:
       matrix:
         # These are sets of options to be added via CWLTOOL_OPTIONS
         options:
-          - ""
-          - --user-space-docker-cmd=udocker
+          - "--parallel --relax-path-checks"
+          - "--parallel --relax-path-checks --user-space-docker-cmd=udocker"
 
     runs-on: ubuntu-latest
-
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
-      - uses: actions/setup-python@v2
+      - uses: actions/setup-python@v4
         with:
           python-version: '3.9.x'
 
@@ -42,9 +41,15 @@ jobs:
           key: ${{ steps.containers.outputs.hash }}
 
       - name: Setup prerequirements
-        run: pip install cwltest cwltool udocker && udocker install
-      
+        run: pip install "cwltest>=2.3" pytest-xdist "cwltool>=3.1.20230213100550" udocker && udocker install
+
+      - name: Copy in cwltool-specific configuration for the cwltest pytest plugin
+        run: cp "$(python -c 'from cwltool.tests.util import get_data; print(get_data("tests/cwl-conformance/cwltool-conftest.py"))')" conftest.py
+
+      - name: Copy conformance test index to .cwltest.yaml
+        run: cp conformance_tests.yaml conformance_tests.cwltest.yaml
+
       - name: Run tests against the reference runner
         env:
           CWLTOOL_OPTIONS: ${{ matrix.options }}
-        run: cwltest --junit-verbose --verbose --tool cwltool --test=conformance_tests.yaml -j$(nproc) -- --debug --parallel --relax-path-checks
+        run: python -m pytest conformance_tests.cwltest.yaml -n auto -rs
