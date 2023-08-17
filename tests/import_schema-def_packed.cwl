@@ -80,7 +80,7 @@
             "id": "#touch.cwl",
             "hints": [
                 {
-                    "dockerPull": "debian:stretch-slim",
+                    "dockerPull": "docker.io/debian:stable-slim",
                     "class": "DockerRequirement"
                 }
             ]

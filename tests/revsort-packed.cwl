@@ -7,7 +7,7 @@
             "hints": [
                 {
                     "class": "DockerRequirement",
-                    "dockerPull": "debian:stretch-slim"
+                    "dockerPull": "docker.io/debian:stable-slim"
                 }
             ],
             "inputs": [
