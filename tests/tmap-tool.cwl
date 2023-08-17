@@ -6,7 +6,7 @@
     "hints": [
         {
             "class": "DockerRequirement",
-            "dockerPull": "python:2-slim"
+            "dockerPull": "python:3-slim"
         }
     ],
     "inputs": [
