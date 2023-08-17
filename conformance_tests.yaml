@@ -3473,3 +3473,11 @@
       size: 14
       checksum: sha1$0074b1841ab5103cc0442f739d9fb41a33b602ee
   tags: [ step_input, workflow ]
+
+- id: input_directory_with_executable_file
+  job: tests/input_dir_with_executable_file.yaml
+  tool: tests/input_dir_with_executable_file.cwl
+  doc: Executable files in input directories retain their execute permissions
+  output:
+    args: [ "1", "two", "3" ]
+  tags: [ required, command_line_tool ]
