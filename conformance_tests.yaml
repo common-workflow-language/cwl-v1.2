@@ -3481,3 +3481,47 @@
   output:
     their_name: "Foo Bar"
   tags: [ require, command_line_tool ]
+
+- id: paramref_arguments_runtime
+  job: tests/empty.json
+  tool: tests/paramref_arguments_runtime.cwl
+  doc: confirm that $runtime is available to parameter references in arguments
+  tags: [ required, command_line_tool ]
+  output:
+    runtime:
+      cores: Any
+      outdir: Any
+      outdirSize: Any
+      ram: Any
+      tmpdir: Any
+      tmpdirSize: Any
+
+- id: paramref_arguments_self
+  tool: tests/paramref_arguments_self.cwl
+  job: tests/empty.json
+  doc: confirm that $self is available and set to null in arguments
+  tags: [ required, command_line_tool ]
+  output:
+    self: null
+
+- id: paramref_arguments_inputs
+  job: tests/empty.json
+  tool: tests/paramref_arguments_inputs.cwl
+  doc: confirm that $inputs is available to parameter references in arguments
+  tags: [ required, command_line_tool ]
+  output:
+    result:
+      a_double: 1000000000000000000000000000000000000000000
+      a_float: 4.2
+      a_long: 4147483647
+      a_string: z
+      a_string_array: [ a, b, c ]
+      a_true: true
+      an_array_of_doubles: [ 1000000000000000000000000000000000000000000, -1000000000000000000000000000000000000000000 ]
+      an_array_of_falses: [ false, false, false ]
+      an_array_of_floats: [ 2.3, 4.2 ]
+      an_array_of_ints: [ 42, 23 ]
+      an_array_of_longs: [ 4147483647, -4147483647 ]
+      an_array_of_mixed_booleans: [ false, true, false ]
+      an_array_of_trues: [ true, true, true ]
+      an_int: 42
