@@ -1,3 +1,4 @@
 jsonschema
 pytest
 requests
+typing_extensions
