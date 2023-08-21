@@ -1,0 +1,6 @@
+dir_with_executable_file:
+  class: Directory
+  basename: foo
+  listing:
+    - class: File
+      path: args.py
