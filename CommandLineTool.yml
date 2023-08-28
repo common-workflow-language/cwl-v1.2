@@ -193,6 +193,9 @@ $graph:
         conformance test was added to verify this.
       * `metadata`: The description and content of this test has been updated to
         be more focused on the metadata present in the CWL file.
+      * The final references to Python 2 have been updated to Python 3.
+      * A few conformance tests had `dockerPull`s without a registry specified.
+        This has been fixed.
 
       ### New Mandatory Conformance Tests for v1.2.1
       * `params_broken_null`: Test parameter reference that refers to
@@ -234,6 +237,12 @@ $graph:
       * `very_big_and_very_floats_nojs`: Confirm that very big and very small
         numbers are represented on the command line using decimals, not
         scientific notation.
+      * `paramref_arguments_runtime`: confirm that the `runtime` object is
+        available to parameter references in arguments.
+      * `paramref_arguments_self`: confirm that the `self` object is available
+        and set to `null` in arguments.
+      * `paramref_arguments_inputs`: confirm that the `inputs` object is
+        available to parameter references in arguments.
 
       ### New Optional Conformance Tests for v1.2.1
 
