@@ -1278,10 +1278,15 @@ $defs:
     title: CWL type string definition
     summary: CWL type string definition.
     description: Field type definition.
+    $comment: |
+      Note that 'Any' is equivalent to any of the non-null types.
+      Therefore, a nullable 'Any' explicitly specified by 'Any?' or its array-nullable form 'Any[]?' are not equivalent.
     enum:
       - 'null'
       - Any
+      - Any?
       - Any[]
+      - Any[]?
       - Directory
       - Directory?
       - Directory[]
