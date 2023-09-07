@@ -20,6 +20,7 @@
   tags: [ conditional, inline_javascript, workflow ]
 
 - id: direct_required
+  doc: Conditional using intermediate WorkflowStep.in input
   tool: cond-wf-002.cwl
   job: val.1.job.yaml
   output:
@@ -204,6 +205,7 @@
   tags: [ conditional, workflow ]
 
 - id: direct_required_nojs
+  doc: Conditional using intermediate WorkflowStep.in input; no javascript
   tool: cond-wf-002_nojs.cwl
   job: val.1.job.yaml
   output:
