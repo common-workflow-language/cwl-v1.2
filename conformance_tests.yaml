@@ -3321,7 +3321,7 @@
     args: [-a, -b, '1', -c, '3', -d, -e, '2', -f, '4']
   id: record_order_with_input_bindings
   doc: Test sorting arguments at each level (inputBinding for all levels)
-  tags: [ command_line, required ]
+  tags: [ command_line_tool, required ]
 
 - id: output_reference_workflow_input
   output: {
