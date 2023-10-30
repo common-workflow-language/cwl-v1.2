@@ -15,7 +15,7 @@ from jsonschema.exceptions import ValidationError, best_match
 # WARNING: do not use 'pyyaml' (import yaml), it does invalid parsing of some scientific number representations
 # see 'Numbers in scientific notation without dot are parsed as string' (https://github.com/yaml/pyyaml/issues/173)
 # builtin 'json' and 'simplejson' also have this issue (https://github.com/common-workflow-language/cwl-v1.2/issues/252)
-from ruamel import yaml
+from ruamel.yaml import YAML
 from ruamel.yaml.scanner import ScannerError
 
 # https://raw.githubusercontent.com/common-workflow-language/cwl-v1.2/1.2.1_proposed/conformance_tests.yaml
@@ -76,15 +76,16 @@ def load_file(file_path: str, text: bool = False) -> Union[JSON, str]:
     :returns: loaded contents either parsed and converted to Python objects or as plain text.
     :raises ValueError: if YAML or JSON cannot be parsed or loaded from location.
     """
+    yaml = YAML(typ='safe', pure=True)
     try:
         if is_remote_file(file_path):
             headers = {"Accept": "text/plain"}
             resp = requests.get(file_path, headers=headers)
             if resp.status_code != 200:
                 raise ValueError("Loading error: [%s]", file_path)
-            return resp.content if text else yaml.safe_load(resp.content)
+            return resp.content if text else yaml.load(resp.content)
         with open(file_path, mode="r", encoding="utf-8") as f:
-            return f.read() if text else yaml.safe_load(f)
+            return f.read() if text else yaml.load(f)
     except OSError as exc:
         LOGGER.debug("Loading error: %s", exc, exc_info=exc)
         raise
