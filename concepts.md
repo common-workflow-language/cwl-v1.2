@@ -292,7 +292,7 @@ Note: The `map<…>` (compact) versions are optional for users, the verbose opti
 always allowed, but for presentation reasons option 3 and 2 may be preferred
 by human readers. Consumers of CWL must support all three options.
 
-The normative explanation for these variations, aimed at implementors, is in the
+The normative explanation for these variations, aimed at implementers, is in the
 [Schema Salad specification](SchemaSalad.html#Identifier_maps).
 
 ## Identifiers
