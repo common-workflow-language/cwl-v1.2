@@ -34,19 +34,17 @@ $graph:
     - {$include: intro.md}
 
     - |
-      ## Introduction to the CWL Workflow draft standard v1.2.1
+      ## Introduction to the CWL Workflow standard v1.2.1
 
-      This specification represents the latest development draft from the
-      CWL project. There are no new features nor behavior changes in CWL v1.2.1
-      as compared to CWL v1.2. v1.2.1 fixes only typos, adds clarifications,
+      There are no new features nor behavior changes in CWL v1.2.1
+      as compared to CWL v1.2.0. v1.2.1 fixes only typos, adds clarifications,
       and adds additional conformance tests. Some changes to the schema defining
-      CWL have been changed to aid the auto-generation of libraries for the reading
+      CWL have been made to aid the auto-generation of libraries for the reading
       and writing of CWL documents.
 
-      Do not write `cwlVersion: v1.2.1`, nor `cwlVersion: v1.2.0`. The syntax
-      meaning of all terms in CWL `1.2.x is the same. However, when reporting
-      results from running the CWL conformance tests, please do report all
-      three components; for example "99% of CWL v1.2.0 required tests" or
+      Documents should continue to specify `cwlVersion: v1.2`. However, when
+      reporting results from running the CWL conformance tests, please do report
+      all three components; for example "99% of CWL v1.2.0 required tests" or
       "100% of CWL v1.2.1 required tests".
 
       See also the [CommandLineTool v1.2.1 changelog](CommandLineTool.html#Changelog_for_v1.2.1)
