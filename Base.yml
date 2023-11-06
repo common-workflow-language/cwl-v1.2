@@ -285,6 +285,7 @@ $graph:
         _id: cwl:format
         _type: "@id"
         identity: true
+        noLinkCheck: true
       doc: |
         The format of the file: this must be an IRI of a concept node that
         represents the file format, preferably defined within an ontology.
@@ -473,7 +474,6 @@ $graph:
       items:
         - "null"
         - CWLObjectType
-      flatten: false
     - type: map
       values:
         - "null"
@@ -492,3 +492,7 @@ $graph:
    - CWLObjectType
   doc: |
     Type representing a valid CWL input file as a `map<string, union<array<ProcessRequirement>, CWLObjectType>>`.
+  jsonldPredicate:
+    _id: "cwl:inputfile"
+    _container: "@list"
+    noLinkCheck: true

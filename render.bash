@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 if [[ -z "$WORKSPACE" ]] ; then
-    WORKSPACE=$PWD
+    WORKSPACE=$PWD/temp/
 fi
 mkdir -p $WORKSPACE
 repo=https://github.com/common-workflow-language/cwl-website \
-bn=$(basename $repo)
+bn=$WORKSPACE/$(basename $repo)
 if [[ -d $bn ]] ; then
     (cd $bn && git fetch origin && git reset --hard origin/main)
 else
-    git clone $repo && pushd $bn; git checkout main ; git show --no-patch ; popd
+    git clone $repo $bn && pushd $bn; git checkout main ; git show --no-patch ; popd
 fi
 echo "- basename: Base.yml"  >> $WORKSPACE/cwl-website/site/v1.2-deps.yaml
 echo "  class: File"  >> $WORKSPACE/cwl-website/site/v1.2-deps.yaml
