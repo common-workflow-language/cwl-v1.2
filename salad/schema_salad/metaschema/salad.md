@@ -10,6 +10,7 @@ Contributors:
 * The developers of JSON-LD
 * Nebojša Tijanić <nebojsa.tijanic@sbgenomics.com>, Seven Bridges Genomics
 * Michael R. Crusoe, ELIXIR-DE
+* Iacopo Colonnelli, University of Torino
 
 # Abstract
 
@@ -120,6 +121,16 @@ clarifications.
   resolved with [identifier resolution](#Identifier_resolution).
   Otherwise the field is resolved with [link resolution](#Link_resolution).
 
+## Introduction to v1.3
+
+This is the fifth version of the Schema Salad specification. It was created to
+enhance code generation by representing CWL data types as specific Python objects
+(instead of  relying on the generic `Any` type). The following changes have been made:
+
+* Support for the Avro `map` schema
+* Add named versions of the `map` and `union` Avro types
+* Support for nested named `union` type definitions
+
 ## References to Other Specifications
 
 **Javascript Object Notation (JSON)**: http://json.org
@@ -173,7 +184,7 @@ enable or disable the behavior described.
 ## Data concepts
 
 An **object** is a data structure equivalent to the "object" type in JSON,
-consisting of an unordered set of name/value pairs (referred to here as
+consisting of a unordered set of name/value pairs (referred to here as
 **fields**) and where the name is a string and the value is a string, number,
 boolean, array, or object.
 
