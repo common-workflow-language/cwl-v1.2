@@ -199,6 +199,7 @@ $graph:
         _id: cwl:format
         _type: "@id"
         identity: true
+        noLinkCheck: true
       doc: |
         Only valid when `type: File` or is an array of `items: File`.
 
@@ -221,6 +222,7 @@ $graph:
         _id: cwl:format
         _type: "@id"
         identity: true
+        noLinkCheck: true
       doc: |
         Only valid when `type: File` or is an array of `items: File`.
 
@@ -374,7 +376,8 @@ $graph:
     - name: default
       type: CWLObjectType?
       jsonldPredicate:
-        _id: sld:default
+        _id: "sld:default"
+        _container: "@list"
         noLinkCheck: true
       doc: |
         The default value to use for this parameter if the parameter is missing
