@@ -25,6 +25,7 @@ chilton
 cisphobia
 classname
 cmd
+colonnelli
 commandinputarrayschema
 commandinputenumschema
 commandinputparameter
@@ -54,6 +55,11 @@ cryptographic
 ctbrown
 curii
 cwl
+cwlarrayschema
+cwlinputfile
+cwlobjecttype
+cwlrecordfield
+cwlrecordschema
 cwltest
 cwltool
 cwltype
@@ -108,6 +114,7 @@ gmail
 gunzip
 hervé
 https
+iacopo
 iana
 ietf
 implementer
@@ -122,6 +129,7 @@ inplaceupdaterequirement
 inputarrayschema
 inputenumschema
 inputbinding
+inputfile
 inputformat
 inputrecordfield
 inputrecordschema
@@ -270,6 +278,7 @@ tijanić
 timelimit
 toc
 tooltimelimit
+torino
 transcode
 txt
 typedef

@@ -10,6 +10,7 @@ Contributors:
 * The developers of JSON-LD
 * Nebojša Tijanić <nebojsa.tijanic@sbgenomics.com>, Seven Bridges Genomics
 * Michael R. Crusoe, ELIXIR-DE
+* Iacopo Colonnelli, University of Torino
 
 # Abstract
 
@@ -119,6 +120,16 @@ clarifications.
   also has the field `identity` with the value `true`, then field is
   resolved with [identifier resolution](#Identifier_resolution).
   Otherwise the field is resolved with [link resolution](#Link_resolution).
+
+## Introduction to v1.3
+
+This is the fifth version of the Schema Salad specification. It was created to
+enhance code generation by representing CWL data types as specific Python objects
+(instead of  relying on the generic `Any` type). The following changes have been made:
+
+* Support for the Avro `map` schema
+* Add named versions of the `map` and `union` Avro types
+* Support for nested named `union` type definitions
 
 ## References to Other Specifications
 
