@@ -1,0 +1,293 @@
+- job: scatter-job.yml
+  id: simple_simple_scatter
+  tool: simple-simple-scatter.cwl
+  output:
+    "result": [
+        [ "^1a$", "^2a$", "^3a$", "^4a$" ],
+        [ "^1b$", "^2b$", "^3b$", "^4b$" ],
+        [ "^1c$", "^2c$", "^3c$", "^4c$" ],
+        [ "^1d$", "^2d$", "^3d$", "^4d$" ]
+    ]
+  doc: "Two level nested scatter"
+  tags: [ workflow, subworkflow, scatter, inline_javascript, expression_tool ]
+
+- job: scatter2-job.yml
+  id: dotproduct_simple_scatter
+  tool: dotproduct-simple-scatter.cwl
+  output:
+    "result": [
+        [ "^1aw$", "^2aw$", "^3aw$", "^4aw$" ],
+        [ "^1bx$", "^2bx$", "^3bx$", "^4bx$" ],
+        [ "^1cy$", "^2cy$", "^3cy$", "^4cy$" ],
+        [ "^1dz$", "^2dz$", "^3dz$", "^4dz$" ]
+    ]
+  doc: "Two level nested scatter: external dotproduct and internal simple"
+  tags: [ workflow, subworkflow, scatter, inline_javascript, expression_tool ]
+
+- job: scatter3-job.yml
+  id: simple_dotproduct_scatter
+  tool: simple-dotproduct-scatter.cwl
+  output:
+    "result": [
+        [ "^15a$", "^26a$", "^37a$", "^48a$" ],
+        [ "^15b$", "^26b$", "^37b$", "^48b$" ],
+        [ "^15c$", "^26c$", "^37c$", "^48c$" ],
+        [ "^15d$", "^26d$", "^37d$", "^48d$" ]
+    ]
+  doc: "Two level nested scatter: external simple and internal dotproduct"
+  tags: [ workflow, subworkflow, scatter, inline_javascript, expression_tool ]
+
+- job: scatter4-job.yml
+  id: dotproduct_dotproduct_scatter
+  tool: dotproduct-dotproduct-scatter.cwl
+  output:
+    "result": [
+        [ "^15aw$", "^26aw$", "^37aw$", "^48aw$" ],
+        [ "^15bx$", "^26bx$", "^37bx$", "^48bx$" ],
+        [ "^15cy$", "^26cy$", "^37cy$", "^48cy$" ],
+        [ "^15dz$", "^26dz$", "^37dz$", "^48dz$" ]
+    ]
+  doc: "Two level nested scatter: external dotproduct and internal dotproduct"
+  tags: [ workflow, subworkflow, scatter, inline_javascript, expression_tool ]
+
+- job: scatter2-job.yml
+  id: flat_crossproduct_simple_scatter
+  tool: flat-crossproduct-simple-scatter.cwl
+  output:
+    "result": [
+        [ "^1aw$", "^2aw$", "^3aw$", "^4aw$" ],
+        [ "^1ax$", "^2ax$", "^3ax$", "^4ax$" ],
+        [ "^1ay$", "^2ay$", "^3ay$", "^4ay$" ],
+        [ "^1az$", "^2az$", "^3az$", "^4az$" ],
+        [ "^1bw$", "^2bw$", "^3bw$", "^4bw$" ],
+        [ "^1bx$", "^2bx$", "^3bx$", "^4bx$" ],
+        [ "^1by$", "^2by$", "^3by$", "^4by$" ],
+        [ "^1bz$", "^2bz$", "^3bz$", "^4bz$" ],
+        [ "^1cw$", "^2cw$", "^3cw$", "^4cw$" ],
+        [ "^1cx$", "^2cx$", "^3cx$", "^4cx$" ],
+        [ "^1cy$", "^2cy$", "^3cy$", "^4cy$" ],
+        [ "^1cz$", "^2cz$", "^3cz$", "^4cz$" ],
+        [ "^1dw$", "^2dw$", "^3dw$", "^4dw$" ],
+        [ "^1dx$", "^2dx$", "^3dx$", "^4dx$" ],
+        [ "^1dy$", "^2dy$", "^3dy$", "^4dy$" ],
+        [ "^1dz$", "^2dz$", "^3dz$", "^4dz$" ]
+    ]
+  doc: "Two level nested scatter: external flat_crossproduct and internal simple"
+  tags: [ workflow, subworkflow, scatter, inline_javascript, expression_tool ]
+
+- job: scatter3-job.yml
+  id: simple_flat_crossproduct_scatter
+  tool: simple-flat-crossproduct-scatter.cwl
+  output:
+    "result": [
+        [ "^15a$", "^16a$", "^17a$", "^18a$", "^25a$", "^26a$", "^27a$", "^28a$", "^35a$", "^36a$", "^37a$", "^38a$", "^45a$", "^46a$", "^47a$", "^48a$" ],
+        [ "^15b$", "^16b$", "^17b$", "^18b$", "^25b$", "^26b$", "^27b$", "^28b$", "^35b$", "^36b$", "^37b$", "^38b$", "^45b$", "^46b$", "^47b$", "^48b$" ],
+        [ "^15c$", "^16c$", "^17c$", "^18c$", "^25c$", "^26c$", "^27c$", "^28c$", "^35c$", "^36c$", "^37c$", "^38c$", "^45c$", "^46c$", "^47c$", "^48c$" ],
+        [ "^15d$", "^16d$", "^17d$", "^18d$", "^25d$", "^26d$", "^27d$", "^28d$", "^35d$", "^36d$", "^37d$", "^38d$", "^45d$", "^46d$", "^47d$", "^48d$" ]
+    ]
+  doc: "Two level nested scatter: external simple and internal flat_crossproduct"
+  tags: [ workflow, subworkflow, scatter, inline_javascript, expression_tool ]
+
+- job: scatter4-job.yml
+  id: flat_crossproduct_flat_crossproduct_scatter
+  tool: flat-crossproduct-flat-crossproduct-scatter.cwl
+  output:
+    "result": [
+        [ "^15aw$", "^16aw$", "^17aw$", "^18aw$", "^25aw$", "^26aw$", "^27aw$", "^28aw$", "^35aw$", "^36aw$", "^37aw$", "^38aw$", "^45aw$", "^46aw$", "^47aw$", "^48aw$" ],
+        [ "^15ax$", "^16ax$", "^17ax$", "^18ax$", "^25ax$", "^26ax$", "^27ax$", "^28ax$", "^35ax$", "^36ax$", "^37ax$", "^38ax$", "^45ax$", "^46ax$", "^47ax$", "^48ax$" ],
+        [ "^15ay$", "^16ay$", "^17ay$", "^18ay$", "^25ay$", "^26ay$", "^27ay$", "^28ay$", "^35ay$", "^36ay$", "^37ay$", "^38ay$", "^45ay$", "^46ay$", "^47ay$", "^48ay$" ],
+        [ "^15az$", "^16az$", "^17az$", "^18az$", "^25az$", "^26az$", "^27az$", "^28az$", "^35az$", "^36az$", "^37az$", "^38az$", "^45az$", "^46az$", "^47az$", "^48az$" ],
+        [ "^15bw$", "^16bw$", "^17bw$", "^18bw$", "^25bw$", "^26bw$", "^27bw$", "^28bw$", "^35bw$", "^36bw$", "^37bw$", "^38bw$", "^45bw$", "^46bw$", "^47bw$", "^48bw$" ],
+        [ "^15bx$", "^16bx$", "^17bx$", "^18bx$", "^25bx$", "^26bx$", "^27bx$", "^28bx$", "^35bx$", "^36bx$", "^37bx$", "^38bx$", "^45bx$", "^46bx$", "^47bx$", "^48bx$" ],
+        [ "^15by$", "^16by$", "^17by$", "^18by$", "^25by$", "^26by$", "^27by$", "^28by$", "^35by$", "^36by$", "^37by$", "^38by$", "^45by$", "^46by$", "^47by$", "^48by$" ],
+        [ "^15bz$", "^16bz$", "^17bz$", "^18bz$", "^25bz$", "^26bz$", "^27bz$", "^28bz$", "^35bz$", "^36bz$", "^37bz$", "^38bz$", "^45bz$", "^46bz$", "^47bz$", "^48bz$" ],
+        [ "^15cw$", "^16cw$", "^17cw$", "^18cw$", "^25cw$", "^26cw$", "^27cw$", "^28cw$", "^35cw$", "^36cw$", "^37cw$", "^38cw$", "^45cw$", "^46cw$", "^47cw$", "^48cw$" ],
+        [ "^15cx$", "^16cx$", "^17cx$", "^18cx$", "^25cx$", "^26cx$", "^27cx$", "^28cx$", "^35cx$", "^36cx$", "^37cx$", "^38cx$", "^45cx$", "^46cx$", "^47cx$", "^48cx$" ],
+        [ "^15cy$", "^16cy$", "^17cy$", "^18cy$", "^25cy$", "^26cy$", "^27cy$", "^28cy$", "^35cy$", "^36cy$", "^37cy$", "^38cy$", "^45cy$", "^46cy$", "^47cy$", "^48cy$" ],
+        [ "^15cz$", "^16cz$", "^17cz$", "^18cz$", "^25cz$", "^26cz$", "^27cz$", "^28cz$", "^35cz$", "^36cz$", "^37cz$", "^38cz$", "^45cz$", "^46cz$", "^47cz$", "^48cz$" ],
+        [ "^15dw$", "^16dw$", "^17dw$", "^18dw$", "^25dw$", "^26dw$", "^27dw$", "^28dw$", "^35dw$", "^36dw$", "^37dw$", "^38dw$", "^45dw$", "^46dw$", "^47dw$", "^48dw$" ],
+        [ "^15dx$", "^16dx$", "^17dx$", "^18dx$", "^25dx$", "^26dx$", "^27dx$", "^28dx$", "^35dx$", "^36dx$", "^37dx$", "^38dx$", "^45dx$", "^46dx$", "^47dx$", "^48dx$" ],
+        [ "^15dy$", "^16dy$", "^17dy$", "^18dy$", "^25dy$", "^26dy$", "^27dy$", "^28dy$", "^35dy$", "^36dy$", "^37dy$", "^38dy$", "^45dy$", "^46dy$", "^47dy$", "^48dy$" ],
+        [ "^15dz$", "^16dz$", "^17dz$", "^18dz$", "^25dz$", "^26dz$", "^27dz$", "^28dz$", "^35dz$", "^36dz$", "^37dz$", "^38dz$", "^45dz$", "^46dz$", "^47dz$", "^48dz$" ]
+    ]
+  doc: "Two level nested scatter: external flat_crossproduct and internal flat_crossproduct"
+  tags: [ workflow, subworkflow, scatter, inline_javascript, expression_tool ]
+
+- job: scatter2-job.yml
+  id: nested_crossproduct_simple_scatter
+  tool: nested-crossproduct-simple-scatter.cwl
+  output:
+    "result": [
+        [
+            [ "^1aw$", "^2aw$", "^3aw$", "^4aw$" ],
+            [ "^1ax$", "^2ax$", "^3ax$", "^4ax$" ],
+            [ "^1ay$", "^2ay$", "^3ay$", "^4ay$" ],
+            [ "^1az$", "^2az$", "^3az$", "^4az$" ]
+        ],
+        [
+            [ "^1bw$", "^2bw$", "^3bw$", "^4bw$" ],
+            [ "^1bx$", "^2bx$", "^3bx$", "^4bx$" ],
+            [ "^1by$", "^2by$", "^3by$", "^4by$" ],
+            [ "^1bz$", "^2bz$", "^3bz$", "^4bz$" ]
+        ],
+        [
+            [ "^1cw$", "^2cw$", "^3cw$", "^4cw$" ],
+            [ "^1cx$", "^2cx$", "^3cx$", "^4cx$" ],
+            [ "^1cy$", "^2cy$", "^3cy$", "^4cy$" ],
+            [ "^1cz$", "^2cz$", "^3cz$", "^4cz$" ]
+        ],
+        [
+            [ "^1dw$", "^2dw$", "^3dw$", "^4dw$" ],
+            [ "^1dx$", "^2dx$", "^3dx$", "^4dx$" ],
+            [ "^1dy$", "^2dy$", "^3dy$", "^4dy$" ],
+            [ "^1dz$", "^2dz$", "^3dz$", "^4dz$" ]
+        ]
+    ]
+  doc: "Two level nested scatter: external nested_crossproduct and internal simple"
+  tags: [ workflow, subworkflow, scatter, inline_javascript, expression_tool ]
+
+- job: scatter3-job.yml
+  id: simple_nested_crossproduct_scatter
+  tool: simple-nested-crossproduct-scatter.cwl
+  output:
+    "result": [
+        [
+            [ "^15a$", "^16a$", "^17a$", "^18a$" ],
+            [ "^25a$", "^26a$", "^27a$", "^28a$" ],
+            [ "^35a$", "^36a$", "^37a$", "^38a$" ],
+            [ "^45a$", "^46a$", "^47a$", "^48a$" ]
+        ],
+        [
+            [ "^15b$", "^16b$", "^17b$", "^18b$" ],
+            [ "^25b$", "^26b$", "^27b$", "^28b$" ],
+            [ "^35b$", "^36b$", "^37b$", "^38b$" ],
+            [ "^45b$", "^46b$", "^47b$", "^48b$" ]
+        ],
+        [
+            [ "^15c$", "^16c$", "^17c$", "^18c$" ],
+            [ "^25c$", "^26c$", "^27c$", "^28c$" ],
+            [ "^35c$", "^36c$", "^37c$", "^38c$" ],
+            [ "^45c$", "^46c$", "^47c$", "^48c$" ]
+        ],
+        [
+            [ "^15d$", "^16d$", "^17d$", "^18d$" ],
+            [ "^25d$", "^26d$", "^27d$", "^28d$" ],
+            [ "^35d$", "^36d$", "^37d$", "^38d$" ],
+            [ "^45d$", "^46d$", "^47d$", "^48d$" ]
+        ]
+    ]
+  doc: "Two level nested scatter: external simple and internal nested_crossproduct"
+  tags: [ workflow, subworkflow, scatter, inline_javascript, expression_tool ]
+
+- job: scatter4-job.yml
+  id: nested_crossproduct_nested_crossproduct_scatter
+  tool: nested-crossproduct-nested-crossproduct-scatter.cwl
+  output:
+    "result": [
+        [
+            [
+                [ "^15aw$", "^16aw$", "^17aw$", "^18aw$" ],
+                [ "^25aw$", "^26aw$", "^27aw$", "^28aw$" ],
+                [ "^35aw$", "^36aw$", "^37aw$", "^38aw$" ],
+                [ "^45aw$", "^46aw$", "^47aw$", "^48aw$" ]
+            ],
+            [
+                [ "^15ax$", "^16ax$", "^17ax$", "^18ax$" ],
+                [ "^25ax$", "^26ax$", "^27ax$", "^28ax$" ],
+                [ "^35ax$", "^36ax$", "^37ax$", "^38ax$" ],
+                [ "^45ax$", "^46ax$", "^47ax$", "^48ax$" ]
+            ],
+            [
+                [ "^15ay$", "^16ay$", "^17ay$", "^18ay$" ],
+                [ "^25ay$", "^26ay$", "^27ay$", "^28ay$" ],
+                [ "^35ay$", "^36ay$", "^37ay$", "^38ay$" ],
+                [ "^45ay$", "^46ay$", "^47ay$", "^48ay$" ]
+            ],
+            [
+                [ "^15az$", "^16az$", "^17az$", "^18az$" ],
+                [ "^25az$", "^26az$", "^27az$", "^28az$" ],
+                [ "^35az$", "^36az$", "^37az$", "^38az$" ],
+                [ "^45az$", "^46az$", "^47az$", "^48az$" ]
+            ]
+        ],
+        [
+            [
+                [ "^15bw$", "^16bw$", "^17bw$", "^18bw$" ],
+                [ "^25bw$", "^26bw$", "^27bw$", "^28bw$" ],
+                [ "^35bw$", "^36bw$", "^37bw$", "^38bw$" ],
+                [ "^45bw$", "^46bw$", "^47bw$", "^48bw$" ]
+            ],
+            [
+                [ "^15bx$", "^16bx$", "^17bx$", "^18bx$" ],
+                [ "^25bx$", "^26bx$", "^27bx$", "^28bx$" ],
+                [ "^35bx$", "^36bx$", "^37bx$", "^38bx$" ],
+                [ "^45bx$", "^46bx$", "^47bx$", "^48bx$" ]
+            ],
+            [
+                [ "^15by$", "^16by$", "^17by$", "^18by$" ],
+                [ "^25by$", "^26by$", "^27by$", "^28by$" ],
+                [ "^35by$", "^36by$", "^37by$", "^38by$" ],
+                [ "^45by$", "^46by$", "^47by$", "^48by$" ]
+            ],
+            [
+                [ "^15bz$", "^16bz$", "^17bz$", "^18bz$" ],
+                [ "^25bz$", "^26bz$", "^27bz$", "^28bz$" ],
+                [ "^35bz$", "^36bz$", "^37bz$", "^38bz$" ],
+                [ "^45bz$", "^46bz$", "^47bz$", "^48bz$" ]
+            ]
+        ],
+        [
+            [
+                [ "^15cw$", "^16cw$", "^17cw$", "^18cw$" ],
+                [ "^25cw$", "^26cw$", "^27cw$", "^28cw$" ],
+                [ "^35cw$", "^36cw$", "^37cw$", "^38cw$" ],
+                [ "^45cw$", "^46cw$", "^47cw$", "^48cw$" ]
+            ],
+            [
+                [ "^15cx$", "^16cx$", "^17cx$", "^18cx$" ],
+                [ "^25cx$", "^26cx$", "^27cx$", "^28cx$" ],
+                [ "^35cx$", "^36cx$", "^37cx$", "^38cx$" ],
+                [ "^45cx$", "^46cx$", "^47cx$", "^48cx$" ]
+            ],
+            [
+                [ "^15cy$", "^16cy$", "^17cy$", "^18cy$" ],
+                [ "^25cy$", "^26cy$", "^27cy$", "^28cy$" ],
+                [ "^35cy$", "^36cy$", "^37cy$", "^38cy$" ],
+                [ "^45cy$", "^46cy$", "^47cy$", "^48cy$" ]
+            ],
+            [
+                [ "^15cz$", "^16cz$", "^17cz$", "^18cz$" ],
+                [ "^25cz$", "^26cz$", "^27cz$", "^28cz$" ],
+                [ "^35cz$", "^36cz$", "^37cz$", "^38cz$" ],
+                [ "^45cz$", "^46cz$", "^47cz$", "^48cz$" ]
+            ]
+        ],
+        [
+            [
+                [ "^15dw$", "^16dw$", "^17dw$", "^18dw$" ],
+                [ "^25dw$", "^26dw$", "^27dw$", "^28dw$" ],
+                [ "^35dw$", "^36dw$", "^37dw$", "^38dw$" ],
+                [ "^45dw$", "^46dw$", "^47dw$", "^48dw$" ]
+            ],
+            [
+                [ "^15dx$", "^16dx$", "^17dx$", "^18dx$" ],
+                [ "^25dx$", "^26dx$", "^27dx$", "^28dx$" ],
+                [ "^35dx$", "^36dx$", "^37dx$", "^38dx$" ],
+                [ "^45dx$", "^46dx$", "^47dx$", "^48dx$" ]
+            ],
+            [
+                [ "^15dy$", "^16dy$", "^17dy$", "^18dy$" ],
+                [ "^25dy$", "^26dy$", "^27dy$", "^28dy$" ],
+                [ "^35dy$", "^36dy$", "^37dy$", "^38dy$" ],
+                [ "^45dy$", "^46dy$", "^47dy$", "^48dy$" ]
+            ],
+            [
+                [ "^15dz$", "^16dz$", "^17dz$", "^18dz$" ],
+                [ "^25dz$", "^26dz$", "^27dz$", "^28dz$" ],
+                [ "^35dz$", "^36dz$", "^37dz$", "^38dz$" ],
+                [ "^45dz$", "^46dz$", "^47dz$", "^48dz$" ]
+            ]
+        ]
+    ]
+  doc: "Two level nested scatter: external nested_crossproduct and internal nested_crossproduct"
+  tags: [ workflow, subworkflow, scatter, inline_javascript, expression_tool ]

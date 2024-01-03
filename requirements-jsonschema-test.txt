@@ -1,0 +1,5 @@
+jsonschema
+pytest
+requests
+ruamel.yaml
+typing_extensions

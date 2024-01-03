@@ -10,7 +10,7 @@ cwlVersion: v1.2
 # in which the command line tools will execute.
 hints:
   - class: DockerRequirement
-    dockerPull: debian:stretch-slim
+    dockerPull: docker.io/debian:stable-slim
 
 
 # The inputs array defines the structure of the input object that describes
@@ -26,7 +26,7 @@ inputs:
   reverse_sort:
     type: boolean
     default: true
-    doc: "If true, reverse (decending) sort"
+    doc: "If true, reverse (descending) sort"
 
 # The "outputs" array defines the structure of the output object that describes
 # the outputs of the workflow.

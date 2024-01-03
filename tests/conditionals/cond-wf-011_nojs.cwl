@@ -36,7 +36,7 @@ outputs:
         type: array
         items:
           type: array
-          items: string
+          items: [string, 'null']
     outputSource: step1/out1
     pickValue: all_non_null
 

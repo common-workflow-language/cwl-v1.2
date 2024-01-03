@@ -8,8 +8,6 @@
 
 **Avro**: https://avro.apache.org/docs/1.8.1/spec.html
 
-**Uniform Resource Identifier (URI) Generic Syntax**: https://tools.ietf.org/html/rfc3986)
-
 **Internationalized Resource Identifiers (IRIs)**:
 https://tools.ietf.org/html/rfc3987
 
@@ -56,6 +54,13 @@ compatibility.  Portable CWL documents should not rely on deprecated behavior.
 Behavior marked as deprecated may be removed entirely from future revisions of
 the CWL specification.
 
+## Glossary
+
+<a name="opaque-strings"></a>**Opaque strings**: Opaque strings
+(or opaque identifiers, opaque values) are nonsensical values that are
+swapped out with a real value later in the evaluation process. Workflow
+and tool expressions **should not** rely on it nor try to parse it.
+
 # Data model
 
 ## Data concepts
@@ -94,6 +99,13 @@ preprocessing steps described in the
 [Semantic Annotations for Linked Avro Data (SALAD) Specification](SchemaSalad.html).
 An implementation may formally validate the structure of a CWL document using
 SALAD schemas located at https://github.com/common-workflow-language/cwl-v1.2/
+
+The official IANA media-type for CWL documents is [`application/cwl`](https://www.iana.org/assignments/media-types/application/cwl)
+for either JSON or YAML format. For JSON formatted CWL documents,
+[`application/cwl+json`](https://www.iana.org/assignments/media-types/application/cwl+json)
+can be used. For specifying a YAML formatted CWL document, one can use
+`application/cwl+yaml` but that is not an official IANA media-type yet; as of
+2023-07-23 the `+yaml` suffix has yet to be approved.
 
 CWL documents commonly reference other CWL documents.  Each document
 must declare the `cwlVersion` of that document.  Implementations must
@@ -280,7 +292,7 @@ Note: The `map<…>` (compact) versions are optional for users, the verbose opti
 always allowed, but for presentation reasons option 3 and 2 may be preferred
 by human readers. Consumers of CWL must support all three options.
 
-The normative explanation for these variations, aimed at implementors, is in the
+The normative explanation for these variations, aimed at implementers, is in the
 [Schema Salad specification](SchemaSalad.html#Identifier_maps).
 
 ## Identifiers
@@ -340,7 +352,7 @@ subworkflow steps, and so on.  Embedded process objects may optionally
 include `id` fields.
 
 A "$graph" document does not have a process object at the root.
-Instead there is a [`$graph`](SchemaSalad.html#Document_graph) field
+Instead, there is a [`$graph`](SchemaSalad.html#Document_graph) field
 which consists of a list of process objects.  Each process object must
 have an `id` field.  Workflow `run` fields cross-reference other
 processes in the document `$graph` using the `id` of the process
@@ -438,7 +450,7 @@ a [`cwl:tool`](#Executing_CWL_documents_as_scripts) entry) or by any other means
 1. Perform any further setup required by the specific process type.
 1. Execute the process.
 1. Capture results of process execution into the output object.
-1. Validate the output object against the `outputs` schema for the process.
+1. Validate the output object against the `outputs` schema for the process (with the exception of ExpressionTool outputs, which are always considered valid).
 1. Report the output object to the process caller.
 
 ## Requirements and hints
@@ -463,7 +475,8 @@ Requirements specified in a parent Workflow are inherited by step processes
 if they are valid for that step. If the substep is a CommandLineTool
 only the `InlineJavascriptRequirement`, `SchemaDefRequirement`, `DockerRequirement`,
 `SoftwareRequirement`, `InitialWorkDirRequirement`, `EnvVarRequirement`,
-`ShellCommandRequirement`, `ResourceRequirement` are valid.
+`ShellCommandRequirement`, `ResourceRequirement`, `LoadListingRequirement`,
+`WorkReuse`, `NetworkAccess`, `InplaceUpdateRequirement`, `ToolTimeLimit` are valid.
 
 *As good practice, it is best to have process requirements be self-contained,
 such that each process can run successfully by itself.*
@@ -491,36 +504,66 @@ references use the following subset of
 syntax, but they are designed to not require a Javascript engine for evaluation.
 
 In the following [BNF grammar](https://en.wikipedia.org/wiki/Backus%E2%80%93Naur_Form),
-character classes and grammar rules are denoted in '{}', '-' denotes
-exclusion from a character class, '(())' denotes grouping, '|' denotes
-alternates, trailing '*' denotes zero or more repeats, '+' denote one
+character classes and grammar rules are denoted in `{}`, `-` denotes
+exclusion from a character class, `(())` denotes grouping, `|` denotes
+alternates, trailing `*` denotes zero or more repeats, `+` denotes one
 or more repeats, and all other characters are literal values.
 
-<p>
+<div>
 <table class="table">
-<tr><td>symbol::             </td><td>{Unicode alphanumeric}+</td></tr>
-<tr><td>singleq::            </td><td>[' (( {character - { | \ ' \} } ))* ']</td></tr>
-<tr><td>doubleq::            </td><td>[" (( {character - { | \ " \} } ))* "]</td></tr>
-<tr><td>index::              </td><td>[ {decimal digit}+ ]</td></tr>
-<tr><td>segment::            </td><td>. {symbol} | {singleq} | {doubleq} | {index}</td></tr>
-<tr><td>parameter reference::</td><td>$( {symbol} {segment}*)</td></tr>
+<tr>
+    <td><code>symbol</code></td>
+    <td><code>::=</code></td>
+    <td><code>{Unicode alphanumeric}+</code></td>
+</tr>
+<tr>
+    <td><code>singleq</code></td>
+    <td><code>::=</code></td>
+    <td><code>[' (( {character - { | \ ' \} } ))* ']</code></td>
+</tr>
+<tr>
+    <td><code>doubleq</code></td>
+    <td><code>::=</code></td>
+    <td><code>[" (( {character - { | \ " \} } ))* "]</code></td>
+</tr>
+<tr>
+    <td><code>index</code></td>
+    <td><code>::=</code></td>
+    <td><code>[ {decimal digit}+ ]</code></td>
+</tr>
+<tr>
+    <td><code>segment</code></td>
+    <td><code>::=</code></td>
+    <td><code>. {symbol} | {singleq} | {doubleq} | {index}</code></td>
+</tr>
+<tr>
+    <td><code>parameter reference</code></td>
+    <td><code>::=</code></td>
+    <td><code>( {symbol} {segment}*)</code></td>
+</tr>
 </table>
-</p>
+</div>
 
 Use the following algorithm to resolve a parameter reference:
 
   1. Match the leading symbol as the key
-  2. Look up the key in the parameter context (described below) to get the current value.
+  2. If the key is the special value 'null' then the
+     value of the parameter reference is 'null'. If the key is 'null' it must be the only symbol in the parameter reference.
+  3. Look up the key in the parameter context (described below) to get the current value.
      It is an error if the key is not found in the parameter context.
-  3. If there are no subsequent segments, terminate and return current value
-  4. Else, match the next segment
-  5. Extract the symbol, string, or index from the segment as the key
-  6. Look up the key in current value and assign as new current value.  If
-     the key is a symbol or string, the current value must be an object.
-     If the key is an index, the current value must be an array or string.
-     It is an error if the key does not match the required type, or the key is not found or out
-     of range.
-  7. Repeat steps 3-6
+  4. If there are no subsequent segments, terminate and return current value
+  5. Else, match the next segment
+  6. Extract the symbol, string, or index from the segment as the key
+  7. Look up the key in current value and assign as new current value.
+     1. If the key is a symbol or string, the current value must be an object.
+     2. If the key is an index, the current value must be an array or string.
+     3. If the next key is the last key and it has the special value 'length' and
+         the current value is an array, the value of the parameter reference is the
+         length of the array. If the value 'length' is encountered in other contexts, normal
+         evaluation rules apply.
+     4. It is an error if the key does not match the required type, or the key is not found or out
+        of range.
+  8. Repeat steps 3-8
 
 The root namespace is the parameter context.  The following parameters must
 be provided:
@@ -532,11 +575,11 @@ be provided:
     must be 'null'.
   * `runtime`: An object containing configuration details.  Specific to the
     process type.  An implementation may provide
-    opaque strings for any or all fields of `runtime`.  These must be
-    filled in by the platform after processing the Tool but before actual
-    execution.  Parameter references and expressions may only use the
-    literal string value of the field and must not perform computation on
-    the contents, except where noted otherwise.
+    [opaque strings](#opaque-strings) for any or all fields of `runtime`.
+    These must be filled in by the platform after processing the Tool but
+    before actual execution.  Parameter references and expressions may only
+    use the literal string value of the field and must not perform computation
+    on the contents, except where noted otherwise.
 
 If the value of a field has no leading or trailing non-whitespace
 characters around a parameter reference, the effective value of the field
@@ -602,17 +645,21 @@ requirement `InlineJavascriptRequirement`.  Expressions may be used in any
 field permitting the pseudo-type `Expression`, as specified by this
 document.
 
-Expressions are denoted by the syntax `$(...)` or `${...}`.  A code
-fragment wrapped in the `$(...)` syntax must be evaluated as a
-[ECMAScript expression](http://www.ecma-international.org/ecma-262/5.1/#sec-11).  A
-code fragment wrapped in the `${...}` syntax must be evaluated as a
+Expressions are denoted by the syntax `$(...)` or `${...}`.
+
+A code fragment wrapped in the `$(...)` syntax must be evaluated as a
+[ECMAScript expression](http://www.ecma-international.org/ecma-262/5.1/#sec-11).
+
+A code fragment wrapped in the `${...}` syntax must be evaluated as a
 [ECMAScript function body](http://www.ecma-international.org/ecma-262/5.1/#sec-13)
-for an anonymous, zero-argument function.  Expressions must return a valid JSON
-data type: one of null, string, number, boolean, array, object. Other return
-values must result in a `permanentFailure`. Implementations must permit any
-syntactically valid Javascript and account for nesting of parenthesis or braces
-and that strings that may contain parenthesis or braces when scanning for
-expressions.
+for an anonymous, zero-argument function.  This means the code will be
+evaluated as `(function() { ... })()`.
+
+Expressions must return a valid JSON data type: one of null, string, number,
+boolean, array, object. Other return values must result in a
+`permanentFailure`.  Implementations must permit any syntactically valid
+Javascript and account for nesting of parenthesis or braces and that strings
+that may contain parenthesis or braces when scanning for expressions.
 
 The runtime must include any code defined in the ["expressionLib" field of
 InlineJavascriptRequirement](#InlineJavascriptRequirement) prior to

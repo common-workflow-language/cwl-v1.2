@@ -1,0 +1,11 @@
+## IDE
+.idea/
+.vscode/
+
+## Python
+*.py[cod]
+*.egg[s]
+*.egg-info
+*egg[s]
+__pycache__
+.python_history

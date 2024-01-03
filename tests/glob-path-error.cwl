@@ -4,7 +4,7 @@ cwlVersion: v1.2
 
 requirements:
   - class: DockerRequirement
-    dockerPull: debian:stretch-slim
+    dockerPull: docker.io/debian:stable-slim
 
 class: CommandLineTool
 

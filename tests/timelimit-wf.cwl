@@ -4,7 +4,7 @@ cwlVersion: v1.2
 
 requirements:
   ToolTimeLimit:
-    timelimit: 3
+    timelimit: 8
 
 inputs:
   i:
@@ -22,7 +22,7 @@ steps:
     out: [o]
     run:
       class: CommandLineTool
-      baseCommand: ["sleep", "10"]
+      baseCommand: ["sleep", "16"]
       inputs:
         i:
           type: int?
@@ -31,4 +31,3 @@ steps:
           type: string?
           outputBinding:
             outputEval: $(runtime.outdir)
-      

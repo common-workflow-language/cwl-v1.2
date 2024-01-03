@@ -1,9 +1,7 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 # Toy program to search inverted index and print out each line the term
 # appears.
-
-from __future__ import print_function
 
 import sys
 
@@ -23,5 +21,5 @@ for a in index:
         for l in main:
             linenum += 1
             if linenum in n:
-                print(linenum, l.rstrip())
+                print(f"{linenum} {l.rstrip()}")
         break

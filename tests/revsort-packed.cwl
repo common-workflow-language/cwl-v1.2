@@ -7,7 +7,7 @@
             "hints": [
                 {
                     "class": "DockerRequirement",
-                    "dockerPull": "debian:stretch-slim"
+                    "dockerPull": "docker.io/debian:stable-slim"
                 }
             ],
             "inputs": [
@@ -19,7 +19,7 @@
                 {
                     "type": "boolean",
                     "default": true,
-                    "doc": "If true, reverse (decending) sort",
+                    "doc": "If true, reverse (descending) sort",
                     "id": "#main/reverse_sort"
                 }
             ],

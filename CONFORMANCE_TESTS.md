@@ -57,15 +57,16 @@ Can be mixed with the other test selectors: `-n5-7,15 -N6` == only runs the 5th,
 
 `-s{test_names}`
 
-Run the specific tests according to their `label`s. `{test_names}` is a comma separated list of
-test labels. `-scl_optional_bindings_provided,stdout_redirect_docker,expression_any_null`
+Run the specific tests according to their `id`s. `{test_names}` is a comma separated list of
+test identifiers (the `id` field). `-scl_optional_bindings_provided,stdout_redirect_docker,expression_any_null`
 achieves the same effect as `-n5-7,15 -N6` and it will still work if the tests are re-ordered.
 
 `-S{test_names}`
 
-Excludes specific tests according to their `label`s. `{test_names}` is a comma separated list of
-test labels. `--tags shell_command -Sstderr_redirect_shortcut` will run all test with `expression_tool`
-in their `tags` list except the test with the label `stderr_redirect_shortcut`.
+Excludes specific tests according to their `id`s. `{test_names}` is a comma separated list of
+test identifiers (the `id` field). `--tags shell_command -Sstderr_redirect_shortcut`
+will run all tests with `expression_tool` in their `tags` list except the test
+with the `id` of `stderr_redirect_shortcut`.
 
 ### Misc
 
@@ -125,7 +126,7 @@ The conformance test file is a YAML document: a list of key-value pairs.
 We will use this single entry to explain the format
 ``` yaml
 - doc: Test command line with optional input (missing)
-   label: cl_optional_inputs_missing
+   id: cl_optional_inputs_missing
    tool: tests/cat1-testcli.cwl  
    job: tests/cat-job.json
    output:
@@ -135,7 +136,7 @@ We will use this single entry to explain the format
 - `doc`: A unique, single-line sentence that explain what is being tested.
      Will be printed at test execution time, so please don't make it too long!
      Additional documentation can go as comments in the CWL document itself.
-- `label`: a short list of  underscore (`_`) separated words that succinctly identifies and explains the test.
+- `id`: a short list of  underscore (`_`) separated words that succinctly identifies and explains the test.
 - `tool` the path to the CWL document to run
 - `job`: the CWL input object in YAML/JSON format. If there are no inputs then use `tests/empty.json`.
 - `output` [the CWL output object expected.](#output-matching)
@@ -154,10 +155,6 @@ with the supporting CWL documents and their inputs in separate sub-folders of `t
 Example: [`- $import: tests/string-interpolation/test-index.yaml`](https://github.com/common-workflow-language/cwl-v1.2/blob/5f27e234b4ca88ed1280dedf9e3391a01de12912/conformance_tests.yaml#L3395)
 adds all the entries in [`tests/string-interpolation/test-index.yaml`](https://github.com/common-workflow-language/cwl-v1.2/blob/main/tests/string-interpolation/test-index.yaml)
 as entries in the main conformance test file.
-
-You may also see references to an `id` field. Don't add them for new tests,
-[we are migrating off of the `id` field](common-workflow-language/cwltest#110) to
-rely only on the `label`s.
 
 ## Output matching
 
@@ -184,7 +181,9 @@ Likewise, please do not test the `path` for `class: File` and `class: Directory`
 
 To add a new conformance test:
 1. Ensure the CWL document you have tests the desired feature or aspect.
-2. All `CommandLineTool`s need a software container (via `DockerRequirement`) for better reproducibility, preferably under `hints`.
+2. The `cwlVersion` should be the latest version (`cwlVersion: v1.2`), unless
+   testing the mixing of versions as in the `tests/mixed-versions` directory.
+3. All `CommandLineTool`s need a software container (via `DockerRequirement`) for better reproducibility, preferably under `hints`.
      Please limit your container usage to the following: 
      - `dockerPull: docker.io/alpine:latest`
      - `dockerPull: docker.io/bash:4.4`
@@ -192,9 +191,9 @@ To add a new conformance test:
      - `dockerPull: docker.io/python:3-slim`
 4. Run your test using the CWL reference runner (`cwltool`) or another CWL runner
      that shows the correct behavior to collect the output, or confirm that validation/execution fails as expected
-3. Add the CWL document and output object to the subdirectory `tests` in this repository.
-4. Fill out a new entry in [conformance_tests.yaml](conformance_tests.yaml) following the [format of the conformance test file](#format-of-the-conformance-test-file)
-5. Send a pull request to [current staging branch for the next revision of the CWL standards](https://github.com/common-workflow-language/cwl-v1.2/tree/1.2.1_proposed) 
+5. Add the CWL document and output object to the subdirectory `tests` in this repository.
+6. Fill out a new entry in [conformance_tests.yaml](conformance_tests.yaml) following the [format of the conformance test file](#format-of-the-conformance-test-file)
+7. Send a pull request to [current staging branch for the next revision of the CWL standards](https://github.com/common-workflow-language/cwl-v1.2/tree/1.2.1_proposed) 
      with your changes
 
 ## Tags for conformance tests

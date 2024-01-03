@@ -1,6 +1,5 @@
 - job: null
-  id: iwd-1
-  label: iwd-nolimit
+  id: iwd-nolimit
   tool: iwd-nolimit.cwl
   output:
    "filelist": {
@@ -14,8 +13,7 @@
   tags: [ initial_work_dir, command_line_tool ]
 
 - job: null
-  id: iwd-2
-  label: iwd-jsondump1
+  id: iwd-jsondump1
   tool: iwd-jsondump1.cwl
   output:
     "filelist": {
@@ -29,8 +27,7 @@
   tags: [ initial_work_dir, command_line_tool ]
 
 - job: null
-  id: iwd-3
-  label: iwd-jsondump1-nl
+  id: iwd-jsondump1-nl
   tool: iwd-jsondump1-nl.cwl
   output:
     "filelist": {
@@ -44,8 +41,7 @@
   tags: [ initial_work_dir, command_line_tool ]
 
 - job: null
-  id: iwd-4
-  label: iwd-jsondump2
+  id: iwd-jsondump2
   tool: iwd-jsondump2.cwl
   output:
     "filelist": {
@@ -59,8 +55,7 @@
   tags: [ initial_work_dir, command_line_tool ]
 
 - job: null
-  id: iwd-5
-  label: iwd-jsondump2-nl
+  id: iwd-jsondump2-nl
   tool: iwd-jsondump2-nl.cwl
   output:
     "filelist": {
@@ -74,8 +69,7 @@
   tags: [ initial_work_dir, command_line_tool ]
 
 - job: null
-  id: iwd-6
-  label: iwd-jsondump3
+  id: iwd-jsondump3
   tool: iwd-jsondump3.cwl
   output:
     "filelist": {
@@ -89,8 +83,7 @@
   tags: [ initial_work_dir, command_line_tool ]
 
 - job: null
-  id: iwd-7
-  label: iwd-jsondump3-nl
+  id: iwd-jsondump3-nl
   tool: iwd-jsondump3-nl.cwl
   output:
     "filelist": {
@@ -104,8 +97,7 @@
   tags: [ initial_work_dir, command_line_tool ]
 
 - job: ../loadContents/input.yml
-  id: iwd-8
-  label: iwd-passthrough1
+  id: iwd-passthrough1
   tool: iwd-passthrough1.cwl
   output:
     "filelist": {
@@ -119,8 +111,7 @@
   tags: [ initial_work_dir, command_line_tool ]
 
 - job: ../loadContents/input.yml
-  id: iwd-9
-  label: iwd-passthrough2
+  id: iwd-passthrough2
   tool: iwd-passthrough2.cwl
   output:
     "out": {
@@ -134,8 +125,7 @@
   tags: [ initial_work_dir, command_line_tool ]
 
 - job: ../loadContents/input.yml
-  id: iwd-10
-  label: iwd-passthrough3
+  id: iwd-passthrough3
   tool: iwd-passthrough3.cwl
   output:
     "filelist": {
@@ -149,8 +139,7 @@
   tags: [ initial_work_dir, command_line_tool ]
 
 - job: ../loadContents/input.yml
-  id: iwd-11
-  label: iwd-passthrough4
+  id: iwd-passthrough4
   tool: iwd-passthrough4.cwl
   output:
     "filelist": {
@@ -164,8 +153,7 @@
   tags: [ initial_work_dir, command_line_tool ]
 
 - job: null
-  id: iwd-12
-  label: iwd-fileobjs1
+  id: iwd-fileobjs1
   tool: iwd-fileobjs1.cwl
   output:
     "filelist": {
@@ -214,8 +202,7 @@
   tags: [ initial_work_dir, command_line_tool ]
 
 - job: null
-  id: iwd-13
-  label: iwd-fileobjs2
+  id: iwd-fileobjs2
   tool: iwd-fileobjs2.cwl
   output:
     "filelist": {
@@ -264,8 +251,7 @@
   tags: [ initial_work_dir, command_line_tool ]
 
 - job: ../loadContents/input.yml
-  id: iwd-14
-  label: iwd-container-entryname1
+  id: iwd-container-entryname1
   tool: iwd-container-entryname1.cwl
   output:
     "head": {
@@ -279,32 +265,28 @@
   tags: [ initial_work_dir, command_line_tool ]
 
 - job: ../loadContents/input.yml
-  id: iwd-15
-  label: iwd-container-entryname2
+  id: iwd-container-entryname2
   tool: iwd-container-entryname2.cwl
   should_fail: true
   doc: "Test input mount locations when no container (should fail)"
   tags: [ initial_work_dir, command_line_tool ]
 
 - job: ../loadContents/input.yml
-  id: iwd-16
-  label: iwd-container-entryname3
+  id: iwd-container-entryname3
   tool: iwd-container-entryname3.cwl
   should_fail: true
   doc: "Test input mount locations when container is a hint (should fail)"
   tags: [ initial_work_dir, command_line_tool ]
 
 - job: ../loadContents/input.yml
-  id: iwd-17
-  label: iwd-container-entryname4
+  id: iwd-container-entryname4
   tool: iwd-container-entryname4.cwl
   should_fail: true
   doc: "Must fail if entryname starts with ../"
   tags: [ initial_work_dir, command_line_tool ]
 
 - job: ../loadContents/input.yml
-  id: iwd-18
-  label: iwdr_dir_literal_real_file
+  id: iwdr_dir_literal_real_file
   tool: iwdr_dir_literal_real_file.cwl
   doc: "Test directory literal containing a real file"
   output:
@@ -315,3 +297,24 @@
       "checksum": "sha1$57f77b36009332d236b52b4beca77301b503b27c"
       "size": 268866
   tags: [ initial_work_dir, command_line_tool ]
+
+- job: iwd-subdir-job.yml
+  id: iwd-subdir
+  tool: iwd-subdir-wf.cwl
+  doc: "Test emitting a subdirectory from initial workdir"
+  output:
+    "out": {
+        "location": "c",
+        "basename": "c",
+        "class": "Directory",
+        "listing": [
+            {
+                "location": "d",
+                "basename": "d",
+                "class": "File",
+                "checksum": "sha1$da39a3ee5e6b4b0d3255bfef95601890afd80709",
+                "size": 0
+            }
+        ]
+    }
+  tags: [ initial_work_dir, command_line_tool, workflow ]

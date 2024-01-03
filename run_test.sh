@@ -1,7 +1,7 @@
 #!/bin/bash
 
 func() {
-	helpmessage=$(cat)
+    helpmessage=$(cat)
 }
 func <<EOF
 $(basename "$0"): Run common workflow tool description language conformance tests.
@@ -64,15 +64,15 @@ do
         -n*)
             TEST_n=$arg
             ;;
-	-N*)
-	    TEST_N=$arg
-	    ;;
+        -N*)
+            TEST_N=$arg
+            ;;
         -s*)
             TEST_s=$arg
             ;;
-	-S*)
-	    TEST_S=$arg
-	    ;;
+        -S*)
+            TEST_S=$arg
+            ;;
         -j*)
             TEST_J=$arg
             ;;
@@ -128,7 +128,9 @@ if [ -n "${SELF}" ]; then
     exit 0
 fi
 
-if ! runner="$(command -v $RUNNER)" ; then
+if [ -n "${TEST_L}" ]; then
+    runner=$RUNNER    
+elif ! runner="$(command -v $RUNNER)" ; then
     echo >&2 "$helpmessage"
     echo >&2
     echo >&2 "runner '$RUNNER' not found"
@@ -139,16 +141,19 @@ runs=0
 failures=0
 
 runtest() {
-    echo "--- Running CWL Conformance Tests $CWL_VER on $1 ---"
 
-    "$1" --version
+    if [ -z "${TEST_L}" ]; then
+        echo "--- Running CWL Conformance Tests $CWL_VER on $1 ---"
+
+        "$1" --version
+    fi
 
     runs=$((runs+1))
     (COMMAND="cwltest --tool $1 \
-         --test=conformance_tests.yaml ${CLASS} \
-	 ${TEST_n} ${TEST_N} ${TEST_s} ${TEST_S} \
-         ${VERBOSE} ${TEST_L} ${TEST_J} ${ONLY_TOOLS} ${JUNIT_XML} \
-         ${TIMEOUT} ${BADGE} ${TAGS} -- ${EXTRA}"
+        --test=conformance_tests.yaml ${CLASS} \
+        ${TEST_n} ${TEST_N} ${TEST_s} ${TEST_S} \
+        ${VERBOSE} ${TEST_L} ${TEST_J} ${ONLY_TOOLS} ${JUNIT_XML} \
+        ${TIMEOUT} ${BADGE} ${TAGS} -- ${EXTRA}"
      if [ "$VERBOSE" = "--verbose" ]; then echo "${COMMAND}"; fi
      ${COMMAND}
     ) || failures=$((failures+1))
@@ -157,7 +162,7 @@ runtest() {
 if [ "$PLATFORM" = "Linux" ]; then
     runtest "$(readlink -f "$runner")"
 elif [ "$PLATFORM" = "Darwin" ]; then
-	runtest $runner
+    runtest $runner
 else
     runtest "$(greadlink -f "$runner")"
 fi
