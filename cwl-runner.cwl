@@ -29,6 +29,7 @@ inputs:
 
  processfile:
    type: File?
+   format: [iana:application/cwl, iana:application/cwl+json, iana:application/cwl+yaml]
    doc: |
     The CommandLineTool, ExpressionTool, or Workflow description to run.
     Optional if the jobfile has a `cwl:tool` field to indicate which process

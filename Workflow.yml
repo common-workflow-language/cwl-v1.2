@@ -56,7 +56,7 @@ $graph:
         for either JSON or YAML format. For JSON formatted CWL documents, [`application/cwl+json`](https://www.iana.org/assignments/media-types/application/cwl+json)
         has also been assigned and can be used. For specifying a YAML formatted
         CWL document, one can use `application/cwl+yaml` but that is not an official
-        IANA media-type yet; as of 2023-07-23 the `+yaml` suffix has yet to be approved.
+        IANA media-type yet.
         The above has been documented in the [Syntax](#Syntax) section.
       * There is now an unofficial [JSON Schema for CWL documents](https://github.com/common-workflow-language/cwl-v1.2/blob/1.2.1_proposed/json-schema/cwl.yaml),
         donated by Francis Charette-Migneault. This schema captures much, but not
