@@ -8,7 +8,7 @@ $namespaces:
 
 $graph:
 
-- name: "Common Workflow Language, v1.2"
+- name: "Common Workflow Language, v1.2.1"
   type: documentation
   doc: {$include: concepts.md}
 
