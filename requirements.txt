@@ -1,2 +1,2 @@
 cwltool
-schema_salad @ git+https://github.com/common-workflow-language/schema_salad@refs/pull/672/head
+schema_salad >= 8.5.20231201181309
