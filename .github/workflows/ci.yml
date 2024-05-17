@@ -26,6 +26,9 @@ jobs:
       
       - name: Setup prerequirements
         run: pip install cwltest 'schema-salad[pycodegen]'
+
+      - name: Validate CWL schema
+        run: schema-salad-tool salad/schema_salad/metaschema/metaschema.yml CommonWorkflowLanguage.yml
       
       - name: Download schema for conformance_tests.yaml
         run: curl -LO https://raw.githubusercontent.com/common-workflow-language/cwltest/main/cwltest/cwltest-schema.yml
