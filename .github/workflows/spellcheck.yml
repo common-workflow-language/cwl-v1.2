@@ -16,7 +16,7 @@ jobs:
         uses: codespell-project/actions-codespell@v2.0
         with:
           skip: EDAM.owl,foaf.rdf,underscore.js,CODE_OF_CONDUCT.md
-      - uses: rojopolis/spellcheck-github-actions@0.37.0
+      - uses: rojopolis/spellcheck-github-actions@0.38.0
         name: Spellcheck
         # https://github.com/marketplace/actions/github-spellcheck-action
         # To run locally, `pip install pyspelling`, followed by
