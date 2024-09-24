@@ -169,12 +169,12 @@ $graph:
 
       ### New Optional Conformance Tests for v1.2.1
 
-      #### `SchemaDefRequirement`
+      #### SchemaDefRequirement tests
       * `schemadef_types_with_import`: Test `SchemaDefRequirement` with a
          workflow, with the `$import` under types. It is similar to `schemadef-wf`,
          but the `$import` is different.
 
-      #### `ScatterFeatureRequirement`
+      #### ScatterFeatureRequirement tests
       * `simple_simple_scatter`: Two level nested scatter.
       * `dotproduct_simple_scatter`: Two level nested scatter: external
         dotproduct and internal simple.
@@ -195,7 +195,7 @@ $graph:
       * `nested_crossproduct_nested_crossproduct_scatter`: Two level nested scatter:
         external nested_crossproduct and internal nested_crossproduct.
 
-      #### `StepInputExpressionRequirement`
+      #### StepInputExpressionRequirement tests
       * `default_with_falsey_value`: Confirms that "false"-like (but not 'null')
         values override any default.
 
