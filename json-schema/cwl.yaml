@@ -1,6 +1,6 @@
 $schema: "http://json-schema.org/draft-07/schema#"
 $author: "Francis Charette-Migneault <francis.charette.migneault@gmail.com>"
-$id: "https://raw.githubusercontent.com/common-workflow-language/cwl-v1.2/1.2.1_proposed/json-schema/cwl.yaml"
+$id: "https://raw.githubusercontent.com/common-workflow-language/cwl-v1.2/main/json-schema/cwl.yaml"
 
 $defs:
   CWL:
