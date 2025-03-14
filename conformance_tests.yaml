@@ -3480,7 +3480,7 @@
   doc: demonstrate usage of nested types
   output:
     their_name: "Foo Bar"
-  tags: [ require, command_line_tool ]
+  tags: [ required, command_line_tool ]
 
 - id: paramref_arguments_runtime
   job: tests/empty.json
