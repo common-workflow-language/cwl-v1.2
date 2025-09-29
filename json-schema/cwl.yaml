@@ -2075,7 +2075,7 @@ $defs:
   CWLVersion:
     type: object
     properties:
-      clwVersion:
+      cwlVersion:
         type: string
         title: cwlVersion
         description: CWL version of the described application package.
