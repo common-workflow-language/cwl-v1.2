@@ -269,21 +269,21 @@
   tool: iwd-container-entryname2.cwl
   should_fail: true
   doc: "Test input mount locations when no container (should fail)"
-  tags: [ initial_work_dir, command_line_tool ]
+  tags: [ initial_work_dir, command_line_tool, inputs_should_parse ]
 
 - job: ../loadContents/input.yml
   id: iwd-container-entryname3
   tool: iwd-container-entryname3.cwl
   should_fail: true
   doc: "Test input mount locations when container is a hint (should fail)"
-  tags: [ initial_work_dir, command_line_tool ]
+  tags: [ initial_work_dir, command_line_tool, inputs_should_parse ]
 
 - job: ../loadContents/input.yml
   id: iwd-container-entryname4
   tool: iwd-container-entryname4.cwl
   should_fail: true
   doc: "Must fail if entryname starts with ../"
-  tags: [ initial_work_dir, command_line_tool ]
+  tags: [ initial_work_dir, command_line_tool, inputs_should_parse ]
 
 - job: ../loadContents/input.yml
   id: iwdr_dir_literal_real_file
