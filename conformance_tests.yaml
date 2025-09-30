@@ -1316,7 +1316,7 @@
   tool: tests/docker-array-secondaryfiles.cwl
   id: filesarray_secondaryfiles2
   doc: Test required, optional and null secondaryFiles on array of files.
-  tags: [ docker, inline_javascript, shell_command, command_line_tool ]
+  tags: [ docker, inline_javascript, shell_command, command_line_tool, inputs_should_parse  ]
 
 - job: tests/dir7.yml
   output: {
@@ -1779,7 +1779,7 @@
     Test that parameters that don't appear in the `run` process
     inputs are not present in the input object used to run the tool.
   should_fail: true
-  tags: [ required, workflow ]
+  tags: [ required, workflow, inputs_should_parse ]
 
 - job: tests/empty.json
   output:
@@ -2531,7 +2531,7 @@
   tool: tests/record-in-secondaryFiles-missing-wf.cwl
   id: secondary_files_missing
   doc: Test checking when secondaryFiles are missing
-  tags: [ workflow, required ]
+  tags: [ workflow, required, inputs_should_parse ]
 
 - job: tests/record-format-job.yml
   output: {}
@@ -2545,21 +2545,21 @@
   tool: tests/record-in-format.cwl
   id: input_records_file_entry_with_format_and_bad_regular_input_file_format
   doc: Test file format checking on parameter
-  tags: [ command_line_tool, format_checking ]
+  tags: [ command_line_tool, format_checking, inputs_should_parse ]
 
 - job: tests/record-format-job3.yml
   should_fail: true
   tool: tests/record-in-format.cwl
   doc: Test file format checking on record field
   id: input_records_file_entry_with_format_and_bad_entry_file_format
-  tags: [ command_line_tool, format_checking ]
+  tags: [ command_line_tool, format_checking, inputs_should_parse ]
 
 - job: tests/record-format-job4.yml
   should_fail: true
   tool: tests/record-in-format.cwl
   doc: Test file format checking on array item
   id: input_records_file_entry_with_format_and_bad_entry_array_file_format
-  tags: [ command_line_tool, format_checking ]
+  tags: [ command_line_tool, format_checking, inputs_should_parse ]
 
 - job: tests/record-secondaryFiles-job.yml
   output: {
@@ -2626,14 +2626,14 @@
   tool: tests/timelimit.cwl
   id: timelimit_basic
   doc: Test that job fails when exceeding time limit
-  tags: [ command_line_tool, timelimit, work_reuse ]
+  tags: [ command_line_tool, timelimit, work_reuse, inputs_should_parse ]
 
 - job: tests/empty.json
   should_fail: true
   tool: tests/timelimit2.cwl
   id: timelimit_invalid
   doc: Test invalid time limit value
-  tags: [ command_line_tool, timelimit, json_schema_invalid ]
+  tags: [ command_line_tool, timelimit, json_schema_invalid, inputs_should_parse ]
 
 - job: tests/empty.json
   output: {}
@@ -2647,7 +2647,7 @@
   tool: tests/timelimit4.cwl
   id: timelimit_from_expression
   doc: Test expression in time limit
-  tags: [ command_line_tool, timelimit, inline_javascript, work_reuse ]
+  tags: [ command_line_tool, timelimit, inline_javascript, work_reuse, inputs_should_parse ]
 
 - job: tests/empty.json
   output:
@@ -2662,7 +2662,7 @@
   tool: tests/timelimit-wf.cwl
   id: timelimit_basic_wf
   doc: Test that tool in workflow fails when exceeding time limit
-  tags: [ workflow, timelimit ]
+  tags: [ workflow, timelimit, inputs_should_parse ]
 
 - job: tests/empty.json
   output:
@@ -2685,7 +2685,7 @@
   tool: tests/timelimit4-wf.cwl
   id: timelimit_from_expression_wf
   doc: Test expression in time limit in workflow
-  tags: [ workflow, timelimit, inline_javascript, work_reuse ]
+  tags: [ workflow, timelimit, inline_javascript, work_reuse, inputs_should_parse ]
 
 - job: tests/empty.json
   output: {}
@@ -2699,7 +2699,7 @@
   tool: tests/networkaccess2.cwl
   id: networkaccess_disabled
   doc: Test networkaccess is disabled by default
-  tags: [ networkaccess, command_line_tool ]
+  tags: [ networkaccess, command_line_tool, inputs_should_parse ]
 
 - job: tests/stage-array-job.json
   tool: tests/stage-array.cwl
@@ -2796,7 +2796,7 @@
   tool: tests/glob-path-error.cwl
   id: glob_outside_outputs_fails
   doc: Test fail trying to glob outside output directory
-  tags: [ command_line_tool, docker ]
+  tags: [ command_line_tool, docker, inputs_should_parse ]
 
 - job: tests/empty.json
   tool: tests/symlink-illegal.cwl
@@ -2808,7 +2808,7 @@
       "baesname": "symlink.txt"
       "checksum": "sha1$cd28ec34f3f9425aca544b6332453708e8aaa82a"
   should_fail: true
-  tags: [ command_line_tool ]
+  tags: [ command_line_tool, inputs_should_parse ]
   id: illegal_symlink
 
 - job: tests/empty.json
@@ -3164,13 +3164,13 @@
   id: params_broken_null
   doc: Test parameter reference that refers to null.something
   should_fail: true
-  tags: [ required, command_line_tool ]
+  tags: [ required, command_line_tool, inputs_should_parse ]
 
 - job: tests/empty.json
   tool: tests/params_broken_length_of_non_list.cwl
   doc: Test parameter reference that refers to length of non-array input
   should_fail: true
-  tags: [ required, command_line_tool ]
+  tags: [ required, command_line_tool, inputs_should_parse ]
   id: length_for_non_array
 
 - job: tests/length_non_array_input.yml
@@ -3398,14 +3398,14 @@
   job: tests/dir-job.yml
   doc: Test that a type error is raised if directories are returned by glob evaluation when type is File
   should_fail: true
-  tags: [ required, command_line_tool ]
+  tags: [ required, command_line_tool, inputs_should_parse ]
 
 - id: capture_dirs
   tool: tests/capture-dirs.cwl
   job: tests/dir-job.yml
   doc: Test that a type error is raised if files are returned by glob evaluation when type is Directory
   should_fail: true
-  tags: [ required, command_line_tool ]
+  tags: [ required, command_line_tool, inputs_should_parse ]
 
 - id: capture_files_and_dirs
   tool: tests/capture-files-and-dirs.cwl

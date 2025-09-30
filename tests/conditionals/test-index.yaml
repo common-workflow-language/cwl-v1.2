@@ -56,7 +56,7 @@
   tool: cond-wf-003.1.cwl
   job: val.1.job.yaml
   should_fail: True
-  tags: [ conditional, inline_javascript, multiple_input, workflow ]
+  tags: [ conditional, inline_javascript, multiple_input, workflow, inputs_should_parse ]
 
 - id: first_non_null_second_non_null
   doc: "pickValue: first_non_null second item is non null"
@@ -79,14 +79,14 @@
   tool: cond-wf-004.cwl
   job: val.3.job.yaml
   should_fail: True
-  tags: [ conditional, inline_javascript, multiple_input, workflow ]
+  tags: [ conditional, inline_javascript, multiple_input, workflow, inputs_should_parse ]
 
 - id: all_non_null_multi_with_non_array_output
   doc: "pickValue: all_non_null will fail validation"
   tool: cond-wf-005.cwl
   job: val.3.job.yaml
   should_fail: True
-  tags: [ conditional, inline_javascript, multiple_input, workflow ]
+  tags: [ conditional, inline_javascript, multiple_input, workflow, inputs_should_parse ]
 
 - id: the_only_non_null_single_true
   doc: "pickValue: the_only_non_null will pass for only one active node"
@@ -101,7 +101,7 @@
   tool: cond-wf-006.cwl
   job: val.3.job.yaml
   should_fail: True
-  tags: [ conditional, inline_javascript, multiple_input, workflow ]
+  tags: [ conditional, inline_javascript, multiple_input, workflow, inputs_should_parse ]
 
 - id: all_non_null_all_null
   doc: "pickValue: all_non_null will produce a list, even if empty"
@@ -176,7 +176,7 @@
   tool: cond-wf-012.cwl
   job: val.1.job.yaml
   should_fail: True
-  tags: [ conditional, inline_javascript, workflow ]
+  tags: [ conditional, inline_javascript, workflow, inputs_should_parse ]
 
 - id: conditionals_multi_scatter
   doc: "Scatter two steps, flatten result + pickValue"
@@ -241,7 +241,7 @@
   tool: cond-wf-003.1_nojs.cwl
   job: both-false.yml
   should_fail: True
-  tags: [ conditional, multiple_input, workflow ]
+  tags: [ conditional, multiple_input, workflow, inputs_should_parse ]
 
 - id: first_non_null_second_non_null_nojs
   doc: "pickValue: first_non_null second item is non null; no javascript"
@@ -264,14 +264,14 @@
   tool: cond-wf-004_nojs.cwl
   job: test-true.yml
   should_fail: True
-  tags: [ conditional, multiple_input, workflow ]
+  tags: [ conditional, multiple_input, workflow, inputs_should_parse ]
 
 - id: all_non_null_multi_with_non_array_output_nojs
   doc: "pickValue: all_non_null will fail validation; no javascript"
   tool: cond-wf-005_nojs.cwl
   job: test-true.yml
   should_fail: True
-  tags: [ conditional, multiple_input, workflow ]
+  tags: [ conditional, multiple_input, workflow, inputs_should_parse ]
 
 - id: the_only_non_null_single_true_nojs
   doc: "pickValue: the_only_non_null will pass for only one active node; no javascript"
@@ -286,7 +286,7 @@
   tool: cond-wf-006_nojs.cwl
   job: both-true.yml
   should_fail: True
-  tags: [ conditional, multiple_input, workflow ]
+  tags: [ conditional, multiple_input, workflow, inputs_should_parse ]
 
 - id: all_non_null_all_null_nojs
   doc: "pickValue: all_non_null will produce a list, even if empty; no javascript"
@@ -361,7 +361,7 @@
   tool: cond-wf-012_nojs.cwl
   job: ../empty.json
   should_fail: True
-  tags: [ conditional, workflow ]
+  tags: [ conditional, workflow, inputs_should_parse ]
 
 - id: conditionals_multi_scatter_nojs
   doc: "Scatter two steps, flatten result + pickValue; no javascript"
