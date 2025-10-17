@@ -1,7 +1,7 @@
-$schema: "http://json-schema.org/draft-07/schema#"
+$schema: https://json-schema.org/draft/2020-12/schema
 $author: "Francis Charette-Migneault <francis.charette.migneault@gmail.com>"
 $id: "https://raw.githubusercontent.com/common-workflow-language/cwl-v1.2/1.2.1_proposed/json-schema/cwl.yaml"
-
+$ref: '#/$defs/CWL'
 $defs:
   CWL:
     oneOf:
@@ -39,7 +39,6 @@ $defs:
       title: UUID
       description: Unique identifier.
       format: uuid
-      pattern: '^[a-f0-9]{8}(?:-?[a-f0-9]{4}){3}-?[a-f0-9]{12}$'
     - $ref: '#/$defs/CWLTextPatternID'
     title: CWLIdentifier
     description: Reference to the process identifier.
@@ -52,8 +51,7 @@ $defs:
       description: |
         Identifier URL to a concept for the type of computational operation accomplished by this process
         (see example operations: http://edamontology.org/operation_0004).
-      format: url
-      pattern: '^((?:http|ftp)s?://)?(?!.*//.*$)(?:(?:[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?\.)+(?:[A-Za-z]{2,6}\.?|[A-Za-z0-9-]{2,}\.?)|localhost|\[[a-f0-9:]+\]|\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})(?::\d+)?(?:/?|[/?]\S+)$'
+      format: uri
   CWLImport:
     description: |
       Represents an '$import' directive that should point toward another compatible CWL file to import where specified.
@@ -126,8 +124,7 @@ $defs:
     properties:
       class:
         type: string
-        enum:
-          - DockerRequirement
+        const: DockerRequirement
       dockerPull:
         type: string
         title: Docker pull reference
@@ -157,7 +154,7 @@ $defs:
         title: InitialWorkDirListingItems
         items:
           oneOf:
-            - type: 'null'
+            - type: null
             - $ref: '#/$defs/CWLExpression'
             - $ref: '#/$defs/DirectoryListingDirent'
             - $ref: '#/$defs/DirectoryListingFileOrDirectory'
@@ -203,8 +200,7 @@ $defs:
     properties:
       class:
         type: string
-        enum:
-          - InitialWorkDirRequirement
+        const: InitialWorkDirRequirement
       listing:
         $ref: '#/$defs/InitialWorkDirListing'
     required:
@@ -242,12 +238,11 @@ $defs:
     properties:
       class:
         type: string
-        enum:
-          - InlineJavascriptRequirement
+        const: InlineJavascriptRequirement
       expressionLib:
         $ref: '#/$defs/InlineJavascriptLibraries'
-      required:
-        - expressionLib
+    required:
+      - expressionLib
     additionalProperties: false
   InplaceUpdateRequirement:
     type: object
@@ -260,8 +255,7 @@ $defs:
     properties:
       class:
         type: string
-        enum:
-          - InplaceUpdateRequirement
+        const: InplaceUpdateRequirement
       inplaceUpdate:
         type: boolean
         title: inplaceUpdate
@@ -284,8 +278,7 @@ $defs:
     properties:
       class:
         type: string
-        enum:
-        - LoadListingRequirement
+        const: LoadListingRequirement
       loadListing:
         $ref: '#/$defs/LoadListingEnum'
     required:
@@ -305,8 +298,7 @@ $defs:
       class:
         type: string
         $comment: Not 'NetworkAccessRequirement'
-        enum:
-          - NetworkAccess
+        const: NetworkAccess
       networkAccess:
         $ref: '#/$defs/NetworkAccess'
     required:
@@ -454,8 +446,7 @@ $defs:
     properties:
       class:
         type: string
-        enum:
-          - ResourceRequirement
+        const: ResourceRequirement
       coresMin:
         $ref: '#/$defs/ResourceCoresMinimum'
       coresMax:
@@ -509,8 +500,7 @@ $defs:
       class:
         type: string
         description: CWL requirement class specification.
-        enum:
-          - ScatterFeatureRequirement
+        const: ScatterFeatureRequirement
     additionalProperties: false
   MultipleInputFeatureRequirement:
     type: object
@@ -522,8 +512,7 @@ $defs:
       class:
         type: string
         description: CWL requirement class specification.
-        enum:
-          - MultipleInputFeatureRequirement
+        const: MultipleInputFeatureRequirement
     additionalProperties: false
   StepInputExpressionRequirement:
     type: object
@@ -533,8 +522,7 @@ $defs:
       class:
         type: string
         description: CWL requirement class specification.
-        enum:
-          - StepInputExpressionRequirement
+        const: StepInputExpressionRequirement
     additionalProperties: false
   SubworkflowFeatureRequirement:
     type: object
@@ -544,8 +532,7 @@ $defs:
       class:
         type: string
         description: CWL requirement class specification.
-        enum:
-          - SubworkflowFeatureRequirement
+        const: SubworkflowFeatureRequirement
     additionalProperties: false
   CWLFileOnlyParameters:
     type: object
@@ -727,8 +714,7 @@ $defs:
     properties:
       class:
         type: string
-        enum:
-          - SchemaDefRequirement
+        const: SchemaDefRequirement
       types:
         type: array
         items:
@@ -765,8 +751,7 @@ $defs:
     properties:
       class:
         type: string
-        enum:
-          - SoftwareRequirement
+        const: SoftwareRequirement
       packages:
         oneOf:
           - type: array
@@ -786,8 +771,7 @@ $defs:
     properties:
       class:
         type: string
-        enum:
-          - ShellCommandRequirement
+        const: ShellCommandRequirement
     additionalProperties: false
   EnvironmentDef:
     type: object
@@ -796,8 +780,7 @@ $defs:
         type: string
         minLength: 1
       envValue:
-        type:
-          $ref: '#/$defs/CWLExpression'
+        $ref: '#/$defs/CWLExpression'
     required:
       - envName
       - envValue
@@ -807,8 +790,7 @@ $defs:
     properties:
       class:
         type: string
-        enum:
-          - EnvVarRequirement
+        const: EnvVarRequirement
       envDef:
         oneOf:
           - type: array
@@ -850,8 +832,7 @@ $defs:
       class:
         type: string
         $comment: not 'ToolTimeLimitRequirement'
-        enum:
-          - ToolTimeLimit
+        const: ToolTimeLimit
       timelimit:
         $ref: '#/$defs/TimeLimitValue'
     required:
@@ -883,8 +864,7 @@ $defs:
       class:
         type: string
         $comment: Not 'WorkReuseRequirement'.
-        enum:
-          - WorkReuse
+        const: WorkReuse
       enableReuse:
         $ref: '#/$defs/EnableReuseValue'
     required:
@@ -1018,8 +998,7 @@ $defs:
     properties:
       class:
         type: string
-        enum:
-        - BuiltinRequirement
+        const: BuiltinRequirement
       process:
         $comment: Builtin process identifier.
         $ref: '#/$defs/CWLTextPatternID'
@@ -1060,8 +1039,7 @@ $defs:
     properties:
       class:
         type: string
-        enum:
-          - cwltool:CUDARequirement
+        const: cwltool:CUDARequirement
       cudaVersionMin:
         type: string
         title: CUDA version minimum
@@ -1105,8 +1083,7 @@ $defs:
     properties:
       class:
         type: string
-        enum:
-        - OGCAPIRequirement
+        const: OGCAPIRequirement
       process:
         description: Process location.
         $ref: '#/$defs/ReferenceURL'
@@ -1123,8 +1100,7 @@ $defs:
     properties:
       class:
         type: string
-        enum:
-          - WPS1Requirement
+        const: WPS1Requirement
       process:
         $comment: Process identifier of the remote WPS provider.
         $ref: '#/$defs/CWLTextPatternID'
@@ -1282,7 +1258,7 @@ $defs:
       Note that 'Any' is equivalent to any of the non-null types.
       Therefore, a nullable 'Any' explicitly specified by 'Any?' or its array-nullable form 'Any[]?' are not equivalent.
     enum:
-      - 'null'
+      - null
       - Any
       - Any?
       - Any[]
@@ -1398,8 +1374,7 @@ $defs:
       - $ref: '#/$defs/CWLTypeRecordRefPattern'
   CWLTypeRecordRefPattern:
     type: string
-    format: url
-    pattern: '^(((?:http|ftp)s?:\/\/)?(?!.*\/\/.*$)(?:(?:[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?\.)+(?:[A-Za-z]{2,6}\.?|[A-Za-z0-9-]{2,}\.?)|localhost|\[[a-f0-9:]+\]|\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})(?::\d+)?(?:\/?|[\/?]\S+))?(?:[A-Za-z0-9\w\-.\/]+)?\#?[A-Za-z0-9\w\-.]+$'
+    format: uri
   CWLTypeList:
     type: array
     title: CWLTypeList
@@ -1437,11 +1412,11 @@ $defs:
         if:
           properties:
             type:
-              const: 'null'
+              const: null
         then:
           properties:
             default:
-              type: 'null'
+              type: null
       - $comment: Required string.
         if:
           properties:
@@ -1461,7 +1436,7 @@ $defs:
             default:
               type:
               - string
-              - 'null'
+              - null
       - $comment: Required boolean.
         if:
           properties:
@@ -1486,7 +1461,7 @@ $defs:
             default:
               type:
               - number
-              - 'null'
+              - null
       - $comment: Required numeric.
         if:
           properties:
@@ -1516,7 +1491,7 @@ $defs:
             default:
               type:
               - number
-              - 'null'
+              - null
       - $comment: Required enum.
         if:
           properties:
@@ -1541,7 +1516,7 @@ $defs:
             default:
               oneOf:
                 - $ref: '#/$defs/CWLTypeSymbolValues'
-                - type: 'null'
+                - type: null
       - $comment: Required File or Directory.
         if:
           properties:
@@ -1565,7 +1540,7 @@ $defs:
             default:
               oneOf:
               - $ref: '#/$defs/CWLDefaultLocation'
-              - type: 'null'
+              - type: null
       - $comment: Required array of string.
         if:
           oneOf:
@@ -1674,8 +1649,7 @@ $defs:
     pattern: '^[a-z0-9\-]+\$[\w\-.]+$'
   ReferenceURL:
     type: string
-    format: url
-    pattern: '^((?:http|ftp)s?:\/\/)?(?!.*\/\/.*$)(?:(?:[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?\.)+(?:[A-Za-z]{2,6}\.?|[A-Za-z0-9-]{2,}\.?)|localhost|\[[a-f0-9:]+\]|\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})(?::\d+)?(?:\/?|[/?]\S+)$'
+    format: uri
   CWLDefaultLocation:
     type: object
     properties:
@@ -2037,8 +2011,7 @@ $defs:
     properties:
       class:
         type: string
-        enum:
-          - Workflow
+        const: Workflow
   CWLWorkflowSteps:
     oneOf:
       - $ref: '#/$defs/CWLWorkflowStepMap'
