@@ -584,6 +584,10 @@ $graph:
        should be filtered out.
 
   fields:
+    - name: id
+      type: string
+      jsonldPredicate: "@id"
+      doc: "The unique identifier of the source input field name."
     - name: default
       type: CWLObjectType?
       doc: |
@@ -638,6 +642,11 @@ $graph:
     A unique identifier for this workflow output parameter.  This is
     the identifier to use in the `source` field of `WorkflowStepInput`
     to connect the output value to downstream parameters.
+  fields:
+    - name: id
+      type: string
+      jsonldPredicate: "@id"
+      doc: "The unique identifier of the workflow parameter to export."
 
 
 - name: ScatterMethod
@@ -736,6 +745,10 @@ $graph:
     a subworkflow (recursive workflows are not allowed).
 
   fields:
+    - name: id
+      type: string
+      jsonldPredicate: "@id"
+      doc: "The unique identifier for this WorkflowStep."
     - name: in
       type: WorkflowStepInput[]
       jsonldPredicate:

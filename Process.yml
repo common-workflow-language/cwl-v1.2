@@ -236,6 +236,11 @@ $graph:
   abstract: true
   doc: |
     Define an input or output parameter to a process.
+  fields:
+    - name: id
+      type: string
+      jsonldPredicate: "@id"
+      doc: "The unique identifier for this Parameter."
 
 
 - type: enum
