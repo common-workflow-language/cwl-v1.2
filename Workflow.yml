@@ -471,7 +471,7 @@ $graph:
 
 - type: record
   name: WorkflowStepInput
-  extends: [Identified, Sink, LoadContents, Labeled]
+  extends: [IdentifierRequired, Sink, LoadContents, Labeled]
   docParent: "#WorkflowStep"
   doc: |
     The input of a workflow step connects an upstream parameter (from the
@@ -632,7 +632,7 @@ $graph:
 - type: record
   name: WorkflowStepOutput
   docParent: "#WorkflowStep"
-  extends: Identified
+  extends: IdentifierRequired
   doc: |
     Associate an output parameter of the underlying process with a workflow
     parameter.  The workflow parameter (given in the `id` field) be may be used
@@ -661,7 +661,7 @@ $graph:
 
 - name: WorkflowStep
   type: record
-  extends: [Identified, Labeled, sld:Documented]
+  extends: [IdentifierRequired, Labeled, sld:Documented]
   docParent: "#Workflow"
   doc: |
     A workflow step is an executable element of a workflow.  It specifies the
