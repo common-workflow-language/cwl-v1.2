@@ -1044,7 +1044,7 @@ $graph:
       doc: "Supply the contents of a Dockerfile which will be built using `docker build`."
     - name: dockerImport
       type: string?
-      doc: "Provide HTTP URL to download and gunzip a Docker images using `docker import."
+      doc: "Provide HTTP URL to download and gunzip a Docker images using `docker import`."
     - name: dockerImageId
       type: string?
       doc: |
