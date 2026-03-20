@@ -984,10 +984,6 @@ $defs:
     - dotproduct
     - nested_crossproduct
     - flat_crossproduct
-    required:
-    - timelimit
-    - class
-    additionalProperties: false
   CWLHints:
     oneOf:
     - $ref: '#/$defs/CWLHintsMap'
