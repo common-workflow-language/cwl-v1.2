@@ -1,7 +1,7 @@
 $schema: "http://json-schema.org/draft-07/schema#"
 $author: "Francis Charette-Migneault <francis.charette.migneault@gmail.com>"
 $id: "https://w3id.org/cwl/v1.2/cwl-json-schema.yaml"
-
+$ref: '#/$defs/CWL'
 $defs:
   CWL:
     oneOf:
@@ -157,7 +157,7 @@ $defs:
         title: InitialWorkDirListingItems
         items:
           oneOf:
-            - type: 'null'
+            - $ref: '#/$defs/NullableType'
             - $ref: '#/$defs/CWLExpression'
             - $ref: '#/$defs/DirectoryListingDirent'
             - $ref: '#/$defs/DirectoryListingFileOrDirectory'
@@ -246,8 +246,6 @@ $defs:
           - InlineJavascriptRequirement
       expressionLib:
         $ref: '#/$defs/InlineJavascriptLibraries'
-      required:
-        - expressionLib
     additionalProperties: false
   InplaceUpdateRequirement:
     type: object
@@ -328,8 +326,11 @@ $defs:
       There is no way to distinguish between float/long simultaneously in JSON schema (multi-match oneOf).
       Therefore, only validate that it is greater than zero.
     type: number
-    exclusiveMinimum: 0
     default: 1
+    # technically should be '>0' but we cannot handle both OAS 3.0 and 3.1 with pure JSON schema
+    # make it more lenient with the minimal value that works for both, and applications have to deal with exact zero
+    minimum: 0
+    # exclusiveMinimum: 0
   ResourceCoresMinimum:
     oneOf:
     - $ref: '#/$defs/ResourceQuantityOrFractional'
@@ -338,22 +339,22 @@ $defs:
     summary: Minimum reserved number of CPU cores.
     description: |
       Minimum reserved number of CPU cores.
-      
+
       May be a fractional value to indicate to a scheduling algorithm that one core can be allocated to
       multiple jobs. For example, a value of 0.25 indicates that up to 4 jobs
       may run in parallel on 1 core. A value of 1.25 means that up to 3 jobs
       can run on a 4 core system (4/1.25 ~ 3).
-      
+
       Processes can only share a core allocation if the sum of each of their 'ramMax', 'tmpdirMax', and
       'outdirMax' requests also do not exceed the capacity of the node.
-      
+
       Processes sharing a core must have the same level of isolation (typically a container
       or VM) that they would normally have.
-      
-      The reported number of CPU cores reserved for the process, which is available to expressions 
+
+      The reported number of CPU cores reserved for the process, which is available to expressions
       on the 'CommandLineTool' as 'runtime.cores', must be a non-zero integer, and may be calculated by
       rounding up the cores request to the next whole number.
-      
+
       Scheduling systems may allocate fractional CPU resources by setting quotas or scheduling weights.
       Scheduling systems that do not support fractional CPUs may round up the request to the next whole number.
     default: 1
@@ -397,7 +398,7 @@ $defs:
     title: ResourceTmpDirMinimum
     summary: Minimum reserved filesystem based storage for the designated temporary
       directory in mebibytes.
-    description: | 
+    description: |
       Minimum reserved filesystem based storage for the designated temporary
       directory in mebibytes (2**20).
 
@@ -796,8 +797,7 @@ $defs:
         type: string
         minLength: 1
       envValue:
-        type:
-          $ref: '#/$defs/CWLExpression'
+        $ref: '#/$defs/CWLExpression'
     required:
       - envName
       - envValue
@@ -963,29 +963,25 @@ $defs:
     description: |
       If 'scatter' declares more than one input parameter, 'scatterMethod'
       describes how to decompose the input into a discrete set of jobs.
-      
+
       - dotproduct: specifies that each of the input arrays are aligned and
         one element taken from each array to construct each job. It is an
         error if all input arrays are not the same length.
-      
-      - nested_crossproduct: specifies the Cartesian product of the inputs, producing 
-        a job for every combination of the scattered inputs. The output must be nested 
+
+      - nested_crossproduct: specifies the Cartesian product of the inputs, producing
+        a job for every combination of the scattered inputs. The output must be nested
         arrays for each level of scattering, in the order that the input arrays
         are listed in the 'scatter' field.
-      
-      - flat_crossproduct: specifies the Cartesian product of the inputs, producing a 
-        job for every combination of the scattered inputs. The output arrays must be 
-        flattened to a single level, but otherwise listed in the order that the input 
+
+      - flat_crossproduct: specifies the Cartesian product of the inputs, producing a
+        job for every combination of the scattered inputs. The output arrays must be
+        flattened to a single level, but otherwise listed in the order that the input
         arrays are listed in the 'scatter' field.
     default: dotproduct
     enum:
     - dotproduct
     - nested_crossproduct
     - flat_crossproduct
-    required:
-    - timelimit
-    - class
-    additionalProperties: false
   CWLHints:
     oneOf:
     - $ref: '#/$defs/CWLHintsMap'
@@ -1037,7 +1033,7 @@ $defs:
     title: CUDA compute capability
     description: |
       The compute capability supported by the GPU hardware.
-      
+
       * If this is a single value, it defines only the minimum compute capability.
         GPUs with higher capability are also accepted.
       * If it is an array value, then only select GPUs with compute capabilities that explicitly
@@ -1065,7 +1061,7 @@ $defs:
       cudaVersionMin:
         type: string
         title: CUDA version minimum
-        description: | 
+        description: |
           The minimum CUDA version required to run the software. This corresponds to a CUDA SDK release.
 
           When run in a container, the container image should provide the CUDA runtime,
@@ -1098,7 +1094,7 @@ $defs:
   OGCAPIRequirement:
     type: object
     title: OGCAPIRequirement
-    description: | 
+    description: |
       Hint indicating that the Application Package corresponds to an
       OGC API - Processes provider that should be remotely executed and monitored
       by this instance. (note: can only be an 'hint' as it is unofficial CWL specification).
@@ -1282,6 +1278,7 @@ $defs:
       Note that 'Any' is equivalent to any of the non-null types.
       Therefore, a nullable 'Any' explicitly specified by 'Any?' or its array-nullable form 'Any[]?' are not equivalent.
     enum:
+      # WARNING: this 'null' is an explicit "null" string, not the 'null' JSON type
       - 'null'
       - Any
       - Any?
@@ -1382,7 +1379,7 @@ $defs:
   CWLTypeRecordRef:
     description: |
       An IRI with minimally a '{Record}' identifier to look for a schema definition locally or remotely.
-      
+
       The identifier resolution is performed accordingly to the specified reference and as described in
       https://www.commonwl.org/v1.2/SchemaSalad.html#Identifier_resolution.
     $comment: Avoid 'oneOf' conflict of valid strings between this CWL record reference and the generic CWL types.
@@ -1433,7 +1430,7 @@ $defs:
             $ref: '#/$defs/AnyType'
         required:
           - type
-      - $comment: Explicit null.
+      - $comment: Explicit "null" string.
         if:
           properties:
             type:
@@ -1441,7 +1438,7 @@ $defs:
         then:
           properties:
             default:
-              type: 'null'
+              $ref: '#/$defs/NullableType'
       - $comment: Required string.
         if:
           properties:
@@ -1459,9 +1456,9 @@ $defs:
         then:
           properties:
             default:
-              type:
-              - string
-              - 'null'
+              oneOf:
+                - type: string
+                - $ref: '#/$defs/NullableType'
       - $comment: Required boolean.
         if:
           properties:
@@ -1484,9 +1481,9 @@ $defs:
         then:
           properties:
             default:
-              type:
-              - number
-              - 'null'
+              oneOf:
+                - type: number
+                - $ref: '#/$defs/NullableType'
       - $comment: Required numeric.
         if:
           properties:
@@ -1514,9 +1511,9 @@ $defs:
         then:
           properties:
             default:
-              type:
-              - number
-              - 'null'
+              oneOf:
+                - type: number
+                - $ref: '#/$defs/NullableType'
       - $comment: Required enum.
         if:
           properties:
@@ -1541,7 +1538,7 @@ $defs:
             default:
               oneOf:
                 - $ref: '#/$defs/CWLTypeSymbolValues'
-                - type: 'null'
+                - $ref: '#/$defs/NullableType'
       - $comment: Required File or Directory.
         if:
           properties:
@@ -1565,7 +1562,7 @@ $defs:
             default:
               oneOf:
               - $ref: '#/$defs/CWLDefaultLocation'
-              - type: 'null'
+              - $ref: '#/$defs/NullableType'
       - $comment: Required array of string.
         if:
           oneOf:
@@ -1649,13 +1646,18 @@ $defs:
               type: array
               items:
                 $ref: '#/$defs/AnyType'
+  NullableType:
+    description: Define a 'null' type that is JSON-schema compliant and helps OpenAPI 3.0 backport compatibility.
+    enum: [null]
+    nullable: true
   AnyType:
-    type:
-      - boolean
-      - number
-      - string
-      - array
-      - object
+    oneOf:
+      - type: boolean
+      - type: number
+      - type: string
+      - type: array
+        items: {}
+      - type: object
   AnyLiteralType:
     oneOf:
       - type: number
@@ -2126,7 +2128,7 @@ $defs:
         $ref: '#/$defs/CWLOutputsDefinition'
       stdin:
         description: |
-          Source of the input stream. 
+          Source of the input stream.
           Typically, an expression referring to an existing file name or an input of the CWL document.
         $ref: '#/$defs/CWLExpression'
       stdout:
