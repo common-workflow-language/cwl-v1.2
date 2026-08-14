@@ -118,7 +118,7 @@ and the expected outputs (or `should_fail: true` if the test is deliberately bro
 They are stored in [`conformance_tests.yaml`](https://github.com/common-workflow-language/cwl-v1.2/blob/main/conformance_tests.yaml)
 (or a file `$import`ed into that one)
 
-You can examine [the formal schema of this file](https://github.com/common-workflow-language/cwltest/blob/main/cwltest/cwltest-schema.yml),
+You can examine [the formal schema of this file](https://github.com/common-workflow-language/cwltest/blob/main/src/cwltest/cwltest-schema.yml),
 or just continue reading here for an explanation.
 
 The conformance test file is a YAML document: a list of key-value pairs.
