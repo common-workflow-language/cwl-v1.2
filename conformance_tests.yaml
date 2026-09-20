@@ -2301,7 +2301,7 @@
   doc: >-
     Within a workflow, test accessing the size attribute of an optional input
     File as part of a CommandLineTool's ResourceRequirement calculation. The
-    workflow itelf provides a default value (a local file) for this input.
+    workflow itself provides a default value (a local file) for this input.
   tags: [ workflow, resource ]
 
 - job: tests/cat-job.json
