@@ -723,4 +723,4 @@ If the `XDG_DATA_HOME` environment variable is unset, its default value is
 `$HOME/.local/share` (That is to say, check `$HOME/.local/share/commonwl`)
 
 `$XDG_DATA_HOME` and `$XDG_DATA_DIRS` are from the [XDG Base Directory
-Specification](http://standards.freedesktop.org/basedir-spec/basedir-spec-0.6.html)
+Specification](https://specifications.freedesktop.org/basedir/0.6/)
