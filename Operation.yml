@@ -68,3 +68,7 @@ $graph:
         name: Operation_class
         symbols:
           - cwl:Operation
+
+- name: EmbeddedOperation
+  type: record
+  extends: [Operation, EmbeddedProcess]

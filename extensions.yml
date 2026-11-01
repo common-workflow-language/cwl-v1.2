@@ -51,6 +51,10 @@ $graph:
       doc: |
         Specifies the process to run.
 
+- name: EmbeddedProcessGenerator
+  type: record
+  extends: [ProcessGenerator, cwl:EmbeddedProcess]
+
 - name: MPIRequirement
   type: record
   inVocab: false

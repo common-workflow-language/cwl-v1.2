@@ -332,6 +332,10 @@ $graph:
         Javascript object which matches the output parameters of the
         ExpressionTool.
 
+- name: EmbeddedExpressionTool
+  type: record
+  extends: [ExpressionTool, EmbeddedProcess]
+
 - name: LinkMergeMethod
   type: enum
   docParent: "#WorkflowStepInput"
@@ -951,5 +955,9 @@ $graph:
       jsonldPredicate:
         "_id": "@type"
         "_type": "@vocab"
+
+- name: EmbeddedWorkflow
+  type: record
+  extends: [Workflow, EmbeddedProcess]
 
 - {$import: Operation.yml}

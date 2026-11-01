@@ -973,6 +973,10 @@ $graph:
         If not specified, all exit codes except 0 are considered permanent failure.
 
 
+- name: EmbeddedCommandLineTool
+  type: record
+  extends: [CommandLineTool, EmbeddedProcess]
+
 - type: record
   name: DockerRequirement
   extends: ProcessRequirement

@@ -543,6 +543,14 @@ $graph:
         specific Operation concept like
         [Split read mapping](http://edamontology.org/operation_3199).
 
+- name: EmbeddedProcess
+  type: record
+  extends: Process
+  abstract: true
+  specialize:
+    - specializeFrom: CWLVersion
+      specializeTo: xsd:string
+
 - name: InlineJavascriptRequirement
   type: record
   extends: ProcessRequirement
