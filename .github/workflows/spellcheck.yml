@@ -11,12 +11,14 @@ jobs:
     name: Spellcheck
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          persist-credentials: false
       - name: Codespell with annotations
-        uses: codespell-project/actions-codespell@v2.1
+        uses: codespell-project/actions-codespell@406322ec52dd7b488e48c1c4b82e2a8b3a1bf630 # v2.1
         with:
           skip: EDAM.owl,foaf.rdf,underscore.js,CODE_OF_CONDUCT.md
-      - uses: rojopolis/spellcheck-github-actions@0.69.0
+      - uses: rojopolis/spellcheck-github-actions@dad57fc333130f4c9ae9632a6ad7ddc4de3515a2 # 0.69.0
         name: Spellcheck
         # https://github.com/marketplace/actions/github-spellcheck-action
         # To run locally, `pip install pyspelling`, followed by
