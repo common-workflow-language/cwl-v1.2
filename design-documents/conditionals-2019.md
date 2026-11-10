@@ -285,8 +285,8 @@ consistency.
 
 A proposal for a new process object ([`Switch`](https://github.com/common-workflow-language/common-workflow-language/issues/789)) was considered. Preliminary experimentation
 with the syntax raised the complaint that it was quite verbose and unwieldy
-for the most common use cases, which were to by-pass a step. As can be seen
-from the example above, which implements this common by-pass pattern, the
+for the most common use cases, which were to bypass a step. As can be seen
+from the example above, which implements this common bypass pattern, the
 `runIf` syntax is quite succinct and explicit for this use case.
 
 There are two attractions to using a process object from a language safety
