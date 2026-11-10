@@ -18,11 +18,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
-
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
-          python-version: '3.8.x'
+          persist-credentials: false
+
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.14.x'
       
       - name: Setup prerequirements
         run: pip install cwltest 'schema-salad[pycodegen]'
@@ -31,7 +33,7 @@ jobs:
         run: schema-salad-tool salad/schema_salad/metaschema/metaschema.yml CommonWorkflowLanguage.yml
       
       - name: Download schema for conformance_tests.yaml
-        run: curl -LO https://raw.githubusercontent.com/common-workflow-language/cwltest/main/src/cwltest/cwltest-schema.yml
+        run: wget https://raw.githubusercontent.com/common-workflow-language/cwltest/main/src/cwltest/cwltest-schema.yml
       
       - name: Validate conformance_tests.yaml
         run: schema-salad-tool cwltest-schema.yml conformance_tests.yaml
@@ -43,11 +45,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
-
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
-          python-version: '3.8.x'
+          persist-credentials: false
+
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.14.x'
 
       - name: Validate JSON schema document
         run: |

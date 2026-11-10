@@ -60,4 +60,4 @@
     test 1.2 wf that includes tools that are marked as v1.0 and v1.1 that
     contain v1.2 features (should fail)
   should_fail: true
-  tags: [ workflow ]
+  tags: [ workflow, inputs_should_parse ]

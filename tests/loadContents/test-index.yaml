@@ -11,4 +11,4 @@
   output: {}
   doc: "Test that loadContents on a file larger than 64k fails"
   should_fail: true
-  tags: [ command_line_tool, required, json_schema_invalid ]
+  tags: [ command_line_tool, required, json_schema_invalid, inputs_should_parse ]
